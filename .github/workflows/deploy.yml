@@ -1,0 +1,70 @@
+name: Deploy manual to Coolify
+
+# This repo owns exactly one Coolify resource (seog-manual). Like the app repos,
+# the deploy branch is `production` — promote with `./scripts/release.sh manual`
+# from the workspace. Coolify's native git auto-deploy is OFF; pushing this
+# branch is the only trigger.
+on:
+  push:
+    branches: [production]
+  workflow_dispatch:
+
+# Cancel an in-flight deploy when a newer commit lands.
+concurrency:
+  group: deploy-coolify-manual
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Coolify deploy
+        id: trigger
+        env:
+          COOLIFY_API_TOKEN: ${{ secrets.COOLIFY_API_TOKEN }}
+          UUID: ${{ vars.COOLIFY_APP_UUID }}
+        run: |
+          set -euo pipefail
+          if [ -z "${COOLIFY_API_TOKEN:-}" ]; then
+            echo "::error::COOLIFY_API_TOKEN secret is not set"
+            exit 1
+          fi
+          if [ -z "${UUID:-}" ]; then
+            echo "::error::COOLIFY_APP_UUID variable is not set"
+            exit 1
+          fi
+          RESP=$(curl -fsS -X GET \
+            "https://cool.kompot.ai/api/v1/deploy?uuid=$UUID&force=false" \
+            -H "Authorization: Bearer $COOLIFY_API_TOKEN")
+          echo "Coolify response: $RESP"
+          DEPLOYMENT_UUID=$(echo "$RESP" | python3 -c "import sys, json; print(json.load(sys.stdin)['deployments'][0]['deployment_uuid'])")
+          echo "Queued deployment: $DEPLOYMENT_UUID"
+          echo "deployment_uuid=$DEPLOYMENT_UUID" >> "$GITHUB_OUTPUT"
+
+      - name: Wait for deploy to finish
+        env:
+          COOLIFY_API_TOKEN: ${{ secrets.COOLIFY_API_TOKEN }}
+          DEPLOYMENT_UUID: ${{ steps.trigger.outputs.deployment_uuid }}
+        run: |
+          set -euo pipefail
+          # An empty Coolify queue is not success — poll the deployment itself.
+          for i in $(seq 1 60); do
+            STATUS=$(curl -fsS \
+              -H "Authorization: Bearer $COOLIFY_API_TOKEN" \
+              "https://cool.kompot.ai/api/v1/deployments/$DEPLOYMENT_UUID" \
+              | python3 -c "import sys, json; print(json.load(sys.stdin).get('status','?'))")
+            echo "[$i/60] status=$STATUS"
+            case "$STATUS" in
+              finished)
+                echo "::notice::manual deploy finished successfully"
+                exit 0
+                ;;
+              failed|cancelled-by-user)
+                echo "::error::manual deploy ended with status=$STATUS"
+                exit 1
+                ;;
+            esac
+            sleep 15
+          done
+          echo "::error::manual deploy did not finish within 15 minutes"
+          exit 1
