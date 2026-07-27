@@ -25,13 +25,35 @@ That makes this the highest-leverage chapter in Part II and the one with the sha
 
 ### Primary category decides candidacy
 
-Category does most of the work, because it is the only field where you pick from Google's own fixed vocabulary instead of typing prose. It answers "what kind of thing is this" in a form a machine does not have to interpret. [The three forces](../01-foundations/relevance-distance-prominence.md) covers the mechanism; the operational point is that a wrong primary category is not a small loss of relevance, it is exclusion. You are not ranked badly for the query — you are not a candidate for it. Lab 3.3 had you compare yours against the pack's. If that produced a mismatch, fix it before anything else in this chapter.
+Category does most of the work. It is the only field where you pick from Google's own fixed vocabulary instead of typing prose — it answers "what kind of thing is this" in a form a machine does not have to interpret.
 
-Additional categories are the tempting part. Each one is another set of queries you become a candidate for, which sounds free. It is not. Google's *Guidelines for representing your business on Google* require you to pick categories that apply to your business, and Google reserves the right to restrict content, restrict access to the profile, or suspend the account when they do not — so a category describing something you do not provide is a policy violation with a real enforcement path. That the extra categories also *dilute* what the profile is about is the industry's consistent read rather than anything Google states *(inference)*. Add one only where a customer could walk in and buy that thing today.
+[The three forces](../01-foundations/relevance-distance-prominence.md) covers the mechanism. The operational point is blunter:
+
+> A wrong primary category is not a small loss of relevance. It is **exclusion**. You are not ranked badly for the query — you are not a candidate for it.
+
+Lab 3.3 had you compare yours against the pack's. If that produced a mismatch, fix it before anything else in this chapter.
+
+**Additional categories are the tempting part.** Each one is another set of queries you become a candidate for, which sounds free.
+
+It is not. Two separate costs:
+
+- **Policy.** Google's *Guidelines for representing your business on Google* require categories that actually apply. Google reserves the right to restrict content, restrict access to the profile, or suspend the account when they do not — so a category for something you do not provide is a violation with a real enforcement path.
+- **Dilution.** Extra categories also blur what the profile is *about*. This one is the industry's consistent read rather than anything Google states *(inference)*.
+
+The test: add a category only where a customer could walk in and buy that thing today.
 
 ### The name field, and the keyword temptation
 
-Your name field must be your real-world business name — the one on the signage, the invoices, the door. That is Google's rule, not a convention: the *Guidelines for representing your business on Google* require the name to be the business's real-world name, and Google's redressal form exists for exactly this complaint. Adding a keyword to it ("Smith Plumbing | Emergency Plumber Tampere") works, which is why it is among the patterns most often reported to that form and the easiest thing for a competitor to escalate. Both halves are true and beginners collapse them: stuffed names do rank better *(observed constantly, in every market — no controlled public study quantifies it)*, and they are against the guidelines and get reported. [Spam and fake listings](../03-advanced/spam-and-fake-listings.md) covers the reporting machinery from both sides.
+Your name field must be your real-world business name — the one on the signage, the invoices, the door. That is Google's rule, not a convention: the *Guidelines for representing your business on Google* require the real-world name, and Google's redressal form exists for exactly this complaint.
+
+Now the uncomfortable part, which beginners collapse into one idea when it is two:
+
+| | Is it true? |
+| --- | --- |
+| Keyword-stuffed names ("Smith Plumbing \| Emergency Plumber Tampere") **rank better** | Yes — observed constantly, in every market *(no controlled public study quantifies it)* |
+| They are **against the guidelines and get reported** | Also yes — it is among the patterns most often submitted to the redressal form |
+
+Both halves hold at once. It works, and it is the single easiest thing for a competitor to escalate against you. [Spam and fake listings](../03-advanced/spam-and-fake-listings.md) covers that machinery from both sides.
 
 ### Services: small, real, cheap
 
