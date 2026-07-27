@@ -58,17 +58,23 @@ Chapter 1 inventoried the surfaces a local answer can appear on ([what local SEO
 
 Make the prediction explicitly: it tells you which instrument to point at each keyword. A logistics query in a rank tracker produces a permanent `#1` that means nothing. A comparison query tracked *only* by rank misses the surface that actually answers it.
 
-## Why every keyword tool hands you one intent
+## Why a keyword tool can only hand you one intent
 
-Suggestions — in the lab below and in every tool built the same way — come from two ingredients. Your category and your location, expanded into the obvious permutations (`category`, `best category`, `category near me`, `category in city`, plus your brand name), topped up with terms harvested from Google's autocomplete for your category, then sorted by search-volume data.
+Suggestions — in the lab below, and in every tool built the same way — are permutations of three strings the tool already holds: your category, your city, and your business name. `category`, `category near me`, `category in city`, `best category`, `top category`, `best category in city`, `your name`, `your name near me`. That skeleton is topped up with head terms lifted from Google's autocomplete, seeded with the same category. Then a fixed priority ordering decides which ones you see first.
 
-Look at what that machinery can produce. Category permutations are discovery queries by construction. Autocomplete returns what many people type, which is again discovery. And the volume sort actively suppresses the other three intents: comparison phrasings are long and varied, while trust and logistics queries are branded, and a query containing your business name has essentially no measurable volume unless you are a national chain.
+Look at what that machinery can and cannot produce.
 
-So a suggestion list is a discovery list. That is not a flaw in a particular tool; it falls out of the data sources *(inference — from the construction of the suggestion generator and its volume source, not from testing every tool on the market)*.
+Category permutations are discovery queries by construction. The superlative permutations — `best category`, `top category` — technically land in comparison, and you will see a few of them, but they are superlatives applied to *your category name*. They are not `cheapest emergency locksmith glasgow` and they are certainly not `Acme vs Riverside`. The vocabulary a comparison query actually uses is the customer's, and the generator has never met a customer.
 
-The volume number beside each suggestion deserves its own warning: it is planner-style data requested against a country-level geographic target — a national monthly average, not the number of people who will search that phrase within three miles of your door. Use it to break ties, never to pick the set.
+The branded rows are the giveaway. A generator will happily emit your bare business name and `your name near me`, because it has your name. Neither is a trust query and neither is a logistics query. To produce `is Acme Plumbing legit` you need a worry; to produce `does Acme deliver` you need a fact about the business. Neither a worry nor a fact is in the seed, so neither comes out. The intents are missing not because they were filtered but because nothing in the input could generate them.
 
-The three intents no tool can suggest are the three you write yourself. That is the actual work of this chapter.
+The autocomplete top-up is worth understanding, because it is not what it sounds like. It is a *places* autocomplete: it returns predicted businesses near you, and the tool lifts the leading words of each name as a keyword idea. That is closer to a list of your neighbours' trading names than to a record of what people type. Useful vocabulary; still category vocabulary.
+
+So a suggestion list is, in practice, a discovery list with a superlative fringe *(inference — read off the construction of the suggestion generator, not from testing every tool on the market)*.
+
+One more thing, because it is the belief that does the most damage: the volume figure does **not** choose the list. Suggestions are ordered by a fixed priority table before any volume is looked up; the number is fetched afterwards and pasted beside each chip, blank where there is none — which is most branded rows. And the figure itself is planner-style data requested against a country-level geographic target: a national monthly average, not the number of people who will search that phrase within three miles of your door. Use it to break ties, never to pick the set.
+
+What the generator cannot reach — a comparison in the customer's words, a trust query, a logistics query — is what you write yourself. That is the actual work of this chapter.
 
 ## The tracked set is also your AI prompt set
 
@@ -123,11 +129,11 @@ Where the words themselves come from is a separate problem, and there is a bette
 
 *Rankings before anything is tracked. The three rows are the interface's own placeholder — it says so: "Example of how tracked keywords appear". They are not positions, and not this business's keywords. What is real is the button: on an empty board, **Suggest keywords** sits on that panel rather than in its usual card above the list.*
 
-**What good looks like.** Almost every suggestion lands in discovery, with a couple of branded rows that are really just your name. Comparison, trust and logistics are close to empty. That is the expected result, not a malfunction.
+**What good looks like.** Most suggestions land in discovery. A few superlative rows — `best <category>`, `top <category>`, `best <category> <city>` — land in comparison, but read them out loud and notice they are your category with a superlative bolted on, not anything a customer would say. Two rows are your bare business name, which is neither trust nor logistics. So trust and logistics come back empty. That is the expected result, not a malfunction.
 
 **If it went wrong.** No suggestions card usually means the business has neither tracked keywords nor a loaded list — add one keyword first. A very short list means a sparse category on your profile, since the whole expansion is seeded from it; fix the category before blaming the suggestions.
 
-**What you just learned.** Suggestion engines answer "what else do people type in my category", which is one of four questions. The other three intents never arrive on their own — they are written by a human who knows the business. Without a tool, the same list comes from typing your category into Google's search box and reading the autocomplete, plus Keyword Planner for volume; see [doing it without SEOG](../99-appendix/doing-it-without-seog.md).
+**What you just learned.** A suggestion engine answers "what else can be built from my category, my city and my name" — which is not the same question as "what do my customers type". The intents it cannot construct never arrive on their own; they are written by a human who knows the business. Without a tool, the same list comes from typing your category into Google's search box and reading the autocomplete, plus Keyword Planner for volume; see [doing it without SEOG](../99-appendix/doing-it-without-seog.md).
 
 ### Lab 6.2 — Build a spanning set
 
@@ -147,7 +153,7 @@ Where the words themselves come from is a separate problem, and there is a bette
 
 **What good looks like.** Six to ten rows, at least one in each of the four intents, and no two rows you would struggle to distinguish out loud. Your discovery rows probably show a real position; your trust and logistics rows probably show `#1` and are there for a different reason.
 
-**If it went wrong.** If the tracker refuses a new keyword you are at your plan's keyword allowance — the counter under the input shows the slots used. Remove a near-duplicate rather than upgrading; that is the point of the exercise. A keyword that comes back not ranked is data, not a failure.
+**If it went wrong.** Two different refusals. *Already tracking this keyword here* means the same phrase is already tracked at the same **Search from** and **Language** — that triple is the row's identity, so it is a genuine duplicate. Anything else usually means you are at your plan's keyword allowance; the counter under the input shows the slots used. Remove a near-duplicate rather than upgrading; that is the point of the exercise. A keyword that comes back not ranked is data, not a failure.
 
 **What you just learned.** A keyword set is a sampling design. Adding a fifth phrasing of the same question increases your spend and your confidence without increasing your information.
 

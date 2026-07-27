@@ -57,11 +57,11 @@ A small dentist, restaurant, gym, salon, plumber, law office or auto shop in a m
 
 ![Onboarding step 1 of 3, "Welcome — tell us about you", offering business owner, marketing agency, freelancer / consultant and in-house marketer](../../static/img/screens/onboarding-step1.png)
 
-*Step 1 of 3. The wizard is mandatory, but every step carries a "Skip for now" — the answers only tune what the app puts in front of you, and nothing here gates a feature later.*
+*Step 1 of 3. The wizard is mandatory, but every step can be skipped — the answers only tune what the app puts in front of you, and nothing here gates a feature later.*
 
 **What good looks like.** You are signed in, onboarding is complete, and you are looking at the add-business screen.
 
-**If the email never arrives.** Check spam first. The sign-in screen has a resend option. Verification is required before a session will open, so there is no way around it.
+**If the email never arrives.** Check spam first. The *check your email* screen has a resend form, and so does the sign-in screen if you try to sign in before verifying. Verification is required before a session will open, so there is no way around it.
 
 ---
 
@@ -80,7 +80,7 @@ A small dentist, restaurant, gym, salon, plumber, law office or auto shop in a m
 
 ![Add a business, with the query "Kaffa Roastery Helsinki" and one Google Places result showing the business name and its street address](../../static/img/screens/add-business-results.png)
 
-*Results come back as Google holds them — name plus full street address. Match the address, not the name; that is how you avoid importing the wrong branch of a chain. The "Import from your Google account" panel underneath is the other path — see **If search cannot find it**, below.*
+*Results come back as Google holds them — name plus full street address. Match the address, not the name; that is how you avoid importing the wrong branch of a chain. The "Import from your Google account" panel underneath is the other path — see **If the import is refused**, below.*
 
 **What good looks like.** The overview shows the business's actual name, address, star rating and review count — the same values you see on Google Maps. If a field is empty, that is because Google does not expose it, not because something failed. SEOG shows fields empty rather than inventing plausible-looking values, which matters more than it sounds: a tool that fabricates one field will fabricate a ranking.
 
@@ -88,7 +88,9 @@ A small dentist, restaurant, gym, salon, plumber, law office or auto shop in a m
 
 *Everything on this screen came from Google, not from you: the address, the 4.7 rating over 572 reviews, the photo count. The panel at the top is the boundary the next section is about — without an owner connection, this is the whole of what a searcher can see.*
 
-**If search cannot find it.** Service-area businesses — mobile and at-home services that hide their street address — are deliberately kept out of public search results by Google, so no search tool can find them. Use **Import from your Google account** on the same page instead: connect the Google Business Profile that owns the listing and pick the location. This path only works for profiles you have access to. [Service-area businesses](../03-advanced/service-area-businesses.md) covers why this whole category behaves differently.
+**If the import is refused.** Service-area businesses — mobile and at-home trades that hide their street address — are the awkward case. Google leaves hidden-address businesses out of public place search unless the search explicitly asks for them, and even when they are returned they carry no coordinates ([LSM-PLACES-67](../05-reference/local-search-changelog.md)). SEOG does ask for them, so the listing usually appears in the results; the *import* is then refused, with a message telling you to connect Google Business Profile instead — because a business stored without coordinates would have nothing to put on a map. (The panel's own line, "profiles that hide their address don't appear in search", is the short version of that.)
+
+Use **Import from your Google account** on the same page: connect the Google Business Profile that owns the listing and pick the location. This path only works for profiles you have access to. [Service-area businesses](../03-advanced/service-area-businesses.md) covers why this whole category behaves differently.
 
 ---
 
@@ -100,15 +102,17 @@ Importing gives SEOG the *public* view of the business — the same thing any se
 | --- | --- | --- |
 | Name, address, category, hours | Yes | Yes |
 | Rating and review count | Yes | Yes |
-| Full review history | Recent sample only | Complete |
+| Full review history | A sample of at most five, chosen by Google | Complete |
 | Reply to reviews | No | Yes, published to Google |
 | Profile description | Not visible | Yes |
 | Edit profile fields | No | Yes |
 | Publish posts and photos | No | Yes |
-| Views, calls, direction requests | No | Yes, about 18 months of daily history |
+| Views, calls, direction requests | No | Yes — daily history, in practice about 18 months |
 | Search terms people used to find it | No | Yes |
 
 That bottom half is the data local SEO is actually judged on, and Google gives it to nobody but the owner. If you have access, connect it now.
+
+Two of those rows have documented limits worth knowing before you build a report on them. The five-review cap on the public view is Google's own, stated in the Places documentation ([LSM-PLACES-08](../05-reference/what-googles-apis-cost.md)). The 18-month figure everyone quotes for performance history appears only on the deprecated version of the request object; the current interface states no maximum at all, so treat 18 months as a working assumption rather than a guarantee ([LSM-MEASURE-04](../05-reference/what-googles-reporting-hides.md)).
 
 ### Lab 0.4 — Connect the Google Business Profile
 
@@ -118,9 +122,9 @@ That bottom half is the data local SEO is actually judged on, and Google gives i
 
 1. From the business overview, start the Google connection and sign in with the Google account that manages the profile.
 2. Grant access when prompted.
-3. Confirm the connection is live — owner-only panels (performance, full review history, the profile description) become available once it is.
+3. Confirm the connection is live — the owner-only panels (performance, full review history, the profile description) become available once it is.
 
-**What good looks like.** The overview shows owner data it could not show before: real performance numbers and complete review history.
+**What good looks like.** The "Connect to unlock your owner data" panel is gone from the overview, and the owner-only panels stand in its place. They start empty: connecting grants *access*, it does not download anything. Each panel has its own load button, and pulling the history behind it is a paid action you will run in Part II. This is deliberate — nothing fetches from Google unless you asked for it.
 
 ![Overview of an owner-connected business: profile score 36% in red, and an action plan of seven steps, each labelled with the points it is worth](../../static/img/screens/owner-overview.png)
 

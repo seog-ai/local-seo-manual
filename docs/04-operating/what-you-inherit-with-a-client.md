@@ -20,7 +20,7 @@ Google's Business Profile APIs policies divide the world into the merchant who o
 >
 > — Business Profile APIs policies, *General API policies*. Page stamped **last updated 2025-08-28 UTC**; re-read 2026-07-27.
 
-Work through a tool the merchant signed into themselves and the vendor carries the API-side obligations — scopes, token handling, storage limits — while you carry the client-side ones: authorization, notice, a clean exit. Build your own integration, the instinct of most developers who reach this chapter, and **you carry both**. Editing by hand in a browser exempts you from none of the account-level rules either.
+Work through a tool the merchant signed into themselves and the vendor carries the API-side obligations — scopes, token handling, storage limits — while you carry the client-side ones: authorization, notice, a clean exit. Build your own integration, the instinct of most developers who reach this chapter, and **you carry both**. Editing by hand in a browser puts you outside the *API* policies quoted here, but not outside the profile terms and representation guidelines that govern the listing itself *(inference — Google publishes no single document stating this)*.
 
 ## Ask for the right level of access
 
@@ -42,7 +42,7 @@ Then there is a clock:
 >
 > — *Manage your Business Profile owners & managers*, Google Business Profile Help. Retrieved 2026-07-27.
 
-Inside that window a new user cannot delete or restore the profile, remove other users, or transfer primary ownership. Ordinary editing is unaffected. So: get access on day one, spend week one on the diagnostic and the baseline — read-only work anyway — and schedule anything touching user administration after the clock expires. [The ninety-day plan](./the-ninety-day-plan.md) assumes that shape.
+The same page lists what is withheld inside that window: deleting or undeleting the profile, removing other owners or managers, and transferring primary ownership. Ordinary field editing is not on that list, which is the basis for treating it as unaffected — Google says "some profile features" and does not claim the list is exhaustive *(inference)*. So: get access on day one, spend week one on the diagnostic and the baseline — read-only work anyway — and schedule anything touching user administration after the clock expires. [The ninety-day plan](./the-ninety-day-plan.md) assumes that shape.
 
 ### When the client cannot grant access
 
@@ -134,11 +134,12 @@ The previous manager left; their words did not. A defensive 2023 reply that name
 
 **The numbers they were shown last.** The previous provider reported from a different tool, with a different method, from different coordinates. Their "average position 2.4" and your first honest measurement will not match, and yours will usually look worse. Say so at kickoff, before your first report lands ([why two tools disagree](../03-advanced/why-two-tools-disagree.md)). A client who hears it from you in week one hears an expert; one who works it out in week six hears an excuse.
 
-**The listing's disciplinary record.** Ask directly: ever suspended, ever re-verified, any change to name, address or category in the last year? The answer changes what is safe on day one, because edits to those three fields can send a listing back into review and occasionally into suspension — [suspensions and reinstatement](../03-advanced/suspensions-and-reinstatement.md), and [publishing without getting rejected](../02-core-practice/publishing-without-getting-rejected.md) for avoiding it.
+**The listing's disciplinary record.** Ask directly: ever suspended, ever re-verified, any change to name, address or category in the last year? The answer changes what is safe on day one, because edits to those three fields are the ones most often reported to send a listing back into verification and occasionally into suspension — [suspensions and reinstatement](../03-advanced/suspensions-and-reinstatement.md), and [publishing without getting rejected](../02-core-practice/publishing-without-getting-rejected.md) for avoiding it.
 
 ## What you are liable for now
 
-- **Every edit publishes to a live listing.** Google reviews most edits before they appear — usually minutes, sometimes days — and can reject or silently revert one. Changes to name, address or category can force re-verification, during which the listing may be temporarily unpublished: the business disappears from Search and Maps while you wait.
+- **Every edit publishes to a live listing.** Google reviews edits before they appear, and can reject or silently revert one. On timing Google is explicit: *"Edits usually take up to 10 minutes to review, but sometimes it can take up to 30 days"* (*Understand what happens to your Business Profile edits*, retrieved 2026-07-27). Plan for minutes; be able to survive weeks.
+- **Some edits can pull the listing back into verification,** and a listing awaiting re-verification can stop appearing in Search and Maps. Google states that a request for extra information "is likely because some of your business details were recently updated" — but it does not publish *which* details. **Open question:** practitioner reports converge on name, address and primary category; that list is second-hand, so treat it as a working assumption rather than a rule ([suspensions and reinstatement](../03-advanced/suspensions-and-reinstatement.md)).
 - **A published reply is public and effectively permanent.** Editing it later does not un-say it, and it must comply with Google's prohibited and restricted content policies.
 - **Attribution follows the data into your deliverables.** Google-sourced content shown to a client carries an attribution requirement; white-labelling a report does not remove it.
 - **Your client's behaviour becomes your operational problem.** If they gate reviews or stuff keywords into the business name while you hold manager access, you are the one managing the profile when it is suspended.
@@ -172,7 +173,7 @@ The previous manager left; their words did not. A defensive 2023 reply that name
 > You need: Lab 29.1. Full value needs the Business Profile connected; without it you get the small recent public sample instead of the history.
 
 1. Press **Sync reviews** in the page header. Connected, this pulls the owner review history; unconnected, only the handful of recent reviews public data exposes. Note which case you are in — it changes what this lab can prove.
-2. Set the status filter to **Answered** and the sort to **Newest**. These replies are already live under your client's name.
+2. In the filter bar, choose the **Answered** tab and leave the sort on **Newest**. These replies are already live under your client's name. (The filters live in the URL, so whatever view you end up with is a link you can send.)
 3. Read every one. Flag any that name or describe an individual customer, dispute the facts of a complaint, disclose an order or account number, promise compensation, or read as sarcastic.
 4. For each flagged reply write one line: what it says, why it is a risk, and whether you propose to edit it, leave it, or escalate.
 5. Take that list to the client before changing anything. Editing an old reply is still publishing publicly, which is what the acknowledgement gate on the publish step is for.
@@ -192,7 +193,7 @@ The previous manager left; their words did not. A defensive 2023 reply that name
 
 1. Write the offboarding pack as a numbered list in execution order. At minimum: the client removes your user from their Business Profile; the client revokes any connected app's access from their own Google Account permissions; you stop scheduled work; you delete or return the stored data; you hand over the baseline, the dated exports and the change log.
 2. Put a target on it inside seven business days, and write that target into your contract template beside the sentence that access is returned regardless of any outstanding invoice.
-3. Verify you can find each control before you need it. In the app, open the actions menu beside **Refresh all** on the overview header and read the **Remove business** confirmation — it permanently deletes that business's stored rankings, reviews and competitors. Then press **Cancel**. Do not run it on a live client.
+3. Verify you can find each control before you need it. In the app, open the **⋮** actions menu at the right-hand end of the overview header — past **Refresh all** and the reports menu — and read the **Remove business** confirmation: it permanently deletes that business's rankings, reviews and competitors, and it cannot be undone. Then press **Cancel**. Do not run it on a live client.
 4. List by name what the client keeps: the dated baseline, every report you generated, the change log, the Lab 29.1 inventory. That list is what "regain exclusive control" looks like done well.
 
 **What good looks like.** A one-page checklist you could execute in an afternoon, with a named owner per step and no step only you can perform.

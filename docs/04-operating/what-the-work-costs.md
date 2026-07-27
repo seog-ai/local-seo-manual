@@ -22,7 +22,7 @@ Knowing the real figure protects you from two mistakes at once: paying ten times
 
 ## What the data costs at wholesale
 
-Google publishes per-request prices for the place data underneath every local SEO tool. Below are list prices at the most expensive volume tier — the first 0–100,000 requests a month, discounted above that — from Google's pricing page as last updated **2026-06-29**, audited **2026-07-03**.
+Google publishes per-request prices for the place data underneath every local SEO tool. Below are list prices at the most expensive volume tier — the first 0–100,000 requests a month, discounted above that — read off Google Maps Platform's core-services pricing list, page stamped **last updated 2026-07-20**, re-checked **2026-07-27**.
 
 | What you are buying, one request at a time | Per request | Per 1,000 |
 | --- | --- | --- |
@@ -41,7 +41,7 @@ Three rules govern that table, and they are the whole game.
 
 **The free tier is real and useful.** A search returning only the identities of the businesses ranked at a point is billed at zero — and that is enough to compute a position, which is the entire content of a rank check.
 
-**The free monthly allowance is real but unstable.** Google grants some free volume per product each month; its size and rules have changed more than once, so read the current page before budgeting on it.
+**The free monthly allowance is real but unstable.** Google grants a free monthly volume per request type, and the allowance shrinks as the request gets richer — the cheapest tier carries the largest, the most expensive the smallest. It has been restructured wholesale before: the flat $200-a-month credit that every tutorial written before 2025 assumes was withdrawn on **1 March 2025** and replaced by these per-request-type allowances. Read the current page before budgeting on it, and date what you read.
 
 Some local data is not for sale at any price — a profile's own view and call counts, the terms that produced its impressions, a competitor's internals: [what Google's reporting hides](../05-reference/what-googles-reporting-hides.md).
 
@@ -70,16 +70,19 @@ Three consequences. **Connect the profile in week one** — cost is the least of
 
 The instinct that AI features are the expensive line is wrong by an order of magnitude. Generated text is nearly free; **the lookups behind it are the cost.**
 
-At list prices audited 2026-07-03, a small fast model runs around $0.30 per million input tokens and $2.50 per million output, so a review-reply draft — a few hundred tokens each way — costs about **a fifth of a cent**. A *grounded* answer, where the model runs a live search before replying, is charged separately, and that charge dominates:
+At list prices read on 2026-07-27, the small fast tier runs $0.20–$0.30 per million input tokens and $1.25–$2.50 per million output depending on vendor, so a review-reply draft — a prompt under a thousand tokens, a couple of hundred out — costs a **fraction of a cent**. You can draft several dozen replies for the price of one grounded lookup. Because a *grounded* answer, where the model runs a live search before replying, is charged separately, and that charge dominates:
 
-| Vendor-published charge, 2026-07 | Price |
+| Vendor-published charge, read 2026-07-27 | Price |
 | --- | --- |
-| Grounding with Google Search | $35 per 1,000 grounded prompts, past a free daily quota |
-| Server-side web search on the two other major assistant APIs | $10 per 1,000 searches |
-| Frontier reasoning model tokens | ~$5 per million in, ~$25 per million out |
-| Small fast model tokens | ~$0.25 per million in, ~$2 per million out |
+| Grounding with Google Search, Gemini 2.5 generation | $35 per 1,000 grounded prompts, past a free daily quota |
+| Grounding with Google Search, Gemini 3 generation | $14 per 1,000 search queries, past a free monthly quota |
+| Server-side web search on the two other major assistant APIs | $10 per 1,000 calls |
+| Frontier model tokens | ~$5 per million in, ~$30 per million out |
+| Small fast model tokens | $0.20–$0.30 per million in, $1.25–$2.50 per million out |
 
-One probe — a prompt asked of three engines, each answer judged for whether the business was named — works out at **around ten to fifteen cents**, nearly all of it the grounded searches. That is arithmetic from the rates above, not a quoted price. At the cadence [AI visibility](../03-advanced/ai-visibility.md) argues for, since one run is a sample and not a measurement:
+Read the first two rows together: the same vendor's grounded search costs two and a half times as much on one model generation as on the next. A good deal of what you will read about AI-visibility costs is quoting a rate that has already moved.
+
+One probe — a prompt asked of three engines, each answer judged for whether the business was named — works out at **roughly ten to fifteen cents** on the more expensive combinations, nearly all of it the grounded searches plus the search-result tokens they pull into the prompt. That is arithmetic from the rates above, not a quoted price, and choosing the cheaper grounding generation moves it materially. At the cadence [AI visibility](../03-advanced/ai-visibility.md) argues for, since one run is a sample and not a measurement:
 
 ```
 10 prompts × 4 runs a month  = 40 prompt-runs
@@ -87,7 +90,7 @@ One probe — a prompt asked of three engines, each answer judged for whether th
 ≈ $5.20 per client per month
 ```
 
-Two things fall out. The choice of *writing* model barely matters; the choice of *grounded* engine matters enormously — a frontier model making three web searches per answer costs roughly four times a small model making one. And the wholesale input to an AI-visibility deliverable is a few dollars a month, so the build-or-buy question is what the interpretation is worth, not what the lookups cost.
+Two things fall out. The choice of *writing* model barely matters; the choice of *grounded* engine and generation matters enormously — a frontier model making three web searches per answer costs several times a small model making one. And the wholesale input to an AI-visibility deliverable is a few dollars a month, so the build-or-buy question is what the interpretation is worth, not what the lookups cost.
 
 ## Two builds of the same deliverable, 250× apart
 
@@ -122,7 +125,7 @@ The hours below are an example, built from this manual's own lab times — hones
 | Monthly, recurring | Re-scan and read, reviews and replies, a post or two, competitor read, report, client conversation | 2.5–4 |
 | Occasional | A suspension, a merge, a migration, a review crisis | Unbudgeted, and it will happen |
 
-Put an example rate on it — $60 an hour; use your own. Onboarding is roughly **$400 of your time**, a steady month **$150–240**. Against those, a managed client's data bill is under ten dollars: **data is around 3–5% of delivery cost.** Cost-plus pricing on the data bill is therefore not conservative, it is arithmetic that prices your month at nothing.
+Put an example rate on it — $60 an hour; use your own. Onboarding is roughly **$400 of your time**, a steady month **$150–240**. Against those, a managed client's data bill is under ten dollars: **data lands in the low single digits as a share of delivery cost — call it 3–6%,** and the exact figure is one you compute in Lab 30.1, not one you take from here. Cost-plus pricing on the data bill is therefore not conservative, it is arithmetic that prices your month at nothing.
 
 Onboarding is also front-loaded and unrecovered — a client who leaves at month three cost you more than they paid, which is what a minimum term is for. And the "occasional" row is not padding: [what you inherit with a client](./what-you-inherit-with-a-client.md) and [suspensions and reinstatement](../03-advanced/suspensions-and-reinstatement.md) exist because those events land on somebody's calendar without warning.
 
@@ -132,7 +135,7 @@ Most of the monthly cycle is mechanical, and an agent can take the fetch-read-as
 
 - **The judgement calls.** Whether a movement is real or noise. Whether to fight a suspension or rebuild. Which of thirty defects to do first.
 - **The client conversation.** Nobody renews a retainer because the PDF arrived on time.
-- **Anything written to Google in the client's name.** Reply text a human signs, photos a human took, posts a human approved. Automated review replies breach Google's review policy and AI-generated imagery breaches its photo policy — constraints on your architecture ([reviews](../02-core-practice/reviews.md), [photos and the visual profile](../02-core-practice/photos-and-the-visual-profile.md)), not efficiencies waiting to be captured.
+- **Anything written to Google in the client's name.** Reply text a human signs, photos a human took, posts a human approved. Both of the obvious shortcuts are closed by policy, not by taste. Google's Business Profile APIs policies forbid automating review replies "without the user's prior specific and express consent"; Google's business-photo guidance says a photo "should be in focus, well lit, and have no significant alterations or excessive use of filters or AI. In other words, the image should represent reality" (*Tips for business-specific photos on your Business Profile*, retrieved 2026-07-27). Those are constraints on your architecture ([reviews](../02-core-practice/reviews.md), [photos and the visual profile](../02-core-practice/photos-and-the-visual-profile.md)), not efficiencies waiting to be captured.
 
 So the agent is a labour lever, not a data one: more clients per hour, same judgement per client.
 
@@ -221,7 +224,7 @@ So price from the client's side with a floor on your own. The floor is delivery 
 
 ## Common mistakes
 
-**Pricing as a markup on the data bill.** It feels rigorous and prices your labour at zero. When data is 3–5% of delivery cost, "50% margin on cost" is a loss dressed as discipline.
+**Pricing as a markup on the data bill.** It feels rigorous and prices your labour at zero. When data is a few per cent of delivery cost, "50% margin on cost" is a loss dressed as discipline.
 
 **Buying a fetch that stored data already answers.** The most common way a beginner spends many times what a competent operator spends for the same insight. Read the timestamp on the card before pressing anything.
 

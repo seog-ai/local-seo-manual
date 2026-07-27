@@ -32,7 +32,9 @@ Relevance is a match between a query and an entity. The entity's fields are the 
 
 Category does most of the work. It tells Google what *kind* of thing the business is, and it is picked from Google's own fixed list rather than typed freely — machine-readable in a way a description never is. A dentist whose primary category is "Dental clinic" is a candidate for dentist queries. The same business filed as "Medical clinic" is a weaker one, whatever the website says. *(Inference: Google does not document the field's weight. The observation is that pack members for a query overwhelmingly share one or two primary categories — which you verify in Lab 3.3.)*
 
-Below category the signals get softer and the evidence thinner. Sterling Sky, one of the few practitioners publishing controlled experiments rather than assertions, measured filling in the Services fields at roughly 2–5% of ranking impact — small, real, cheap.
+Below category the signals get softer and the evidence thinner. Sterling Sky, one of the few practitioners publishing controlled experiments rather than assertions, has tested the Services fields directly and found they do move rank — custom services included, and even with the price and description left blank, though by less than Google's own pre-defined ones.
+
+What that testing does not publish is a *magnitude*. The write-ups say "measurable" and "significant"; they give no percentage, no average position gain, no share of grid points improved. A figure of "2–5%" circulates with Sterling Sky's name attached to it — it comes from a reader's comment under one of those posts, not from the test. Do not repeat it, and be suspicious of anyone who does. Treat Services as small, real, cheap and unquantified.
 
 Relevance is the force you control most directly and most quickly. It is also the one people break by over-reaching: adding categories the business does not serve, to widen the net. [The profile is the product](../02-core-practice/the-profile-is-the-product.md) covers that, with the risk attached.
 
@@ -76,16 +78,20 @@ This is why "improve my ranking" is under-specified. A business invisible everyw
 
 Everyone quotes a number for proximity. The most-repeated one — roughly 55% — comes from Whitespark's *Local Search Ranking Factors* (2026 edition, published 6 November 2025): 47 practitioners ranking 187 factors. It is an opinion survey: no experiment, no confidence interval, no stated method for turning votes into percentages. The industry's best consensus, and not a measurement.
 
-It is also not on the same scale as the other figures from that survey you will meet later in this manual — profile signals at roughly a third of local-pack weight, reviews at a fifth, citations at around 7% ([citations and NAP consistency](../02-core-practice/citations-and-nap.md)). Those are shares of a whole; the 55% is proximity's standing as a single named factor. Do not add them together, and do not let anyone else.
+It is also not on the same scale as the other figures from that survey you will meet later in this manual — profile signals at 32% of local-pack weight, reviews at 20%, citations somewhere in the single digits ([citations and NAP consistency](../02-core-practice/citations-and-nap.md)). Those are shares of a whole; the 55% is proximity's standing as a single named factor, quoted outside that split. Do not add them together, and do not let anyone else.
 
-The largest actual dataset is different in kind. rankings.io's [Google Maps proximity study](https://rankings.io/data-studies/proximity-data-study/) scanned 1,100 law firms — 20 in each of the 50 largest US cities — on 15×15 grids at a 10-mile radius. It reports:
+Treat the small shares as approximate. The report itself sits behind a form, and the second-hand summaries of it disagree with each other — citations appear as 6% in some and 7% in others, with wider disagreement still on on-page and links. When two write-ups of one survey cannot agree on a number to the percentage point, the number was never precise enough to carry an argument.
+
+The largest actual dataset is different in kind. rankings.io's [Google Maps proximity study](https://rankings.io/data-studies/proximity-data-study/) scanned roughly 1,100 law firms — 20 in each of the 50 largest US cities, plus a second pass at a 5-mile radius in the ten largest — on 15×15 grids of 225 points at a 10-mile radius, for the single keyword *car accident lawyer*. It reports:
 
 | Finding | Value |
 | --- | --- |
-| Firms ranking #1 at their own address | ~56% |
-| Average change across the first mile | −8 positions |
-| Fitted exponential decay constant | λ ≈ 2.3 (≈ −9.4 positions at 0.59 mi) |
-| Firms out of the top 20 by 14 miles | 27% (Pittsburgh) to 92% (Queens) |
+| Firms ranking #1 at their own address | 56% |
+| Average change across the first mile | −8 positions (−5 to −12 depending on the city) |
+| Fitted exponential decay constant | λ = 2.3 (the study's own worked example: −9.4 positions at 0.59 mi) |
+| Firms out of the top 20 at the grid's outer edge | 27% (Pittsburgh) to 92% (Queens) |
+
+That last row is the one people misquote by attaching a mileage to it. The study says only "at the largest distance", and notes that the largest distance is not identical in every city — so it means the edge of a 10-mile-radius grid, not a specific number of miles.
 
 Read the first row again: barely more than half ranked first *at their own front door*, for their own core term. Proximity is enormous and still not sufficient.
 
@@ -101,9 +107,9 @@ Here the triad stops holding, and no local SEO curriculum has caught up with it.
 
 Local Falcon's May 2025 whitepaper on AI Overviews and local visibility ran 60,000 queries across 4,423 businesses in 20 countries, including 430 US businesses on 7×7 grids at roughly 0.67-mile spacing — about 21,000 geographic data points. Its central finding: **the correlation between distance and rank inside an AI Overview is 0.001**. Effectively zero.
 
-Distance still affected inclusion, barely: 72% of answers at the grid centre versus 68.5% at the edge, average position 3.39 versus 3.49. Once you are in the answer, where the searcher stands has no detectable bearing on your place in it.
+Distance still affected inclusion, barely: businesses within a mile of the search point appeared in 72.0% of answers, against 68.5% for those one to two miles out; average position 3.39 versus 3.49. Once you are in the answer, where the searcher stands has no detectable bearing on your place in it.
 
-Treat that as directional, not settled. It covers Google's AI Overviews only — no ChatGPT, no Perplexity, no AI Mode. The data runs to 7 May 2025, over a year stale, and predates both AI Mode's rollout and ChatGPT shipping opt-in device-location sharing in late March 2026. Vendor-published, unreplicated.
+Treat that as directional, not settled. It covers Google's AI Overviews only — no ChatGPT, no Perplexity, no AI Mode. The data runs to 7 May 2025, over a year stale, and predates both AI Mode's rollout and ChatGPT shipping opt-in device-location sharing on 26 March 2026. Vendor-published, unreplicated.
 
 The direction is at least coherent with how assistants appear to assemble a local answer: retrieval on entity and reputation signals, not a distance sort *(inference)*. So the force that dominates the map pack is close to irrelevant one surface over, and the two slow, hard forces carry across both. [How an AI assistant answers a local question](./how-ai-answers-a-local-question.md) is the mechanism; [Does the AI recommend this business?](../03-advanced/ai-visibility.md) is the measurement.
 
@@ -127,8 +133,9 @@ Two of the three are yours. The one that is not is where most people spend their
 
 1. Open **Rankings**. In the add form, type one keyword a real customer would use — a service plus a place, e.g. `emergency plumber tampere`. Not your business name.
 2. Leave **Search from**, **Language** and **Radius** at their defaults (business address, 3-mile radius). Note that the three options exist; they are why two tools report different ranks for "the same" keyword.
-3. Press **Track**. This adds the keyword *and* runs the first rank check immediately — two metered actions, each priced on the button before you commit.
-4. Read the result: a position (`#4`) or `Not ranked`, a movement line, and a one-sentence outcome under the button. Then read the **Who ranks above you** card — Lab 3.2 uses it.
+3. Press **Track**. The price shown on the button is for adding the keyword; the app then runs the first rank check straight after it, which is a *second* metered action with its own price. Two charges, one press — worth knowing before you press it a dozen times.
+4. Read the result on the detail panel: a position (`#4`) or `Not ranked`, and a movement line reading `First check`. Then read the **Who ranks above you** card — Lab 3.2 uses it.
+5. Now press **Check now** once. This time a one-sentence outcome appears under the button, which the initial **Track** does not print. That sentence is how you tell "the check ran and found nothing" from "the check failed" — on the panel alone the two look identical.
 
 ![The Rankings screen with a keyword typed, the Search from, Language and Radius controls beneath it, and the tracked result showing position #1](../../static/img/screens/rankings-typed.png)
 

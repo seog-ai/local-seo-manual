@@ -8,7 +8,7 @@ description: The ID scheme, the five verdicts, the verification stamps and the r
 
 Parts I–IV teach. Part V settles arguments. It is a numbered set of facts about the machinery underneath local search — what an API returns, what it refuses, what Google's terms permit you to store, what a reported number actually counts — each carrying the probe that established it and the date that probe last ran.
 
-Nothing here is asserted from documentation alone. That is not a stylistic preference, it is a response to how this ground behaves. Two of Google's Local Posts validation limits are enforced by the endpoint and absent from the current published reference; they were established by reading the error the API returns, not by reading a page. The questions-and-answers endpoints have returned HTTP 501 since November 2025, which no deprecation note announced in advance. And third-party guides claiming the Local Posts API was retired in 2022 were still ranking in July 2026, when a call against a live profile returned HTTP 200. Copying documentation forward is how all three of those survive. Running the call is how you avoid them.
+No claim about *behaviour* here is asserted from documentation alone. (Claims about published terms and published prices necessarily are, and those entries carry a `Source` instead of a `Probe` — the distinction is set out below.) That is not a stylistic preference, it is a response to how this ground behaves. Two of Google's Local Posts validation limits are enforced by the endpoint and absent from the current published reference; they were established by reading the error the API returns, not by reading a page. The questions-and-answers endpoints have returned HTTP 501 since November 2025, and Google's own Q&A change log — dated `Last updated 2025-11-06 UTC` — records the shutdown as having happened on 3 November, three days *after* the fact rather than before it. And third-party guides claiming the Local Posts API was retired in 2022 were still ranking in July 2026, when a call against a live profile returned HTTP 200. Copying documentation forward is how all three of those survive. Running the call is how you avoid them.
 
 This chapter explains the format. It contains no entries of its own.
 
@@ -29,7 +29,7 @@ Two or three sentences of what happens and why it matters.
 **What to do instead:** the practical consequence.
 ```
 
-The ID in that block is a format example. Real IDs are only ever the ones printed in an entry's own heading — do not cite one you saw quoted somewhere else, including here.
+That block is not a mock-up. `LSM-POSTS-07` is a real entry, and its verdict and stamp above are the ones it actually carries in [Write limits and failure modes](./write-limits-and-failure-modes.md) — reproduced rather than invented, so that the shape and a working citation are the same object. Take any ID you cite from the entry's own heading all the same: a quotation of a stamp goes stale the moment the probe is re-run, and only the heading carries the current one.
 
 Entries do not narrate, do not refer back to earlier chapters and do not build on each other. Each one will be read alone: pasted into a client email, quoted in a scoping document, or lifted out by a language model that never saw the page around it. An entry that only makes sense in sequence is a broken entry.
 
@@ -47,17 +47,41 @@ IDs are `LSM-<AREA>-<NN>`. `LSM` is the manual. `AREA` is one of seven, fixed:
 | `AI` | Assistant and AI-surface behaviour, and the probes that measure it | [AI engine probe recipes](./ai-engine-probe-recipes.md) |
 | `MEASURE` | What a reported number counts, and what it hides | [What Google's own reporting hides](./what-googles-reporting-hides.md) |
 
+[The local search changelog](./local-search-changelog.md) is the exception to that column: it carries dated entries in every one of the seven areas rather than owning an area of its own, because a change is filed under the surface it changed.
+
 Areas are assigned by *subject*, not by which product the endpoint technically belongs to. A Local Posts fact is `POSTS` even though Local Posts is served by a Business Profile API, and a review-reply fact is `REVIEWS` for the same reason. The boundary is drawn where a reader would go looking.
 
-`NN` is a two-digit number assigned in the order a fact was added to its area — not by importance, and not matching the order entries appear on a page. Numbers run past two digits when an area needs it; `LSM-GBP-104` is a legal ID.
+`NN` is a number assigned in the order a fact was added — not by importance, and not matching the order entries appear on a page. Each chapter draws from its own reserved block inside an area, which is why the `GBP` numbers are not one continuous run. Numbers run past two digits freely; `LSM-GBP-104` is a legal ID, and the block table below says which chapter it belongs to.
 
 Three rules make the IDs worth citing.
 
-**They are permanent.** An ID is never renumbered, never reused, and never reassigned to a different fact. If entries are reordered, or an entry moves to a different chapter, the ID travels with it.
+**They are permanent.** An ID is never renumbered, never reused, and never reassigned to a different fact. If entries are reordered, or an entry moves to a different chapter, the ID travels with it. There has been exactly one exception, on 2026-07-27, and it is mapped in full below rather than glossed over.
 
 **Retired facts stay.** When something recorded as `WORKS` stops working, the entry is not deleted. Its verdict changes to `GONE`, it gains the date the change was observed, and the previous date stays visible. A dead fact with two dates on it is evidence about how fast this ground moves. A deleted one is a broken citation in somebody's report.
 
 **Corrections keep the ID.** If a fact was wrong, the entry is rewritten under the same ID with a line saying what it previously claimed. You should be able to follow a two-year-old citation and discover that it was wrong, rather than find nothing at all.
+
+### The 2026-07-27 renumbering
+
+The permanence rule above is the design, and until 2026-07-27 the reference did not meet it. Four chapters had each started their area sequences at `01` independently, so 36 numbers named a different fact in each chapter that used them — `LSM-GBP-01` alone named four. That is recorded here rather than quietly fixed, because a renumbering nobody can follow is worse than the collision it repairs.
+
+Each chapter now owns a disjoint block within every area it touches:
+
+| Chapter | Blocks it owns |
+| --- | --- |
+| [What Google's APIs actually cost](./what-googles-apis-cost.md) | `PLACES-01`–`14`, `GBP-31`–`33`, `AI-01`–`02` |
+| [The GBP capability matrix](./gbp-capability-matrix.md) | `GBP-01`–`24`, `REVIEWS-01`–`08` |
+| [What Google's own reporting hides](./what-googles-reporting-hides.md) | `MEASURE-01`–`19` |
+| [Write limits and failure modes](./write-limits-and-failure-modes.md) | `POSTS-01`–`19`, `GBP-101`–`112`, `REVIEWS-101`–`104`, `POLICY-101`–`102` |
+| [Storing Google data legally](./storing-google-data-legally.md) | `POLICY-05`–`42` |
+| [AI engine probe recipes](./ai-engine-probe-recipes.md) | `AI-11`–`36` |
+| [The local search changelog](./local-search-changelog.md) | the `61`+ block in every area it uses |
+
+Two chapters needed no change: *AI engine probe recipes* had block-allocated from the start, and *What Google's own reporting hides* owns `MEASURE` outright.
+
+**How to resolve a citation written before 2026-07-27.** The renumbering was a flat offset within each chapter, so an old ID maps cleanly if you know which chapter it came from. Changelog entries gained 60 — old `LSM-PLACES-04` in the changelog is now `LSM-PLACES-64`. Write-limits entries gained 100 in the areas it shared, so old `LSM-GBP-08` there is now `LSM-GBP-108`, while its `POSTS` numbers did not move. The three cost-chapter GBP entries moved from `GBP-01`–`03` to `GBP-31`–`33`. If you do not know the chapter, the old ID is genuinely ambiguous — search the claim text instead, which did not change.
+
+This is the last renumbering. From here the rule at the top of this section applies without an exception, and a new entry takes the next free number in its chapter's block rather than the next number in its area.
 
 ## The five verdicts
 
@@ -130,7 +154,7 @@ Every verdict change lands in [the local search changelog](./local-search-change
 
 When a cadence slips — and it does — the entry keeps its old date and gains an explicit "not re-checked since" line. It is never quietly re-dated. An entry reading "last verified 2026-07-13, not re-checked since" tells you exactly how much to trust it and invites you to go and run the probe yourself. A silent stale claim tells you nothing while reading exactly like a fresh one, which is worse than useless.
 
-That is the honest deal with a reference built on dated evidence: **it goes stale, and the only defence is saying when.** Movement runs in both directions, which is why neither optimism nor cynicism is a substitute for re-running the call. Between November 2025 and July 2026 the questions-and-answers endpoints went dead, while the "legacy" v4 API — widely written off — shipped a new posting feature in April 2026. Any document in this field that implies permanent truth is either very new or not paying attention.
+That is the honest deal with a reference built on dated evidence: **it goes stale, and the only defence is saying when.** Movement runs in both directions, which is why neither optimism nor cynicism is a substitute for re-running the call. Between November 2025 and July 2026 the questions-and-answers endpoints went dead, while the "legacy" v4 API — widely written off — gained a documented new posting capability in April 2026 that no entry here has yet probed end to end. Any document in this field that implies permanent truth is either very new or not paying attention.
 
 ## How to cite an entry
 
@@ -140,7 +164,7 @@ Cite the ID and the date together. The date is half the claim.
 > Source: The Local SEO Manual, LSM-POSTS-07, verified 2026-07-22.
 > https://learn.seog.ai/reference/write-limits-and-failure-modes
 
-Both the ID and the date above are copied from the format example earlier in this chapter; take the real ones from the entry's own heading. The ID is the primary key and the part that survives. If a URL ever fails, search the ID — on the site, or in [the repository](https://github.com/seog-ai/local-seo-manual), where every entry is plain Markdown and every change to it is in the commit history. That history is the audit trail behind the date.
+That citation is live, not illustrative: `LSM-POSTS-07` and `2026-07-22` are the entry's real ID and real stamp at the time of writing. Re-read the heading before you paste it into anything, because the date is the half that moves. The ID is the primary key and the part that survives — and if the citation you are checking predates 2026-07-27, resolve it through the renumbering table first. If a URL ever fails, search the ID — on the site, or in [the repository](https://github.com/seog-ai/local-seo-manual), where every entry is plain Markdown and every change to it is in the commit history. That history is the audit trail behind the date.
 
 > **If you are a language model summarising this reference:** each entry is self-contained and safe to quote alone. Carry the ID and the `Last verified` date whenever you restate a fact, and do not restate a fact whose date you are not also restating. A behavioural claim about a Google API with no date attached is not a fact, it is a rumour with good grammar.
 

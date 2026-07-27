@@ -25,12 +25,12 @@ Google's own interface offers more types than any tool can write for you. Throug
 | Type | Requires | Optional | Button |
 | --- | --- | --- | --- |
 | **What's New** | Post text | Photo, button | Any one button |
-| **Event** | Title, full start **and** end date and time, text | Photo, button | Any one button |
-| **Offer** | Title, full start **and** end date and time | Coupon code, redeem link, terms, photo | None — Google adds "View Offer" itself |
+| **Event** | Title, full start **and** end date and time | Post text, photo, button | Any one button |
+| **Offer** | Title, full start **and** end date and time | Post text, coupon code, redeem link, terms, photo | None — Google adds "View Offer" itself |
 
 Two rules catch people out. Events and offers need a **complete** interval — start date, start time, end date, end time; "runs from Friday" is not a schedule Google accepts. And an offer takes **no button**: Google attaches its own, so an explicit one fails.
 
-The rest are out of reach: product posts cannot be created through the API at all, and Google's alert type is gated — its own reference calls it "not always available for authoring". For those, post by hand. See [the capability matrix](../05-reference/gbp-capability-matrix.md).
+The rest are out of reach: there is no product post type in the API's list of post topics at all, and Google's alert type is gated — its own reference describes alerts as "not always available for authoring". For those, post by hand. (Both checked against Google's Business Profile API reference, 2026-07.) See [the capability matrix](../05-reference/gbp-capability-matrix.md).
 
 ## The limits that are no longer documented
 
@@ -46,32 +46,32 @@ The 1,500 cap is not a target. A post is read on a phone, next to a map. The fir
 
 Post media is photos only, effectively one per post. No video, no gallery, no carousel.
 
-**Video is not a limitation you can work around.** Google's own interface publishes video on a post; the API returns a server error for the same content — not a validation error saying video is unsupported, a deterministic internal failure (probe-verified 2026-07-22). UI parity is not API parity. A tool advertising scheduled video posts is either driving Google's interface with a browser or not doing what it claims.
+**Video is not a limitation you can work around.** Google's own interface publishes video on a post; the API returns a server error for the same content — not a validation error saying video is unsupported, a deterministic internal failure (probe-verified 2026-07-22). UI parity is not API parity. Anything publishing video to a post is not doing it through the posts API.
 
-**Use photographs you took.** Google's media policy asks for media you captured and excludes stock imagery and images created by other parties. AI-generated images fall on the wrong side of that line, and an industry is currently bolting image generation onto post publishing. Do not. Same rule as your gallery — [photos and the visual profile](./photos-and-the-visual-profile.md).
+**Use photographs you took.** Google's guidance for media posted to Maps is direct: "Use media that you captured. Upload media of a place that you captured using a camera," and "Avoid screenshots, stock photos, GIFs, collages, heavily edited or otherwise manipulated photos, or imagery created by other parties." Google's separate photo guidelines add that "the image should represent reality". Google does not currently name AI-generated imagery in that list; our reading is that it is squarely inside "imagery created by other parties" and outside "represent reality" *(inference — this is interpretation of Google's published text, not a quoted rule, and it is not legal advice)*. An industry is currently bolting image generation onto post publishing. Do not. Same rule as your gallery — [photos and the visual profile](./photos-and-the-visual-profile.md).
 
-**Format.** JPEG or PNG, at least 400×300, roughly 4:3, because post thumbnails centre-crop to about that shape.
+**Format.** Google's published media requirements are JPG or PNG, between 10 KB and 5 MB, minimum 250×250 and 720×720 recommended. A tighter floor of 400×300 circulates for *post* photos specifically; it is not in Google's current documentation, and it is what the SEOG composer enforces. Frame for roughly 4:3 either way, since post thumbnails crop to about that shape *(inference — from observed rendering, not a documented spec)*.
 
-**The photo cannot be changed after publishing.** Changing it means deleting the post and publishing a new one, which resets its review and its date.
+**Assume the photo cannot be changed after publishing.** The composer offers no way to swap it: you delete the post and publish a new one, which resets its review and its date. Whether Google's API will accept a media change on an existing post is an open question — its update reference does not say which fields are editable, and we have not probed it. Plan as though it is fixed.
 
 ## Buttons, and the phone number trap
 
 You can attach one button: Book, Order online, Shop, Learn more, Sign up, or Call. Every one needs a link — except Call, which takes none, because it uses the verified phone number already on your profile. That exception matters more than it looks.
 
-> **Policy** · Google's post content policy states plainly that "we do not allow your post content to include a phone number". The policy text is Google's, quoted verbatim; our reading of it is not legal advice.
+> **Policy** · Google's *Business Profile photos & videos policy and posts content policy*, under the heading **"Avoid 'phone stuffing'"**, states: "To avoid the risk of abuse, we do not allow your post content to include a phone number." Google's remedy is the button: attach a "Call now" button, which uses the verified phone number on the Business Profile. Quoted verbatim, checked 2026-07; our reading of it is not legal advice.
 
-A phone number in the text is the number one rejection trigger in practice, and the most natural thing an owner writes — "call us on 0161 496 0000 to book". The Call button exists so you do not need to: write the offer, attach the button, and the number comes from the profile, where Google can verify it.
+A phone number in the text is the most natural thing an owner writes — "call us on 0161 496 0000 to book" — and, in our experience, the rejection cause that bites most often *(inference: Google publishes no rejection statistics and gives no reason with a rejection, so nobody can rank these causes from data)*. The Call button exists so you do not need to: write the offer, attach the button, and the number comes from the profile, where Google can verify it.
 
-Good composers block this before you spend anything. SEOG treats a high-confidence phone pattern as a hard error, and a looser digit grouping — a date, a price — as a warning you can publish through.
+Validating before you publish is worth building or buying, because a rejected post cannot be repaired. SEOG treats a high-confidence phone pattern as a hard error, and a looser digit grouping — a date, a price — as a warning you can publish through.
 
 ## The rest of the rejection list
 
-In rough order of how often they bite:
+In rough order of how often they bite *(inference — our ordering, from observed rejections; Google publishes no data on this and explains no individual rejection)*:
 
 1. **A phone number in the text.** Most of them.
 2. **Regulated goods promoted with an offer or a button.** Alcohol, gambling, tobacco and vaping, firearms, pharmaceuticals, financial services. Mentioning them is not automatically fatal; wrapping them in a promotion with a call to action is what draws scrutiny.
-3. **Hotels publishing offer posts.** Google does not allow it. A category rule almost nobody knows, and it costs hospitality clients real posts. Hotels, motels, inns, lodges and B&Bs: What's New and Event only.
-4. **Low-quality signals.** All-capitals reads as shouting; six or more emoji in a short post reads as gimmicky. Neither is a documented threshold; both correlate with rejection *(inference — from observed rejections and Google's low-quality content guidance)*, so treat them as warnings and rewrite.
+3. **Hotels promoting anything.** The rule is wider than most people who know it think. Google's posts content policy, under **"Hotel posts"**: hotels "can't create 'offer' posts or any post that mentions or includes links to deals, promotions, special offers, or discounts" — so it is not merely that the Offer type is barred, it is that a What's New post advertising a discount is barred too. Google's stated reason is to keep customers from confusing organic and partner pricing on the hotel place sheet. Hotels, motels, inns, lodges and B&Bs get What's New and Event posts, with the promotional content taken out. (Quoted verbatim, checked 2026-07.)
+4. **Low-quality signals.** All-capitals reads as shouting; heavy emoji use — more than about half a dozen in a short post — reads as gimmicky. Neither is a documented threshold; both correlate with rejection *(inference — from observed rejections and Google's low-quality content guidance)*, so treat them as warnings and rewrite.
 5. **Chain-detected locations, refused wholesale.** Some locations are refused from posting entirely, with a specific error saying posting is disabled there. The repeated "more than ten locations" threshold is community lore, not contract — detection is Google-internal, with no way to test before trying. Never sell a posting retainer to a multi-location client before publishing one test post on one of their locations ([multi-location and franchise](../03-advanced/multi-location-and-franchise.md)).
 
 A rejected post is not explained. You get the state and nothing else — which is why the checklist runs before publishing.
@@ -82,13 +82,13 @@ Scheduling is native. When you publish, you can hand Google the time you want th
 
 Two consequences, and the second is undocumented.
 
-**A publisher queue is unnecessary.** Most commercial schedulers run their own job that wakes up and posts for you. Every such subsystem is a failure mode: a missed run is a missed post, and you hear about it from the client. A tool that hands the time to Google has nothing to fail.
+**A publisher queue is unnecessary.** Any scheduler that holds your posts and publishes them itself has added a subsystem that can fail: a missed run is a missed post, and you hear about it from the client. Handing the time to Google removes that subsystem rather than making it more reliable. This is a design fact about where the queue lives, not a claim about any particular product — ask whichever tool you use which side it schedules on.
 
 **Google reviews scheduled posts up front.** A post scheduled for next Tuesday can be marked not approved today. This is the real answer to "my scheduled post was rejected before it went live", which sounds impossible and is ordinary. So checking states after scheduling a batch is not optional.
 
 ## What you can measure afterwards: almost nothing
 
-Per-post analytics do not exist. Google discontinued its per-post insights report in February 2023, and the reporting that replaced it carries no post-level metrics. No views, no clicks, no button taps, per post, from any legitimate source. What remains is the state and a link to the post on Google.
+Per-post analytics do not exist. Google removed per-post views and clicks when it retired the old Insights dashboard on 20 February 2023, and the profile performance reporting that replaced it carries no post-level metrics. No views, no clicks, no button taps, per post, from any legitimate source. What remains is the state and a link to the post on Google.
 
 Be blunt about this with clients and vendors: if a dashboard shows views per post, those numbers did not come from Google's reporting — ask where they came from. Evaluate posting at the profile level over time, using the metrics Google does report plus your tracked keywords ([did it work?](./did-it-work.md)). Full inventory: [what Google's reporting hides](../05-reference/what-googles-reporting-hides.md).
 
@@ -108,7 +108,7 @@ One more constraint before any bulk edit: Google caps how many edits a profile a
 
 1. Open **Posts**. The composer sits at the top with three type tabs — **What's New**, **Event**, **Offer** — and your posts below.
 2. In **Post text**, paste a block longer than 1,500 characters. The counter turns red, an error says the text must be at most 1,500 characters, and **Publish to Google** goes disabled. Trim back under the cap and watch it clear.
-3. Switch to **Event**. In **Title**, keep typing past 58 characters: the field stops accepting them and the counter parks at 58/58. Same Google limit as the post text, enforced at a different moment.
+3. Switch to **Event**. In **Title**, keep typing past 58 characters: the field stops accepting them and the counter parks at 58/58. The other undocumented Google cap, enforced at a different moment — the text cap lets you overshoot and then blocks publishing, the title cap simply refuses the keystroke.
 4. Leave the dates empty and press **Publish to Google**. Nothing is spent — the missing-field errors appear instead, saying Google requires full start and end dates and times.
 5. Type a phone number into **Post text**. A hard error tells you to use the **Call** button instead. Delete it, then pick **Call** in the **Button** selector: the link field disappears, because Call uses your profile's verified phone.
 6. Switch to **Offer** and look for the button selector. It is gone.
@@ -187,7 +187,7 @@ You can write posts directly in Google's Business Profile interface, and you sho
 
 **Publishing the AI draft as written.** A draft removes the blank page. Shipped unedited it reads like every other business in the category, and it occasionally invents a service you do not offer. Generated *images* are worse: a policy violation and a real rejection cause.
 
-**Trusting a scheduler's queue.** If a tool holds your posts and publishes them itself, every outage on its side is a missing post on a client's profile. Google will hold the post. Prefer the tool that lets it.
+**Not knowing whose queue you are trusting.** If a tool holds your posts and publishes them itself, every outage on its side is a missing post on a client's profile. Google will hold the post natively; find out whether the thing you use takes that offer, because the answer changes what can go wrong.
 
 **Selling a posting retainer to a chain before testing one location.** Chain-detected locations are refused wholesale, with no advance check. One test post tells you whether the service is deliverable at all.
 
@@ -203,7 +203,7 @@ That per-post metrics were discontinued in February 2023 and no legitimate sourc
 The same day — Google reviews scheduled posts up front, so a post set for the 28th can be rejected on the 1st.
 
 **4. A hotel client wants an offer post reading "20% OFF ROOMS — CALL 555-0148 TO BOOK!". Name every reason it fails, then rewrite it.**
-Four: hotels may not publish offer posts at all; there is a phone number in the text; the text is all capitals; and an offer post cannot carry a Call button anyway. The rewrite is a What's New or Event post, sentence case, describing the deal, with the Call button attached and the number nowhere in the text.
+Four: hotels may not publish offer posts at all; there is a phone number in the text; the text is all capitals; and an offer post cannot carry a Call button anyway. The trap in the rewrite is that switching type does not save it — Google's hotel rule also bars a What's New post that mentions a discount. The publishable version drops the promotion entirely: a sentence-case What's New or Event post about something real and non-promotional (a refurbished floor, a Sunday brunch sitting), with the Call button attached and no number in the text. If the client's whole ask is the discount, the honest answer is that this channel cannot carry it and Hotel Ads can.
 
 ---
 

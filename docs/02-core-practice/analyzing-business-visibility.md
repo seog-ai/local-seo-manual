@@ -70,7 +70,7 @@ Tiers: **70+ is strong, 40–69 is building, below 40 is low.**
 
 ![AI Visibility screen: an AI readiness card scoring 53 of 100, tiered "Building", with each of the nine factors marked pass or fail and its weight beside it](../../static/img/screens/owner-ai-visibility-full.png)
 
-*The same business on the AI Visibility screen — 53 of 100, in the building tier, with every factor shown as passed or failed against its weight. Review volume scores 0 of 22 on three reviews, and it is the heaviest single factor on the sheet. The Presence, Recommendations and AI-mention-rate tiles at the top carry **EXAMPLE** badges: those are placeholders until a live check is run, and nothing in them fed the 53.*
+*The same business on the AI Visibility screen — 53 of 100, in the building tier, with every factor shown as passed or failed against its weight. Review volume scores 0 of 22 on three reviews, and it is the heaviest single factor on the sheet. The three tiles at the top are **Presence**, **Recommendations** and **Authority**; the first two carry an **Example** badge until a live check is run, and nothing in any of them fed the 53.*
 
 Now read the two tables together. The audit passes reviews at 20 and rating at 4.0; readiness wants 25 and 4.2. Not an inconsistency to be tidied away: the audit asks *is this profile complete enough to compete in the pack*, readiness asks *is this reputation strong enough that a language model would name this business to a stranger*. The second bar is higher because the AI surfaces recommend far fewer businesses than the pack lists — the subject of [how an AI assistant answers a local question](../01-foundations/how-ai-answers-a-local-question.md).
 
@@ -102,7 +102,7 @@ So: when you cannot see something, write **unknown**, never "missing". A diagnos
 
 ## The order of work
 
-Sorting by weight is the default the app gives you: the action plan merges failing audit checks with the readiness factors the audit does not cover, tiers them by impact, and orders by recoverable points inside each tier. Take that as a first draft, because weight is not the only axis.
+Sorting by weight is the default the app gives you. The action plan merges four sources — the failing audit checks, the two readiness factors the audit does not already cover (fresh reviews and review engagement), and any stored website and listings fixes — then tiers them by impact and orders by recoverable points inside each tier. Only the audit rows carry points, because only they move the profile score. Take that order as a first draft, because weight is not the only axis.
 
 **Effort.** Adding opening hours takes ninety seconds and recovers 10 of 86. Getting from 12 reviews to 20 takes a quarter and recovers the same 10. Identical on the scoreboard, nothing alike as work. Sort by weight *per unit of effort* and the real first day falls out: the fields that are simply absent.
 
@@ -144,7 +144,7 @@ By hand this takes about an hour: the profile dashboard for the fields, a spread
 
 1. Open the overview. Press nothing — every refresh button here fetches from Google and is priced. Everything in this lab is already stored.
 2. Read the **Profile score** card. The bar underneath splits the score into the five categories — segment width is that category's share of the weight, fill is your coverage. Note the segments that are visibly unfilled.
-3. Open **Action plan — your next steps**. Every item is a failing check or an uncovered readiness factor. Write each down with the `+N pts` figure beside it.
+3. Open **Action plan — your next steps**. Write every item down. Audit rows carry a `+N pts` figure — record it. Rows from the other three sources (AI visibility, Website, Listings) carry an impact tier instead and no points; record the tier and note which source label the row wears.
 4. For each, write **one line naming the cause**, from exactly three: *absent* (the field is empty), *below threshold* (present but under the bar — 12 reviews against 20), or *unknown* (you cannot observe it from here). Guessing is not an option.
 5. Open **AI Visibility** and read the **AI readiness** card at the bottom. Do not press **Check now**. Expand **What goes into this score** and add any failing factor the action plan did not list.
 6. Write the verdict: three sentences, no numbers-as-conclusions.

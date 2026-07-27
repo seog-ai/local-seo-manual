@@ -12,9 +12,9 @@ That panel is the thing being ranked. It is a record Google holds about a place,
 
 ## The ranked object is a record, not a page
 
-Google's own account of local ranking names three factors: relevance, distance and prominence. Look at what those are properties *of*. Relevance is how well a **business** matches the search. Distance is how far the **business** is from the searcher. Prominence is how well known the **business** is. Not one of them is a property of a page.
+Google's own account of local ranking names three factors: relevance, distance and prominence — its help page opens by calling the third one "popularity" and then defines it as prominence, so you will see both words. Look at what those are properties *of*. Relevance is how well a **Business Profile** matches what someone is searching for. Distance is how far each **business** is from the customer searching. Prominence is how well known the **business** is, based, Google says, on information like how many websites link to it and how many reviews it has. Not one of them is a property of a page.
 
-The website has a role, and Google states it plainly: your position in ordinary web search results is one of the inputs to prominence. So the site is evidence about the business. It is not the thing in the ranking.
+The website has a role. Google's help page carried a sentence for years saying that your position in web results is also a factor, "so SEO best practices also apply to local search optimization"; that line is not in the current text, and Google now describes prominence only in terms of links, reviews and information from across the web. Treat "web ranking feeds prominence" as the long-standing practitioner reading rather than a current Google statement *(open question)*. Either way the direction is the same: the site is evidence about the business. It is not the thing in the ranking.
 
 Five things feed that record, in two different ways:
 
@@ -89,9 +89,9 @@ You met this split in [Lab 0.4](../00-start-here/set-up-your-workbench.md). It p
 | The search terms people used to find it | No | Yes |
 | Editing anything, replying, posting | No | Yes |
 
-The review row is the one that catches people out. The public data surface returns only a small sample of reviews — about five — ordered by relevance, not by date. A tool seeing only the public view can honestly show you a rating and a review count. It cannot show you a review history, because it has never had one. Anything longitudinal it shows for a business you have not connected was assembled from its own repeated sampling.
+The review row is the one that catches people out. The public data surface returns at most five reviews, ordered by relevance rather than by date. A tool seeing only the public view can honestly show you a rating and a review count. It cannot show you a review history, because it has never had one. Anything longitudinal it shows for a business you have not connected was assembled from its own repeated sampling.
 
-The description row is the tidy proof that these really are two surfaces: the owner-written blurb on your listing is not part of the public place data at all. In SEOG it appears on the **Profile** page only after the Google connection exists, because that is the only door it comes through.
+The description row is the tidy proof that these really are two surfaces: the owner-written "from the business" blurb is not part of the public place data at all. Public place data can carry a blurb — but it is Google's own machine-written summary of the place, a different field with a different author. In SEOG the owner's real description arrives only once the Google connection exists, and it then replaces the machine-written one in the stored record, because that is the only door it comes through.
 
 And some entities are invisible to the public view entirely. A pure service-area business — a plumber, a mobile locksmith — hides its street address, and Google excludes hidden-address businesses from public place search by default. The entity exists and the owner sees all of it; the public read simply cannot retrieve it, which has consequences big enough to need [their own chapter](../03-advanced/service-area-businesses.md).
 
@@ -126,12 +126,12 @@ The rest of the manual follows from the model:
 > You need: Lab 0.3 done (a business added). Lab 0.4 (the Google connection) makes this much richer, but the lab works without it.
 
 1. Open **Overview**. Working top to bottom, write down every distinct fact on the page: the **Profile score**, **Rating** and **Photos** cards, then **Action plan — your next steps**, **Rankings at a glance**, **Local visibility**, **Vs local market**, **Review momentum**, **Website support** and **Performance**.
-2. Open **Profile**. The **Business profile** card holds the raw fields: status, category, price level, photo count, gallery, phone, website, the Google Maps link, the description, **Opening hours** and **Attributes on Google**.
+2. Open **Profile**. The **Business profile** card holds the raw fields: status, category, price level, photo count, gallery, phone, website, the Google Maps link, a description blurb if Google has one, **Opening hours** and **Attributes on Google**.
 3. Mark each entry with one of three letters: **P** if it came from the public import, **O** if it appeared only after connecting Google, **S** if it is SEOG's own measurement rather than a field of the entity at all.
 
 ![The Profile page for a business with no owner connection, showing status, category, price level, photo gallery, phone, website, Maps link, opening hours and attributes](../../static/img/screens/profile.png)
 
-*Step 2 on one card: status, category, price level, the photo gallery, phone, website, the Maps link, opening hours, attributes — the raw fields of the record, all of them **P**. Now notice what is absent. There is no description anywhere on this card, because the owner-written blurb does not come through the public read at all; on a connected business it appears here, and it is marked **O**.*
+*Step 2 on one card: status, category, price level, the photo gallery, phone, website, the Maps link, opening hours, attributes — the raw fields of the record, all of them **P**. Now notice what is absent. There is no description on this card, because the owner-written blurb does not come through the public read at all; on a connected business the owner's real description appears here, and it is marked **O**. If a blurb does show without a connection, read it carefully — that is Google's own machine-written summary of the place, not text anyone at the business wrote.*
 
 **What good looks like.** Most identity and contents fields are **P**. The description, the **Performance** panel, the search-terms card and the whole **Make changes** editor are **O** — without the Google connection the page shows the connect card in place of the editor. The profile score, rankings, grid and competitor comparison are **S**: nothing in Google's record contains them.
 
@@ -181,7 +181,7 @@ The rest of the manual follows from the model:
 
 ## Common mistakes
 
-**Optimising the website and expecting the map pack to move.** Tempting, because it is the part you control completely and the part your web team knows how to do. It costs months. Site work does support the entity — Google says web results position feeds prominence — but it is indirect and no substitute for a profile with the right category and complete fields.
+**Optimising the website and expecting the map pack to move.** Tempting, because it is the part you control completely and the part your web team knows how to do. It costs months. Site work does support the entity — prominence draws on what the web says about a business — but it is indirect and no substitute for a profile with the right category and complete fields.
 
 **Treating a stored number as the current one.** A rating you read this morning was fetched at some earlier point. Quoting it as "your rating today" without checking the timestamp is the most common way a competent practitioner says something untrue. Read the *Synced …* stamp first, every time.
 
@@ -195,7 +195,7 @@ Answer these against your own practice business, not in the abstract.
 
 1. **Your website goes offline for a month. What happens to your map-pack position?** It does not vanish, because the entity is still there and still complete. Expect gradual erosion at most *(inference)*: you removed one input to prominence, not the ranked object. If your answer was "we disappear", re-read the first section.
 
-2. **A tool shows a competitor's full review history for a business it has no owner access to. What is it actually showing you?** Its own accumulated sampling, or an estimate. The public data surface returns a handful of reviews ordered by relevance; nobody gets a stranger's full history from it.
+2. **A tool shows a competitor's full review history for a business it has no owner access to. What is it actually showing you?** Its own accumulated sampling, or an estimate. The public data surface returns at most five reviews, ordered by relevance; nobody gets a stranger's full history from it.
 
 3. **Your listing says you close at 6pm; your website says 7pm. Which does Google believe?** Google shows the listing — that is the record it ranks. But the mismatch is itself a signal about how reliable your information is, and the customer who arrives at 6:15 does not care which system was wrong.
 

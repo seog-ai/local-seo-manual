@@ -181,7 +181,7 @@ Six checks, no partial credit, about fifteen minutes ([Writing a report a client
 - [ ] **Spot-check.** A stranger can pick one work item and verify it themselves in five minutes.
 - [ ] **Cost of admission.** Something in it was expensive to admit. A uniformly positive report, every month, is a tell.
 - [ ] **Movement in the plan.** Next steps reference last period's result and have changed since last month.
-- [ ] Archive the generated PDF into your own storage the day you generate it. Only the ten most recent reports are kept per business, so on a monthly cadence the engagement baseline is the first thing pruned.
+- [ ] Archive the generated PDF into your own storage **the day you generate it**. Two separate mechanisms delete it otherwise: only the ten most recent reports are kept per business, so on a busy account the engagement baseline is the first thing pruned — and, more decisively, a report freezes Google content and so ages out on the thirty-day retention window whatever its position in that queue. A baseline you did not download is not a baseline. This is the single line on this page most often skipped and most expensive to have skipped.
 - [ ] Somebody's name is on it. Automated assembly is fine; automated judgement with nobody's name on it is a printout, not a report.
 
 ---
@@ -342,8 +342,10 @@ touch at {the public contact route}.
 
 **Asking for reviews — the compliant version**
 
+The clauses quoted in this block come from Google's **prohibited and restricted content policy for Maps user contributions** (`support.google.com/contributionpolicy`, retrieved 2026-07-27) — a different document from the Business Profile APIs policies quoted in section 4, governing the merchant's conduct rather than a developer's. Both bind an agency running reviews for a client.
+
 - [ ] Same link, same moment, **every** customer. Not only the ones you know are happy: *"selectively solicit positive reviews from customers"* is prohibited, and a form routing five-star answers to Google and one-star answers to a private inbox is that clause verbatim.
-- [ ] No incentive of any kind. The permission reads: *"solicit or encourage the posting of content that does represent a genuine experience, without offering incentives"*.
+- [ ] No incentive of any kind, and no steering the score. The permission reads, in full: *"Solicit or encourage the posting of content that does represent a genuine experience, without offering incentives to do so or attempting to influence the rating"* — the second half matters as much as the first, and rules out "if you were happy, leave us five stars" even where nothing is being given away.
 - [ ] No per-staff quotas — prohibited since 17 April 2026: *"merchants requesting that staff solicit a certain number of reviews"*.
 - [ ] No script telling the customer what to write or which rating to leave.
 - [ ] Asking unhappy customers too, by design. A 4.6 from 200 outsells a 5.0 from 11, and a rating with no negatives reads as filtered.
@@ -366,7 +368,7 @@ Run before you spend anything. A rejected post is not explained — you get the 
 - [ ] Offers take **no button**. Google attaches its own; an explicit one fails.
 - [ ] One photo, JPEG or PNG, at least 400×300, roughly 4:3, taken by you. No video — the interface publishes it, the API does not. The photo cannot be changed after publishing.
 - [ ] No regulated goods wrapped in a promotion with a call to action: alcohol, gambling, tobacco and vaping, firearms, pharmaceuticals, financial services.
-- [ ] Hotels, motels, inns, lodges and B&Bs: **What's New and Event only.** Google does not allow offer posts from them.
+- [ ] Hotels: the restriction is wider than the post type. Google's post content policy reads *"Hotels can't create 'offer' posts, or any post that mentions or includes links to deals, promotions, special offers, or discounts"* — so a What's New post from a hotel that mentions a discount is prohibited too, not just the Offer format. *(The published clause names hotels only; whether Google applies it to motels, inns, lodges and B&Bs is an open question we have not been able to source — assume it does and check before you sell a posting retainer to one.)*
 - [ ] Not all-capitals; not six or more emoji in a short post. Neither is a documented threshold; both correlate with rejection *(inference)*.
 - [ ] Multi-location client: publish **one test post on one location** before selling a posting retainer. Some locations are refused from posting entirely, and detection is Google-internal with no way to test in advance.
 - [ ] Scheduled a batch? Check the states afterwards. Google reviews scheduled posts up front, so a post scheduled for next Tuesday can be marked not approved today.

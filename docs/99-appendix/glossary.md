@@ -28,7 +28,7 @@ Each entry is meant to be quotable on its own, without the chapter around it. Wh
 
 **Aggregator punt** *(ours)*. An AI answer that declines to name businesses and points at a directory instead — "have a look at Yelp". It is not a miss, and it must leave the recommendation-rate denominator rather than count against you (`LSM-AI-19`). See [Does the AI recommend this business?](../03-advanced/ai-visibility.md).
 
-**AI local pack** *(industry)*. A generated local answer that appears **in place of** the map pack on a subset of queries, mostly mobile. In the only published analysis it typically named two businesses rather than three and carried no call button. Google does not document the surface at all. See [What local SEO actually is](../01-foundations/what-is-local-seo.md).
+**AI local pack** *(industry)*. A generated local answer that appears **in place of** the map pack on a subset of queries, mostly mobile. Sterling Sky's *State of Local SEO in 2026* (published 2026-02-27) reports that it shows **one or two businesses rather than three** and carries no call button, and — counting unique businesses across their ranking reports — that AI local packs surfaced **32% as many businesses as the traditional 3-pack** (5,943 against 18,330). Note the direction: that is 32% *as many*, or 68% *fewer*; several secondary write-ups have restated it as "32% fewer", which is a different and wrong claim. Google does not document the surface at all. See [What local SEO actually is](../01-foundations/what-is-local-seo.md).
 
 **AI Mode.** Google's conversational search surface, generally available in the US from 2025-06-05. Its citations overlap AI Overview citations far less than most people assume. See [the changelog](../05-reference/local-search-changelog.md).
 
@@ -74,7 +74,7 @@ Each entry is meant to be quotable on its own, without the chapter around it. Wh
 
 **Citation rate.** The share of live AI answers that cite **your own domain** among their sources, over every live answer. Strictly your domain, not a page about you. Usually far lower than the mention rate, and rarely printed beside it. See [Does the AI recommend this business?](../03-advanced/ai-visibility.md).
 
-**Compass sentence** *(ours)*. The "strongest to the west, weakest to the south-east" line under a grid scan. It averages by direction, counts a missing pin as 21, and claims a direction only when best and worst differ by at least two positions — so "no direction claimed" means the gap was small, not that there is no gradient. See [Reading a geo-grid without fooling yourself](../03-advanced/reading-a-geo-grid.md).
+**Compass sentence** *(ours)*. The "strongest to the west, weakest to the south" line under a grid scan. Each point is assigned to whichever of **four** directions — north, south, east or west — its dominant offset from the grid centre points to; the sentence then names the best-averaging and worst-averaging of those four. It counts a missing pin as 21, and claims a direction only when best and worst differ by at least two positions — so "no direction claimed" means the gap was small, not that there is no gradient. Because the buckets are only the four cardinals, it can never say "south-east": a genuinely diagonal gradient gets reported as whichever cardinal is closer, which is a real limitation of the summary and a reason to read the map rather than the sentence. See [Reading a geo-grid without fooling yourself](../03-advanced/reading-a-geo-grid.md).
 
 **Comparison intent** *(ours)*. See **intent**.
 
@@ -176,7 +176,7 @@ Each entry is meant to be quotable on its own, without the chapter around it. Wh
 
 **Logistics intent** *(ours)*. See **intent**.
 
-**LSM ID.** The permanent identifier on every fact in Part V, formed `LSM-<AREA>-<NN>` where AREA is one of `PLACES`, `GBP`, `POSTS`, `REVIEWS`, `POLICY`, `AI`, `MEASURE`. IDs are never renumbered and never reused; a retired fact is marked superseded and kept. Cite the ID with the entry's `Last verified` date so the date travels with the claim. See [How to read this reference](../05-reference/how-to-read-this-reference.md).
+**LSM ID.** The permanent identifier on every fact in Part V, formed `LSM-<AREA>-<NN>` where AREA is one of `PLACES`, `GBP`, `POSTS`, `REVIEWS`, `POLICY`, `AI`, `MEASURE`. The intent is that an ID is never renumbered and never reused, and that a retired fact is marked superseded and kept rather than deleted. Cite the ID with the entry's `Last verified` date so the date travels with the claim. **Known defect, 2026-07-27:** several Part V chapters currently number from `01` independently, so a few IDs — `LSM-GBP-03` among them — appear on more than one entry in different chapters. Until that is reconciled, cite the ID *and* the chapter it appears in, and treat a bare ID from a third party as ambiguous. See [How to read this reference](../05-reference/how-to-read-this-reference.md).
 
 ## M
 
@@ -240,7 +240,7 @@ Each entry is meant to be quotable on its own, without the chapter around it. Wh
 
 ## Q
 
-**Q&A panel.** The public questions-and-answers block that used to sit on business profiles. Google started removing it on 2025-12-03 and discontinued the API on 2025-11-03, replacing it with a Gemini-powered "Ask Maps" (`LSM-GBP-03`, `LSM-GBP-04`). A large amount of current published advice still describes it as live. See [the changelog](../05-reference/local-search-changelog.md).
+**Q&A panel.** The public questions-and-answers block that used to sit on business profiles. Google started removing it on 2025-12-03 and discontinued the API on 2025-11-03, replacing it with a Gemini-powered "Ask Maps" (`LSM-GBP-63`, `LSM-GBP-64`). A large amount of current published advice still describes it as live. See [the changelog](../05-reference/local-search-changelog.md).
 
 **QPM** — queries per minute. The unit in which Business Profile API quota is granted, per API and per Google Cloud project. Approved projects get 300 QPM per API; **0 QPM means the API is not approved for your project**, not that you exhausted it (`LSM-GBP-19`). See [Write limits and failure modes](../05-reference/write-limits-and-failure-modes.md).
 
@@ -294,7 +294,7 @@ Each entry is meant to be quotable on its own, without the chapter around it. Wh
 
 **Threat score** *(ours)*. A 0–100 competitor score: 30 points for a rating above yours, up to 40 for review volume relative to yours, up to 30 for momentum across two snapshots. 70+ high, 40–69 medium, below 40 low. It contains **no position** by design — it scores prominence and momentum, the parts you can read from outside. See [Reading a competitor off their public data](../02-core-practice/competitors.md).
 
-**Thirty-day cap.** Business Profile API content may be stored for 30 calendar days and "cannot be manipulated or aggregated" (`LSM-POLICY-27`). Places content has a stricter default — no caching at all, with narrow exemptions for place IDs and coordinates. The two regimes do not transfer. See [Storing Google data legally](../05-reference/storing-google-data-legally.md).
+**Thirty-day cap.** Business Profile API content may be stored for 30 calendar days and "cannot be manipulated or aggregated" (`LSM-POLICY-27`). Places content has a stricter default — no caching at all, with narrow exemptions for place IDs and coordinates. The two regimes do not transfer. Its everyday consequence is easy to miss: a compliant tool must age raw Google content out on a rolling window, so synced review text, competitor field values, cached performance series and generated report PDFs are not permanent records, while identifiers and *derived* measurements — rank positions, profile scores, grid coverage — are. Anything you will need as evidence later has to be exported. See [Storing Google data legally](../05-reference/storing-google-data-legally.md) and [What things cost](./what-things-cost.md).
 
 **Top-3 coverage** *(industry)*. Grid points where the business ranked 1–3, over **all** points scanned. Grey pins count against it, which is why it can fall on the same scan where average rank rises. See [Reading a geo-grid without fooling yourself](../03-advanced/reading-a-geo-grid.md).
 

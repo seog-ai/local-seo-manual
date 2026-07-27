@@ -32,7 +32,7 @@ Start with the one nobody says out loud: **no rank tracker observes the map pack
 
 SEOG's rank check and geo-grid are the second kind: a ranked place search run from an explicit coordinate. A deliberate trade — reproducible, and it takes a coordinate as a real argument rather than a hint ([what Google's APIs actually cost](../05-reference/what-googles-apis-cost.md)). It is not what a human sees, and two of its properties bite immediately.
 
-**It ranks by prominence, and drops businesses Google's own search box still finds.** A new or thin listing can be missing from a ranked place search while remaining findable by someone typing its name into Maps. So "the tool cannot find us but Maps can" is the expected result for a low-prominence business, not a defect.
+**It returns Google's relevance ordering for the query, and drops businesses Google's own search box still finds.** A new or thin listing can be missing from a ranked place search while remaining findable by someone typing its name into Maps, which resolves names through a different mechanism. So "the tool cannot find us but Maps can" is the expected result for a low-prominence business, not a defect.
 
 **It excludes hidden-address businesses by default.** A pure service-area business is left out unless the caller explicitly asks for it, and the rank paths do not ask. That is why map-pack rank tracking cannot work for that business model at all — [service-area businesses](./service-area-businesses.md) is the whole chapter.
 
@@ -42,7 +42,7 @@ So the first question when a tool disagrees with your own eyes is not "is it bro
 
 The heaviest condition by far. A local rank is largely a distance calculation, so moving the origin a mile moves the number more than most of the work you will do all quarter.
 
-An origin gets set three ways: explicit coordinates, a place name the tool geocodes, or nothing at all. The third is where tools silently diverge, because **"nothing" is not "no location".** A place search with no origin supplied falls back to the network address of whoever made the call. On a laptop at home that is roughly your city; on a hosted tool the caller is a datacenter server, whose network location is somewhere you have never been or nowhere identifiable at all. Same query, same code, different machine, different answer. Any product offering "national" rank tracking for a local query is reporting from a coordinate neither of you chose.
+An origin gets set three ways: explicit coordinates, a place name the tool geocodes, or nothing at all. The third is where tools silently diverge, because **"nothing" is not "no location".** Google documents the fallback plainly: omit both the bias circle and the restriction circle and a ranked place search *"uses IP biasing by default"* — the network address of whoever made the call stands in for a location. On a laptop at home that is roughly your city; on a hosted tool the caller is a datacenter server, whose network location is somewhere you have never been or nowhere identifiable at all. Same query, same code, different machine, different answer. Any product offering "national" rank tracking for a local query is reporting from a coordinate neither of you chose.
 
 Here the origin is never left to that fallback: it is the keyword's own search point when you set one, the business coordinates otherwise. But note the trap. **A keyword with no location chip is not a keyword with no location.** It is measured from the business's front door — the most flattering point on the map, the one coordinate where your distance term is zero and every rival's is not. An unstated default is still a condition; write it down as if it were a setting, because it is one.
 
@@ -64,7 +64,7 @@ And a bias radius is an input to the *ordering*, not a viewport — change only 
 
 The uncomfortable one, and you should know it before a client finds it.
 
-A single rank check uses the keyword's own radius — three miles by default, or whatever the radius chip says. A geo-grid scan does not use that number at all. Each grid point searches with a circle the size of the **grid's own point spacing**, which the app fixes at one mile.
+A single rank check uses the keyword's own radius — three miles by default, or whatever the radius chip says. A geo-grid scan does not use that number at all. Each grid point searches with a circle the size of the **grid's own point spacing**, which the web presets fix at one mile.
 
 So the centre pin of a grid and the "Check now" number are two readings of the same keyword, from the same coordinate, minutes apart, at different radii. They can legitimately differ, and the radius chip describes only the first. Lab 22.1 has you produce the disagreement deliberately.
 
@@ -90,7 +90,7 @@ Rank is a sort order over near-tied scores, and a sort is discontinuous: a hair 
 
 **Compare stamps before numbers.** Every card showing fetched data is stamped for this reason. A day between two readings is a day in which the disagreement may be entirely real.
 
-**Search volume stales differently, and is not local.** The monthly volume beside a keyword comes from Google's Keyword Planner data: an average over roughly the trailing twelve months, in rounded buckets rather than exact counts, requested against a *country-level* geographic target and a language, and cached for about a month. Two tools reporting 480 and 320 for one phrase can both be faithfully quoting Google, for different targets — and neither figure tells you how many people search it in your town ([what people actually search](../01-foundations/what-people-actually-search.md)).
+**Search volume stales differently, and is not local.** The monthly volume beside a keyword comes from Google's Keyword Planner data, which Google documents as *"the approximate number of monthly searches on a query, averaged for the past 12 months"* — approximate is Google's word, and practitioners have long observed the returned values landing on a fixed set of rounded buckets rather than exact counts *(observed and widely reported; Google does not document the buckets)*. The request carries a *country-level* geographic target and a language, and the answer is cached here for about a month. Two tools reporting different volumes for one phrase can both be faithfully quoting Google, for different targets — and neither figure tells you how many people search it in your town ([what people actually search](../01-foundations/what-people-actually-search.md)).
 
 ## Identity: are you sure that result is you?
 
@@ -130,7 +130,7 @@ That ends the meeting. "Their tool is inaccurate" starts an argument you cannot 
 
 ![A completed 3x3 geo-grid scan over Helsinki, pins reading between 1 and 3](../../static/img/screens/geo-grid.png)
 
-*A real scan: nine live searches for one keyword, one per point. The same business reads #1, #2 and #3 depending only on which coordinate the search ran from. Here the centre pin agrees with the single check at the top of the page — the outer pins are the disagreement, and they are all correct. The legend doubles as the ruler's end stop: past twenty there is no position, only "Not found".*
+*A real scan: nine live searches for one keyword, one per point. The same business reads #1, #2 and #3 depending only on which coordinate the search ran from. Here the centre pin agrees with the single check at the top of the page — the outer pins are the disagreement, and they are all correct. One detail in the legend is worth knowing before a client asks: it offers a **20+** band, and that band can never fill. The scan reads twenty deep, so a point either has a position of twenty or better or it is **Not found**. A colour with nothing that can land in it is the ruler's end stop, drawn.*
 
 **What good looks like.** Two numbers you can defend individually and would never average. If they match, that is a real result too — record it and repeat on a second keyword before concluding anything.
 

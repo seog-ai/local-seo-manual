@@ -31,11 +31,11 @@ Fifty-seven points of a hundred. Volume plus rating alone total exactly 40 — w
 
 > **Read that honestly.** Those weights are our model, built from published correlation research — not Google's, not any assistant's. A prioritisation rubric, not a measurement of an engine's internals. [Does the AI recommend this business?](../03-advanced/ai-visibility.md) has the evidence.
 
-Four separate dimensions: a business can be excellent at one and failing the other three. Two calibrations worth stealing as client targets — **50 reviews saturates volume**, and a review inside **30 days counts double one at 90 days**.
+Four separate dimensions: a business can be excellent at one and failing the other three. Two more calibrations are worth stealing as client targets — these come from a *different* model, the review sub-score inside the AI-visibility authority pillar, not from the table above: **50 reviews saturates volume**, and a review inside **30 days counts double one at 90 days**.
 
 ## What you can actually see
 
-**Without owner access**, the public place data every non-owner tool reads returns **at most about five reviews per business**, ranked by Google's own relevance rather than by date *(observed against live responses, 2026-07; Google does not document the ordering)*. That is the ceiling for any tool at any price. **With owner access** — the Business Profile connection from [Lab 0.4](../00-start-here/set-up-your-workbench.md) — you get the full history plus Google's authoritative total count and average rating.
+**Without owner access**, the public place data every non-owner tool reads returns **at most five reviews per business**, ranked by relevance rather than by date. Neither half of that is folklore: Google's Places API reference states that a maximum of five reviews can be returned, and that they are sorted by relevance (read 2026-07-27). That is the ceiling for any tool at any price. **With owner access** — the Business Profile connection from [Lab 0.4](../00-start-here/set-up-your-workbench.md) — you get the full history plus Google's authoritative total count and average rating.
 
 ![The Reviews page for a business with no Business Profile connection: a Connect Google panel, five stat cards all reading zero, and a dashed strip of example review cards](../../static/img/screens/reviews.png)
 
@@ -47,7 +47,7 @@ So **competitor review analysis is structurally shallow**: anyone selling "full 
 
 The rules changed recently, invalidating advice still in wide circulation. This section is our reading of published policy, not legal advice.
 
-Google's *Maps user contributed content policy* (support.google.com/contributionpolicy, read 2026-07-27) prohibits, under **Fake engagement** and **Rating manipulation**:
+Google's *Prohibited & restricted content* page, in the Maps user-generated content policy help (`support.google.com/contributionpolicy/answer/7400114`, read 2026-07-27), prohibits, under **Fake engagement** and **Rating manipulation**:
 
 > "Content that has been posted due to an incentive offered by a business - such as payment, discounts, free goods and/or services."
 
@@ -57,7 +57,7 @@ Google's *Maps user contributed content policy* (support.google.com/contribution
 
 > "Merchants should not require or pressure users to leave ratings or write reviews while on the premises, nor should they request that specific content be included."
 
-Added on **17 April 2026** — first spotted by Amy Toman, a Google Product Expert, and [reported by PPC Land](https://ppc.land/google-tightens-maps-review-policy-staff-names-and-quotas-now-banned/) — two further prohibited practices under Rating manipulation:
+Added in **April 2026**, alongside Google's own 16 April announcement of a new wave of Maps review protections, and spotted in the policy text on **17 April** by Amy Toman, a Google Diamond Product Expert, and [reported by PPC Land](https://ppc.land/google-tightens-maps-review-policy-staff-names-and-quotas-now-banned/) — two further prohibited practices under Rating manipulation:
 
 > "merchants requesting that staff solicit a certain number of reviews"
 
@@ -80,7 +80,7 @@ The interpretation, kept separate from the text:
 | "Ask the customer to mention your name" | **Prohibited since April 2026** | staff name |
 | A customer naming the technician unprompted | Allowed | no solicitation occurred |
 
-The last two rows carry the change. A review naming the technician is *good* — specific, credible, exactly what the next reader wants. What is prohibited is **asking** for it. Because the ask is invisible in the resulting review, enforcement runs on patterns: a cluster of reviews naming the same three staff members is the signature. Reviews get removed and the rating can be stripped, with no appeal.
+The last two rows carry the change. A review naming the technician is *good* — specific, credible, exactly what the next reader wants. What is prohibited is **asking** for it. Because the ask is invisible in the resulting review, enforcement runs on patterns: a cluster of reviews naming the same three staff members is the signature. In the days after the change, practitioners reported review counts dropping — sometimes by dozens, including short five-star reviews naming an employee *(secondary reporting via PPC Land, not a Google statement)*. Whether a merchant has any appeal route once reviews come down on these grounds is an **open question**; we have not traced one to a Google source.
 
 > **The compliant ask, in one line.** Give every customer the same link the moment the work is finished, and say nothing about what to write or what rating to leave. In SEOG, **Reviews → Request review** builds Google's own "write a review" link plus a downloadable QR for invoices and receipts. Free, and nothing you could not do by hand from the place ID.
 
@@ -116,7 +116,7 @@ For 1–2 star reviews, resist replying immediately — the composer shows an es
 
 **A success response on the write is not proof of publication.** Google can accept a reply — cleanly, no error — that never appears on the profile. Two known causes: the profile is not in good standing (unverified, suspended, not publishing), or the reply went to the right location under the wrong owning account, an easy mistake because Google's two generations of business APIs name locations differently. Both look like success.
 
-The only trustworthy confirmation is a **read-back**: fetch the review again and require *your own reply text* to be present. Not "the write returned success", not "our database says published" — your text, coming back out of Google. Allow one short retry; propagation is usually instant but not always.
+The only trustworthy confirmation is a **read-back**: fetch the review again from Google, after the write, and require a reply to actually be there. Not "the write returned success", not "our database says published" — the reply itself, coming back out of Google. Allow one short retry; propagation is usually instant but not always.
 
 And **confirmation decays** — a reply confirmed in March can be gone in July, because replies disappear with the reviews they hang from. It is an observation, not a state. Re-check before you put "we respond to 100% of reviews" in a client report.
 
@@ -219,7 +219,7 @@ Evaluating someone else's tooling? Ask one question: *how do you know the reply 
 
 **Review gating dressed up as a survey.** The "how did we do?" flow routing happy customers to Google and unhappy ones to a private form is the most common violation in the category, and it is sold as reputation management. It is the "selectively solicit positive reviews" clause verbatim, and easy to detect because the resulting distribution is impossible.
 
-**Running last year's playbook.** Per-technician review targets and "ask them to mention you by name" were normal advice until 17 April 2026. Enforcement removes reviews without warning.
+**Running last year's playbook.** Per-technician review targets and "ask them to mention you by name" were normal advice until April 2026. Enforcement removes reviews without warning.
 
 **Treating "posted" as "published".** A reply Google accepted and never showed is invisible to everyone including you, and sits in your reporting as handled.
 
@@ -230,7 +230,7 @@ Evaluating someone else's tooling? Ask one question: *how do you know the reply 
 Answer these against your own practice business, in writing.
 
 1. **Which of the four dimensions is weakest — volume, rating, recency or engagement?** A defensible answer names numbers: "31 reviews at 4.6, last one 74 days ago, replied to 20% — recency and engagement."
-2. **A staff member asks whether they can tell customers to mention them by name. What do you say, and which clause?** (No, since 17 April 2026: "merchants requesting that staff solicit reviews that include specific content, including content that identifies a staff member." Unprompted is fine.)
+2. **A staff member asks whether they can tell customers to mention them by name. What do you say, and which clause?** (No, since April 2026: "merchants requesting that staff solicit reviews that include specific content, including content that identifies a staff member." Unprompted is fine.)
 3. **Your tool says the reply posted. Name two ways it could still not be on Google.** (The profile is not in good standing; or it went under the wrong owning account.)
 4. **You can see five reviews for a competitor. What can you conclude, and what can you not?** (Tone and recurring complaints, not volume or trend — the sample is relevance-ranked, not random.)
 5. **Why is an automatic reply to every new review a policy problem, not a productivity win?** (Named as abusive behaviour without prior specific and express consent — and the merchant's account carries the consequence.)

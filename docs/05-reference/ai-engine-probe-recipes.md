@@ -104,7 +104,7 @@ Without an explicit instruction to name businesses, assistants frequently answer
 **Last verified:** 2026-07-27 — open, no controlled probe run
 **Probe (the one that would settle it):** Pick one keyword and one engine. Choose two coordinates far enough apart to sit in different local markets. Run N ≥ 10 fresh sessions at each. Compare mention rates *against the run-to-run noise floor established by [LSM-AI-16](#lsm-ai-16--one-run-is-a-sample-not-a-measurement)*, not against each other directly.
 
-For the map pack, proximity is one of the three documented ranking components and its effect is enormous at short range. For an assistant answering from a web-search tool, no such mechanism is documented, and the coordinate reaches the model only as prose ([LSM-AI-11](#lsm-ai-11--an-assistant-api-has-no-location-parameter--the-coordinate-goes-in-the-prompt-text)). Both "the coordinate is decisive" and "the coordinate is nearly inert" are consistent with what is publicly known.
+For the map pack, distance is one of the three components Google itself names — relevance, distance and prominence — and its effect is enormous at short range. For an assistant answering from a web-search tool, no such mechanism is documented, and the coordinate reaches the model only as prose ([LSM-AI-11](#lsm-ai-11--an-assistant-api-has-no-location-parameter--the-coordinate-goes-in-the-prompt-text)). Both "the coordinate is decisive" and "the coordinate is nearly inert" are consistent with what is publicly known.
 
 The trap is that this question looks trivially answerable. Two runs at two coordinates will differ, because two runs at *one* coordinate differ. Anyone showing you an AI geo-grid without a stated noise floor has measured nothing.
 
@@ -117,22 +117,28 @@ The trap is that this question looks trivially answerable. Two runs at two coord
 ### LSM-AI-16 · One run is a sample, not a measurement
 
 **Verdict:** WORKS
-**Last verified:** 2026-07-02
+**Last verified:** 2026-07-27
 **Probe:** Same prompt, same engine, five fresh sessions with no shared conversation history. Record the ordered list of business names from each. Count how many pairs are identical.
 
-Reruns of an identical local prompt routinely return different businesses, different orderings and different source domains. SparkToro has reported identical rerun lists in under 1% of cases; treat that figure as vendor-reported — the study's full methodology is not established here — and treat the *direction* as reproducible on your own data in fifteen minutes.
+Reruns of an identical prompt routinely return different businesses, different orderings and different source domains.
 
-This is why a screenshot of an assistant naming a client is worth nothing as evidence and quite a lot as a sales prop. It is a sample of one from a distribution nobody has characterised.
+The published measurement to cite is SparkToro's, run by Rand Fishkin with Patrick O'Donnell of Gumshoe.ai, published 2026-01-28 on data collected in November and December 2025: 2,961 prompt runs, 12 prompts, roughly 600 volunteers, across ChatGPT, Claude and Google's AI Overviews and AI Mode. Their headline is that "there's a &lt;1 in 100 chance that ChatGPT or Google's AI, if asked 100X, will give you the same list of brands in any two responses", with identical lists *in identical order* nearer 1 in 1,000. Two caveats travel with it: the co-author sells AI-visibility tracking, and the prompts were brand and product prompts rather than local ones. The direction is reproducible on your own data in fifteen minutes, which is the point of the probe above.
 
-**What to do instead:** Never publish, report or bill against a single run. Every claim is a rate over a stated number of runs, or it is an anecdote.
+That study also reports the constructive half, and it is the uncomfortable one for tooling: they found a brand's *visibility percentage* stable enough to track only when measured across **60 to 100+ runs**, and explicitly reject ranking position in AI answers as a metric. Any product reporting an AI-visibility rate from a handful of runs per cell — including the one described in this chapter, which uses five ([LSM-AI-17](#lsm-ai-17--report-rates-over-a-rolling-window-per-keywordengine-not-the-latest-answer)) — is reporting a noisier number than that research says is trustworthy. Say so rather than letting a rate imply a precision it does not have.
+
+This is also why a screenshot of an assistant naming a client is worth nothing as evidence and quite a lot as a sales prop. It is a sample of one from a distribution that is now partly characterised, and characterised as very wide.
+
+**What to do instead:** Never publish, report or bill against a single run. Every claim is a rate over a stated number of runs, or it is an anecdote — and the run count belongs next to the rate, because at small N the rate is mostly noise.
 
 ### LSM-AI-17 · Report rates over a rolling window per keyword×engine, not the latest answer
 
 **Verdict:** WORKS
-**Last verified:** 2026-07-02
-**Probe:** Read the implementation's window query: the last N live snapshots per `(keywordId, engine)` pair, with fixture rows excluded. N is 5 in this implementation.
+**Last verified:** 2026-07-27
+**Probe:** Read the implementation's window query: a `ROW_NUMBER() OVER (PARTITION BY keywordId, engine ORDER BY capturedAt DESC)` filtered to `rn <= N`, with fixture rows excluded in the same `WHERE` clause. N is 5 in this implementation, and the page reports N alongside the rates.
 
 A "latest check" view flips a business between visible and invisible on every run and teaches clients that the tool is broken. The unit of analysis is the *cell* — one keyword against one engine — and the metric is a rate across the last N runs in that cell.
+
+Two honest qualifications. **N = 5 is a compromise, not a sufficient sample**: the only published measurement of rerun variance puts a stable visibility percentage at 60–100+ runs ([LSM-AI-16](#lsm-ai-16--one-run-is-a-sample-not-a-measurement)), so five runs buys most of the improvement over one run and nothing like statistical comfort. And **not every view uses the window**: the same implementation's per-keyword presence matrix shows the *latest* snapshot per cell, because a matrix cell has to show one state. A rate and a matrix on the same page can therefore disagree, and a reader who has not been told which is which will assume the tool is broken.
 
 The metric definitions, so a competing implementation can be checked against these:
 
@@ -260,26 +266,30 @@ A judge pass — a second, plain (non-grounded) model call over the stored answe
 {
   "isRecommendation": true,
   "entities": [
-    { "name": "...", "kind": "local | chain | aggregator", "stance": "recommended | listed | hedged | negative" }
+    { "name": "...", "kind": "local | chain | aggregator | unknown", "stance": "recommended | listed | hedged | negative" }
   ]
 }
 ```
 
+`unknown` is not decoration: a model that returns a `kind` outside the enumeration must land somewhere, and silently coercing it to `local` would inflate the competitive set with directories. The parser in the implementation described here maps any unrecognised `kind` to `unknown` and any unrecognised `stance` to `listed`, which is the conservative direction for both.
+
 `kind` matters because it separates a real competitor from an aggregator punt ([LSM-AI-19](#lsm-ai-19--refusals-and-aggregator-punts-must-leave-the-denominator-not-count-as-a-miss)), and the non-self entities are a competitive set discovered for free — the businesses the engine reaches for in this market, which is not always the same list as the map pack's.
 
-**What to do instead:** Judge the stored text, not the live call, so the judge can be re-run with a better prompt over history. Keep a keyless heuristic as a fallback and record which path produced each row.
+**What to do instead:** Judge the stored text, not the live call, so the judge can be re-run with a better prompt over history. Keep a keyless heuristic as a fallback — and record which path produced each row. That last clause is the one to actually implement: the implementation described here has the heuristic but stores no field distinguishing a judged row from a heuristic one, which means its stance mix silently blends two instruments of very different quality. Do not copy that part.
 
 ### LSM-AI-25 · An unparseable judge reply must store null, never a false
 
 **Verdict:** WORKS
-**Last verified:** 2026-07-02
-**Probe:** Feed the judge a reply that is prose instead of JSON, or JSON missing the required keys. Check what the pipeline stores.
+**Last verified:** 2026-07-27
+**Probe:** Feed the judge a reply that is prose instead of JSON, or JSON missing the required keys. Check what the pipeline stores, and check separately what the *rate* built on that column then reports.
 
 There are three states, and two of them look like `false`: the answer did not recommend the business, and the judge could not tell you. Collapsing them makes every parse failure count as a miss, so the metric degrades exactly when the model is misbehaving — silently, and in the pessimistic direction.
 
 A judge failure must also never fail the run that produced the answer. The expensive part is the live answer; the judge is a cheap second pass over stored text and can be retried later.
 
-**What to do instead:** Store null for unparseable judge output, exclude nulls from the recommendation denominators, and expose the null count. A recommendation rate with an unstated number of unjudged runs behind it is not interpretable.
+**Where the reference implementation diverges, because it matters.** Its parser does return null on unparseable output, and its rate does exclude nulls from the recommendation denominator — both correct. But between the two, the service catches the null and substitutes a coarse keyword heuristic, which returns a non-null object with `isRecommendation: true`. So a parse failure is not stored as null there; it is stored as a low-quality judgement that enters the denominator. Null is reached only by a different path — fixture rows and answers with no text. The prescription below is what the entry recommends; it is not, on this point, a description of what that code does.
+
+**What to do instead:** Store null for unparseable judge output, exclude nulls from the recommendation denominators, and expose the null count. If you keep a heuristic fallback instead ([LSM-AI-24](#lsm-ai-24--keyword-matching-misclassifies-hedged-mentions--stance-needs-a-judge-pass)), flag those rows so they can be excluded later — an unflagged fallback is indistinguishable from a real judgement, which is the failure this entry exists to prevent. A recommendation rate with an unstated number of unjudged or heuristically-judged runs behind it is not interpretable.
 
 ---
 
@@ -301,7 +311,7 @@ The consequence of that guard is a real gap, and it should be stated rather than
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-02
-**Probe:** Same grounded Vertex call, twice, on a Gemini 2.5 model. At `maxOutputTokens: 700` the response comes back with `finishReason: MAX_TOKENS`, a truncated answer of about 66 characters, and **zero** `groundingChunks`. At `maxOutputTokens: 2000` the same call returns `STOP`, a full answer, and real cited domains — six in the run that established this.
+**Probe:** Same grounded Vertex call, twice, on a Gemini 2.5 model. At `maxOutputTokens: 700` the response comes back with `finishReason: MAX_TOKENS`, a heavily truncated answer, and **zero** `groundingChunks`. At `maxOutputTokens: 2000` the same call returns `STOP`, a full answer, and a non-empty list of cited domains. (Earlier versions of this entry gave an exact truncated length and an exact source count from the original run; those were single-run artefacts that would not reproduce, and have been removed rather than left to look like constants.)
 
 Gemini 2.5 models spend output tokens on internal reasoning *before* the visible reply. A budget sized for the answer alone is consumed before the answer starts, and the grounding metadata never materialises. Nothing in the response says "your budget was too small" in a form a naive client checks — you get a 200 with an empty source list.
 

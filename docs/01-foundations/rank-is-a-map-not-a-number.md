@@ -67,7 +67,7 @@ Almost everyone learns grid size as a spending decision: small grid cheap, big g
 
 A rank measurement needs exactly one thing from Google: **which places came back, in what order.** Not their ratings, not their phone numbers, not their hours — you are looking for your own entry in a list and reading off its index.
 
-Google prices a place search by *how much it tells you about each result*. Ask for the rich profile of every result and you are in the expensive tier. Ask for nothing but which places came back, in order, and the request lands in a tier Google bills at **$0.00**. Critically, asking for less does not change the results or their order — only how much of each result is described back to you. The position is the index either way.
+Google prices a place search by *how much it tells you about each result*. Ask for the rich profile of every result and you are in the expensive tier. Ask for nothing but which places came back, in order, and the request lands in a tier Google's own published price list marks **unlimited, at no charge** (checked 2026-07-27 — API pricing changes, so check it again before you build anything on it). Critically, asking for less does not change the results or their order — only how much of each result is described back to you. The position is the index either way.
 
 So the search half of a geo-grid scan has a wholesale cost of zero, at any grid size, at any volume. What remains genuinely chargeable is drawing the result on a real Google map, which happens once per scan and does not depend on n. The derivation — which requested fields push a call into which billed tier, with the tier prices — is [What Google's APIs actually cost](../05-reference/what-googles-apis-cost.md).
 
@@ -79,7 +79,7 @@ The consequence is not "grids are free" — every tool prices its own work, this
 
 Read the shape first. Read the numbers second, and read them suspiciously.
 
-Pins are coloured by position: green for top 3, yellow for 4–10, orange for 11–20, grey for not found. A grid reads twenty deep, so the distinction that matters is **coloured versus grey**.
+Pins are coloured by position. The legend under the map carries five swatches: green for top 3, yellow for 4–10, orange for 11–20, red for 20+, grey for not found. The red one is vestigial — a grid reads exactly twenty deep, so a point either comes back with a position of 20 or better or comes back with nothing, and in a real scan you will only ever see the other four. The distinction that matters is **coloured versus grey**.
 
 Five shapes cover most real grids. The causes below are inference from repeated reading, not documented behaviour.
 
@@ -91,9 +91,9 @@ Five shapes cover most real grids. The causes below are inference from repeated 
 | **Ring** | Weak at the centre, better further out | A dominant near neighbour sitting on top of you, or a centre point that is not really your address. |
 | **Scatter** | No spatial structure at all | Low prominence. Position is decided by tie-breaks, not geography. |
 
-Beneath the map the app prints a plain-language reading of the same thing — coverage, average, and the compass direction you are strongest and weakest in ("strongest to the west and weakest to the south-east"). Treat that as a second opinion to check your own reading against.
+*Above* the map the app prints a plain-language reading of the same thing — coverage, the average, the found rate ("you appear in the top 20 at 9 of 9 points"), and the compass direction you are strongest and weakest in ("strongest to the west and weakest to the south-east"). Treat that as a second opinion to check your own reading against. It only claims a direction when the gap between the best and worst side is large enough to mean something, so a genuine plateau produces no direction claim at all.
 
-Then the two summary figures, which have **different denominators** and are routinely misread because of it:
+*Beneath* the map sit the two summary figures, which have **different denominators** and are routinely misread because of it:
 
 - **Avg rank** — your average position *across the points where you appear*. Grey pins are not in it.
 - **Top-3 coverage** — the share of *all* points where you rank in the top 3.
@@ -128,7 +128,7 @@ Statisticians call this right-censoring. It matters because every average over a
 2. Scroll to **Geographic visibility**. If you have never scanned this keyword you will see an **Example scan** — a clearly labelled illustration drawn on the real map of your area. Those pins are not your data.
 3. Leave the detail level on **Quick** (`3×3 · ~2 mi`, `9 searches`).
 4. Read the price on the **Check now** button *before* you press it. Then press it.
-5. When the map appears, find the blue dot — that is your business. Each pin carries your position at that point.
+5. When the map appears, find the small solid dot at the grid centre — hover it and it reads **Your business**. Each numbered pin carries your position at that point. (The dot marks the grid's *centre*, which is your address unless you gave the keyword a **Search from** location, in which case it is that.)
 6. Write down two things: your position at the **centre** pin, and your position at each of the **four corner** pins.
 
 ![The keyword detail panel before any scan: a 5x5 map of coloured pins under a banner reading Example scan, and a search-volume box carrying a Test data badge](../../static/img/screens/keyword-detail.png)
@@ -168,10 +168,10 @@ Statisticians call this right-censoring. It matters because every average over a
 > You need: the stored scan from Lab 4.1. Re-reading a stored scan is free, so do this as often as you like.
 
 1. Reopen the keyword. The scan you already ran loads from storage — nothing is re-fetched.
-2. **Do not read the Avg rank / Top-3 coverage line yet.** Cover it if you have to.
+2. **Do not read the numbers yet** — neither the plain-language summary above the map nor the Avg rank / Top-3 coverage line below it. Cover both if you have to; the summary states the average in its second sentence.
 3. Describe the grid in one sentence using exactly one of: *smooth decay, plateau, cliff, ring, scatter*.
 4. Name the compass direction where you are weakest. Open Google Maps at that corner of the grid and search your keyword there. Who is winning that ground?
-5. Now read the plain-language summary above the map, including its "strongest to the … weakest to the …" claim. Does it agree with your sentence?
+5. Now uncover the plain-language summary above the map, including its "strongest to the … weakest to the …" claim. Does it agree with your sentence?
 6. Finally read **Avg rank** and **Top-3 coverage** — and write the found rate next to them: *appeared at N of 9 points*.
 
 **What good looks like.** Your one-sentence shape and the generated summary agree, and you can name a specific business responsible for your weak direction. You end with three figures, not two, and the third is what makes the other two safe to quote.
@@ -196,7 +196,7 @@ Statisticians call this right-censoring. It matters because every average over a
 
 Answer these against your own scan, not from memory.
 
-1. **Your tracker says #3. From where?** If you cannot name the coordinate the check ran from, you cannot defend the number. On a tracked keyword, the location it is measured from is shown as a chip on the detail panel.
+1. **Your tracker says #3. From where?** If you cannot name the coordinate the check ran from, you cannot defend the number. On a tracked keyword the detail panel shows chips for the **Search from** label, the language and the radius — but only for the ones you set yourself. Leave all three on their defaults, as Lab 3.1 does, and there are no chips at all: the origin is the business address, the language is Google's default for the region, the radius is three miles. A parameter you cannot see is still a parameter.
 2. **At how many of your nine points did you appear at all?** Say that before you say your average rank. If they disagree in tone — strong average, weak found rate — the average is the one lying.
 3. **A competitor claims "we rank #1 for *emergency plumber*".** What single question tells you whether the claim means anything? (*From what location, and how many locations were checked.*)
 4. **Your grid is a clean cliff — green to the north, grey to the south.** Name two plausible causes that have nothing to do with your profile, and one way to check each.

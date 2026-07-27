@@ -31,9 +31,13 @@ The five verdicts map onto documents like this.
 | `UNDOCUMENTED` | The documents are silent on the point, and the silence is itself the fact |
 | `OPEN QUESTION` | The clause exists but its application to a common architecture cannot be settled from the text |
 
-All documents below were fetched and quoted on **2026-07-16**. Each entry's `Last verified` is that date. The re-probe trigger for this area is a change to the source document's own revision date; several of these documents changed within a month of being read, so check the stamps before relying on an entry.
+All documents below were fetched and quoted on **2026-07-16**. Each entry's `Last verified` is that date unless it says otherwise. The re-probe trigger for this area is a change to the source document's own revision date; several of these documents changed within a month of being read, so check the stamps before relying on an entry.
 
-This chapter's entries begin at `LSM-POLICY-05`. IDs are assigned in the order a fact was added to its area rather than by chapter, and `LSM-POLICY-01` to `-04` are defined elsewhere in Part V — in [the local search changelog](./local-search-changelog.md) and [write limits and failure modes](./write-limits-and-failure-modes.md). Nothing is missing.
+**The trigger has already fired once.** On a re-read of **2026-07-27**, both the Places policies page and the Place IDs guide had moved from `Last updated 2026-07-10 UTC` to `Last updated 2026-07-20 UTC` — four days after this chapter was written. The entries drawn from those two pages were re-read on 2026-07-27 and carry that date; one of them ([LSM-POLICY-06](#lsm-policy-06--the-default-rule-for-places-content-is-no-caching-at-all)) had its quoted sentence replaced by Google in that revision, and is corrected below. The two Maps Platform contract documents (Terms of Service, Service Specific Terms) could **not** be re-read in full on 2026-07-27 — the pages exceed what our fetch tool returns — so their `Last verified` stays 2026-07-16 and their revision dates are as recorded then, not as re-confirmed. Treat that as a known gap, not as a re-verification.
+
+This chapter's entries begin at `LSM-POLICY-05`. IDs are assigned in the order a fact was added to its area rather than by chapter, and `LSM-POLICY-01` to `-04` are defined elsewhere in Part V — in [the local search changelog](./local-search-changelog.md) and [write limits and failure modes](./write-limits-and-failure-modes.md).
+
+> **Known defect in the ID scheme, 2026-07-27.** Those two chapters currently define `LSM-POLICY-01` and `LSM-POLICY-02` *both*, with different facts under each — and the same collision exists across several other areas of Part V. Until that is resolved, an `LSM-POLICY-01` citation is ambiguous and you should cite the chapter alongside the ID. The `LSM-POLICY-05` to `-42` range used below is defined only here and is not affected.
 
 ## The controlling documents
 
@@ -43,8 +47,8 @@ This chapter's entries begin at `LSM-POLICY-05`. IDs are assigned in the order a
 | --- | --- | --- | --- |
 | Google Maps Platform Terms of Service | `cloud.google.com/maps-platform/terms` | Last modified June 23, 2026 | Everything from Places API |
 | Google Maps Platform Service Specific Terms | `cloud.google.com/maps-platform/terms/maps-service-terms` | Last modified June 10, 2026 | The per-API caching grants |
-| Policies and attributions for Places API | `developers.google.com/maps/documentation/places/web-service/policies` | Last updated 2026-07-10 UTC | Display and attribution of Places content |
-| Place IDs guide | `developers.google.com/maps/documentation/places/web-service/place-id` | Last updated 2026-07-10 UTC | Place ID storage and refresh |
+| Policies and attributions for Places API | `developers.google.com/maps/documentation/places/web-service/policies` | Read at 2026-07-10 UTC; **now 2026-07-20 UTC** | Display and attribution of Places content |
+| Place IDs guide | `developers.google.com/maps/documentation/places/web-service/place-id` | Read at 2026-07-10 UTC; **now 2026-07-20 UTC** | Place ID storage and refresh |
 | Business Profile APIs policies | `developers.google.com/my-business/content/policies` | Last updated 2025-08-28 UTC | Owner-consented GBP data |
 | Business Profile third-party policies | `support.google.com/business/answer/7353941` | **No revision date shown** (© 2026 page) | Agencies managing others' profiles |
 | Google API Services User Data Policy | Google API Services User Data Policy page | Last updated February 15, 2024 | All OAuth-scope data |
@@ -98,12 +102,18 @@ Public place data and owner-consented profile data come from different APIs unde
 ### LSM-POLICY-06 · The default rule for Places content is no caching at all
 
 **Verdict:** WORKS
-**Last verified:** 2026-07-16
+**Last verified:** 2026-07-16 (contract text); Places policies page re-read 2026-07-20 revision on 2026-07-27
 **Source:** Google Maps Platform Terms of Service §3.2.3(b) (No Caching), last modified June 23, 2026
 
 > No Caching. Customer will not cache Google Maps Content except as expressly permitted under the Maps Service Specific Terms.
 
-The clause is a default-deny. It does not enumerate what you may not store; it prohibits everything and defers the exceptions to a second document. The Places API's exceptions in that second document are two, and they are entries [LSM-POLICY-08](#lsm-policy-08--place-ids-are-exempt-from-the-caching-restrictions-and-may-be-stored-indefinitely) and [LSM-POLICY-09](#lsm-policy-09--places-latitudelongitude-may-be-cached-for-30-consecutive-calendar-days-then-must-be-deleted). Google's own plain-language restatement on the Places policies page (last updated 2026-07-10 UTC) reads: "You must not pre-fetch, cache, or store Places API content beyond the allowed exceptions, although the `place_id` is exempt from caching restrictions."
+The clause is a default-deny. It does not enumerate what you may not store; it prohibits everything and defers the exceptions to a second document. The Places API's exceptions in that second document are two, and they are entries [LSM-POLICY-08](#lsm-policy-08--place-ids-are-exempt-from-the-caching-restrictions-and-may-be-stored-indefinitely) and [LSM-POLICY-09](#lsm-policy-09--places-latitudelongitude-may-be-cached-for-30-consecutive-calendar-days-then-must-be-deleted).
+
+**Correction, 2026-07-27.** An earlier version of this entry quoted the Places policies page as reading: "You must not pre-fetch, cache, or store Places API content beyond the allowed exceptions, although the `place_id` is exempt from caching restrictions." On the `Last updated 2026-07-20 UTC` revision that sentence is **not on the page**, and we cannot now establish that it ever was in that form. What the page carries on the 2026-07-27 read is the exemption stated from the other direction:
+
+> Note that the place ID, used to uniquely identify a place, is exempt from the caching restrictions. You can therefore store place ID values indefinitely.
+
+The substance is unchanged — the contract default is no caching, and the place ID is carved out of it — but the default-deny itself is stated in §3.2.3(b) of the Terms of Service quoted above, not in a plain-language restatement on the developer page. Rely on the contract clause.
 
 **What to do instead:** Design so that Google fields are read at display time and not persisted — store the place ID plus your own derived values, and re-issue the request when you need the content again. If you need durable historical business attributes, they have to come from somewhere other than the Places API.
 
@@ -131,8 +141,8 @@ Two further points close the likely escape routes. The section is titled "Places
 ### LSM-POLICY-08 · Place IDs are exempt from the caching restrictions and may be stored indefinitely
 
 **Verdict:** WORKS
-**Last verified:** 2026-07-16
-**Source:** GMP Service Specific Terms §A.3 (Google ID Caching), last modified June 10, 2026; Policies and attributions for Places API, "Exceptions from caching restrictions", last updated 2026-07-10 UTC; Place IDs guide, last updated 2026-07-10 UTC
+**Last verified:** 2026-07-16 (contract text); developer pages re-read 2026-07-27
+**Source:** GMP Service Specific Terms §A.3 (Google ID Caching), last modified June 10, 2026; Policies and attributions for Places API, last updated **2026-07-20 UTC**; Place IDs guide, last updated **2026-07-20 UTC** — both quotes below re-confirmed verbatim on the 2026-07-20 revision
 
 > Customer may cache the Google ID values from the Services that return such field and allow caching, in accordance with its Documentation. For example, Customer may cache (a) place_id from Places API, Directions API, Geolocation API and Routes API, (b) pano_ID, from Street View Static API, and (c) video_ID from Aerial View API.
 
@@ -319,9 +329,9 @@ Read together with the ordering-disclosure requirement in [LSM-POLICY-25](#lsm-p
 ### LSM-POLICY-21 · "Powered by Google" is not in any current document
 
 **Verdict:** GONE
-**Last verified:** 2026-07-16
-**Source:** Policies and attributions for Places API, "Google Maps attribution requirements" note, last updated 2026-07-10 UTC
-**Probe:** Full-text search the Places policies page, the GMP Terms of Service and the Service Specific Terms for the string `Powered by Google`. Zero hits in all three, as of 2026-07-16.
+**Last verified:** 2026-07-27
+**Source:** Policies and attributions for Places API, "Google Maps attribution requirements" note, last updated **2026-07-20 UTC**
+**Probe:** Full-text search the Places policies page, the GMP Terms of Service and the Service Specific Terms for the string `Powered by Google`. Zero hits in all three, as of 2026-07-16; re-confirmed zero hits on the Places policies page's 2026-07-20 revision, read 2026-07-27.
 
 The attribution string moved twice: from "Powered by Google" to "Google", and now to "Google Maps". Google's own note on the transition:
 
@@ -335,7 +345,7 @@ Note what is and is not tolerated. Existing **"Google"** attributions may contin
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-16
-**Source:** Policies and attributions for Places API — "Display Google Maps attribution", "Logo attribution", "Text attribution", last updated 2026-07-10 UTC
+**Source:** Policies and attributions for Places API — "Display Google Maps attribution", "Logo attribution", "Text attribution", last updated **2026-07-20 UTC**, re-read 2026-07-27
 
 > You must follow Google Maps attribution requirements when displaying Content from Google Maps Platform APIs in your app or website. You don't need to add extra attribution if the Content is shown on a Google Map where the attribution is already visible.
 
@@ -362,7 +372,7 @@ The `translate="no"` requirement is the one most often missed, because the failu
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-16
-**Source:** Policies and attributions for Places API — "Visual requirements", last updated 2026-07-10 UTC; Google Maps Platform Terms of Service §3.2.2(b), last modified June 23, 2026
+**Source:** Policies and attributions for Places API — "Visual requirements", quoted from the 2026-07-10 UTC revision; *the page has since moved to 2026-07-20 UTC and this section was not re-read on 2026-07-27*; Google Maps Platform Terms of Service §3.2.2(b), last modified June 23, 2026
 
 > Position attribution near the top or bottom of the content, and within the same visual container. For a single line of content, attribution can be positioned to the right or left. Visually distinguish Google Maps Platform Content from other content by using UI cues such as a border, background color, shadow, or sufficient whitespace. Don't misrepresent Google Maps by attributing it with non-Google Maps Platform content. Verify that the attribution is always visible and legible. Never remove, hide, obscure, or modify it.
 
@@ -378,7 +388,7 @@ Two obligations run in opposite directions and are easy to breach at once. You m
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-16
-**Source:** Policies and attributions for Places API — "Attribute all content to the content author" and "Provide direct access to the source content on Google Maps", last updated 2026-07-10 UTC
+**Source:** Policies and attributions for Places API — "Attribute all content to the content author" and "Provide direct access to the source content on Google Maps", last updated **2026-07-20 UTC**, re-read 2026-07-27
 
 > You must always credit the author when displaying photos or reviews. Each photo and review includes an author attribution (author's avatar image, name, and profile link). Visual requirements for author attribution: Attribute the author using all available resources (avatar, name, and profile link) when space allows. For reviews, If space is limited, the minimum requirement is to display the author's avatar. For photos, if space is limited (such as in a gallery or for thumbnails), the author attribution can be omitted, provided that the user is able to access a larger version of the image that includes the full author attribution. Position author attribution so it is clearly associated with the author's photo or review.
 
@@ -396,7 +406,7 @@ Third-party attribution strings the API returns must also be rendered:
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-16
-**Source:** Policies and attributions for Places API — "Describe how reviews are ordered and filtered", "Display the month and year that reviewers visited places in France", "Compliance with applicable laws", last updated 2026-07-10 UTC
+**Source:** Policies and attributions for Places API — "Describe how reviews are ordered and filtered", "Display the month and year that reviewers visited places in France", "Compliance with applicable laws", last updated **2026-07-20 UTC**, re-read 2026-07-27
 
 > Include a clear notice that describes how reviews are being ordered and filtered including any search criteria applied. By default, reviews are ordered by relevance.
 
@@ -414,7 +424,7 @@ That sentence covers the items marked "(recommended)" on the page — relative p
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-16
-**Source:** Google Maps Platform Terms of Service §3.2.2(a)(i)–(iii), last modified June 23, 2026; Policies and attributions for Places API, page summary, last updated 2026-07-10 UTC
+**Source:** Google Maps Platform Terms of Service §3.2.2(a)(i)–(iii), last modified June 23, 2026; Policies and attributions for Places API, page summary, quoted from the 2026-07-10 UTC revision; *the page has since moved to 2026-07-20 UTC and this section was not re-read on 2026-07-27*
 
 > The Customer Application's terms of service will (A) notify users that the Customer Application includes Google Maps features and content; and (B) state that use of Google Maps features and content is subject to the then-current versions of the: (1) Google Maps End User Additional Terms of Service at https://maps.google.com/help/terms_maps/; and (2) Google Privacy Policy at https://policies.google.com/privacy.
 
@@ -436,7 +446,7 @@ The Places policies page adds the standalone requirement:
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-16
-**Source:** Business Profile APIs policies — Prohibited practices > Content storage, last updated 2025-08-28 UTC
+**Source:** Business Profile APIs policies — Prohibited practices > Content storage, last updated 2025-08-28 UTC; re-read and quote re-confirmed 2026-07-27
 
 > You cannot pre-fetch, cache, index, or store any content provided through the Business Profile APIs ("Content") for use outside of your Business Profile project except for limited amounts of Content. You can store limited amounts of Content only to improve the performance of your project. Stored Content must meet the following requirements: It must be stored temporarily for no more than 30 calendar days. It must be stored securely. It cannot be manipulated or aggregated in any way. At no time may you store Content in order to prevent Google from tracking usage of your Business Profile project.
 
@@ -444,13 +454,13 @@ Four constraints, written unconditionally: **limited amounts**, **performance pu
 
 The aggregation wording deserves separate attention. On a literal reading, computing a monthly average rating or a review-count trend from stored GBP Content is manipulation or aggregation of Stored Content.
 
-**Consequence:** A tool that shows a merchant three years of their own review history is doing something the plain text of this policy does not authorise, and is relying — knowingly or not — on a reading that the document does not state. That is a position to take deliberately, document, and put in front of counsel. It is not a position to arrive at by never reading the clause.
+**Consequence:** If you show a merchant three years of their own review history, the plain text of this clause does not authorise it and you are relying on a reading the document does not state — most likely the permissive one in [LSM-POLICY-37](#lsm-policy-37--open--whether-the-30-day-gbp-cap-applies-to-a-merchants-own-data-under-their-own-oauth-grant). That is a position to take deliberately, write down, and put in front of counsel. It is not a position to arrive at by never reading the clause. Nothing here supports a conclusion about anyone else's product: as set out at the top of this chapter, an operator's contracts, licences and data sources are not public, and the same feature can rest on an arrangement we cannot see.
 
 ### LSM-POLICY-28 · Automating review replies without prior specific and express consent is prohibited
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-16
-**Source:** Business Profile APIs policies — Prohibited practices > Automated use of your Business Profile project, last updated 2025-08-28 UTC
+**Source:** Business Profile APIs policies — Prohibited practices > Automated use of your Business Profile project, last updated 2025-08-28 UTC; re-read and quote re-confirmed 2026-07-27
 
 > You may not use the Business Profile APIs to engage in abusive behaviors, which includes but isn't limited to fraudulent, abusive, or otherwise invalid activity. For example, you must not automate or trigger review replies, Q&As, listing creations, listing edits, or other actions without the user's prior specific and express consent.
 
@@ -476,9 +486,11 @@ The third-party policies page is stricter about the form that authorisation take
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-16
-**Source:** Business Profile APIs policies — Prohibited practices > Automated use of your Business Profile project, last updated 2025-08-28 UTC
+**Source:** Business Profile APIs policies — Prohibited practices > Automated use of your Business Profile project, last updated 2025-08-28 UTC; re-read 2026-07-27, on which the closing Note was found to be longer than previously quoted
 
-> You cannot allow agencies, end-clients, or other third parties to use your Business Profile project, or your own APIs, in a way that allows those third parties to avoid applying for their own Business Profile project. Any automatic or programmatic use of Business Profile by agencies or end-clients requires them to use their own Business Profile project. You cannot provide indirect access to your Business Profile project. End users of your Business Profile APIs need to manually sign in to use it. They're not allowed automatic access to make manual or programmatic changes to their accounts. For example, if you're a tool provider that licenses listings-management software to agencies and end-clients, you cannot develop your own API that allows your clients to access the Business Profile APIs through automatic or programmatic computer scripts. Note: This policy doesn't restrict your own use of the Business Profile APIs in a programmatic or automated way.
+> You cannot allow agencies, end-clients, or other third parties to use your Business Profile project, or your own APIs, in a way that allows those third parties to avoid applying for their own Business Profile project. Any automatic or programmatic use of Business Profile by agencies or end-clients requires them to use their own Business Profile project. You cannot provide indirect access to your Business Profile project. End users of your Business Profile APIs need to manually sign in to use it. They're not allowed automatic access to make manual or programmatic changes to their accounts. For example, if you're a tool provider that licenses listings-management software to agencies and end-clients, you cannot develop your own API that allows your clients to access the Business Profile APIs through automatic or programmatic computer scripts. Note: This policy doesn't restrict your own use of the Business Profile APIs in a programmatic or automated way. The policy just doesn't allow third-parties to access the Business Profile APIs in a programmatic or automated way when they use your API project.
+
+**Correction, 2026-07-27:** an earlier version of this entry stopped the quote at "…in a programmatic or automated way." and omitted the sentence after it. That omission mattered. The full Note does not merely preserve your own automation as an exception — its second sentence states the *scope of the whole prohibition*: what is disallowed is **third parties accessing the Business Profile APIs programmatically when they use your API project**. Read with that sentence, the clause is aimed at third-party pass-through, not at automation as such.
 
 The closing note is as important as the prohibition. **Your own** background automation on behalf of consented merchants is expressly unrestricted; what is prohibited is handing third parties a programmatic path through your project.
 
@@ -610,11 +622,13 @@ The clause opens with a scope qualifier and then lists three unconditional requi
 **Last verified:** 2026-07-16
 **Source:** Business Profile APIs policies — Prohibited practices > Automated use of your Business Profile project, last updated 2025-08-28 UTC
 
-> You cannot provide indirect access to your Business Profile project. End users of your Business Profile APIs need to manually sign in to use it. They're not allowed automatic access to make manual or programmatic changes to their accounts. … Note: This policy doesn't restrict your own use of the Business Profile APIs in a programmatic or automated way.
+> You cannot provide indirect access to your Business Profile project. End users of your Business Profile APIs need to manually sign in to use it. They're not allowed automatic access to make manual or programmatic changes to their accounts. … Note: This policy doesn't restrict your own use of the Business Profile APIs in a programmatic or automated way. The policy just doesn't allow third-parties to access the Business Profile APIs in a programmatic or automated way when they use your API project.
 
 The clause was written before agentic tooling was common, and it does not address it. A merchant who signed in manually, granted OAuth, and then instructs an assistant to fetch their reviews is describable two ways: as the merchant using your product through a client of their choosing, or as programmatic third-party access to your project.
 
 Both readings survive the text. The explicit example in the policy — a tool provider developing "your own API that allows your clients to access the Business Profile APIs through automatic or programmatic computer scripts" — is closer to the second, and the note preserving your own automation is closer to the first.
+
+**Re-read 2026-07-27, and the balance shifted.** The Note's second sentence — recovered on this re-read and missing from the earlier version of this chapter ([LSM-POLICY-30](#lsm-policy-30--no-indirect-or-programmatic-third-party-access-to-your-business-profile-project)) — defines the prohibition as third parties "access[ing] the Business Profile APIs in a programmatic or automated way **when they use your API project**". That wording points at a third party operating through your project, which an agent acting for the account's own signed-in owner arguably is not. It does not close the question — "third party" is undefined, and an agent is not obviously the user — but it is the strongest textual support for the permissive reading, and it was absent from the analysis before. The question stays OPEN; the argument is now less evenly balanced than the table above suggests.
 
 **What would close it:** a Google statement on agent-mediated access, or a policy revision that names it. Until then, mitigations rather than conclusions: human sign-in before any grant, a human approval step before any write ([LSM-POLICY-28](#lsm-policy-28--automating-review-replies-without-prior-specific-and-express-consent-is-prohibited)), no bulk operations, and no path for an agency or partner to drive another party's profile programmatically.
 
@@ -622,7 +636,7 @@ Both readings survive the text. The explicit example in the policy — a tool pr
 
 **Verdict:** OPEN QUESTION
 **Last verified:** 2026-07-16
-**Source:** Google Maps Platform Terms of Service §3.2.3(a)–(b) (last modified June 23, 2026) and Policies and attributions for Places API (last updated 2026-07-10 UTC), read for any provision addressing offline or fixed-media artifacts
+**Source:** Google Maps Platform Terms of Service §3.2.3(a)–(b) (last modified June 23, 2026) and Policies and attributions for Places API (read at the 2026-07-10 UTC revision; the page has since moved to 2026-07-20 UTC and was not re-read for this point on 2026-07-27), read for any provision addressing offline or fixed-media artifacts
 
 No document in either regime addresses PDFs, emails or other fixed artifacts containing Places content. The relevant provisions cut both ways: a report rendered on demand from a fresh API call is arguably display within the Customer Application, while a PDF written to object storage and re-served later is "store, reshare, or rehost" on the face of §3.2.3(a).
 

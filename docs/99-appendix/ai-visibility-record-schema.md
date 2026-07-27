@@ -246,6 +246,7 @@ One implementation, as of **2026-07-27**, so you can see how a shipped instrumen
 | `outcome.answerText` | Stored verbatim, and shown in full when you expand a keyword row |
 | `outcome.sources[]` | Stored as `{ title, domain }` pairs, ordered — with the synthetic self-insertion described above |
 | `derived.isRecommendation`, `entities`, `selfPosition`, `selfStance` | Stored as the judge's output, or null when the judge could not parse the reply |
+| `derived.selfSourcePosition` | Stored, as a 1-based index of the business among the source list — but the list it indexes into is the one carrying the synthetic self-insertion described above, so on those rows it is a position among sources the engine did not all return |
 | `derived.named`, `derived.domainCited` | **Derived at read time** from the current business name and website |
 | `probe.anchorLat` / `anchorLng` | **Not on the row.** Taken at run time from the tracked keyword's **Search from** values, falling back to the business's own coordinates |
 | `probe.questionText` | **Not on the row.** Referenced through the tracked keyword |
@@ -257,7 +258,7 @@ If you are keeping records that must survive a prompt change or a model roll, wr
 
 ## Getting rows out
 
-Free reads, in the app: open **AI Visibility** (`/b/{businessId}/ai-visibility`), expand a keyword row, and each engine panel shows the verdict, the timestamp, the verbatim answer with your name highlighted, and the ordered source list. The **Sources cited by AI** card aggregates domains across the window. Nothing here spends anything; only **Check** does.
+Free reads, in the app: open **AI Visibility** (`/b/{businessId}/ai-visibility`), expand a keyword row, and each engine panel shows the verdict, how long ago the check ran, the verbatim answer with your name highlighted, and the ordered source list. Note that the panel gives elapsed time — "checked 3 days ago" — not a calendar date, so if the date is the thing you are recording, work it out and write it down at the moment you read it. The **Sources cited by AI** card aggregates domains across the window. Nothing here spends anything; only **Check** does.
 
 There is **no CSV or JSON export button** as of 2026-07-27. Transcribing by hand is the manual path.
 

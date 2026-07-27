@@ -37,7 +37,7 @@ You may average ordinals — everyone does, and this app does — but not believ
 
 ## A grey pin is censored, not bad
 
-A grey pin does not mean rank 21. It means the scan reads twenty deep and you were not in it, so your true position is *somewhere worse than 20* — 22, or 400, or not eligible for that query at that point at all. The instrument cannot tell those apart. (The legend carries a red **20+** band, but nothing can hold a position past twenty, so it never fills; the grey pins themselves print `20+` as a label, which reads like a position and is not one.)
+A grey pin does not mean rank 21. It means the scan reads twenty deep and you were not in it, so your true position is *somewhere worse than 20* — 22, or 400, or not eligible for that query at that point at all. The instrument cannot tell those apart. (The legend of a finished scan carries a red **20+** band, but the scan asks for twenty results and stops, so nothing can come back holding a position past twenty and that band never fills; the grey pins themselves print `20+` as a label, which reads like a position and is not one. Only the *example* panel fills the red band, because it draws its one unranked point there instead of grey.)
 
 Statisticians call this right-censoring, and there is no clever fix. Every summary must do *something* with those pins, and each choice produces a different number from the same measurements. Watch one worked example travel — illustrative figures, not a real business. Twenty-five points; you appear at nine, at positions 1, 2, 2, 3, 5, 7, 11, 14, 19; sixteen grey.
 
@@ -54,13 +54,15 @@ The app itself makes the "impute 21" choice in one place: the compass sentence a
 
 The panel shows you all of this before you have run anything, using stand-in numbers:
 
-![The Geographic visibility panel in its example state, showing a 5x5 grid of mixed green, yellow and orange pins over Helsinki under a banner reading Example scan](../../static/img/screens/keyword-detail.png)
+![The Geographic visibility panel in its example state, showing a 5x5 grid of mixed green, yellow, orange and one red pin over Helsinki under a banner reading Example scan](../../static/img/screens/keyword-detail.png)
 
-*Placeholders, and the app says so: the banner reads **Example scan — pick a detail level above and press Check now to map your real positions**. Do not read 32% or #7 as a measurement of anything. What is real here is the furniture, and it is the furniture this chapter is about — the two figures on different denominators (top 3 in **32% of the area**, over all 25 points; **avg rank 7**, over the 24 where the business appeared), the four colour bands the pins are drawn from, and the compass sentence, "strongest to the west and weakest to the south-east", which is the one place a missing point silently becomes a 21.*
+*Placeholders, and the app says so: the banner reads **Example scan — pick a detail level above and press Check now to map your real positions**. Do not read 32% or #7 as a measurement of anything. What is real here is the furniture, and it is the furniture this chapter is about — the two figures on different denominators (top 3 in **32% of the area**, over all 25 points; **avg rank 7**, over the 24 where the business appeared), the colour bands the pins are drawn from, and the compass sentence, "strongest to the west and weakest to the south-east", which is the one place a missing point silently becomes a 21. Two details of the example are not how a finished scan behaves: it labels the coverage figure **Visibility** where a real result says **Top-3 coverage**, and it draws its one unranked point in the red **20+** band where a real result would show grey **Not found** — the distinction the next section is entirely about.*
 
 ## The centre is not a neutral place to stand
 
 A grid centres on the keyword's search point when one is set, otherwise on the business coordinates — sensible, and a structural bias. The business address is where your distance term is zero and every competitor's is not: the most flattering coordinate on the map ([Rank is a map, not a number](../01-foundations/rank-is-a-map-not-a-number.md)). A symmetric lattice around it over-samples your best neighbourhood, so **an area average from a business-centred grid is biased upward** against the same area sampled from a centre chosen without reference to you.
+
+One reading hazard follows from that, and it is in the picture rather than the arithmetic: the map drops a blue dot at the middle of the lattice and labels it *Your business*. When you set a **Search from** location the lattice moves and the dot moves with it, so the dot marks the centre of the scan, not necessarily the address. Check which of the two you are looking at before you narrate a gradient "away from the shop".
 
 That makes the grid a *self-centred* estimator rather than a useless one: fine while every comparison uses the same centre, lethal the moment two centres differ.
 
@@ -76,7 +78,7 @@ Here is the question nobody selling grid scans answers: **run the same grid twic
 
 If the answer is four pins, a report claiming a four-pin improvement is reporting nothing — and you cannot know which side of that line you are on until you measure it. Expect it to be non-zero *(inference, from the mechanism rather than a published study)*: rank is a sort order over frequently near-tied scores, so a small recomputation reorders businesses, and Google's index changes continuously.
 
-Two properties of a grid scan rule out the usual suspects, though. It runs server-side with no logged-in user, no history and no device, so **personalisation is not a source of run-to-run variation here** the way it is when you check your own rank on your own phone. And every point is an explicit coordinate rather than an inferred location, so the searcher's position is exactly reproducible. What varies is Google's answer, not the question.
+Two properties of a grid scan narrow the field, though. It runs server-side with no logged-in user, no history and no device, so **the personalisation you get on your own phone — your account, your search history, your handset — is not in play here**. And every point is an explicit coordinate rather than an inferred location, so the searcher's position is exactly reproducible. What varies is Google's answer, not the question. *(Open question: Google publishes nothing about whether its place results vary between otherwise identical server-side callers. "No personalisation" is what the absence of a user session implies, not a documented guarantee — which is another reason to measure the variation rather than assume it away.)*
 
 Nobody outside Google can tell you how large that variation is on your market, this month; a general reliability figure for local grids is a figure nobody measured on your data. Lab 18.2 measures yours, and its output — your **noise floor** — goes into every report you write afterwards.
 
@@ -98,7 +100,7 @@ On a Quick grid, "coverage rose 11 points" is the smallest non-zero change that 
 
 > **Your minimum detectable effect is the larger of one pin and your measured noise floor. Anything smaller is not a result, whatever direction it points in.**
 
-Now the part that surprises people. Normally you shrink an error bar by increasing the sample size. **Here you cannot**: the presets change extent, not resolution, so at one-mile spacing a 7×7 is a same-density reading of nine times the area rather than a sharper reading of the same area ([Lab 4.2](../01-foundations/rank-is-a-map-not-a-number.md)). Increasing n changes the estimand instead of sharpening the estimate — finer granularity of a *different quantity*, over ground that may be irrelevant.
+Now the part that surprises people. Normally you shrink an error bar by increasing the sample size. **Here you cannot**: all three presets scan at the same one-mile spacing and differ only in how far out they reach — the buttons say so, `3×3 · ~2 mi`, `5×5 · ~4 mi`, `7×7 · ~6 mi`. A Detailed scan is therefore a same-density reading of roughly nine times the ground a Quick scan covers, not a sharper reading of the same ground ([Lab 4.2](../01-foundations/rank-is-a-map-not-a-number.md)). Increasing n changes the estimand instead of sharpening the estimate — finer granularity of a *different quantity*, over ground that may be irrelevant.
 
 ## Three traps that survive good statistics
 
@@ -119,7 +121,7 @@ Now the part that surprises people. Normally you shrink an error bar by increasi
 > You need: a stored grid scan — [Lab 4.1](../01-foundations/rank-is-a-map-not-a-number.md). Re-reading a stored scan never re-fetches, so this costs nothing however long you take.
 
 1. Open **Rankings**, select the keyword, and let the stored scan load under **Geographic visibility**. Note the **Checked …** stamp so you know which scan you are reading.
-2. Count the pins into four bands by colour: top 3 (green), 4–10 (yellow), 11–20 (orange), not found (grey). The four must sum to your point count.
+2. Count the pins into four bands by colour: top 3 (green), 4–10 (yellow), 11–20 (orange), not found (grey). The four must sum to your point count. (The legend lists a fifth band, red **20+**; on a finished scan it is always empty, for the reason above.)
 3. Compute the found rate — ranked pins ÷ all pins — and check it against the plain-language paragraph above the map, which states it in words.
 4. Compute "average rank" three ways: over found pins only; with every grey pin imputed at 21; with every grey pin imputed at 50. Write all three side by side, then find which one the app's **Avg rank** matches. It is the first.
 5. The fourth way is to refuse the average. Write the sentence you would actually put in a report: it must carry the found rate and the top-3 count, and must not carry an unqualified mean.
@@ -147,7 +149,7 @@ Now the part that surprises people. Normally you shrink an error bar by increasi
 
 **If it went wrong.**
 - *No **Compare with previous scan** link.* Only one stored scan exists — confirm the first completed before you ran the second.
-- *"These scans don't overlap — no comparable points."* The centre moved between runs; check the keyword's **Search from** chip. Nothing else produces that on two back-to-back runs.
+- *"These scans don't overlap — no comparable points."* The centre moved between runs; check the location chip beside the keyword, which shows whatever was typed into **Search from** when it was added. Nothing else produces that on two back-to-back runs.
 - *Outer pins show a neutral dot.* You changed preset, so only the shared inner pins are evidence. Re-run at one preset. And if both scans came back entirely grey, you measured nothing — pick a keyword the business competes for.
 
 **What you just learned.** Reliability is measured, not assumed, and it is cheap. One honest "that is inside our noise" in a client meeting is worth more than a year of green arrows.
@@ -185,8 +187,8 @@ Now the part that surprises people. Normally you shrink an error bar by increasi
 Answer against your own scan, with your Lab 18.1 counts in front of you.
 
 1. **Average rank improved from 8.2 to 6.4 while the found rate fell from 14/25 to 9/25. What happened, and what do you report?** (You lost five of your worst points; deleting them from the denominator raised the mean. Lead with the found rate and call it a decline.)
-2. **Top-3 coverage went from 22% to 26% on a 5×5 grid. How many pins is that, and can you defend it?** (One. Only if your measured noise floor is below one pin.)
-3. **You want a more precise reading of the same three square miles. Which preset gets it?** (None. Presets buy extent at fixed spacing; precision at fixed extent needs tighter spacing, run by hand.)
+2. **Top-3 coverage went from 20% to 24% on a 5×5 grid. How many pins is that, and can you defend it?** (One. Only if your measured noise floor is below one pin. Note also that on 25 points the figure can only ever land on a multiple of four — a quoted 22% or 26% did not come from a Standard grid.)
+3. **You want a more precise reading of the same three square miles. Which preset gets it?** (None. All three scan at one-mile spacing and buy extent, not resolution; a sharper reading of the same ground would need tighter spacing, which the presets do not offer.)
 4. **Name every assumption inside "our average rank is 5.9".** At minimum: grey pins excluded; positions treated as an interval scale; grid centred on the business; every point weighted equally regardless of who lives there; one keyword, one surface, one moment, depth twenty.
 
 ---

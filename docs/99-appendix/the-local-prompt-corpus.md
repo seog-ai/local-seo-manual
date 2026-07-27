@@ -68,7 +68,7 @@ Each clause is load-bearing:
 - **`Someone near latitude…`** — third person, so the model is answering about a place rather than about you. The coordinate is a hint the model may honour, ignore or reinterpret; it is not a constraint on retrieval.
 - **`"{filled template}"`** — quoted, so the customer's phrasing survives intact instead of being absorbed into your instructions.
 - **`the specific local businesses… by name`** — without it, assistants routinely answer with criteria and advice, and there is nothing to extract.
-- **`citing your sources`** — without it, several engines return no source list at all, which makes the citation axis *unmeasurable* for that run rather than negative ([LSM-AI-20](../05-reference/ai-engine-probe-recipes.md)).
+- **`citing your sources`** — without it, several engines return no source list at all, which makes the citation axis *unmeasurable* for that run rather than negative ([LSM-AI-20](../05-reference/ai-engine-probe-recipes.md#lsm-ai-20--mention-and-citation-are-independent-axes-and-must-be-recorded-separately)).
 
 Two things that will quietly ruin a run:
 
@@ -160,7 +160,7 @@ Branded and objective. Answered straight out of your profile's structured fields
 | L-07 | `does {brand} take walk-ins?` | spoken | no | audit |
 | L-08 | `how do I book with {brand}?` | spoken | no | audit |
 
-An accuracy audit records something different from a visibility probe: not *were you named* but *was the fact correct*. Run the eight L rows once per engine, mark each answer right, wrong or absent, and you have a defensible finding — "one engine had our Sunday hours wrong on 2026-07-27" — that costs almost nothing and is immediately fixable. One vendor index reports profile accuracy around two-thirds on the web-grounded assistants against near-total accuracy on the Maps-grounded one; the methodology is only partly published, so treat the figures as soft and the mechanism as sound ([chapter 1](../01-foundations/what-is-local-seo.md) carries the citation and its caveats).
+An accuracy audit records something different from a visibility probe: not *were you named* but *was the fact correct*. Run the eight L rows once per engine, mark each answer right, wrong or absent, and you have a defensible finding — "one engine had our Sunday hours wrong on 2026-07-27" — that costs almost nothing and is immediately fixable. SOCi's 2026 Local Visibility Index (~350,000 locations) reported profile accuracy of 68.3% on ChatGPT and 68.0% on Perplexity against roughly 100% on Gemini — around two-thirds on the web-grounded assistants against near-total accuracy on the Maps-grounded one. It is vendor-published and its methodology is only partly disclosed, so treat the figures as soft and the mechanism as sound ([chapter 1](../01-foundations/what-is-local-seo.md) carries the full citation and its caveats).
 
 ## Filling the slots: four worked packs
 
@@ -242,7 +242,7 @@ The series tag is the field people skip and then regret. Without it, a C-12 disp
 > You need: your six filled unbranded rows.
 
 1. In **Rankings**, add each filled row with **Track**. The AI check runs on active tracked keywords, so a row that is not tracked cannot be probed.
-2. For the second-area cell, add the same phrase again with a different **Search from** value. It saves as its own row, because a keyword's identity includes its location.
+2. For the second-area cell, add the same phrase again with a different **Search from** value. It saves as its own row rather than being rejected as a duplicate, because a tracked keyword's identity is the phrase *plus* its location *plus* its language, not the phrase alone. *(Code-verified 2026-07-27.)*
 3. In **AI Visibility**, scroll to **Where AI mentions you**, select exactly your six rows, and read the count on the bar: `N keywords × M engines = K checks`.
 4. Press **Check N selected** and let the batch counter finish. Repeat four more times with the identical selection, recording the date of each pass.
 5. Read the rates from the tiles and the **Sources cited by AI** table. Both are free — they read what the paid checks stored.
@@ -280,7 +280,7 @@ Stated so that anyone citing it can weigh them, and so v1.1 has somewhere to sta
 
 Two open questions this corpus was built to make answerable, and which nobody has published answers to:
 
-**Does register change the answer?** Take one market, one engine, one coordinate. Run D-03 and D-13 — the same underlying need at two registers — twenty times each. Compare mention rates against the run-to-run noise floor, not against each other ([LSM-AI-16](../05-reference/ai-engine-probe-recipes.md#lsm-ai-16--one-run-is-a-sample-not-a-measurement)). Twenty runs still leaves roughly an 11-point worst-case error bar, so only a large difference is readable.
+**Does register change the answer?** Take one market, one engine, one coordinate. Run D-03 and D-13 — the same underlying need at two registers — twenty times each. Compare mention rates against the run-to-run noise floor, not against each other ([LSM-AI-16](../05-reference/ai-engine-probe-recipes.md#lsm-ai-16--one-run-is-a-sample-not-a-measurement)). Twenty runs still leaves a worst-case standard error of roughly 11 points — `0.5 / √n`, the arithmetic and its table are in [measuring AI visibility](../03-advanced/ai-visibility.md) — so only a large difference is readable.
 
 **Do comparison rows really out-perform discovery rows as probes?** The claim in this manual is a mechanism argument: comparison queries ask the engine to choose, so they produce more named businesses and more readable stance. Nobody has published the rate at which each intent produces a *recommending* answer at all. Run the six discovery and six comparison rows twenty times each on one engine, count how many answers named any business, and you have it.
 

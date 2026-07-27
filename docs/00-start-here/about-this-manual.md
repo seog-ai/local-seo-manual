@@ -12,7 +12,7 @@ description: A free, hands-on manual for local SEO — how Google decides which 
 
 Local SEO is the practice of getting a business that serves a *place* — a dentist, a plumber, a coffee shop, a law firm — to show up when someone nearby searches for what it sells. It is a genuinely different discipline from the SEO that gets a blog post ranked. The ranking factors are different, the results page is different, and the thing being ranked is not really your website at all.
 
-It is also unusually learnable, because the feedback is fast and the ground truth is public. Everything your competitors have done is visible. Everything you do is measurable within days.
+It is also unusually learnable, because the feedback is fast and much of the ground truth is public. Almost everything your competitors have done to their public profile is visible to you. Most of what you do is measurable within days.
 
 ## Who this is for
 
@@ -32,7 +32,7 @@ Every chapter has two halves.
 
 ![A nine-point grid scan over Helsinki, each pin labelled with the map-pack rank for the same keyword at that point](../../static/img/screens/geo-grid.png)
 
-*A real scan, not a diagram: nine live searches for one keyword, one per pin, run within the same minute. The rank is not identical at every pin — and that variation is exactly what a single "we rank #1" number hides. (The "Test data" badge further up that screen sits on the search-volume box, not the grid: no volume provider was connected on the machine that took the shot, and the app says so rather than showing a number it cannot stand behind.)*
+*A real scan, not a diagram: nine live searches for one keyword, one per pin, run back-to-back in a single scan. The rank is not identical at every pin — and that variation is exactly what a single "we rank #1" number hides. (The "Test data" badge further up that screen sits on the search-volume box, not on the grid. No search-volume provider was connected on the machine that took the shot, so that one box is showing sample figures — labelled as such, rather than passed off as measurements. The grid positions are real.)*
 
 The labs run in **[SEOG](https://seog.ai)** — a local-SEO platform with a free account. We built SEOG, and we wrote this manual; that is worth knowing up front. It is also why the labs are precise instead of vague: we can tell you exactly which screen to open and exactly what you should see, which is not something a tool-agnostic guide can do.
 
@@ -69,7 +69,7 @@ The manual is written to be read in order — later chapters assume the vocabula
 Local SEO attracts a lot of confident nonsense, because the results are location-dependent and therefore easy to misrepresent. Two rules this manual holds itself to:
 
 1. **If we are not sure, we say so.** Google publishes very little about local ranking. Where something is inference from observed behaviour rather than documented fact, it is marked as such.
-2. **No fabricated data, anywhere.** Not in the manual, and not in the tool — when SEOG cannot get a real answer from Google, it shows you nothing rather than a plausible number. A ranking tool that invents positions is worse than no tool.
+2. **No fabricated data, anywhere.** Not in the manual, and not in the tool — when SEOG cannot get a real answer from Google, it shows you nothing, or a sample carrying a badge that says so. What it never does is put an unlabelled plausible number where a measurement should be. A ranking tool that invents positions is worse than no tool.
 
 ![The Rankings screen before anything is tracked, showing three greyed keyword rows under a panel headed "Track your local keyword rankings"](../../static/img/screens/rankings-empty.png)
 

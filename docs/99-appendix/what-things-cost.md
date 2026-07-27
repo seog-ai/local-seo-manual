@@ -30,7 +30,11 @@ Two corollaries do most of the work:
 
 **A click that produces something from outside is paid. A click that rearranges what you already have is not.** Opening a page, filtering a review list, switching a chart between periods, sorting competitors, re-reading a grid you scanned in March — none of these leave the building. Checking a rank, syncing reviews, drafting with a model, publishing to Google — all of these do.
 
-**Paid data is bought once and stays.** A fetch you paid for is stored and re-served for free, indefinitely, however many times you open it. This is why the most expensive habit in local SEO tooling is re-fetching to answer a question that last week's fetch already answered — and why the second habit worth forming, after "measure before you change", is "read the timestamp before you press".
+**Paid data is bought once and re-read for free.** A fetch you paid for is stored and re-served at no charge, however many times you open it. This is why the most expensive habit in local SEO tooling is re-fetching to answer a question that last week's fetch already answered — and why the second habit worth forming, after "measure before you change", is "read the timestamp before you press".
+
+But it is re-read for free *for a while*, not for ever, and the reason is not commercial. Google's Business Profile API terms cap how long its content may be held — *"It must be stored temporarily for no more than 30 calendar days"* ([`LSM-POLICY-27`](../05-reference/storing-google-data-legally.md)) — and Places content is stricter still. Any tool that obeys those terms therefore ages raw Google content out on a rolling window and falls back to the paid button. What survives the window is the part that is not Google's content: identifiers, and the measurements the tool computed — rank positions, profile scores, grid coverage. What does not survive is the raw material — synced review text, competitor field values, cached performance series, generated report PDFs.
+
+The practical consequence is the opposite of what "buy it once" suggests: **anything you will need as evidence in three months has to leave the tool.** Export it, file it, and cite your own copy. This is the same rule the compliance chapter arrives at from the legal end — [Storing Google data legally](../05-reference/storing-google-data-legally.md) — and it is the single most important sentence on this page for anyone running client work.
 
 Everything else on this page is that rule applied.
 
@@ -55,7 +59,7 @@ The right-hand column is not a summary — it is the rest of the screen. If an a
 
 Three entries in that table surprise people:
 
-**Undo is paid.** Undoing a profile fix replays a write against Google, so it costs what the write cost. Practise it once on something you do not mind changing ([Lab 9.3](../02-core-practice/the-profile-is-the-product.md)) rather than discovering the mechanics during a real mistake.
+**Undo is paid, and it expires.** Undoing a profile fix replays a write against Google, so it costs what the write cost. It also depends on the stored copy of the field's previous value, which is Google content and ages out on the retention window described above — so undo is a short-term safety net, not an archive. The durable undo is the one you write down yourself before you edit (step 1 of [the five-step safe edit](./checklists-and-templates.md)). Practise it once on something you do not mind changing ([Lab 9.3](../02-core-practice/the-profile-is-the-product.md)) rather than discovering the mechanics during a real mistake.
 
 **Deleting is paid.** Removing a photo or a post is a write to Google like publishing one. There is no cheap way out of a bad publish.
 
@@ -126,7 +130,7 @@ Those three alone are a factor of several hundred between two operators producin
 
 ## The labs, counted
 
-As of **2026-07-27** the manual has **103 labs**. **51 cost nothing at all**, 48 spend, and 4 are part-free — a paid fetch followed by free reading, or free to remove and paid to add. The part-free four are counted in the **Spend** column below.
+As of **2026-07-27** the manual has **103 labs**. **51 cost nothing at all.** 48 spend outright, and 4 are part-free — a paid fetch followed by free reading, or free to remove and paid to add. Those four part-free labs are counted in the **Spend** column below, so that column sums to 52, not 48; 51 + 52 = 103.
 
 | Part | Labs | Free | Spend |
 | --- | --- | --- | --- |
@@ -157,6 +161,8 @@ Every paid fetch in this manual feeds several free labs. The cheapest possible r
 | One site audit (Lab 13.1) | 14.1 (free once stored), then 14.2 |
 | One matrix run (Lab 20.2) | 20.3, 21.1, 16.4 |
 | One overview refresh + frozen report (Labs 7.2, 7.3) | 27.1, 27.2, 27.3 — the whole ninety-day planning chapter reads off a frozen baseline |
+
+**The baseline in that last row must be exported the day you make it.** A generated report is a frozen copy of Google content, so it ages out on the thirty-day window — and a ninety-day plan that reads off it will outlive it. Download the PDF into your own storage immediately; that copy, and not the one in the tool, is the baseline. The same goes for any review text or performance series you intend to quote later.
 
 Three ordering rules fall out of that table.
 

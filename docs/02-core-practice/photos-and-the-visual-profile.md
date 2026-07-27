@@ -18,7 +18,7 @@ Two different jobs, and it helps to keep them separate.
 
 **Evidence.** A profile with a storefront shot, an interior, the products and the team is a profile someone maintains. Google's guidance on improving local ranking lists adding photos alongside complete data, accurate hours and review management. But the three factors Google actually names — relevance, distance, prominence — do not include photos. See [Relevance, distance, prominence](../01-foundations/relevance-distance-prominence.md) for what those three are and are not.
 
-So how much do photos move a position? Nobody outside Google knows, and anyone who gives you a percentage is guessing. Google's help materials have long asserted that profiles with photos get more direction requests and more website clicks. No method is published behind that claim, and the obvious confound is untouched: businesses that upload photos are businesses that maintain their profile at all. Treat it as a claim, not a measurement.
+So how much do photos move a position? Nobody outside Google knows, and anyone who gives you a percentage for *ranking* is guessing. Google does publish numbers, but they describe behaviour rather than position: its help page *Make your Business Profile awesome* (`support.google.com/business/answer/6335804`, read 2026-07-27) states that customers are **42% more likely to request driving directions** to a business whose profile has photos, and **35% more likely to click through** to its website. No method is published behind either figure, and the obvious confound is untouched: businesses that upload photos are businesses that maintain their profile at all. Treat it as Google's claim about conversion, not as a measurement of ranking.
 
 The honest working model *(inference, from how the rest of the profile behaves)*: photos are completeness evidence and conversion material. Do them because the second job is certain, not because the first one is.
 
@@ -75,7 +75,7 @@ The only place a true count exists is the owner's own Google dashboard. If the c
 
 ## You cannot measure a photo
 
-Per-photo view counts stopped existing on **2023-02-20**, when Google discontinued the old reporting surface. The performance data that replaced it carries no photo metrics at all — no per-image views, no per-image actions *(probe-verified 2026-07-13; see [What Google's reporting hides](../05-reference/what-googles-reporting-hides.md))*.
+Per-photo view counts stopped existing on **2023-02-20**. The date is Google's own, not folklore: its published deprecation schedule (`developers.google.com/my-business/content/sunset-dates`) lists the merchant and customer photo-view metrics, the photo-count metrics and the media-insights object as all discontinued that day. The performance data that replaced them carries no photo metrics at all — no per-image views, no per-image actions *(probe-verified 2026-07-13; see [What Google's reporting hides](../05-reference/what-googles-reporting-hides.md))*.
 
 So when a dashboard shows "your top-performing photo", exactly one of two things is true: it was scraped, or it was invented. There has been no third option since early 2023. Do not put that panel in a client report — [Reporting to a client](../04-operating/reporting-to-a-client.md) covers what to promise instead.
 
@@ -83,19 +83,19 @@ What you *can* do is measure at the profile level, before and after: direction r
 
 ## The media policy, and the AI-image problem
 
-> This is our reading of Google's published guidelines, not legal advice. Google's Business Profile photo and video guidelines are a help-centre page without clause numbers, so the phrases below are quoted as published and read on **2026-07-22**.
+> This is our reading of Google's published guidance, not legal advice. Two different pages carry the two halves, and conflating them is a common error. **Provenance** comes from *Tips for posting media to Maps*, in the Maps user-generated content policy help (`support.google.com/contributionpolicy/answer/7411351`). The **file constraints** come from *Photo and video guidelines*, in Business Profile help (`support.google.com/business/answer/6103862`). Neither carries clause numbers, so the phrases below are quoted as published and read on **2026-07-27**.
 
-Google's media policy asks for **"media that you captured"** and rules out stock imagery, collages, and **"imagery created by other parties"**. Interpret that separately from the quote: the policy is about provenance, not quality. A beautiful photograph you did not take is a violation. A mediocre one you took on a phone is not.
+Google asks you to **"Use media that you captured"** — media of a place "that you captured using a camera" — and to **"Avoid screenshots, stock photos, GIFs, collages, heavily edited or otherwise manipulated photos, or imagery created by other parties"**. Interpret that separately from the quote: the guidance is about provenance, not quality. A beautiful photograph you did not take is against it. A mediocre one you took on a phone is not.
 
-Which puts the current fashion for AI-generated profile and post imagery in an awkward place. An image a model produced is, on any plain reading, imagery you did not capture and that another party created. Community reports describe AI images being auto-rejected on upload *(inference — no official statement names generated imagery specifically, and Google's wording predates the current tools)*. The risk is live, the upside is cosmetic, and the downside lands on a client's public listing.
+Which puts the current fashion for AI-generated profile and post imagery in an awkward place. An image a model produced is, on any plain reading, not media you captured with a camera, and it sits close to two of the phrases above — "imagery created by other parties" and "otherwise manipulated photos". Whether Google *enforces* that against generated imagery is an **open question**: no Google statement we can find names AI-generated images, and the wording quoted above predates the current tools. Practitioners report uploads being rejected, but we have not traced any such report to a Google source *(unresolved as of 2026-07-27)*. The upside is cosmetic, the downside lands on a client's public listing, and the rule you would be relying on has not been written yet.
 
 **This manual does not recommend AI-generated imagery on a Google Business Profile, and neither should you.** Use it for a blog header if you like. Not here.
 
 The practical constraints that go with the policy:
 
-- **JPEG or PNG.** Not WebP, not HEIC. If your phone shoots HEIC by default, convert before uploading.
-- **Under 5 MB per image**, and not tiny — very small files are refused.
-- **Roughly 4:3, landscape**, because thumbnails get centre-cropped and a portrait shot loses its subject.
+- **JPG or PNG.** Not WebP, not HEIC. If your phone shoots HEIC by default, convert before uploading.
+- **Between 10 KB and 5 MB.** Both ends are published limits, so a file under the floor is refused exactly as a file over the ceiling is.
+- **At least 250 × 250 px; 720 × 720 recommended.** Those are Google's published numbers, and note that they are *square* — Google publishes no aspect-ratio requirement at all, so anyone quoting you a mandatory 4:3 is quoting something else. Shoot landscape anyway *(inference — thumbnails are centre-cropped on the surfaces we have compared, so a portrait shot loses its subject)*.
 - **Photos are reviewed like any other edit.** Usually minutes. Sometimes longer. "I uploaded it and nothing changed" is normally this.
 
 The same policy governs images attached to posts, with tighter rules again — see [Publishing without getting rejected](./publishing-without-getting-rejected.md).
@@ -189,7 +189,7 @@ Add over time rather than dumping forty at once. A steady trickle keeps the prof
 
 ## Common mistakes
 
-**Buying a stock photo pack for a client's listing.** Tempting because it is fast and the images are pretty. It breaches a policy that asks for media you captured, it risks rejection, and it makes the listing look like every other listing in the category. The cost is a profile that converts worse than the phone photos it replaced.
+**Buying a stock photo pack for a client's listing.** Tempting because it is fast and the images are pretty. Google's guidance names stock photos explicitly among the things to avoid, it risks rejection, and it makes the listing look like every other listing in the category. The cost is a profile that converts worse than the phone photos it replaced.
 
 **Reporting the public photo count as a count.** Tempting because it is the number the tool shows. Above the ceiling it carries no information, so "we grew from 8 to 10 photos" may describe adding two images or adding two hundred. Say "at least 10", or go and read the owner dashboard.
 
@@ -204,7 +204,7 @@ Add over time rather than dumping forty at once. A steady trickle keeps the prof
 1. Your business shows 10 photos and your closest competitor shows 10. What have you learned about the gap between you? *(Nothing. Both are at the ceiling of what public data reports. The comparison only carries information below the cap.)*
 2. A client wants a one-star reviewer's photo of a dirty table taken down. What do you tell them, and what do you actually do? *(That it cannot be removed programmatically, by you or by any tool. Report it on Maps if it breaches policy, warn that the outcome is Google's, and shift the effort to adding better photos of the same room.)*
 3. Your report template has a "top-performing photo" panel. Where would that number come from? *(Nowhere legitimate — per-photo metrics ended 2023-02-20. Cut the panel.)*
-4. A supplier offers 50 AI-generated interior shots, brand-matched, for less than a photographer. What is the argument against, in one sentence? *(The media policy asks for imagery you captured and excludes imagery created by other parties, so the entire batch is at rejection risk on a live listing.)*
+4. A supplier offers 50 AI-generated interior shots, brand-matched, for less than a photographer. What is the argument against, in one sentence? *(Google's published guidance asks for media you captured with a camera and tells you to avoid imagery created by other parties and manipulated photos; whether it is enforced against generated images is untested, and you would be running that test on a client's live listing.)*
 5. Download any photo from any Google Business Profile and inspect its file metadata. What survived the trip? Now reconsider what "geotag your photos for local ranking" is claiming — and whether anything the searcher receives could carry that signal. *(You will need to check rather than assume; that is the point of the question.)*
 
 ---

@@ -1,7 +1,7 @@
 ---
 title: What Google's own reporting hides
 sidebar_position: 6
-description: Nineteen dated facts about the shape of Google's performance and keyword data — thresholding, aggregation windows, omitted rows, missing days — and what each one breaks in a report.
+description: Nineteen verified facts about the shape of Google's performance and keyword data — thresholding, aggregation windows, omitted rows, missing days — and what each one breaks in a report.
 ---
 
 # What Google's own reporting hides
@@ -39,7 +39,7 @@ Source: `DailyMetric` reference, last updated 2024-10-16. Any single headline "v
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-27 (documentation read)
-**Source:** `DailyMetric` reference (last updated 2024-10-16): "Multiple impressions by a unique user within a single day are counted as a single impression." Business Profile Help, *Understand your Business Profile performance & insights* (no last-updated date shown): "A person can only be counted once a day. We don't count multiple visits on the same day."
+**Source:** `DailyMetric` reference (last updated 2024-10-16, re-read 2026-07-27) — the sentence appears on each of the four impression enums: "Multiple impressions by a unique user within a single day are counted as a single impression." Business Profile Help, *Understand your Business Profile performance* (`support.google.com/business/answer/9918094`, read 2026-07-27, no last-updated date shown): "A person can only be counted once a day. We don't count multiple visits on the same day."
 
 The metric is closer to daily unique viewers than to ad impressions or pageviews. A customer who checks your hours four times on Tuesday is one impression.
 
@@ -53,7 +53,9 @@ The daily deduplication is documented per metric, and no cross-metric deduplicat
 **Last verified:** 2026-07-27 (documentation read)
 **Probe:** read the `DailyMetric` enum in full (`developers.google.com/my-business/reference/performance/rest/v1/DailyMetric`) and look for one
 
-The twelve documented daily metrics are impressions (four), conversations, direction requests, call clicks, website clicks, bookings, food orders, food menu clicks, and the unknown default. Star rating, review count, photo count and map-pack position are not among them, and no other Google API serves their history either.
+The enum holds twelve values, read in full on 2026-07-27: four impression metrics, then `BUSINESS_CONVERSATIONS`, `BUSINESS_DIRECTION_REQUESTS`, `CALL_CLICKS`, `WEBSITE_CLICKS`, `BUSINESS_BOOKINGS`, `BUSINESS_FOOD_ORDERS`, `BUSINESS_FOOD_MENU_CLICKS`, plus `DAILY_METRIC_UNKNOWN` ("Represents the default unknown value"). Eleven real metrics and one default. Star rating, review count, photo count and map-pack position are not among them.
+
+We know of no Google API that serves the history of those four either, and we have looked *(inference — an absence across the surfaces we have probed, not a statement Google makes)*.
 
 **Consequence:** a "rating over time" or "rank over time" chart is a series of snapshots somebody chose to take, with all the properties that implies — it starts when tracking started, it has a point only where a capture happened, and a gap is missing data rather than a flat line. Ask any vendor which API returned the history; for these four, the honest answer is none. Rendering method matters more than the chart: see [Did it work?](../02-core-practice/did-it-work.md) and [Reporting to a client](../04-operating/reporting-to-a-client.md).
 
@@ -71,9 +73,13 @@ The 18-month figure everyone quotes for Business Profile performance history com
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-27 (documentation read)
-**Source:** v4 `BasicMetricsRequest` (last updated 2024-10-16): "In some cases, the data may still be missing for days close to the request date." The v1 Performance reference carries no equivalent warning.
+**Source:** v4 `BasicMetricsRequest` (last updated 2024-10-16), quoted in full: "In some cases, the data may still be missing for days close to the request date. Missing data will be specified in the `metricValues` in the response." The v1 `locations.fetchMultiDailyMetricsTimeSeries` reference (last updated 2024-10-16, re-read 2026-07-27) carries no equivalent warning and documents no marker.
 
-Data near the request date is incomplete and firms up later. Nothing in the response marks a day as provisional, so a value read today and the same day read next week can differ without either being an error.
+Read the second sentence as carefully as the first. On the deprecated v4 object Google said missing data *is* signalled in the response. On the v1 Performance API that replaced it, no such signal is documented — so the useful part of this entry is not "data is missing", it is that v1 tells you nothing about which days are provisional.
+
+Data near the request date is incomplete and firms up later. A value read today and the same day read next week can differ without either being an error.
+
+**What is not established:** whether v1 carries an undocumented equivalent of the v4 marker. Nobody has diffed a v1 response against a v4-style `metricValues` shape and published the result. Until somebody does, assume no marker.
 
 **Consequence:** exclude the trailing few days from every reported total and every week-over-week comparison, and say in the report where the window ends. The failure mode is specific and common: a Monday report shows last week down, the same week re-read on Friday is flat, and the drop was reporting latency. When a client asks why the number changed, the answer is that the first read was too early — which is a much better sentence to have written down in advance.
 
@@ -83,9 +89,11 @@ Data near the request date is incomplete and firms up later. Nothing in the resp
 **Last verified:** date unknown — needs re-probe
 **Probe that would close it:** request a `dailyRange` spanning a known-quiet period on a low-traffic location, then compare the count of `datedValues` returned against the number of calendar days requested
 
-Clients in this space commonly back-fill absent dates with zero, which is safe either way. What is not established is whether Google omits zero-activity days from `timeSeries.datedValues` or returns them explicitly as zero. The v1 reference documents neither behaviour, and we have no dated probe on file.
+Clients in this space commonly back-fill absent dates with zero, which is safe either way. What is not established is whether Google omits zero-activity days from `timeSeries.datedValues` or returns them explicitly as zero. The v1 reference (last updated 2024-10-16, re-read 2026-07-27) documents neither behaviour, and we have no dated probe on file.
 
-**Consequence:** back-fill missing dates to zero *and* keep the count of dates Google actually returned, because that count is the only signal distinguishing "no activity" from "not reported". Combined with `LSM-MEASURE-05`, an un-annotated zero at the right-hand edge of a chart is the single most misleading pixel in local-SEO reporting.
+The one adjacent data point: the deprecated v4 `BasicMetricsRequest` said "Missing data will be specified in the `metricValues` in the response" (see `LSM-MEASURE-05`). That is a statement about v4, not about v1, and it does not tell you whether a zero-activity day counts as missing.
+
+**Consequence:** back-fill missing dates to zero *and* keep the count of dates Google actually returned, because that count is the only signal distinguishing "no activity" from "not reported". Combined with `LSM-MEASURE-05`, an un-annotated zero at the right-hand edge of a chart reads as a collapse when it is an artefact of when you asked.
 
 ---
 
@@ -136,17 +144,19 @@ Note the mismatch with `LSM-MEASURE-02`: the daily engagement metrics deduplicat
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-27 (documentation read)
-**Source:** `locations.searchkeywords.impressions.monthly.list` (last updated 2024-10-16): default page size 100, **maximum** page size 100; successive pages via `pageToken`.
+**Source:** `locations.searchkeywords.impressions.monthly.list` (last updated 2024-10-16, re-read 2026-07-27): default page size 100, **maximum** page size 100; successive pages via `pageToken`.
 
-Every client picks a stopping point in that pagination, and most stop well before exhaustion. Whatever the client stops at becomes the keyword list you see, ordered by volume — which means the rows that survive truncation are the head terms, and the discovery long tail is exactly what gets cut.
+Every client picks a stopping point in that pagination, and most stop well before exhaustion. Whatever the client stops at becomes the keyword list you see.
 
-**Consequence:** a keyword panel is a top-N sample unless the tool states it paginated to exhaustion. Do not compute "total impressions across all keywords" from a truncated list, and do not conclude a phrase is absent because it is not shown. Combined with `LSM-MEASURE-08`, the tail is both truncated and thresholded — two independent reasons the bottom of the list understates.
+**Correction, 2026-07-27:** this entry previously said the list arrives "ordered by volume", so that truncation cuts the long tail and keeps the head terms. That ordering is not documented. The method reference states the page-size bounds and nothing about sort order, and any ordering you see in a tool may have been applied by the tool after fetching. Treat the *contents* of a truncated page as unknown, not as "the top N" — which is a stricter warning, not a weaker one.
+
+**Consequence:** a keyword panel is a partial sample unless the tool states it paginated to exhaustion, and you cannot assume the rows it kept are the important ones. Do not compute "total impressions across all keywords" from a truncated list, and do not conclude a phrase is absent because it is not shown. Combined with `LSM-MEASURE-08`, the bottom of any keyword list is both incomplete and thresholded.
 
 ### LSM-MEASURE-11 · Keyword data lands at the start of the month and can take five days
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-27 (documentation read)
-**Source:** Business Profile Help, *Understand your Business Profile performance & insights* (no last-updated date shown): "The searches metric is updated at the start of each month. It might take up to 5 days to show up."
+**Source:** Business Profile Help, *Understand your Business Profile performance* (`support.google.com/business/answer/9918094`, read 2026-07-27, no last-updated date shown): "The searches metric is updated at the start of each month. It might take up to 5 days to show up."
 
 The current calendar month is therefore always empty or partial, and the previous month is unreliable during roughly its first working week.
 
@@ -164,7 +174,7 @@ The current calendar month is therefore always empty or partial, and the previou
 
 An API client that never sets the parameter gets finalized data only; the Search Console web interface shows fresh data and marks it as preliminary. The two therefore disagree at the recent end of any window, with the API lower. We observed exactly that discrepancy against the interface before setting the parameter explicitly *(date of that observation unknown — needs re-probe)*.
 
-Related: Search Console Help, *About Search Console data*: "Normally, however, collected data should be available in 2-3 days."
+Related: Search Console Help, *About Search Console data* (`support.google.com/webmasters/answer/96568`, read 2026-07-27): "Normally, however, collected data should be available in 2-3 days."
 
 **What to do instead:** set `dataState` explicitly, on every call, and record which value you used next to the numbers. When a client screenshots the Search Console interface and it does not match your export, this parameter is the first thing to check — before you go looking for a bug.
 
@@ -172,7 +182,7 @@ Related: Search Console Help, *About Search Console data*: "Normally, however, c
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-27 (documentation read)
-**Source:** Search Console Help, *About Search Console data*: "Due to internal limitations, Search Console stores top data rows and not all data rows." Search Analytics `query` reference (last updated 2026-05-20): the API "does not guarantee to return all data rows but rather top ones."
+**Source:** two documents, read 2026-07-27. Search Console Help, *About Search Console data* (`support.google.com/webmasters/answer/96568`, no last-updated date shown): "Search Console stores top data rows and not all data rows." Search Analytics `query` reference (`developers.google.com/webmaster-tools/v1/searchanalytics/query`, last updated 2026-05-20): "The API is bounded by internal limitations of Search Console and does not guarantee to return all data rows".
 
 This is not a pagination limit you can defeat by asking for more rows. `rowLimit` accepts 1–25,000 with a default of 1,000, and raising it does not retrieve rows that were never stored.
 
@@ -182,7 +192,7 @@ This is not a pagination limit you can defeat by asking for more rows. `rowLimit
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-27 (documentation read)
-**Source:** Search Console Help, *Performance report (Search results): Dimensions and data groupings* (no last-updated date shown): "Some queries are omitted from the report to protect user privacy. These are called anonymized queries. They're included in chart totals, unless a query filter is applied." *About Search Console data*: "To protect user privacy, the Performance report doesn't show all data. For example, we might not track some queries that are made a very small number of times or those that contain personal or sensitive information."
+**Source:** Search Console Help, *Performance report (Search results): Dimensions and data groupings* (`support.google.com/webmasters/answer/17011259`, read 2026-07-27, no last-updated date shown), quoted in full: "Anonymized queries: Some queries are omitted from the report to protect user privacy. These are called anonymized queries. They're included in chart totals, unless a query filter is applied (for example, "queries containing" or "queries not containing" a given string)." And *About Search Console data* (`support.google.com/webmasters/answer/96568`, read 2026-07-27): "To protect user privacy, the Performance report doesn't show all data. For example, we might not track some queries that are made a very small number of times or those that contain personal or sensitive information."
 
 Two consequences fall out of that second clause. Summed query rows fall short of the totals by the anonymized volume, and applying a query filter silently drops the anonymized volume from the totals too — so a filtered total and an unfiltered total are not on the same base.
 
@@ -194,7 +204,7 @@ Google publishes no percentage, and neither do we. The share is not knowable fro
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-27 (documentation read)
-**Source:** Search Console Help, *Performance report (Search results)*: "The average position of the topmost result from your site." And on aggregation: "Data on the chart is aggregated by property. For example, if two results from the same site appear for one query, they count as a single impression in the chart total."
+**Source:** Search Console Help, *Performance report (Search results)* (`support.google.com/webmasters/answer/7576553`, read 2026-07-27, no last-updated date shown): "The average position of the topmost result from your site." And on aggregation: "If two results from the same site appear for one query, they count as a single impression in the chart total."
 
 Where a query returns two of your pages, the better position is reported and the worse one is invisible. Positions are then averaged across impressions, so high-volume queries dominate the figure and a mean position of 8.4 may describe no query you actually hold.
 
@@ -219,20 +229,24 @@ The same applies to average position: it must be impression-weighted, not a plai
 ### LSM-MEASURE-17 · The reviews a place record returns are a sample; the rating count is the population
 
 **Verdict:** WORKS
-**Last verified:** 2026-07-13 (live probe)
+**Last verified:** 2026-07-13 (live probe), documentation re-read 2026-07-27
 **Probe:** `GET places.googleapis.com/v1/places/{placeId}` with a field mask containing `reviews` and `userRatingCount`, on a place with hundreds of ratings; compare the array length with the count
+**Source:** Places API (New) `Place` resource, `reviews` field, read 2026-07-27 (no last-updated date shown on the page) — verbatim: *"List of reviews about this place, sorted by relevance. A maximum of 5 reviews can be returned."*
 
-In our runs the `reviews` array came back with at most five entries regardless of how many ratings the place had. Google's Place Details documentation (last updated 2026-07-20) states neither a maximum count nor the rule by which those entries are selected, so the sample is small *and* its selection is undocumented.
+In our runs the `reviews` array came back with at most five entries regardless of how many ratings the place had, which matches the documented cap.
 
-**Consequence:** every ratio computed over that array has a denominator of at most five. A "response rate" of 40% may mean two replies on the five reviews visible, on a business with 300 reviews — a number that is arithmetically correct and completely uninformative. Any reply-rate, sentiment or recency figure needs the owner-side review API to mean anything; which access path can see what is tabulated in [the GBP capability matrix](./gbp-capability-matrix.md), and the same trap in diagnostic form is in [Diagnosing a business in thirty minutes](../02-core-practice/analyzing-business-visibility.md).
+**Correction, 2026-07-27:** this entry previously asserted that Google's documentation "states neither a maximum count nor the rule by which those entries are selected", and dated that page to 2026-07-20. Both claims were wrong. The `Place.reviews` field documents the maximum (5) and names the selection rule ("sorted by relevance"), and we could not confirm the 2026-07-20 date on re-reading. What remains genuinely undocumented is what *relevance* means here — Google defines the ordering by name only, so the sample is small, capped, and selected by an undisclosed rule rather than by an undisclosed count.
+
+**Consequence:** every ratio computed over that array has a denominator of at most five, and those five are a relevance-ranked selection rather than a random or recent sample — so the array is not a valid basis for any estimate about the population. A "response rate" of 40% may mean two replies on the five reviews visible, on a business with 300 reviews — a number that is arithmetically correct and completely uninformative. Any reply-rate, sentiment or recency figure needs the owner-side review API to mean anything; which access path can see what is tabulated in [the GBP capability matrix](./gbp-capability-matrix.md), and the same trap in diagnostic form is in [Diagnosing a business in thirty minutes](../02-core-practice/analyzing-business-visibility.md).
 
 ### LSM-MEASURE-18 · Rating-only reviews count toward the total and carry no text
 
 **Verdict:** WORKS
-**Last verified:** 2026-07-13 (live profile, owner API)
+**Last verified:** 2026-07-13 (live profile, owner API), documentation read 2026-07-27
 **Probe:** list reviews through the owner API and count entries whose comment field is absent; compare that count with the reported total
+**Source:** Places API (New) `Place` resource, `userRatingCount` field, read 2026-07-27 — verbatim: *"The total number of reviews (with or without text) for this place."*
 
-A star rating left without a comment is a review for counting purposes and an empty record for every text-based analysis. The owner API returns it with a star value and no comment; the same is true of place-record reviews.
+Google says it plainly in the field description: the count includes ratings with no text. A star rating left without a comment is a review for counting purposes and an empty record for every text-based analysis. The owner API returns it with a star value and no comment; the same is true of place-record reviews.
 
 **Consequence:** "review count" and "reviews you can reply to meaningfully" are different numbers, and the gap is usually largest for high-volume consumer businesses. State which you mean. A text-analysis or keyword-in-reviews figure must declare its denominator as reviews-with-text, not reviews — otherwise every such metric is silently deflated by the rating-only share.
 

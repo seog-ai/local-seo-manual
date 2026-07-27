@@ -35,11 +35,11 @@ The rule that follows is the spine of this chapter:
 
 Each location is a separate entity with its own profile, reviews, prominence and rank map — [the business entity](../01-foundations/the-business-entity.md), applied N times.
 
-Google's own grouping constructs are **administrative**. Business groups (previously location groups) are a container for permissions and bulk management. No ranking documentation mentions group membership and no public controlled test of it exists, so treat groups as a filing system, not a lever *(inference)*.
+Google's own grouping constructs are **administrative**. A business group — previously called a *business account*, not a location group — is a container for sharing management of locations across several users, and the unit the bulk tooling works on. No ranking documentation mentions group membership and no public controlled test of it exists, so treat groups as a filing system, not a lever *(inference)*.
 
 Two administrative facts are worth knowing before you plan an engagement, and both go stale:
 
-- Google documents a **bulk verification** path for chains — as of 2026-07, for ten or more locations, verified at group level rather than one by one. Check the current help-centre page before building a timeline on it; this threshold has changed before.
+- Google documents a **bulk verification** path for chains — as of 2026-07, for ten or more profiles of the same business, submitted on one spreadsheet and reviewed together rather than verified one at a time. A business group is *not* required for it; an individual account qualifies on the same threshold. Check the current help-centre page before building a timeline on it; this threshold has changed before.
 - Google also documents **bulk upload** by spreadsheet for a business group — the right tool for changing a field across many locations at once. Nothing in SEOG does it: if sixty profiles need the same hours change this week, Google's own dashboard is the right instrument and this one is not.
 
 What is *not* allowed matters more. A second profile at the same address for the same business is a duplicate, and duplicates are a guideline violation rather than a clever trick — see [spam and fake listings](./spam-and-fake-listings.md) and [suspensions and reinstatement](./suspensions-and-reinstatement.md). Practitioner listings carry their own rules: if a client has fourteen dentists and one surgery, settle what the entities *are* before measuring anything.
@@ -54,7 +54,7 @@ Geography decides how much overlap exists, and a geo-grid measures it directly. 
 
 The metric that survives scrutiny is **union coverage**: across both grids, in how many distinct places does *some* branch of yours reach the top three? Adding the two percentages double-counts the overlap and can exceed the territory you hold. Reporting the sum is the most common way a multi-location rankings report inflates itself.
 
-Then the instrument trap. Competitor discovery excludes exactly one place: the business you ran it from. Your other branch is a different profile, so it returns as a candidate and can be tracked like any rival. Sometimes that is exactly what you want — it keeps the overlap visible. It is also how a client report ends up naming a business's own branch as its top competitor. Decide deliberately, and label it either way.
+Then the instrument trap. Competitor discovery drops two things from its candidate list: the business you ran it from, and anything you already track. Your other branch is neither — a separate profile, not yet on the list — so it comes back as an ordinary candidate and can be tracked like any rival. Sometimes that is exactly what you want — it keeps the overlap visible. It is also how a client report ends up naming a business's own branch as its top competitor. Decide deliberately, and label it either way.
 
 One caution on the response. The instinct on finding cannibalisation is to de-optimise a branch — spending effort to be less visible — and it is almost always wrong. The productive responses are differentiation (distinct primary categories where the businesses genuinely differ, distinct services, distinct landing pages) and accepting that two branches inside one catchment share it. Total overlap is a property of the estate, not something a profile can fix.
 
@@ -127,7 +127,7 @@ Now the caveats, because heuristics are what Part III is for. The score is not e
 
 **What good looks like.** Your spreadsheet reproduces the app's ordering, and you can name a location whose position is an artefact of staleness rather than health.
 
-**If it went wrong.** Every number is slightly off: the profile contribution is a *deficit* against 80, not the score, and it floors at zero. A location shows no slipping keywords despite worse rankings: movement needs two rank checks to exist.
+**If it went wrong.** Every number is slightly off: the profile contribution is a *deficit* against 80, not the score, and it floors at zero. A location shows no slipping keywords despite worse rankings: movement needs two rank checks to exist. A card shows a website chip *and* **All quiet**: the quiet label is computed from fixes, unanswered reviews, slipping keywords and profile score only — the website score feeds the ordering but is not one of the inputs to "quiet".
 
 **What you just learned.** A triage ordering you cannot reproduce by hand is a black box, and a black box cannot be defended to a client asking why their branch was ignored. Decomposing the ordering *is* the audit of it.
 
@@ -164,7 +164,7 @@ Now the caveats, because heuristics are what Part III is for. The score is not e
 
 **What good looks like.** A written decision with a reason, and — if you tracked the branch — a labelling sentence that exists before the first report does.
 
-**If it went wrong.** Branch B is absent: it may be outside the discovery radius or in a different primary category — both findings about how differentiated your branches already are. Discovery returns almost nothing: check the optional **Area** field and the profile's category first.
+**If it went wrong.** Branch B is absent: you may already track it (discovery hides everything on your competitor list), or it sits outside the discovery radius, or it is in a different primary category — the last two are findings about how differentiated your branches already are. Discovery returns almost nothing: check the optional **Area** field and the profile's category first.
 
 **What you just learned.** An instrument's definition of "competitor" is whatever it was built to exclude — here, one place. Read every automated list as the client will read it, not as the tool intended.
 

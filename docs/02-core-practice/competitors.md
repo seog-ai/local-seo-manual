@@ -42,9 +42,9 @@ Attributes deserve their own line. Rivals declare amenities, accessibility and p
 
 A review count is a fact about the past several years. It says where a business got to, not what it is doing now. There is no public source for the derivative, because Google does not publish a listing's history. **You can only have the movement you recorded.**
 
-That is what snapshots are for. A snapshot captures one rival's rating, review count and photo count at a moment. One is a level; two are a slope. Everything interesting here — deltas, the sparkline, "catching up", the momentum term in the threat score, the activity feed — needs two. Hence a boring fixed cadence rather than snapshotting when you are curious. Fortnightly is plenty; these metrics do not move faster in most markets.
+That is what snapshots are for. A snapshot captures one rival's rating, review count and photo count at a moment. One is a level; two are a slope. Almost everything interesting here — deltas, the sparkline, the momentum term in the threat score, the activity feed — needs two. Hence a boring fixed cadence rather than snapshotting when you are curious. Fortnightly is a workable default *(inference: there is no published measurement of how fast these fields move, so the value is in keeping the interval fixed, not in the interval itself)*.
 
-Movement also drives the activity feed, on thresholds worth knowing: between snapshots, a rating fall of 0.3 (high severity), a rise of 0.5, 20 new reviews, 10 new photos, or a fresh low-rated review on a watched rival. The watch toggle is the per-rival switch — muting keeps a rival's history and stops the extra review fetch.
+Movement also drives the activity feed, on thresholds worth knowing: between snapshots, a rating fall of 0.3 or more (high severity), a rise of 0.5, 20 new reviews, 10 new photos, or a fresh review of two stars or fewer. All of them are per-rival and gated on the bell — **Alerts on** / **Muted** on each rival's card. Muting keeps the rival tracked and keeps its snapshots and metrics updating; what stops is the alerting, including the extra review fetch the review alert needs.
 
 ## Scoring the threat, published so you can argue with it
 
@@ -58,7 +58,7 @@ Each tracked rival carries a threat score from 0 to 100. Here is the whole formu
 
 Notice what it does not contain: position. It is a prominence-and-momentum score, deliberately, because prominence is what you can read from outside and [distance is what you cannot change](../01-foundations/relevance-distance-prominence.md). A rival can score 100 and be irrelevant if they sit outside the area you serve, so read the score next to the distance.
 
-The flags beside it are often more useful. **Beats you** means a higher rating than yours. **Catching up** means a rival *smaller* than you on volume is gaining — and rivals already bigger are excluded by design, because they are ahead, not catching up. That filter is the early-warning list, and the one most people never open.
+The flags beside it are often more useful. **Beats you** means a higher rating than yours. **Catching up** starts from a volume test — the rival has fewer reviews than you, so rivals already bigger are excluded by design, because they are ahead, not catching up — and then fires on any one of three things: they gained reviews since the last snapshot, their rating rose, *or* their rating already matches or beats yours. That last clause is why a rival can show as catching up on a single snapshot, before there is any movement to measure. That filter is the early-warning list, and the one most people never open.
 
 ## Reading a listing that is winning by breaking the rules
 
@@ -70,7 +70,7 @@ Detection is heuristic, so score signals rather than declare verdicts. Here is t
 | --- | --- | --- |
 | Duplicate listing | Near-identical name to another listing in the set, or a near-identical address paired with a related name | 3 |
 | Keyword-stuffed name | A promotional term in the business name (*best*, *#1*, *cheap*, *near me*, *24/7*, *top rated*, *call now*, *100%*, ™), **or** two of: three or more separators, over 60 characters, over nine words | 3 |
-| Suspicious rating | 4.8★ or higher on fewer than ten reviews | 3 |
+| Suspicious rating | 4.8★ or higher on at least one but fewer than ten reviews | 3 |
 | Thin profile | Zero reviews *and* zero photos | 2 |
 | No website | No website linked | 1 |
 
@@ -92,9 +92,9 @@ Platform rows are not rivals. Yelp surfacing in an answer is a citations signal:
 
 ## What you cannot see, and why
 
-- **A rival's full review history is not public.** Without owner access, the reviews readable on any business are a relevance-ordered sample of roughly five. Their *count* and *rating* are exact; their review corpus is not, and nobody selling you a report has it either.
+- **A rival's full review history is not public.** Without owner access, the reviews readable on any business are a sample of **at most five**, sorted by relevance — Google's Places reference states the cap and the ordering outright. Their *count* and *rating* are exact; their review corpus is not, and nobody selling you a report has it either. Every ratio computed over that sample has a denominator of five or fewer ([What Google's reporting hides](../05-reference/what-googles-reporting-hides.md)).
 - **Their performance data is invisible.** Impressions, calls, direction requests, search terms — all require owning the profile. Anyone showing you a rival's traffic is modelling, not measuring.
-- **Stored competitor data expires.** Google's terms cap how long profile content may be retained, so competitor history is a rolling window of roughly 30 days — by policy, not by choice ([Storing Google data legally](../05-reference/storing-google-data-legally.md)). If a report needs longer, export as you go.
+- **Stored competitor data expires, and the reason is stricter than the folklore.** The rule the industry repeats — that you may cache Places data for thirty days — is not in Google's terms; the default there is **no caching of Places content at all**, with place IDs exempt and coordinates allowed for up to 30 consecutive days ([Storing Google data legally](../05-reference/storing-google-data-legally.md)). Competitor history is therefore a short rolling window that any tool has to refresh or purge, not an archive it is entitled to keep. Export as you go if a report needs longer.
 - **Some rivals are structurally invisible.** A pure service-area business with a hidden address never appears in the search discovery uses ([Service-area businesses](../03-advanced/service-area-businesses.md)). Very new listings can be missing too, since discovery ranks by prominence — if you know the name, search for it directly.
 
 ## Labs
@@ -107,12 +107,12 @@ Platform rows are not rivals. Yelp surfacing in an answer is a citations signal:
 
 ![The Competitors page before anything is tracked: an Add a competitor card with radius chips and a Discover nearby button, a filter row, and two greyed-out example rival rows](../../static/img/screens/competitors.png)
 
-*Competitors before anything is tracked. Discovery is the top card — radius chips, **Big players (50+)**, and the optional **Area** box for a business with no map point — and the filter row above the list is where **Beat us** and **Catching up** live. The two coffee shops underneath are the interface illustrating what a tracked rival looks like: placeholder rows labelled "Example", not real rivals and not real numbers.*
+*Competitors before anything is tracked. Discovery is the top card — radius chips, **Big players (50+)**, and the optional **Area** box for a business with no map point — and the filter row above the list is where **Beat us** and **Catching up** live. The two coffee shops underneath sit under an **Example** header: the interface illustrating what a tracked rival looks like, not real rivals and not real numbers.*
 
 1. Open **Competitors**. In the **Add a competitor** card, find the *or find nearby* row: radius chips **1 mi / 3 mi / 5 mi**, a **Big players (50+)** checkbox, an optional **Area** box. Leave the radius at 3 mi. If your business has no map point (a service-area business), type a town into **Area** — otherwise the search has no centre.
 2. Press **Discover nearby**: a live ranked search, priced on the button.
 3. Read the summary line above the results *first*: either `You rank #N in this search — anything above that line already beats you`, or that you did not appear in the top 20, meaning everything listed outranks you. That sentence is the finding.
-4. Read each row's rank chip — `#7 · above you (you #11)`. Where a rival also appears in your stored rank checks, a second line reads like *beats you for 2 of 3 tracked keywords it appeared in*. Treat that as a floor: rank checks record only the top few rivals.
+4. Read each row's rank chip — `#7 · above you (you #11)`. Where a rival also appears in your stored rank checks, a second line reads like *beats you for 2 of 3 tracked keywords it appeared in*. Treat that as a floor: a rank check records only the **top three** rivals it saw, so a rival that consistently sits fourth leaves no trace there at all.
 5. Press **Track** on three rivals that genuinely contest you: above you here, same primary category, inside the distance your customers travel. Not the three biggest names in the city.
 
 **What good looks like.** Three tracked rivals — at least one that outranks you, at least one you outrank — plus a sentence per rival naming which force they win on.
@@ -169,7 +169,7 @@ Platform rows are not rivals. Yelp surfacing in an answer is a citations signal:
 >
 > You need: at least one live AI answer check run from the keyword × engine matrix (Lab 5.1 tours that screen).
 
-1. Open **AI Visibility** and scroll to **Who AI recommends alongside (or instead of) you**. Each row: a name, a tag — Local, Chain or Platform — and its answer count.
+1. Open **AI Visibility** and scroll to **Who AI recommends alongside (or instead of) you**. Each row: a name, its answer count, and — where the name could be classified — a tag reading Local, Chain or Platform. Unclassified names carry no tag; they are not a separate category, just an unresolved one.
 2. Cross off every name you already track. What remains is a competitive set you did not choose.
 3. Move the Platform rows to your citations worklist; they are sources, not rivals.
 4. Track the one or two most frequent Local names (paid), then ask whether they appear in your map-pack set at all.
@@ -200,7 +200,7 @@ Platform rows are not rivals. Yelp surfacing in an answer is a citations signal:
 
 1. **Name your three competitor sets and one member of each that is in no other.** If all three lists are identical, you have built only one of them.
 2. **A rival scores 82 on threat. Give the two likeliest breakdowns.** (Rating edge plus double your volume — established, slow to move. Or moderate volume plus full momentum — a campaign running now, the urgent one.)
-3. **Which rival is "catching up", and how is that different from "beats you"?** (Catching up: smaller on volume but gaining. Beats you: a higher rating. A rival can be both, or neither.)
+3. **Which rival is "catching up", and how is that different from "beats you"?** (Catching up: smaller than you on review volume, *and* either gaining reviews, gaining rating, or already at or above your rating. Beats you: a higher rating, full stop. A rival can be both, or neither.)
 4. **A listing in your pack has a stuffed name and no website. Do you report it?** (No — 3 + 1 = 4, below the escalation threshold. Watch it; report when a second signal appears.)
 5. **A rival's review count jumped 40 in a week. Name an innocent explanation before you reach for the guilty one.** (A request campaign after a backlog, a seasonal surge, or a filtered batch released. Purchased reviews is the claim that needs evidence.)
 

@@ -25,24 +25,26 @@ Hosts are abbreviated: `mybusiness` = `mybusiness.googleapis.com`, `businessinfo
 | Account Management | `accountmanagement` v1 | Accounts list, admins, invitations | WORKS | 2026-07-13 | [LSM-GBP-02](#lsm-gbp-02--account-management-v1-works-and-a-personal-account-has-no-admins-subresource) |
 | Business Information | `businessinformation` v1 | Location read/write, categories, hours, service area, `getGoogleUpdated` | WORKS | 2026-07-21 | [LSM-GBP-03](#lsm-gbp-03--business-information-v1-serves-the-whole-location-surface-including-the-per-category-attribute-catalogue) |
 | Business Information — attributes | `businessinformation` v1 | Attribute catalogue + values | WORKS | 2026-07-21 | [LSM-GBP-04](#lsm-gbp-04--attributes-are-a-separate-resource--locationspatch-cannot-write-them) |
-| Performance | `performance` v1 | 11 daily metrics, monthly search keywords | WORKS | 2026-07-13 | [LSM-GBP-05](#lsm-gbp-05--performance-v1-serves-11-daily-metrics-and-google-charges-nothing-for-them) |
+| Performance | `performance` v1 | 11 daily metrics, monthly search keywords | WORKS | 2026-07-13 | [LSM-GBP-05](#lsm-gbp-05--performance-v1-serves-11-daily-metrics-and-the-published-constraint-on-them-is-quota-not-price) |
 | Verifications | v1 | Verification history, `VoiceOfMerchantState` | WORKS | 2026-07-13 | [LSM-GBP-08](#lsm-gbp-08--verifications-v1-exposes-voiceofmerchantstate--the-machine-readable-suspension-signal) |
 | Notifications | v1 | Pub/Sub push, six event types | WORKS | 2026-07-13 | [LSM-GBP-09](#lsm-gbp-09--notifications-v1-offers-pubsub-push-for-six-event-types-and-is-silent-until-you-configure-it) |
 | Place Actions | v1 | Booking / order action links | OPEN QUESTION | 2026-07-13 | [LSM-GBP-10](#lsm-gbp-10--place-actions-v1-answers-403-service_disabled-on-a-project-where-it-has-not-been-enabled) |
-| Lodging | v1 | Hotel attributes | not probed | — | — |
+| Lodging | v1 | Hotel attributes | OPEN QUESTION — never probed | — | — |
 | **Reviews** | `mybusiness` **v4** | Full history, replies | WORKS | 2026-07-14 | [LSM-REVIEWS-01](#lsm-reviews-01--full-review-history-exists-only-on-the-legacy-v4-api-the-public-places-api-caps-at-five) |
 | **Media (photos)** | `mybusiness` **v4** | Photo list / upload / delete | WORKS | 2026-07-21 | [LSM-GBP-15](#lsm-gbp-15--v4-media-is-the-only-photo-write-surface-and-it-uploads-by-a-three-step-bytes-handshake) |
 | **Local Posts** | `mybusiness` **v4** | Post CRUD, scheduling, recurrence | WORKS | 2026-07-22 | [LSM-GBP-13](#lsm-gbp-13--v4-localposts-is-alive-and-google-is-still-shipping-features-for-it) |
-| **Food menus** | `mybusiness` **v4** | Menu structures | not probed | — | — |
+| **Food menus** | `mybusiness` **v4** | Menu structures | OPEN QUESTION — never probed | — | — |
 | Q&A | `mybusinessqanda` v1 | Questions and answers | GONE | 2026-07-13 | [LSM-GBP-12](#lsm-gbp-12--the-qa-api-is-gone-and-google-never-added-it-to-the-deprecation-table) |
-| Post insights | `mybusiness` v4 `reportInsights` | Per-post views and clicks | GONE | — | [LSM-GBP-14](#lsm-gbp-14--per-post-metrics-have-no-api-at-all) |
-| Business Calls | v1 | Call history | GONE | — | Table B |
+| Post insights | `mybusiness` v4 `reportInsights` | Per-post views and clicks | GONE | 2026-07-27 (documentation) | [LSM-GBP-14](#lsm-gbp-14--per-post-metrics-have-no-api-at-all) |
+| Business Calls | v1 | Call history | GONE | 2026-07-27 (documentation) | Table B |
 
 The bold rows are the point. **Four of the most commercially valuable capabilities — reviews, photos, posts and menus — live only in the legacy v4 API**, which has no successor and is still receiving features. Anyone who tells you "v4 is deprecated, migrate off it" has not read the FAQ.
 
 ### Table B — Google's deprecation schedule, mirrored
 
-Google publishes its deprecation table at `developers.google.com/my-business/content/sunset-dates` with five columns: **Deprecated Resource · Type · Replacement Resource · Support Ended · Discontinuation Date**. Those five are reproduced below, verbatim as read on **2026-07-27**.
+Google publishes its deprecation table at `developers.google.com/my-business/content/sunset-dates` with five columns: **Deprecated Resource · Type · Replacement Resource · Support Ended · Discontinuation Date**. Those five are reproduced below as read on **2026-07-27**; the page's own stamp on that read was **`Last updated 2025-08-28 UTC`**.
+
+That stamp is worth pausing on. The schedule has not been touched since August 2025 — which is *before* the Q&A API was discontinued on 2025-11-03. The table is not merely incomplete; it has not been maintained through the most recent retirement on this surface.
 
 The column Google does not have is the last one: **what the endpoint returns when you call it now, and when that call ran**. A deprecation schedule states intent at some past moment. Only a call establishes present state, and the two disagree in both directions on this surface.
 
@@ -57,7 +59,9 @@ The column Google does not have is the last one: **what the endpoint returns whe
 | `accounts.locations.localPosts.reportInsights` | Method | None | 2022-11-21 | 2023-02-20 | no replacement exists · [LSM-GBP-14](#lsm-gbp-14--per-post-metrics-have-no-api-at-all) |
 | *(absent from Google's table)* | API | None stated | — | 2025-11-03 | **Q&A: GONE** · 2026-07-13 · [LSM-GBP-12](#lsm-gbp-12--the-qa-api-is-gone-and-google-never-added-it-to-the-deprecation-table) |
 
-Two rows do the work. `localPosts.reportInsights` is the only entry on the whole schedule whose Replacement Resource is *None* and for which no replacement has appeared since — that is why per-post metrics are unobtainable in 2026. And the last row is not Google's; it is the retirement that Google's deprecation table does not record.
+**This is a selection, not the whole schedule.** On the 2026-07-27 read the page carried roughly two dozen rows. The ones omitted above are almost all individual retired Insights enum values — `QUERIES_DIRECT`, `QUERIES_INDIRECT`, `QUERIES_CHAIN`, `VIEWS_MAPS`, `VIEWS_SEARCH`, `ACTIONS_WEBSITE`, `ACTIONS_PHONE`, `ACTIONS_DRIVING_DIRECTIONS`, `PHOTOS_VIEWS_MERCHANT`, `PHOTOS_VIEWS_CUSTOMERS`, `PHOTOS_COUNT_MERCHANT`, `PHOTOS_COUNT_CUSTOMERS`, `LOCAL_POST_VIEWS_SEARCH`, `LOCAL_POST_ACTIONS_CALL_TO_ACTION` — plus `DrivingDirectionMetricsRequest` / `LocationDrivingDirectionMetrics` and `MediaInsights`. Go and read the page rather than treating the table above as a mirror of it. Three of those omitted rows matter here: `LOCAL_POST_VIEWS_SEARCH` and `LOCAL_POST_ACTIONS_CALL_TO_ACTION` are the post-level metrics themselves, retired individually ([LSM-GBP-14](#lsm-gbp-14--per-post-metrics-have-no-api-at-all)), and `MediaInsights` is the photo-view metric ([LSM-GBP-15](#lsm-gbp-15--v4-media-is-the-only-photo-write-surface-and-it-uploads-by-a-three-step-bytes-handshake)).
+
+Two rows do the work. `localPosts.reportInsights` is the entry whose Replacement Resource is *None* and for which no replacement has appeared since — that is why per-post metrics are unobtainable in 2026. And the last row is not Google's; it is the retirement that Google's deprecation table does not record.
 
 ---
 
@@ -69,7 +73,7 @@ Two rows do the work. `localPosts.reportInsights` is the only entry on the whole
 **Last verified:** 2026-07-22
 **Probe:** issue the same authenticated `GET` against a live-but-empty collection (`v4/accounts/{a}/locations/{l}/localPosts` on a location with no posts) and against a retired one, and compare status codes rather than bodies
 
-The single most common mistake when auditing this surface is reading an empty body as a dead endpoint, or a wrong resource name as a retirement. The status code separates six distinct states, and each has a different fix.
+The single most common mistake when auditing this surface is reading an empty body as a dead endpoint, or a wrong resource name as a retirement. The status code separates seven distinct states, and each has a different fix.
 
 | Observed | What it means | What to do |
 | --- | --- | --- |
@@ -94,8 +98,8 @@ The `200`-with-empty-body case is what makes this necessary. On 2026-07-22 a `GE
 ### LSM-GBP-01 · The Business Profile surface is eight v1 APIs plus a legacy v4 remnant
 
 **Verdict:** WORKS
-**Last verified:** 2026-07-13 (probe); documentation re-read 2026-07-27
-**Source:** the Business Profile APIs FAQ, `Last updated 2025-08-28 UTC`, listing the split-out APIs; probe of each host with a `business.manage` token
+**Last verified:** 2026-07-13 (probe); documentation re-read and re-confirmed 2026-07-27
+**Source:** the Business Profile APIs FAQ at `developers.google.com/my-business/content/faq`, `Last updated 2025-08-28 UTC`, listing the split-out APIs; probe of each host with a `business.manage` token
 
 Google split the old My Business API into eight named services: Account Management, Lodging, Place Actions, Notifications, Verifications, Business Information, Q&A and Business Profile Performance. The FAQ states that what remains is "Google My Business API 4.9, that includes the following important feature API calls: `FoodMenus`, `Media`, `Reviews`, `LocalPosts`".
 
@@ -139,11 +143,12 @@ The mask has a semantic that costs people data: **an attribute id present in `at
 
 **What to do instead:** read the current values immediately before writing, and include in the mask only the ids you are deliberately changing. The read-before-write is also the only way to build a working undo, since Google returns no previous state.
 
-### LSM-GBP-05 · Performance v1 serves 11 daily metrics, and Google charges nothing for them
+### LSM-GBP-05 · Performance v1 serves 11 daily metrics, and the published constraint on them is quota, not price
 
 **Verdict:** WORKS
-**Last verified:** 2026-07-13
+**Last verified:** 2026-07-13 (probe); enum re-read against the reference 2026-07-27
 **Probe:** `GET performance/v1/locations/{l}:fetchMultiDailyMetricsTimeSeries` with a 90-day range and every `dailyMetrics` value
+**Source:** `DailyMetric` enum reference, `Last updated 2024-10-16 UTC` — twelve enum values, of which one is the `DAILY_METRIC_UNKNOWN` sentinel
 
 Eleven metrics exist, not counting the `DAILY_METRIC_UNKNOWN` sentinel:
 
@@ -161,7 +166,7 @@ Eleven metrics exist, not counting the `DAILY_METRIC_UNKNOWN` sentinel:
 | `BUSINESS_FOOD_ORDERS` | Food orders from the profile |
 | `BUSINESS_FOOD_MENU_CLICKS` | Menu interaction clicks |
 
-The Business Profile APIs are unmetered. Google bills nothing per call for any of the owner surface — the constraint is quota, not money, which is the opposite of the Places API on the public side.
+Google publishes no per-call price for the Business Profile APIs: the usage-limits page states the constraint as queries per minute and per day, and there is no SKU table for this family the way there is for the Maps Platform APIs. The binding constraint is quota, not money — the opposite of the Places API on the public side. *(Inference: absence of a published rate is not the same as a written guarantee that the surface is free, and we have not found a Google sentence saying so in terms.)*
 
 **Stale-stamp warning:** the `DailyMetric` reference page carried `Last updated 2024-10-16 UTC` when read on 2026-07-27. Age of the page is not evidence the enum changed, but it is a reason to enumerate the values from a live call rather than from the page.
 
@@ -228,29 +233,34 @@ This is an OPEN QUESTION rather than a WORKS because **we have not exercised the
 ### LSM-GBP-12 · The Q&A API is gone, and Google never added it to the deprecation table
 
 **Verdict:** GONE
-**Last verified:** 2026-07-13 (probe); Google's pages re-read 2026-07-27
+**Last verified:** 2026-07-13 (probe); Google's pages re-read and re-confirmed 2026-07-27
 **Probe:** any `mybusinessqanda/v1` method with a valid token → `501` `API_UNSUPPORTED`
-**Source:** Q&A API change log, `Last updated 2025-11-06 UTC`: "The My Business Q&A API was discontinued on November 3, 2025. You can no longer read or post questions and answers using the API."
+**Source:** Q&A API change log at `developers.google.com/my-business/content/qanda/change-log`, `Last updated 2025-11-06 UTC`. Entry **v1: 2025-11-03**: "The My Business Q&A API was discontinued on November 3, 2025. You can no longer read or post questions and answers using the API." The same log's earlier entry **v1: 2025-09-15** gave the notice: "On November 3, 2025, we will be discontinuing the My Business Q&A API as we are in the process of updating the Q&A functionality and user experience."
 
-The discontinuation is real and Google states it plainly — on the Q&A API's own change log. It does **not** appear on the deprecation schedule at `content/sunset-dates`, whose most recent Discontinuation Date is 2024-07-01. And the Business Profile APIs FAQ, read on 2026-07-27, still lists "My Business Q&A API" among the eight current APIs.
+The discontinuation is real and Google states it plainly — on the Q&A API's own change log, twice, with seven weeks' notice. It does **not** appear on the deprecation schedule at `content/sunset-dates`, whose most recent Discontinuation Date is 2024-07-01 and whose own page stamp on 2026-07-27 was `Last updated 2025-08-28 UTC` — six weeks before Google even announced the retirement. The Business Profile APIs FAQ, read the same day, still lists "My Business Q&A API" among the eight current APIs. So does the Q&A API's own REST reference, `Last updated 2024-10-16 UTC`, which carries no retirement notice at all: only the change log records it.
 
-So three of Google's own pages disagree about whether this API exists. The change log is the correct one.
+So four of Google's own pages disagree about whether this API exists. The change log is the correct one, and it is the *only* one that is correct.
 
 This matters beyond Q&A. It is the demonstration that **the deprecation schedule is not a complete record of retirements**, which means an endpoint's absence from that table is not evidence it is alive.
 
-**What to do instead:** treat per-API change logs as the authority and the deprecation schedule as a partial index. On the consumer side, the questions-and-answers panel was phased off profiles from 3 December 2025 in favour of a Gemini-powered "Ask Maps" experience; there is no API for it. Any tool or client deliverable that still promises Q&A monitoring is describing something that stopped existing.
+**What to do instead:** treat per-API change logs as the authority and the deprecation schedule as a partial index. Any tool or client deliverable that still promises Q&A monitoring through the API is describing something that stopped existing.
+
+**Open on the consumer side.** The API retirement is settled. What happened to the *panel* on public profiles is not, at least not from a Google source we can cite. Third-party accounts consistently report that the questions-and-answers panel began disappearing from Search and Maps around 3 December 2025, replaced by a Gemini-powered "Ask" / "Ask Maps" experience with no API behind it. We have found no Google announcement, help-centre page or change log fixing that date. Treat the December date as reported rather than established, and treat the direction of travel — panel replaced by generative answers — as well attested but undated by Google. **What would settle it:** a Google help-centre or Search/Maps blog post naming the consumer rollout date.
 
 ### LSM-GBP-13 · v4 `localPosts` is alive, and Google is still shipping features for it
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-22
 **Probe:** `GET mybusiness/v4/accounts/{a}/locations/{l}/localPosts` with a stored `business.manage` token → HTTP 200, empty object (location had no posts)
+**Source:** `accounts.locations.localPosts` reference, `Last updated 2026-04-15 UTC` (enums re-read 2026-07-27); Google My Business API change log, `Last updated 2026-07-24 UTC`
 
-Local Posts is routinely described as retired. It is not. The endpoint answers, the create page carried `Last updated 2026-04-15 UTC`, and the v4 change log records a **new** capability shipped on 2026-04-07: recurring posts via `RecurrenceInfo`, with daily, weekly and monthly patterns and an optional `seriesEndTime`.
+Local Posts is routinely described as retired. It is not. The endpoint answers, the reference page carried `Last updated 2026-04-15 UTC`, and the v4 change log records a **new** capability shipped on 2026-04-07: "You can now schedule recurring posts by setting RecurrenceInfo when creating a LocalPost", with daily, weekly and monthly occurrence patterns and an optional `seriesEndTime`.
 
-`LocalPostState` values are `LIVE`, `PROCESSING`, `REJECTED`, `SCHEDULED` and `RECURRING`. Topic types are `STANDARD`, `EVENT`, `OFFER` and `ALERT` — `ALERT` is described as not always available for authoring. Product posts are not creatable through the API at all.
+`LocalPostState` values are `LIVE`, `PROCESSING`, `REJECTED`, `SCHEDULED` and `RECURRING`, plus the `LOCAL_POST_STATE_UNSPECIFIED` sentinel. Topic types are `STANDARD`, `EVENT`, `OFFER` and `ALERT`, plus `LOCAL_POST_TOPIC_TYPE_UNSPECIFIED`; `ALERT` is documented as "High-priority, and timely announcements related to an ongoing event. These types of posts are not always available for authoring". There is no product topic type in the enum, so product posts are not creatable through the API at all.
 
-Call-to-action types are `BOOK`, `ORDER`, `SHOP`, `LEARN_MORE`, `SIGN_UP` and `CALL`, plus a deprecated `GET_OFFER`. `url` is required on every type **except** `CALL`, where it must be absent — `CALL` uses the profile's verified phone number.
+Call-to-action types are `BOOK`, `ORDER`, `SHOP`, `LEARN_MORE`, `SIGN_UP` and `CALL`, plus the `ACTION_TYPE_UNSPECIFIED` sentinel. `url` is required on every type **except** `CALL`, where it must be unset — `CALL` uses the profile's verified phone number.
+
+*Correction, 2026-07-27:* an earlier version of this entry listed a deprecated `GET_OFFER` action type. On a re-read of the reference dated 2026-04-15, `GET_OFFER` **does not appear in the `ActionType` enum**. It is present in older copies of the reference and in third-party material, and the `OFFER` topic type covers the use case. Treat `GET_OFFER` as removed from the current enum rather than as a deprecated-but-present value; if you have a live response containing it, that observation would change this paragraph.
 
 **What to do instead:** stop citing the "Local Posts API was retired in 2022" pages; a page making that claim was still ranking in July 2026. The write-side failure modes — character limits, media restrictions, rejection triggers — are in [write limits and failure modes](./write-limits-and-failure-modes.md).
 
@@ -258,9 +268,9 @@ Call-to-action types are `BOOK`, `ORDER`, `SHOP`, `LEARN_MORE`, `SIGN_UP` and `C
 
 **Verdict:** GONE
 **Last verified:** 2026-07-27 (documentation); no replacement found on any probe since 2026-07-13
-**Source:** Google's deprecation schedule, row `accounts.locations.localPosts.reportInsights` — Type `Method`, Replacement Resource **None**, Support Ended 2022-11-21, Discontinuation Date **2023-02-20**
+**Source:** Google's deprecation schedule (`content/sunset-dates`, page stamp `Last updated 2025-08-28 UTC`, re-read 2026-07-27), row `accounts.locations.localPosts.reportInsights` — Type `Method`, Replacement Resource **None**, Support Ended 2022-11-21, Discontinuation Date **2023-02-20**. The same schedule separately retires the two post-level metric values, `LOCAL_POST_VIEWS_SEARCH` and `LOCAL_POST_ACTIONS_CALL_TO_ACTION`.
 
-`reportInsights` for local posts was discontinued on 2023-02-20 with no replacement, and none has appeared. The Business Profile Performance API that replaced location-level insights has **zero post-level metrics** — none of its 11 daily metrics is scoped to a post ([LSM-GBP-05](#lsm-gbp-05--performance-v1-serves-11-daily-metrics-and-google-charges-nothing-for-them)).
+`reportInsights` for local posts was discontinued on 2023-02-20 with no replacement, and none has appeared. The Business Profile Performance API that replaced location-level insights has **zero post-level metrics** — none of the 11 values in its `DailyMetric` enum is scoped to a post ([LSM-GBP-05](#lsm-gbp-05--performance-v1-serves-11-daily-metrics-and-the-published-constraint-on-them-is-quota-not-price)). That is a two-sided confirmation: the old metrics are on the retirement schedule, and the new enum does not contain replacements for them.
 
 What a post exposes through the API is its `state` and a `searchUrl`. Views, clicks and CTA taps are not obtainable programmatically in 2026, by anybody.
 
@@ -276,7 +286,7 @@ Photos are written only through v4. There is no media surface on any v1 API. The
 
 Notably, this path needs **no publicly reachable staging URL** — the bytes go directly to Google. That is the opposite of how post media works, and the difference trips people who assume one media model.
 
-Listing media returns `name` and `googleUrl` per item. The probe saw **no** `insights.viewCount` on returned media items.
+Listing media returns `name` and `googleUrl` per item. The probe saw **no** `insights.viewCount` on returned media items — consistent with Google's deprecation schedule, which carries a `MediaInsights` row.
 
 **What to do instead:** do not promise per-photo view counts. And when building an undo, capture the created media resource names at upload time — deletion is by name, and there is no other way to identify which photos a given action added.
 
@@ -308,9 +318,9 @@ This is the single most expensive gotcha on the surface, because the symptom is 
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-27
-**Source:** Business Profile APIs usage limits, `Last updated 2026-05-07 UTC` — Business Information API: "Edits: 10 per minute per Google Business Profile (cannot be increased)"
+**Source:** Business Profile APIs usage limits at `developers.google.com/my-business/content/limits`, `Last updated 2026-05-07 UTC`, re-read 2026-07-27 — Business Information API: "10 per minute per Google Business Profile (cannot be increased)"
 
-Alongside it on the same page: Create Location 300 per day, `SearchGoogleLocation` 300 per day, Update Location 10,000 per day. Every other listed API sits at 300 QPM. The 10-edits-per-minute ceiling is the only limit Google marks as non-increasable.
+Alongside it on the same page: Create Location requests 300 QPD, `SearchGoogleLocation` requests 300 QPD, Update Location requests 10000 QPD. Every other listed API — Account Management, Performance, Verifications, Lodging, Place Actions, Notifications — sits at 300 QPM. The 10-edits-per-minute ceiling is the only limit on the page Google marks as non-increasable.
 
 **Consequence:** bulk profile work is rate-limited by construction. A ten-field fix applied across a portfolio cannot be pushed in a burst, and a client that tries will get refusals partway through a batch — leaving the profile half-edited unless the caller tracks what landed.
 
@@ -320,7 +330,7 @@ Alongside it on the same page: Create Location 300 per day, `SearchGoogleLocatio
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-27
-**Source:** Business Profile APIs prerequisites, `Last updated 2025-08-28 UTC`: "If your quota is 0 QPM (Queries Per Minute), your project has not yet been approved. If your quota is set to 300 QPM, your project is approved."
+**Source:** Business Profile APIs prerequisites at `developers.google.com/my-business/content/prereqs`, `Last updated 2025-08-28 UTC`, re-read 2026-07-27: "If your quota is 0 QPM (Queries Per Minute), your project has not yet been approved." … "If your quota is set to 300 QPM, your project is approved."
 
 Quota is per API, per project. Approval is not automatic on enabling the API — it is a separate request, and until it is granted every call fails in a way that reads like a broken integration.
 
@@ -344,11 +354,11 @@ Both fields are simply absent. `serviceArea.places.placeInfos` carries the decla
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-27
-**Source:** Business Information `locations` reference, `Last updated 2024-10-16 UTC`: `canOperateLocalPost` — "Output only. Indicates if the listing can manage local posts."
+**Source:** Business Information `locations` reference, `Last updated 2024-10-16 UTC` (re-read 2026-07-27): `Metadata.canOperateLocalPost` — "Indicates if the listing can manage local posts." The whole `Metadata` object is output-only.
 
 Some locations cannot use the Local Posts API at all. Locations Google internally detects as chains are refused with the error code `LOCATION_DISABLED_FOR_LOCAL_POST_API`. Almost nobody checks first, because the flag is buried in `Metadata` and most `readMask` values omit it.
 
-The same `Metadata` object also carries `canDelete` — "Indicates whether the location can be deleted using the API" — and `placeId`, which is the only bridge between the owner surface and Places-keyed data.
+The same `Metadata` object also carries `canDelete` — "Indicates whether the location can be deleted using the API" — and `placeId`, "If this location appears on Google Maps, this field is populated with the place ID for the location", which is the only bridge between the owner surface and Places-keyed data.
 
 **What is settled and what is not:** the flag and the error code are documented. The **trigger** is not. The widely repeated "more than ten locations makes you a chain" threshold appears in no Google document we can find; treat it as community lore, and treat the flag as the only reliable answer. That half is an open question — see [LSM-GBP-22](#lsm-gbp-22--the-chain-detection-threshold-behind-location_disabled_for_local_post_api-is-not-published).
 
@@ -384,11 +394,11 @@ This is exactly the shape of a fact that turns out to be true and undocumented, 
 
 **Verdict:** NEVER WORKED
 **Last verified:** 2026-07-27
-**Source:** Google Maps user-contributed content policy, "Tips for posting media to Maps": "Use media that you captured. Upload media of a place that you captured using a camera. Avoid screenshots, stock photos, GIFs, collages, heavily edited or otherwise manipulated photos, or imagery created by other parties." Business Profile photo requirements, same read: "The photo should be in focus and well lit, and have no significant alterations or excessive use of filters. In other words, the image should represent reality."
+**Source:** Maps User Generated Content Policy Help, "Tips for posting media to Maps" (`support.google.com/contributionpolicy/answer/7411351`), re-read 2026-07-27: "Use media that you captured. Upload media of a place that you captured using a camera. Avoid screenshots, stock photos, GIFs, collages, heavily edited or otherwise manipulated photos, or imagery created by other parties." Business Profile photo requirements (`support.google.com/business/answer/6103862`), same read: "The photo should be in focus and well lit, and have no significant alterations or excessive use of filters. In other words, the image should represent reality."
 
 The media APIs will accept the bytes. That is not the question. The policy requires media *you captured with a camera* and explicitly excludes imagery created by other parties, and requires that the image represent reality. A generated image satisfies neither clause.
 
-The technical requirements from the same page, verbatim and worth having: **JPG or PNG; between 10 KB and 5 MB; minimum resolution 250 px × 250 px; recommended 720 px × 720 px.** Video: **up to 30 seconds, up to 75 MB, 720p or higher.**
+The technical requirements from the photo-requirements page, re-confirmed verbatim on 2026-07-27 and worth having: **"JPG or PNG"; "Between 10 KB and 5 MB"; minimum "250 px tall, 250 px wide"; recommended "720 px tall, 720 px wide".** Video: **"Up to 30 seconds long", "Up to 75 MB", "720p or higher".**
 
 **Open on enforcement:** whether Google detects and auto-rejects generated imagery, and how, is not established. Community reports describe rejections; we have not reproduced one and have no mechanism to cite *(inference)*.
 
@@ -403,6 +413,7 @@ The technical requirements from the same page, verbatim and worth having: **JPG 
 **Verdict:** WORKS
 **Last verified:** 2026-07-14
 **Probe:** `GET mybusiness/v4/accounts/{a}/locations/{l}/reviews?pageSize=50`, following `nextPageToken` — compare the count with the `reviews[]` array from a Places API `places/{id}` request
+**Source:** Places API (New) `Place` reference, `reviews` field, re-read 2026-07-27: "List of reviews about this place, sorted by relevance. A maximum of 5 reviews can be returned."
 
 Two access paths, and the gap between them is the largest single difference between owning a profile and observing one.
 
@@ -455,7 +466,7 @@ A reply has a moderation state — `PENDING`, `REJECTED` or `APPROVED` — expos
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-27
-**Source:** `ReviewReply.comment` field description: "The body of the reply as plain text with markups. The maximum length is 4,096 bytes."
+**Source:** `accounts.locations.reviews` reference, `Last updated 2026-07-24 UTC` — `ReviewReply.comment`: "The body of the reply as plain text with markups. The maximum length is 4096 bytes."
 
 Bytes, not characters. In UTF-8 an accented Latin character costs two bytes and most CJK characters cost three, so a reply that fits in 4,096 characters can exceed 4,096 bytes by a wide margin.
 
@@ -491,17 +502,17 @@ Note what is *not* prohibited: drafting. A model may write the reply. A human mu
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-27
-**Source:** Google My Business API change log, `Last updated 2026-07-24 UTC`
+**Source:** Google My Business API change log at `developers.google.com/my-business/content/change-log`, `Last updated 2026-07-24 UTC`
 
 | Date | Change |
 | --- | --- |
-| 2026-07-24 | `reviewReplyUrl` can now be retrieved using reviews endpoints |
-| 2026-07-01 | `PolicyViolation` field included in `ReviewReply` for rejected review replies |
-| 2026-04-20 | `ReviewMediaItems` can now be retrieved as part of reviews |
-| 2026-04-01 | `ReviewReplyState` can be retrieved to show moderation status |
-| 2026-04-07 | Recurring posts via `RecurrenceInfo`; expanded food menu photos |
+| 2026-07-24 | `reviewReplyUrl` can now be retrieved using `accounts.locations.reviews.get`, `.list` and `.batchGetReviews` |
+| 2026-07-01 | `PolicyViolation` included in `ReviewReply`, giving visibility into why a reply was rejected during moderation |
+| 2026-04-20 | `ReviewMediaItems` can now be retrieved as part of reviews, via the same three endpoints |
+| 2026-04-07 | Recurring posts via `RecurrenceInfo` on create; and food menus can carry up to 200 dish photos via `accounts.locations.updateFoodMenus` |
+| 2026-04-01 | `ReviewReplyState` can be retrieved as part of reviews, showing the moderation status of submitted replies |
 
-Five feature additions to a "legacy" API in four months, four of them to reviews. `ReviewMediaItems` in particular is new capability, not maintenance — customer-uploaded photos attached to reviews were previously unreachable.
+Six capability additions across five dated change-log entries between 2026-04-01 and 2026-07-24 — four of them to reviews, on an API the industry describes as legacy. `ReviewMediaItems` in particular is new capability, not maintenance: customer-uploaded photos attached to reviews were previously unreachable.
 
 **Consequence:** the standard advice to migrate off v4 has no destination. There is no v1 API for reviews, media, posts or menus, and Google is actively investing in the v4 ones.
 
