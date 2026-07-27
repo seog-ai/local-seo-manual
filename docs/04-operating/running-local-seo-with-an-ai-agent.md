@@ -59,13 +59,13 @@ List the tools before asking the agent to do anything. A connected server with z
 
 ## What it can read, and what it can write
 
-Five classes, and the boundaries between them are the design. Costs follow one rule: **anything that calls an external API — Google or a model — is paid; reading data you already hold is free.** Undo and delete are paid too, because each replays a write against Google.
+Five classes, and the boundaries between them are the design. Costs follow one rule: **anything that calls an external API — Google or a model — is paid; reading data you already hold is free.** That rule settles undo and delete too, and it settles them differently: undoing a profile edit is paid because it replays the write against Google, and deleting a post or a photo is paid because it removes something from the live listing — but deleting a business, a keyword or a competitor only drops what SEOG stores, touches Google not at all, and is free. Which is worth knowing precisely, since the free ones are the irreversible ones.
 
 | Class | What it touches | Cost | Examples |
 | --- | --- | --- | --- |
 | Stored reads | Data already in your account | free | `list_businesses`, `list_keywords`, `review_stats`, `get_action_plan`, `get_latest_grid_scan`, `compare_competitors` |
-| Local writes | Your own bookkeeping, invisible to Google | free | `update_business`, `toggle_keyword`, `set_recommendation_status`, `draft_review_response` |
-| Fetches | A live call to Google or a model | paid | `check_keyword`, `refresh_rankings`, `sync_reviews`, `run_grid_scan`, `draft_post_content`, `check_citations` |
+| Local writes | Your own bookkeeping, invisible to Google | free | `update_business`, `toggle_keyword`, `set_recommendation_status`, `draft_review_response` (stores text *you* supply) |
+| Fetches | A live call to Google or a model | paid | `check_keyword`, `refresh_rankings`, `sync_reviews`, `run_grid_scan`, `draft_post_content`, `generate_review_reply`, `check_citations` |
 | Public writes | The live Google listing | paid | `apply_profile_fix`, `apply_business_description`, `publish_review_reply`, `publish_post` |
 | Irreversible | Deletes stored history or public content | either | `delete_business`, `delete_post`, `delete_profile_photo`, `remove_keyword`, `remove_competitor` |
 
@@ -87,7 +87,7 @@ Tools whose effect cannot be undone take a **required** `confirm` argument that 
 
 > "Must be true. This action is IRREVERSIBLE — confirm with the user, quoting exactly what will be deleted, before setting it."
 
-Omit it and the call fails validation before any code runs. It covers deleting a business and its whole history, deleting a post or photo from the live listing, and removing a keyword or competitor with their snapshots.
+Omit it and the call fails validation before any code runs. It covers deleting a business and its whole history, deleting a post or photo from the live listing, removing a keyword or competitor with their snapshots, and deleting a stored report.
 
 Be clear-eyed about what this is. **The agent supplies the flag itself**, so it is not a permission — it is a speed bump against a tool fired on a vague instruction, and it works because the model must construct an explicit acknowledgement rather than pattern-match a plausible call. It exists because MCP has no confirmation channel: an in-app assistant can stop and ask, an agent calling a tool directly cannot.
 
@@ -169,10 +169,10 @@ The pattern generalises: a small MCP server over the Google Business Profile and
 2. Read its plan. If it proposes a per-keyword check instead of the bundled rankings refresh, correct it — and note that you had to.
 3. Approve exactly two paid calls: the bundled rankings refresh, and a review sync.
 4. Then the free half: *"Without spending anything more, give me unanswered reviews needing a response, review stats, the competitor comparison and any unread competitor alerts."*
-5. Ask for drafts, not publications: *"Draft a reply to each unanswered review. Publish nothing."*
+5. Ask for drafts, not publications — and know which kind you are asking for. There are two tools here and only one of them is free: saving a draft you wrote costs nothing, while having a model write one is a charged call *per review*. Say which you want: *"For each unanswered review, write me a suggested reply yourself, in this chat, without calling any paid tool. Publish nothing."* Then, if you want the model-generated version instead, approve it review by review and count those charges.
 6. Read every draft and rewrite at least one — you will want to, and [Reviews](../02-core-practice/reviews.md) says why. Then ask for the whole thing as a digest a client could read: what moved, what did not, what needs their decision.
 
-**What good looks like.** Exactly two paid calls in the transcript, a digest of deltas rather than raw output, and a queue of drafts awaiting your judgement. You can point at each charge and name the question it answered.
+**What good looks like.** Two paid calls in the transcript for the refresh half — plus, if you took the model-drafting route at step 5, one per review and no more. A digest of deltas rather than raw output, and a queue of drafts awaiting your judgement. You can point at each charge and name the question it answered.
 
 **If it went wrong.** It looped a per-keyword check — the classic failure; put the bundle rule in the guardrail file in Lab 28.3. It ran out of credits and retried — read the error, then stop; the free reads still finish the digest. It published something — your client's approval policy is too loose, and that is now the most urgent item on your list.
 

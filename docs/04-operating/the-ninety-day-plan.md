@@ -29,7 +29,7 @@ Every task in local SEO sits on one of four clocks. Sorting the work by clock, b
 | **Aggregate** | Review count, rating, reply rate, citation consistency | A quarter, by construction | Everyone, slowly |
 | **Instrument** | Trend lines, comparable re-scans, the change log | As long as you have been measuring | You, on a schedule |
 
-The write clock is fast but not free of risk. An ordinary field edit is reviewed by Google and published, usually within minutes. Name, category and address are a different class: they can put a listing into re-verification and out of Search and Maps for hours to days ([Suspensions and reinstatement](../03-advanced/suspensions-and-reinstatement.md)). An edit can also be silently rejected — the field reads its old value after the next refresh, and that is the answer, not a bug ([write limits and failure modes](../05-reference/write-limits-and-failure-modes.md)).
+The write clock is fast but not free of risk. Most ordinary field edits go through Google's review before they become public — usually minutes, sometimes days ([LSM-GBP-07](../05-reference/write-limits-and-failure-modes.md)). Name, category and address are a different class: they can put a listing into re-verification and out of Search and Maps for hours to days ([Suspensions and reinstatement](../03-advanced/suspensions-and-reinstatement.md)). An edit can also be silently rejected — the field reads its old value after the next refresh, and that is the answer, not a bug ([write limits and failure modes](../05-reference/write-limits-and-failure-modes.md)).
 
 The aggregate clock dictates the calendar, because you cannot compress it. Getting a business from 12 reviews to 20 is not an afternoon's work at any price — it is a rate problem. The profile audit passes review volume at 20 and rating at 4.0; the AI-readiness rubric wants 25, 4.2, a review inside the last 60 days, and replies on at least half. Every one is a counter moving at the speed customers arrive: month-3 outcomes of month-1 decisions.
 
@@ -37,17 +37,17 @@ Which produces the inversion, worth saying flatly because it feels wrong:
 
 > **Start the slow work first and do the fast work while it runs.** Quick wins are called quick because they can be done at any time. That is precisely why they should not be done first.
 
-The instrument clock is the one people forget. Nothing re-measures on its own — every reading is a deliberate, usually priced action. The snapshot feeding **Profile score over time** lands at most once per business per calendar day, and only on days the profile was actually analysed. Refresh twice in a quarter and the chart has two points on it, with no way to fill the gap retroactively.
+The instrument clock is the one people forget. Nothing re-measures on its own — every reading is a deliberate, usually priced action, and there are no recurring background jobs. The snapshot feeding **Profile score over time** lands at most once per business per calendar day, and only on days you actually refreshed something (any of the profile, rankings, competitor or review refreshes writes it; a day nobody touched the business writes nothing). Refresh twice in a quarter and the chart has two points on it, with no way to fill the gap retroactively.
 
 ## The generated plan is a first draft
 
 Open the overview and **Action plan — your next steps** is already sitting there, ordered, with impact labels and point values. It is a useful starting object and it is not a schedule. Knowing how it was built is what lets you overrule it with confidence.
 
-It merges three sources into one deduplicated list: the failing checks from the weighted profile audit, the AI-readiness factors the audit does *not* already cover, and any stored website and listing fixes. Only two AI factors survive that deduplication — *Get a fresh review* and *Reply to your reviews* — because everything else in the readiness rubric is already an audit check.
+It merges three sources into one deduplicated list: the failing checks from the weighted profile audit, the AI-readiness factors the audit does *not* already cover, and any stored website and listing fixes. Only two AI factors survive that deduplication — *Get a fresh review* and *Reply to your reviews* — because everything else in the readiness rubric is already an audit check. And when the audit's own review-volume check has also failed, *Get a fresh review* is folded into it rather than listed twice, so you often see just the one row.
 
-The sort is impact tier first, then recoverable profile-score points, then alphabetical by title. The impact tier is a pure function of the check's weight — 9 or more is **High impact**, 6 to 8 is **Medium**, below 6 is **Low**. Nothing else feeds it.
+The sort is impact tier first, then recoverable profile-score points, then alphabetical by title. For a profile-audit row the impact tier is a pure function of that check's weight — 9 or more is **High impact**, 6 to 8 is **Medium**, below 6 is **Low**. The other two sources are tiered on their own scales rather than on audit weight: the AI-visibility rows from the readiness factor's weight, the website and listing rows from the stored fix's priority. So a tier compares rows within a source, and comparing tiers *across* sources means less than the shared label suggests.
 
-That last sentence is why you never work this list top-down. Three consequences:
+A tier is arithmetic on a weight, then — never a judgement about your business. Which is why you never work this list top-down. Three consequences:
 
 **It cannot see effort.** "Add your opening hours" and "Get more reviews" both carry 10 points and both land in the High tier. One is ninety seconds. The other is a quarter of somebody's life.
 

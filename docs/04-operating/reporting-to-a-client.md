@@ -71,7 +71,7 @@ Now the uncomfortable recommendation. **Give this rubric to your own clients.** 
 
 The app generates a report as a PDF. Knowing what is in it — and what is not — stops you mistaking it for the deliverable. As generated on 2026-07-27, in order:
 
-- A header: business name, address and category, the **generation date**, and the date the data was **last synced**. Two dates, deliberately, because they answer different questions.
+- A header: business name, address and category, the **generation date**, and the date the data was **last synced** (the second appears only once the business has been refreshed at least once). Two dates, deliberately, because they answer different questions.
 - **Key metrics**: profile score, rating with its review count, photo count.
 - **Google performance** for a fixed recent window, owner-only. If the profile is not connected it says so in words rather than leaving a suggestive blank.
 - The **business profile** as stored: status, phone, website, price, hours, description, attribute groups.
@@ -83,7 +83,7 @@ Now the part that matters. **It is a state document, not a period document.** No
 
 The PDF is therefore your **evidence annexe**, not your report. The narrative is yours to write, and it is the part worth money. If a supplier's monthly deliverable is a generated PDF with a covering email, the client is paying a retainer for a button.
 
-Two details that bite later. The performance section covers a fixed recent window of the report's own choosing, **not** the period you had selected on screen — quote it with that window named. And the app keeps the ten most recent reports per business, so an eleventh prunes the oldest: on a monthly cadence your engagement baseline goes first. Copy each dated PDF into your own archive on generation day.
+Two details that bite later. The performance section covers a fixed recent window of the report's own choosing, **not** the period you had selected on screen — the section heading names the window it used (28 days as generated on 2026-07-27), so quote it from there rather than from the Performance panel's selector. And the app keeps the ten most recent reports per business, so an eleventh prunes the oldest: on a monthly cadence your engagement baseline goes first. Copy each dated PDF into your own archive on generation day.
 
 ## The three-layer package
 
@@ -113,7 +113,7 @@ Two rules make it hold. **Re-measure on a pre-committed date, not a convenient o
 
 For a technical reader most of this is a solved problem, and it is worth being precise about which part.
 
-Reading stored data is free and unlimited; fetching new data from Google costs. A reporting pipeline should therefore be almost entirely reads — stored keyword history, stored grid scans, the profile-score series, stored review data — with the paid fetches on your pre-committed measurement date and nowhere else. If assembling the report costs about what measuring costs, you built it wrong ([How the labs work](../00-start-here/how-the-labs-work.md); the client-facing version is [What the work costs](./what-the-work-costs.md)). An agent connected to the app can queue the PDF, poll until it is ready, pull the period's stored history and lay out layers 1 and 2 — see [Running local SEO with an AI agent](./running-local-seo-with-an-ai-agent.md).
+Reading stored data is free; fetching new data from Google costs. A reporting pipeline should therefore be almost entirely reads — stored keyword history, stored grid scans, the profile-score series, stored review data — with the paid fetches on your pre-committed measurement date and nowhere else. If assembling the report costs about what measuring costs, you built it wrong ([How the labs work](../00-start-here/how-the-labs-work.md); the client-facing version is [What the work costs](./what-the-work-costs.md)). An agent connected to the app can queue the PDF, poll until it is ready, pull the period's stored history and lay out layers 1 and 2 — see [Running local SEO with an AI agent](./running-local-seo-with-an-ai-agent.md).
 
 What is not automatable is question 3. Ask a language model why a number moved and it will produce a fluent cause, because producing fluent causes is what it does. It has no access to the change log in your head, the competitor suspended in week two, or the fact that this trade is dead in August. So it will attribute. The sentence that *declines* to attribute is the one you are paid for, and a person whose name is on the document has to write it.
 
@@ -136,7 +136,7 @@ Hence the last rule: **automated assembly, signed judgement.** A report with no 
 **What good looks like.** A page a non-specialist could act on alone, and an annexe where any claim on it is locatable in under a minute. Deleting at least one claim at step 4 is the normal outcome and the point of the exercise.
 
 **If it went wrong.**
-- *The row reads **Failed**.* Generation is deterministic and is not retried, because a retry would fail identically; the row carries the reason, and a failed run is refunded automatically.
+- *The row reads **Failed**.* Generation is deterministic and is not retried, because a retry would fail identically. The badge is all the menu shows — the reason is recorded against the report rather than rendered beside it — and a failed run is refunded automatically.
 - *A row is tagged **Free analysis**.* A report generated for this place before the account existed. A valid dated artefact, but not one you produced this period.
 - *You have no verified items.* You measured a period you did not work in. Say exactly that; "no changes shipped this period, here is why" is survivable, invented activity is not.
 - *The performance figures do not match your reporting period.* They will not — that section uses a fixed window of its own. Quote it with the window named, or use the Performance panel instead.
