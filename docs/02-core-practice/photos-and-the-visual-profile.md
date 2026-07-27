@@ -18,9 +18,15 @@ Two different jobs, and it helps to keep them separate.
 
 **Conversion.** Three results sit in the map pack. All three are close enough, all three are open, all three have decent ratings. The photos are what makes someone tap one of them. That effect is immediate and it is the reason photos are worth work even if they never moved a ranking at all.
 
-**Evidence.** A profile with a storefront shot, an interior, the products and the team is a profile someone maintains. Google's guidance on improving local ranking lists adding photos alongside complete data, accurate hours and review management. But the three factors Google actually names — relevance, distance, prominence — do not include photos. See [Relevance, distance, prominence](../01-foundations/relevance-distance-prominence.md) for what those three are and are not.
+**Evidence.** A profile with a storefront shot, an interior, the products and the team is a profile someone maintains. Google's guidance on improving local ranking lists adding photos alongside complete data, accurate hours and review management.
 
-So how much do photos move a position? Nobody outside Google knows, and anyone who gives you a percentage for *ranking* is guessing. Google does publish numbers, but they describe behaviour rather than position: its help page *Make your Business Profile awesome* (`support.google.com/business/answer/6335804`, read 2026-07-27) states that customers are **42% more likely to request driving directions** to a business whose profile has photos, and **35% more likely to click through** to its website. No method is published behind either figure, and the obvious confound is untouched: businesses that upload photos are businesses that maintain their profile at all. Treat it as Google's claim about conversion, not as a measurement of ranking.
+But the three factors Google actually names — relevance, distance, prominence — do not include photos. See [Relevance, distance, prominence](../01-foundations/relevance-distance-prominence.md) for what those three are and are not.
+
+**So how much do photos move a position?** Nobody outside Google knows, and anyone who gives you a percentage for *ranking* is guessing.
+
+Google does publish numbers, but they describe behaviour rather than position. Its help page *Make your Business Profile awesome* (`support.google.com/business/answer/6335804`, read 2026-07-27) states that customers are **42% more likely to request driving directions** to a business whose profile has photos, and **35% more likely to click through** to its website.
+
+No method is published behind either figure, and the obvious confound is untouched: businesses that upload photos are businesses that maintain their profile at all. Treat it as Google's claim about conversion, not as a measurement of ranking.
 
 The honest working model *(inference, from how the rest of the profile behaves)*: photos are completeness evidence and conversion material. Do them because the second job is certain, not because the first one is.
 
@@ -28,11 +34,26 @@ The honest working model *(inference, from how the rest of the profile behaves)*
 
 Go back to [the entity model](../01-foundations/the-business-entity.md). Photos sit in the *contents* group, and the contents group has more than one author.
 
-A live gallery is fed by at least three sources: **you**, uploading as the owner; **customers**, uploading from Maps, forever, without asking; and **Google**, from Street View and its own imagery.
+A live gallery is fed by at least three sources:
 
-You have delete rights over exactly one of those. This is not a tooling limitation that a better product would solve — the media surface Google exposes to software only offers up owner-managed items for removal. Customer photos come down when the customer removes them, or when Google acts on a policy report. That is the whole list.
+- **You**, uploading as the owner.
+- **Customers**, uploading from Maps, forever, without asking.
+- **Google**, from Street View and its own imagery.
+
+> **You have delete rights over exactly one of those.**
+
+This is not a tooling limitation that a better product would solve — the media surface Google exposes to software only offers up owner-managed items for removal. Customer photos come down when the customer removes them, or when Google acts on a policy report. That is the whole list.
 
 So the most common photo request an agency receives — "get rid of that one" — usually has one honest answer: *I can flag it and wait, and I cannot promise anything.*
+
+```mermaid
+flowchart TD
+  A["A photo you want gone"] --> B{"Does it appear in Current photos?"}
+  B -->|"Yes: you uploaded it as the owner"| C["Delete it yourself"]
+  B -->|"No: a customer or Google added it"| D{"Does it breach Maps policy?"}
+  D -->|"Yes"| E["Report it on Google Maps, then wait on a decision you do not control"]
+  D -->|"No"| F["It stays. Add better photos of the same subject"]
+```
 
 ## What you can and cannot do
 
@@ -49,13 +70,17 @@ So the most common photo request an agency receives — "get rid of that one" �
 
 Two of these deserve more than a table row.
 
-**No atomic replace** means "swap the old logo for the new one" is two operations with a gap between them, and if the second fails you are down a photo. Every upload also draws on the shared per-profile edit budget described in [the profile is the product](./the-profile-is-the-product.md) — ten edits a minute, spent by posts, hours changes and description edits alike — so a bulk photo run can starve a scheduled post. [Write limits and failure modes](../05-reference/write-limits-and-failure-modes.md) has the mechanism.
+**No atomic replace** means "swap the old logo for the new one" is two operations with a gap between them, and if the second fails you are down a photo.
+
+Every upload also draws on the shared per-profile edit budget described in [the profile is the product](./the-profile-is-the-product.md) — ten edits a minute, spent by posts, hours changes and description edits alike — so a bulk photo run can starve a scheduled post. [Write limits and failure modes](../05-reference/write-limits-and-failure-modes.md) has the mechanism.
 
 **No ordering control** means any tool offering a "set cover photo" button is either driving the Google dashboard on your behalf or overstating what it does. Worth asking before you buy one.
 
 ## The photo count in every dashboard is a ceiling reading
 
-Here is the fact that quietly breaks a lot of reporting. The public data Google exposes about a place includes a list of photos, and that list is capped — around ten entries, in every read we have taken *(verified 2026-07-13)*. Any tool without owner access counts that list and calls the result "photos". So does SEOG, and so does every competitor comparison you will ever see.
+Here is the fact that quietly breaks a lot of reporting. The public data Google exposes about a place includes a list of photos, and that list is capped — around ten entries, in every read we have taken *(verified 2026-07-13)*.
+
+Any tool without owner access counts that list and calls the result "photos". So does SEOG, and so does every competitor comparison you will ever see.
 
 ![Business profile card for a coffee shop, with a pill reading 10 photos above a strip of gallery images](../../static/img/screens/profile.png)
 
@@ -77,9 +102,13 @@ The only place a true count exists is the owner's own Google dashboard. If the c
 
 ## You cannot measure a photo
 
-Per-photo view counts stopped existing on **2023-02-20**. The date is Google's own, not folklore: its published deprecation schedule (`developers.google.com/my-business/content/sunset-dates`) lists the merchant and customer photo-view metrics, the photo-count metrics and the media-insights object as all discontinued that day. The performance data that replaced them carries no photo metrics at all — no per-image views, no per-image actions *(probe-verified 2026-07-13; see [What Google's reporting hides](../05-reference/what-googles-reporting-hides.md))*.
+Per-photo view counts stopped existing on **2023-02-20**. The date is Google's own, not folklore: its published deprecation schedule (`developers.google.com/my-business/content/sunset-dates`) lists the merchant and customer photo-view metrics, the photo-count metrics and the media-insights object as all discontinued that day.
 
-So when a dashboard shows "your top-performing photo", exactly one of two things is true: it was scraped, or it was invented. There has been no third option since early 2023. Do not put that panel in a client report — [Reporting to a client](../04-operating/reporting-to-a-client.md) covers what to promise instead.
+The performance data that replaced them carries no photo metrics at all — no per-image views, no per-image actions *(probe-verified 2026-07-13; see [What Google's reporting hides](../05-reference/what-googles-reporting-hides.md))*.
+
+> **When a dashboard shows "your top-performing photo", exactly one of two things is true: it was scraped, or it was invented.**
+
+There has been no third option since early 2023. Do not put that panel in a client report — [Reporting to a client](../04-operating/reporting-to-a-client.md) covers what to promise instead.
 
 What you *can* do is measure at the profile level, before and after: direction requests, calls and website clicks over the weeks around a gallery overhaul. A weak instrument, since everything else moved too, but an honest one. [Did it work?](./did-it-work.md) is about using it properly rather than fooling yourself.
 
@@ -87,11 +116,21 @@ What you *can* do is measure at the profile level, before and after: direction r
 
 > This is our reading of Google's published guidance, not legal advice. Two different pages carry the two halves, and conflating them is a common error. **Provenance** comes from *Tips for posting media to Maps*, in the Maps user-generated content policy help (`support.google.com/contributionpolicy/answer/7411351`). The **file constraints** come from *Photo and video guidelines*, in Business Profile help (`support.google.com/business/answer/6103862`). Neither carries clause numbers, so the phrases below are quoted as published and read on **2026-07-27**.
 
-Google asks you to **"Use media that you captured"** — media of a place "that you captured using a camera" — and to **"Avoid screenshots, stock photos, GIFs, collages, heavily edited or otherwise manipulated photos, or imagery created by other parties"**. Interpret that separately from the quote: the guidance is about provenance, not quality. A beautiful photograph you did not take is against it. A mediocre one you took on a phone is not.
+Google asks you to **"Use media that you captured"** — media of a place "that you captured using a camera" — and to **"Avoid screenshots, stock photos, GIFs, collages, heavily edited or otherwise manipulated photos, or imagery created by other parties"**.
 
-Which puts the current fashion for AI-generated profile and post imagery in an awkward place. An image a model produced is, on any plain reading, not media you captured with a camera, and it sits close to two of the phrases above — "imagery created by other parties" and "otherwise manipulated photos". Whether Google *enforces* that against generated imagery is an **open question**: no Google statement we can find names AI-generated images, and the wording quoted above predates the current tools. Practitioners report uploads being rejected, but we have not traced any such report to a Google source *(unresolved as of 2026-07-27)*. The upside is cosmetic, the downside lands on a client's public listing, and the rule you would be relying on has not been written yet.
+Interpret that separately from the quote: the guidance is about provenance, not quality. A beautiful photograph you did not take is against it. A mediocre one you took on a phone is not.
+
+### Where AI-generated images sit
+
+Which puts the current fashion for AI-generated profile and post imagery in an awkward place. An image a model produced is, on any plain reading, not media you captured with a camera, and it sits close to two of the phrases above — "imagery created by other parties" and "otherwise manipulated photos".
+
+Whether Google *enforces* that against generated imagery is an **open question**: no Google statement we can find names AI-generated images, and the wording quoted above predates the current tools. Practitioners report uploads being rejected, but we have not traced any such report to a Google source *(unresolved as of 2026-07-27)*.
+
+The upside is cosmetic, the downside lands on a client's public listing, and the rule you would be relying on has not been written yet.
 
 **This manual does not recommend AI-generated imagery on a Google Business Profile, and neither should you.** Use it for a blog header if you like. Not here.
+
+### Format, size and review
 
 The practical constraints that go with the policy:
 
@@ -163,7 +202,9 @@ Add over time rather than dumping forty at once. A steady trickle keeps the prof
 
 **What good looks like.** The photo count increases by exactly the number of images that succeeded, and the profile score moves if the photo check just passed. On Google's side the images appear after review — usually minutes.
 
-**If it went wrong.** *"Google rejected the photos — try different images"* means nothing in the batch landed; the charge is refunded automatically when an action delivers nothing. A partial result is normal and expected: uploads are attempted per image, so two can succeed while a third fails. Common causes are the wrong format, a file over the size limit, or an image too small. Note that you get no reason back per image — that is the API, not the tool.
+**If it went wrong.** *"Google rejected the photos — try different images"* means nothing in the batch landed; the charge is refunded automatically when an action delivers nothing.
+
+A partial result is normal and expected: uploads are attempted per image, so two can succeed while a third fails. Common causes are the wrong format, a file over the size limit, or an image too small. Note that you get no reason back per image — that is the API, not the tool.
 
 **What you just learned.** An upload is a write to a live public record, not a file save. It queues behind Google's review, it consumes the same per-profile edit allowance as every other change, and the only evidence you will ever get about whether it worked is the count going up.
 

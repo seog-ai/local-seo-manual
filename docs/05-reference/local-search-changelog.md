@@ -340,7 +340,9 @@ There is no written carve-out for the merchant's own data obtained through the m
 **API touched:** Google Search consumer surface — no API  
 **Probe:** Google's I/O 2025 announcements and the trade coverage published the same day (Search Engine Land, 2025-05-20), which quote Google as saying that "starting today" AI Mode in the US no longer requires opting in, with the tab appearing for US searchers "this week". AI Mode had entered Search Labs on 2025-03-05, initially for Google One AI Premium subscribers ([LSM-AI-63](#lsm-ai-63--2025-03-05--ai-overviews-in-the-us-moved-to-gemini-20-for-harder-queries)).
 
-**Correction:** this entry previously dated US general availability to 2025-06-05. That date describes the rollout having finished, not the change. The opt-in requirement was removed on 2025-05-20 and the tab reached US searchers over the following days, so the two dates bracket a phased rollout rather than disagreeing. Where a date matters, cite 2025-05-20 as the change and treat early June as the point by which it was everywhere. The subsequent expansion to 180 countries and territories is a separate, later event and is not dated here.
+**Correction:** this entry previously dated US general availability to 2025-06-05. That date describes the rollout having finished, not the change. The opt-in requirement was removed on 2025-05-20 and the tab reached US searchers over the following days, so the two dates bracket a phased rollout rather than disagreeing.
+
+Where a date matters, cite 2025-05-20 as the change and treat early June as the point by which it was everywhere. The subsequent expansion to 180 countries and territories is a separate, later event and is not dated here.
 
 A conversational answer surface with its own retrieval and its own citation set now sits alongside the classic results page.
 
@@ -366,7 +368,9 @@ An earlier version of this entry merged those two coverage lists into one. They 
 
 Google now generates its own prose summary of a place and of its reviews, served as a Places field. It is Google's editorial layer over a business, generated from data the business does not control directly.
 
-**Consequence:** Read the summary for your own business and your competitors — it is the closest thing to seeing what a Google model has concluded about a place. Summary fields were explicitly free during Preview and stopped being free at GA, so a field mask written against the Preview docs became a billable mask without changing a character; which SKU it lands in follows the field-mask rule ([LSM-PLACES-61](#lsm-places-61--2026-06-29--the-field-mask-decides-the-sku--same-call-free-or-billed-by-mask)).
+**Consequence:** Read the summary for your own business and your competitors — it is the closest thing to seeing what a Google model has concluded about a place.
+
+Summary fields were explicitly free during Preview and stopped being free at GA, so a field mask written against the Preview docs became a billable mask without changing a character; which SKU it lands in follows the field-mask rule ([LSM-PLACES-61](#lsm-places-61--2026-06-29--the-field-mask-decides-the-sku--same-call-free-or-billed-by-mask)).
 
 ### LSM-AI-63 · 2025-03-05 · AI Overviews in the US moved to Gemini 2.0 for harder queries
 
@@ -412,7 +416,9 @@ Businesses with no public address are **excluded** from Text Search unless the p
 
 Two lead channels a business could be measured on stopped existing within a fortnight, and the stored history went with them.
 
-**Consequence:** Chat response rate and call-history counts cannot be part of any forward-looking reporting baseline. If a client's history matters, the one recovery path Google named was a Takeout export taken at the time — worth asking about before you conclude the data is gone. If you inherit a client whose historical reports contain these series, say plainly that the source was retired rather than showing a line that flatlines.
+**Consequence:** Chat response rate and call-history counts cannot be part of any forward-looking reporting baseline. If a client's history matters, the one recovery path Google named was a Takeout export taken at the time — worth asking about before you conclude the data is gone.
+
+If you inherit a client whose historical reports contain these series, say plainly that the source was retired rather than showing a line that flatlines.
 
 ### LSM-GBP-66 · 2024-07-01 · Health-provider attributes and insurance networks were discontinued
 
@@ -450,9 +456,16 @@ A deprecated request field that has kept working for over two years, with a repl
 **API touched:** All OAuth-scoped Google data, including `business.manage` (policy, not endpoint)  
 **Probe:** Fetch the Google API Services User Data Policy (stamped "Last updated February 15, 2024") and read the Limited Use section.
 
-The scope clause is explicit: "The requirements apply to the raw data obtained from the scopes and data aggregated, anonymized, or derived from them." Use is confined to "providing or improving user-facing features that are prominent in the requesting application's user interface". The policy prohibits "Transferring or selling user data to third parties like advertising platforms, data brokers, or any information resellers" and "Transferring, selling, or using user data for serving ads". It contains no numeric retention cap of its own.
+**The scope clause is explicit:** "The requirements apply to the raw data obtained from the scopes and data aggregated, anonymized, or derived from them."
 
-Quote those clauses rather than a summary of them. An earlier version of this entry also listed retargeting and credit-worthiness among the prohibited uses; those appear in Google's policy family for particular scopes, and we have not re-verified them as text in this document, so they are left out here rather than asserted.
+The same section then sets the boundaries:
+
+- **Permitted use** is confined to "providing or improving user-facing features that are prominent in the requesting application's user interface".
+- **Prohibited:** "Transferring or selling user data to third parties like advertising platforms, data brokers, or any information resellers".
+- **Prohibited:** "Transferring, selling, or using user data for serving ads".
+- **No retention cap.** The policy contains no numeric retention cap of its own.
+
+**Quote those clauses rather than a summary of them.** An earlier version of this entry also listed retargeting and credit-worthiness among the prohibited uses; those appear in Google's policy family for particular scopes, and we have not re-verified them as text in this document, so they are left out here rather than asserted.
 
 > This is our reading of published terms, not legal advice.
 

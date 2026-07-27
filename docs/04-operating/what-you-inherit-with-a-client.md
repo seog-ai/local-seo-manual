@@ -6,7 +6,9 @@ description: Connecting a client's profile transfers duties, not just access —
 
 # What you inherit with a client
 
-A client grants you access to their Google Business Profile. Three things arrive in that moment and only one of them is access. The second is a history you did not make and are now answerable for. The third is a set of duties — written down, dated, enforceable, and read by almost nobody in this industry.
+A client grants you access to their Google Business Profile. Three things arrive in that moment and only one of them is access.
+
+The second is a history you did not make and are now answerable for. The third is a set of duties — written down, dated, enforceable, and read by almost nobody in this industry.
 
 This is the least glamorous chapter in Part IV and the one that decides whether doing this for money is a business or a slowly accumulating liability.
 
@@ -20,7 +22,11 @@ Google's Business Profile APIs policies divide the world into the merchant who o
 >
 > — Business Profile APIs policies, *General API policies*. Page stamped **last updated 2025-08-28 UTC**; re-read 2026-07-27.
 
-Work through a tool the merchant signed into themselves and the vendor carries the API-side obligations — scopes, token handling, storage limits — while you carry the client-side ones: authorization, notice, a clean exit. Build your own integration, the instinct of most developers who reach this chapter, and **you carry both**. Editing by hand in a browser puts you outside the *API* policies quoted here, but not outside the profile terms and representation guidelines that govern the listing itself *(inference — Google publishes no single document stating this)*.
+**Work through a tool the merchant signed into themselves** and the vendor carries the API-side obligations — scopes, token handling, storage limits — while you carry the client-side ones: authorization, notice, a clean exit.
+
+**Build your own integration**, the instinct of most developers who reach this chapter, and **you carry both**.
+
+Editing by hand in a browser puts you outside the *API* policies quoted here, but not outside the profile terms and representation guidelines that govern the listing itself *(inference — Google publishes no single document stating this)*.
 
 ## Ask for the right level of access
 
@@ -32,9 +38,17 @@ Most onboarding damage happens in the first ten minutes, when someone says "just
 >
 > — *Manage your Business Profile owners & managers*, Google Business Profile Help. Retrieved 2026-07-27.
 
-**Ask for Manager.** You can do every piece of work in this manual as a manager. What you cannot do is delete the profile or remove the client from their own listing — exactly the power you should not want. It also lets the client remove you in one click when the engagement ends, and an exit that depends on your cooperation is a bad exit even when you are trustworthy: it fails when you are unreachable, ill, or out of business.
+| Can they… | Owner | Manager |
+| --- | --- | --- |
+| Manage profile info | yes | yes |
+| Add or remove users | yes | no |
+| Delete or remove the profile | yes | no |
 
-Primary ownership is the version to refuse: a primary owner cannot simply be removed, ownership has to be transferred first, and offboarding becomes a task only you can perform. If a client's previous agency holds primary ownership, that is the first item of work.
+**Ask for Manager.** You can do every piece of work in this manual as a manager. What you cannot do is delete the profile or remove the client from their own listing — exactly the power you should not want.
+
+It also lets the client remove you in one click when the engagement ends, and an exit that depends on your cooperation is a bad exit even when you are trustworthy: it fails when you are unreachable, ill, or out of business.
+
+**Primary ownership is the version to refuse.** A primary owner cannot simply be removed, ownership has to be transferred first, and offboarding becomes a task only you can perform. If a client's previous agency holds primary ownership, that is the first item of work.
 
 ![A business overview before any Google connection, showing a "Connect to unlock your owner data" panel beside a list headed "What you unlock": 18 months of performance, full review history, one-click profile fixes, publish Google posts, search-keyword history](../../static/img/screens/overview.png)
 
@@ -46,11 +60,32 @@ Then there is a clock:
 >
 > — *Manage your Business Profile owners & managers*, Google Business Profile Help. Retrieved 2026-07-27.
 
-The same page lists what is withheld inside that window: deleting or undeleting the profile, removing other owners or managers, and transferring primary ownership. Ordinary field editing is not on that list, which is the basis for treating it as unaffected — Google says "some profile features" and does not claim the list is exhaustive *(inference)*. So: get access on day one, spend week one on the diagnostic and the baseline — read-only work anyway — and schedule anything touching user administration after the clock expires. [The ninety-day plan](./the-ninety-day-plan.md) assumes that shape.
+The same page lists what is withheld inside that window:
+
+- deleting or undeleting the profile
+- removing other owners or managers
+- transferring primary ownership
+
+Ordinary field editing is not on that list, which is the basis for treating it as unaffected — Google says "some profile features" and does not claim the list is exhaustive *(inference)*.
+
+So: get access on day one, spend week one on the diagnostic and the baseline — read-only work anyway — and schedule anything touching user administration after the clock expires. [The ninety-day plan](./the-ninety-day-plan.md) assumes that shape.
+
+```mermaid
+flowchart TD
+  A["Client offers you access"] --> B{"Who holds primary ownership?"}
+  B -->|"A former agency, or nobody reachable"| C["Recovering it is the first item of work"]
+  B -->|"The client"| D{"Which level are you offered?"}
+  D -->|"Primary owner"| E["Refuse: removal needs a transfer only you can perform"]
+  D -->|"Manager"| F["Accept: all the work, none of the exit risk"]
+  F --> G["Week one: diagnostic and baseline, read-only"]
+  G --> H["After 7 days: user administration unlocks"]
+```
 
 ### When the client cannot grant access
 
-Sometimes nobody at the business can get in: a former employee verified the listing, an agency claimed it in 2019 and folded. The documented route is slower and less certain than clients expect.
+Sometimes nobody at the business can get in: a former employee verified the listing, an agency claimed it in 2019 and folded.
+
+The documented route is slower and less certain than clients expect.
 
 > "The current profile owner is then notified by email and has 3 days to respond."
 >
@@ -72,9 +107,19 @@ Read the third quote as carefully as the first two: recovery can fail, and it ca
 >
 > — Business Profile APIs policies, *Third-party policy > Reviews* and *Prohibited practices > Automated use of your Business Profile project*. Last updated 2025-08-28 UTC.
 
-The OAuth click is not the authorization; it is a technical grant. The clause asks for the client's actual permission to speak in their voice, and the defensible form is written: a document naming the location, what you may publish without asking, and what always comes back for approval. Put one- and two-star replies in the second list whatever the client says — those are the ones that get screenshotted.
+**The OAuth click is not the authorization**; it is a technical grant. The clause asks for the client's actual permission to speak in their voice, and the defensible form is written — a document naming:
 
-"Prior specific and express consent" is also what makes a fully automatic review responder non-compliant rather than merely tasteless, and it is why this manual recommends automated replies nowhere. Human-approved drafting is fine: a model writes, a person reads, a person publishes. In the app, the reply composer requires ticking an explicit acknowledgement that the text is about to appear publicly on the live profile before **Publish to Google** unlocks — consent per publication, not once at signup. That shape survives the clause whatever you build or buy. [Reviews](../02-core-practice/reviews.md) covers the craft; this is the constraint around it.
+- the location;
+- what you may publish without asking;
+- what always comes back for approval.
+
+Put one- and two-star replies in that last list whatever the client says — those are the ones that get screenshotted.
+
+"Prior specific and express consent" is also what makes a fully automatic review responder non-compliant rather than merely tasteless, and it is why this manual recommends automated replies nowhere.
+
+**Human-approved drafting is fine:** a model writes, a person reads, a person publishes. In the app, the reply composer requires ticking an explicit acknowledgement that the text is about to appear publicly on the live profile before **Publish to Google** unlocks — consent per publication, not once at signup.
+
+That shape survives the clause whatever you build or buy. [Reviews](../02-core-practice/reviews.md) covers the craft; this is the constraint around it.
 
 ### 2. Notice within 48 hours of any change you make
 
@@ -92,7 +137,7 @@ Build it in week one. It costs almost nothing, it makes the monthly report write
 >
 > — Business Profile APIs policies, *Third-party policy > Termination of end-client relationship*. Last updated 2025-08-28 UTC.
 
-"Regain exclusive control" is the phrase to sit with. Holding a former client's access as leverage over an unpaid invoice is not hardball negotiating; it is a breach of the terms under which you were allowed to touch the listing at all. Whatever the dispute, the access goes back.
+**"Regain exclusive control" is the phrase to sit with.** Holding a former client's access as leverage over an unpaid invoice is not hardball negotiating; it is a breach of the terms under which you were allowed to touch the listing at all. Whatever the dispute, the access goes back.
 
 Seven business days is the ceiling, not the target. Write the offboarding steps at kickoff, while everyone is friendly, and put them in the contract — Lab 29.3.
 
@@ -102,11 +147,13 @@ Seven business days is the ceiling, not the target. Write the offboarding steps 
 >
 > — Business Profile APIs policies, *Prohibited practices > Content storage*. Last updated 2025-08-28 UTC.
 
-This is the clause that reshapes the product a developer was about to build. The obvious differentiator — "we keep every review and every insight forever, so you have the full history" — is what the text most directly forbids. Public Places data sits under a separate and also restrictive regime; both are laid out fact by fact in [storing Google data legally](../05-reference/storing-google-data-legally.md).
+**This is the clause that reshapes the product a developer was about to build.** The obvious differentiator — "we keep every review and every insight forever, so you have the full history" — is what the text most directly forbids.
 
-What you can hold long-term is a different class of thing: measurements *you* computed and documents you generated and delivered. A position you recorded, a score you calculated, a dated PDF you sent — that is work product. A mirror of Google's content is not.
+Public Places data sits under a separate and also restrictive regime; both are laid out fact by fact in [storing Google data legally](../05-reference/storing-google-data-legally.md).
 
-One consequence lands daily: a stored *previous value* of a profile field ages out with everything else, so undo is not permanent. If restoring a field might matter, write the old value down before changing it. Write limits and their failure modes are catalogued in [write limits and failure modes](../05-reference/write-limits-and-failure-modes.md).
+**What you can hold long-term is a different class of thing:** measurements *you* computed and documents you generated and delivered. A position you recorded, a score you calculated, a dated PDF you sent — that is work product. A mirror of Google's content is not.
+
+**One consequence lands daily.** A stored *previous value* of a profile field ages out with everything else, so undo is not permanent. If restoring a field might matter, write the old value down before changing it. Write limits and their failure modes are catalogued in [write limits and failure modes](../05-reference/write-limits-and-failure-modes.md).
 
 Honest open question: whether the 30-day cap covers a merchant's *own* data, pulled under their own grant and shown back only to them, is not addressed anywhere in the text. The storage requirements are written unconditionally. Anyone who tells you this is settled is describing a preference, not the rule.
 
@@ -118,11 +165,15 @@ Honest open question: whether the 30-day cap covers a merchant's *own* data, pul
 >
 > — Business Profile APIs policies, *Prohibited practices*. Last updated 2025-08-28 UTC.
 
-The first kills the reseller architecture — one integration, many agencies driving it programmatically. Each agency needs its own project; end users sign in themselves. The second kills the prospecting crawler that scans a city for weak profiles and emails the owners, by name, with the penalty in the same sentence. It is also why this manual publishes compliant architecture and never a scraper. [Running local SEO with an AI agent](./running-local-seo-with-an-ai-agent.md) stays inside those lines.
+**The first kills the reseller architecture** — one integration, many agencies driving it programmatically. Each agency needs its own project; end users sign in themselves.
+
+**The second kills the prospecting crawler** that scans a city for weak profiles and emails the owners, by name, with the penalty in the same sentence. It is also why this manual publishes compliant architecture and never a scraper. [Running local SEO with an AI agent](./running-local-seo-with-an-ai-agent.md) stays inside those lines.
 
 ## The history you inherit
 
-**Google does not hand you a change log.** You see the current state, not who set it or when. Anything you want to prove later — that the description was empty, the category wrong, the rating 4.1 — has to be captured by you before you touch anything. That is the argument for the frozen baseline in [diagnosing a business in thirty minutes](../02-core-practice/analyzing-business-visibility.md), and an inherited client is where it earns its keep.
+**Google does not hand you a change log.** You see the current state, not who set it or when.
+
+Anything you want to prove later — that the description was empty, the category wrong, the rating 4.1 — has to be captured by you before you touch anything. That is the argument for the frozen baseline in [diagnosing a business in thirty minutes](../02-core-practice/analyzing-business-visibility.md), and an inherited client is where it earns its keep.
 
 **Replies you did not write are now yours.**
 
@@ -130,20 +181,29 @@ The first kills the reseller architecture — one integration, many agencies dri
 >
 > — *Manage your Business Profile owners & managers*, Google Business Profile Help. Retrieved 2026-07-27.
 
-The previous manager left; their words did not. A defensive 2023 reply that names a customer, disputes their account of events, or quotes an invoice number is a live document under your client's business name, and nobody who finds it will care who typed it. Read every existing reply in week one — Lab 29.2.
+The previous manager left; their words did not.
 
-**A rating you did not earn.** Ask in plain words how reviews have been collected. If the answer involves sending the link only to happy customers, or a tablet in reception that routes low scores to a private form, you have inherited a practice that breaches Google's policies and are now the manager of record for it. Say no in writing before you publish anything — and see [spam and fake listings](../03-advanced/spam-and-fake-listings.md) for the easier case, where the problem is on someone else's profile.
+A defensive 2023 reply that names a customer, disputes their account of events, or quotes an invoice number is a live document under your client's business name, and nobody who finds it will care who typed it. Read every existing reply in week one — Lab 29.2.
+
+**A rating you did not earn.** Ask in plain words how reviews have been collected.
+
+If the answer involves sending the link only to happy customers, or a tablet in reception that routes low scores to a private form, you have inherited a practice that breaches Google's policies and are now the manager of record for it. Say no in writing before you publish anything — and see [spam and fake listings](../03-advanced/spam-and-fake-listings.md) for the easier case, where the problem is on someone else's profile.
 
 **The assets that are not on Google.** Who owns the domain registration, the CMS login, the Search Console property, the analytics. A domain registered to a former agency is a hostage situation that surfaces at the worst possible moment. Reach the registrar in week one or write down explicitly that you could not — [the website half](../02-core-practice/the-website-half.md).
 
-**The numbers they were shown last.** The previous provider reported from a different tool, with a different method, from different coordinates. Their "average position 2.4" and your first honest measurement will not match, and yours will usually look worse. Say so at kickoff, before your first report lands ([why two tools disagree](../03-advanced/why-two-tools-disagree.md)). A client who hears it from you in week one hears an expert; one who works it out in week six hears an excuse.
+**The numbers they were shown last.** The previous provider reported from a different tool, with a different method, from different coordinates. Their "average position 2.4" and your first honest measurement will not match, and yours will usually look worse.
 
-**The listing's disciplinary record.** Ask directly: ever suspended, ever re-verified, any change to name, address or category in the last year? The answer changes what is safe on day one, because edits to those three fields are the ones most often reported to send a listing back into verification and occasionally into suspension — [suspensions and reinstatement](../03-advanced/suspensions-and-reinstatement.md), and [publishing without getting rejected](../02-core-practice/publishing-without-getting-rejected.md) for avoiding it.
+Say so at kickoff, before your first report lands ([why two tools disagree](../03-advanced/why-two-tools-disagree.md)). A client who hears it from you in week one hears an expert; one who works it out in week six hears an excuse.
+
+**The listing's disciplinary record.** Ask directly: ever suspended, ever re-verified, any change to name, address or category in the last year?
+
+The answer changes what is safe on day one, because edits to those three fields are the ones most often reported to send a listing back into verification and occasionally into suspension — [suspensions and reinstatement](../03-advanced/suspensions-and-reinstatement.md), and [publishing without getting rejected](../02-core-practice/publishing-without-getting-rejected.md) for avoiding it.
 
 ## What you are liable for now
 
 - **Every edit publishes to a live listing.** Google reviews edits before they appear, and can reject or silently revert one. On timing Google is explicit: *"Edits usually take up to 10 minutes to review, but sometimes it can take up to 30 days"* (*Understand what happens to your Business Profile edits*, retrieved 2026-07-27). Plan for minutes; be able to survive weeks.
-- **Some edits can pull the listing back into verification,** and a listing awaiting re-verification can stop appearing in Search and Maps. Google states that a request for extra information "is likely because some of your business details were recently updated" — but it does not publish *which* details. **Open question:** practitioner reports converge on name, address and primary category; that list is second-hand, so treat it as a working assumption rather than a rule ([suspensions and reinstatement](../03-advanced/suspensions-and-reinstatement.md)).
+- **Some edits can pull the listing back into verification,** and a listing awaiting re-verification can stop appearing in Search and Maps. Google states that a request for extra information "is likely because some of your business details were recently updated" — but it does not publish *which* details.
+  - **Open question:** practitioner reports converge on name, address and primary category; that list is second-hand, so treat it as a working assumption rather than a rule ([suspensions and reinstatement](../03-advanced/suspensions-and-reinstatement.md)).
 - **A published reply is public and effectively permanent.** Editing it later does not un-say it, and it must comply with Google's prohibited and restricted content policies.
 - **Attribution follows the data into your deliverables.** Google-sourced content shown to a client carries an attribution requirement; white-labelling a report does not remove it.
 - **Your client's behaviour becomes your operational problem.** If they gate reviews or stuff keywords into the business name while you hold manager access, you are the one managing the profile when it is suspended.
@@ -195,7 +255,12 @@ The previous manager left; their words did not. A defensive 2023 reply that name
 >
 > You need: Labs 29.1 and 29.2.
 
-1. Write the offboarding pack as a numbered list in execution order. At minimum: the client removes your user from their Business Profile; the client revokes any connected app's access from their own Google Account permissions; you stop scheduled work; you delete or return the stored data; you hand over the baseline, the dated exports and the change log.
+1. Write the offboarding pack as a numbered list in execution order. At minimum:
+   - the client removes your user from their Business Profile;
+   - the client revokes any connected app's access from their own Google Account permissions;
+   - you stop scheduled work;
+   - you delete or return the stored data;
+   - you hand over the baseline, the dated exports and the change log.
 2. Put a target on it inside seven business days, and write that target into your contract template beside the sentence that access is returned regardless of any outstanding invoice.
 3. Verify you can find each control before you need it. In the app, open the **⋮** actions menu at the right-hand end of the overview header — past **Refresh all** and the reports menu — and read the **Remove business** confirmation: it permanently deletes that business's rankings, reviews and competitors, and it cannot be undone. Then press **Cancel**. Do not run it on a live client.
 4. List by name what the client keeps: the dated baseline, every report you generated, the change log, the Lab 29.1 inventory. That list is what "regain exclusive control" looks like done well.

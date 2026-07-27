@@ -28,9 +28,9 @@ This is the single most important thing in the chapter, and it has a consequence
 
 ## What the data costs, in shape rather than in dollars
 
-**The rate card moves, so this manual does not reprint it.** Google publishes current per-request prices for the place data underneath every local SEO tool, and those prices move — the platform was restructured in March 2025 and the rate card has been revised since.
+**The rate card moves.** Google publishes current per-request prices for the place data underneath every local SEO tool, and those prices move — the platform was restructured in March 2025 and the rate card has been revised since.
 
-Any table printed here would be stale before it was useful. Read it at source: [Google Maps Platform pricing](https://developers.google.com/maps/billing-and-pricing/pricing).
+Any table printed here would be stale before it was useful, so this manual does not print one. Read it at source: [Google Maps Platform pricing](https://developers.google.com/maps/billing-and-pricing/pricing).
 
 What is stable is the *shape*, and the shape is what you need in order to reason:
 
@@ -43,9 +43,13 @@ If you are costing a build or comparing vendors, take those four properties, put
 
 ## You cannot amortise the data
 
-The obvious next thought — buy once, sell to many, accumulate a local dataset that becomes an asset — is closed to you by contract, not by cost. Google's Maps Platform terms restrict caching and storage of place content, with a narrow exception and a hard time limit; owner-side content carries its own retention cap. The verbatim clauses, with section numbers and dates, are in [storing Google data legally](../05-reference/storing-google-data-legally.md) — read it before designing any storage layer. (Our compliance material is a reading of published terms, not legal advice.)
+**The obvious next thought — buy once, sell to many, accumulate a local dataset that becomes an asset — is closed to you by contract, not by cost.** Google's Maps Platform terms restrict caching and storage of place content, with a narrow exception and a hard time limit; owner-side content carries its own retention cap.
 
-So **there is no data moat in local SEO.** You cannot accumulate one, you cannot resell one, and anyone offering you a proprietary local dataset is describing something they are not permitted to hold. What you *can* hold is your own dated measurement history — the scans, the positions, what you changed and when — an asset precisely because it cannot be bought.
+The verbatim clauses, with section numbers and dates, are in [storing Google data legally](../05-reference/storing-google-data-legally.md) — read it before designing any storage layer. (Our compliance material is a reading of published terms, not legal advice.)
+
+So **there is no data moat in local SEO.** You cannot accumulate one, you cannot resell one, and anyone offering you a proprietary local dataset is describing something they are not permitted to hold.
+
+What you *can* hold is your own dated measurement history — the scans, the positions, what you changed and when — an asset precisely because it cannot be bought.
 
 ## Labour is the business
 
@@ -61,9 +65,13 @@ The hours below are an example, built from this manual's own lab times — hones
 | Monthly, recurring | Re-scan and read, reviews and replies, a post or two, competitor read, report, client conversation | 2.5–4 |
 | Occasional | A suspension, a merge, a migration, a review crisis | Unbudgeted, and it will happen |
 
-Put an example rate on it — $60 an hour; use your own. Onboarding is roughly **$400 of your time**, a steady month **$150–240**. Against those, a managed client's data bill is a small fraction of delivery cost — the exact share is one you compute in Lab 30.1 from your own volumes and today's rates, not one you take from here. Cost-plus pricing on the data bill is therefore not conservative; it is arithmetic that prices your month at nothing.
+Put an example rate on it — $60 an hour; use your own. Onboarding is roughly **$400 of your time**, a steady month **$150–240**.
 
-Onboarding is also front-loaded and unrecovered — a client who leaves at month three cost you more than they paid, which is what a minimum term is for. And the "occasional" row is not padding: [what you inherit with a client](./what-you-inherit-with-a-client.md) and [suspensions and reinstatement](../03-advanced/suspensions-and-reinstatement.md) exist because those events land on somebody's calendar without warning.
+Against those, a managed client's data bill is a small fraction of delivery cost — the exact share is one you compute in Lab 30.1 from your own volumes and today's rates, not one you take from here. Cost-plus pricing on the data bill is therefore not conservative; it is arithmetic that prices your month at nothing.
+
+**Onboarding is also front-loaded and unrecovered** — a client who leaves at month three cost you more than they paid, which is what a minimum term is for.
+
+And the "occasional" row is not padding: [what you inherit with a client](./what-you-inherit-with-a-client.md) and [suspensions and reinstatement](../03-advanced/suspensions-and-reinstatement.md) exist because those events land on somebody's calendar without warning.
 
 ### What automation actually removes
 
@@ -71,7 +79,11 @@ Most of the monthly cycle is mechanical, and an agent can take the fetch-read-as
 
 - **The judgement calls.** Whether a movement is real or noise. Whether to fight a suspension or rebuild. Which of thirty defects to do first.
 - **The client conversation.** Nobody renews a retainer because the PDF arrived on time.
-- **Anything written to Google in the client's name.** Reply text a human signs, photos a human took, posts a human approved. Both of the obvious shortcuts are closed by policy, not by taste. Google's Business Profile APIs policies forbid automating review replies "without the user's prior specific and express consent"; Google's business-photo guidance says a photo "should be in focus, well lit, and have no significant alterations or excessive use of filters or AI. In other words, the image should represent reality" (*Tips for business-specific photos on your Business Profile*, retrieved 2026-07-27). Those are constraints on your architecture ([reviews](../02-core-practice/reviews.md), [photos and the visual profile](../02-core-practice/photos-and-the-visual-profile.md)), not efficiencies waiting to be captured.
+- **Anything written to Google in the client's name.** Reply text a human signs, photos a human took, posts a human approved. Both of the obvious shortcuts are closed by policy, not by taste.
+
+  Google's Business Profile APIs policies forbid automating review replies "without the user's prior specific and express consent"; Google's business-photo guidance says a photo "should be in focus, well lit, and have no significant alterations or excessive use of filters or AI. In other words, the image should represent reality" (*Tips for business-specific photos on your Business Profile*, retrieved 2026-07-27).
+
+  Those are constraints on your architecture ([reviews](../02-core-practice/reviews.md), [photos and the visual profile](../02-core-practice/photos-and-the-visual-profile.md)), not efficiencies waiting to be captured.
 
 So the agent is a labour lever, not a data one: more clients per hour, same judgement per client.
 
@@ -97,9 +109,27 @@ Four levers, in descending order of how much they move:
 3. **Retention.** Onboarding repays around month three, which makes month-four churn the most expensive event in your accounts.
 4. **Request discipline and cadence.** Small in dollars for one client, structural across a hundred.
 
-And the honest conclusion, which is not a lever at all: **the margin is not in reselling data.** The data is cents, and any tool the client buys draws the same map you would show them. What they cannot do is decide what the map means, choose the three things worth doing next, and stand behind that choice in writing next month. That is what a retainer buys, and why [reporting to a client](./reporting-to-a-client.md) is an operating chapter rather than a formatting one.
+And the honest conclusion, which is not a lever at all: **the margin is not in reselling data.** The data is cents, and any tool the client buys draws the same map you would show them.
 
-So price from the client's side with a floor on your own. The floor is delivery cost plus a margin you can survive. The ceiling is what the outcome is worth to them, computable from numbers *they already have*: average job value, close rate on inbound calls, and what a lead costs them in paid channels. If a plumber's average job is $400 at a 30% close rate (an example — use their real figures), each extra call is worth about $120, so ten a month is a $1,200 ceiling. Quote inside that band and the conversation is about evidence rather than price.
+What they cannot do is decide what the map means, choose the three things worth doing next, and stand behind that choice in writing next month. That is what a retainer buys, and why [reporting to a client](./reporting-to-a-client.md) is an operating chapter rather than a formatting one.
+
+### Price between a floor and a ceiling
+
+**So price from the client's side with a floor on your own.** The floor is delivery cost plus a margin you can survive. The ceiling is what the outcome is worth to them, computable from numbers *they already have*: average job value, close rate on inbound calls, and what a lead costs them in paid channels.
+
+If a plumber's average job is $400 at a 30% close rate (an example — use their real figures), each extra call is worth about $120, so ten a month is a $1,200 ceiling. Quote inside that band and the conversation is about evidence rather than price.
+
+```mermaid
+flowchart LR
+  D["Data: a rounding error"] --> F["FLOOR: delivery cost plus a margin you can survive"]
+  L["Labour: your hours"] --> F
+  X["Fixed costs, amortised"] --> F
+  V["Client's own numbers: job value, close rate, cost of a paid lead"] --> C["CEILING: what the outcome is worth to them"]
+  F --> B["Quote inside the band"]
+  C --> B
+```
+
+*Both ends are computed, and neither is copied from a competitor. If the floor lands above the ceiling, that is a finding — see Lab 30.3.*
 
 ## Labs
 

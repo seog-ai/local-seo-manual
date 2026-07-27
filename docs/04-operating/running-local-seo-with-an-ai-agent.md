@@ -195,7 +195,15 @@ The principle is worth knowing even though the values are not published: **the n
 
 ## Doing this without SEOG
 
-The pattern generalises: a small MCP server over the Google Business Profile and Places APIs, your own store behind it, the same five classes exposed. Three things take the effort, and none is the MCP part — OAuth and its refresh; the write surface, where documented and actual capability differ enough to need [a matrix](../05-reference/gbp-capability-matrix.md) and [a failure table](../05-reference/write-limits-and-failure-modes.md); and the rules on what you may store and for how long ([storing Google data legally](../05-reference/storing-google-data-legally.md)). Budget with [what the Places API will and will not give you](../05-reference/what-places-returns.md); long form in [Doing it without SEOG](../99-appendix/doing-it-without-seog.md).
+The pattern generalises: a small MCP server over the Google Business Profile and Places APIs, your own store behind it, the same five classes exposed.
+
+**Three things take the effort, and none is the MCP part:**
+
+1. **OAuth and its refresh.**
+2. **The write surface**, where documented and actual capability differ enough to need [a matrix](../05-reference/gbp-capability-matrix.md) and [a failure table](../05-reference/write-limits-and-failure-modes.md).
+3. **The rules on what you may store and for how long** ([storing Google data legally](../05-reference/storing-google-data-legally.md)).
+
+Budget with [what the Places API will and will not give you](../05-reference/what-places-returns.md); long form in [Doing it without SEOG](../99-appendix/doing-it-without-seog.md).
 
 ## Labs
 
@@ -229,7 +237,7 @@ The pattern generalises: a small MCP server over the Google Business Profile and
 2. Read its plan. If it proposes a per-keyword check instead of the bundled rankings refresh, correct it — and note that you had to.
 3. Approve exactly two paid calls: the bundled rankings refresh, and a review sync.
 4. Then the free half: *"Without spending anything more, give me unanswered reviews needing a response, review stats, the competitor comparison and any unread competitor alerts."*
-5. Ask for drafts, not publications — and know which kind you are asking for. There are two tools here and only one of them is free: saving a draft you wrote costs nothing, while having a model write one is a charged call *per review*. Say which you want: *"For each unanswered review, write me a suggested reply yourself, in this chat, without calling any paid tool. Publish nothing."* Then, if you want the model-generated version instead, approve it review by review and count those charges.
+5. **Ask for drafts, not publications** — and know which kind you are asking for. There are two tools here and only one of them is free: saving a draft you wrote costs nothing, while having a model write one is a charged call *per review*. Say which you want: *"For each unanswered review, write me a suggested reply yourself, in this chat, without calling any paid tool. Publish nothing."* Then, if you want the model-generated version instead, approve it review by review and count those charges.
 6. Read every draft and rewrite at least one — you will want to, and [Reviews](../02-core-practice/reviews.md) says why. Then ask for the whole thing as a digest a client could read: what moved, what did not, what needs their decision.
 
 **What good looks like.** Two paid calls in the transcript for the refresh half — plus, if you took the model-drafting route at step 5, one per review and no more. A digest of deltas rather than raw output, and a queue of drafts awaiting your judgement. You can point at each charge and name the question it answered.
@@ -245,7 +253,13 @@ The pattern generalises: a small MCP server over the Google Business Profile and
 > You need: Labs 28.1 and 28.2, and your notes on where the agent misbehaved.
 
 1. In the directory you run the agent from, create the instructions file your client reads on startup (`CLAUDE.md`, `AGENTS.md`, or the equivalent).
-2. Write rules as constraints, not preferences. At minimum: never call a paid tool that was not explicitly requested; check balance and prices before any multi-business run; prefer the bundled refresh over per-item loops; never publish a reply, post or profile edit without quoting the exact text and getting a yes; never pass a confirmation flag on a delete without quoting what will be deleted; report tool errors verbatim and stop.
+2. Write rules as constraints, not preferences. At minimum:
+   - never call a paid tool that was not explicitly requested;
+   - check balance and prices before any multi-business run;
+   - prefer the bundled refresh over per-item loops;
+   - never publish a reply, post or profile edit without quoting the exact text and getting a yes;
+   - never pass a confirmation flag on a delete without quoting what will be deleted;
+   - report tool errors verbatim and stop.
 3. Add the policy rule in plain words: automated review replies and listing edits need the merchant's prior specific and express consent, so every publish waits for a human.
 4. Now configure the client's tool permissions — the layer that enforces. Auto-approve stored reads. Prompt on everything that fetches. Prompt or deny on everything that publishes or deletes.
 5. Test the boundary: *"Reply to every unanswered review and publish the replies."* The correct outcome is a refusal or a request for approval, never a publication.

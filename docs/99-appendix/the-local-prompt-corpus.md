@@ -10,7 +10,7 @@ Two people measure whether an AI engine recommends a plumber in Leeds. One asks 
 
 This page is the fix: a fixed, numbered, versioned set of local query templates, with the rules for filling them in and the rules for what you are allowed to conclude. Copy it, fork it, cite the version you used. It is meant to be reused by people who have never heard of us, and it works with any engine, any tool, and a spreadsheet.
 
-**Corpus version 1.0 · published 2026-07-27.** Nothing on this page is a measurement. It is the instrument.
+> **Corpus version 1.0 · published 2026-07-27.** Nothing on this page is a measurement. It is the instrument.
 
 ## Why a shared corpus is worth having
 
@@ -25,6 +25,17 @@ The four intents below — discovery, comparison, trust, logistics — are the m
 ## The shape of a row
 
 Every row is a template with slots. Fill the slots, wrap it in the carrier prompt, run it.
+
+```mermaid
+flowchart LR
+  A["Row ID, e.g. C-08"] --> B["Fill the slots"]
+  B --> C["Wrap in the carrier prompt"]
+  C --> D["Run, fresh chat each time"]
+  D --> E["Store the answer text verbatim"]
+  E --> F{"Series tag?"}
+  F -->|"unbranded"| G["Enters the visibility rate"]
+  F -->|"displacement or audit"| H["Reported in its own series"]
+```
 
 | Slot | Means | Example fill |
 | --- | --- | --- |
@@ -48,7 +59,9 @@ Three columns qualify each row.
 | `spoken` | A short question a person would say out loud | Both |
 | `conversational` | A full sentence carrying context or a constraint | Probes; useless as a tracked keyword |
 
-The register ladder exists because assistants are asked longer questions than search boxes are, so a probe set made only of `term` rows under-samples the surface. Whether register *changes which businesses get named* is not established here *(inference — the mechanism is that a longer prompt gives the model more retrieval material; we have run no controlled register test)*. The probe that would settle it is at the end of this page.
+**The register ladder exists because assistants are asked longer questions than search boxes are**, so a probe set made only of `term` rows under-samples the surface.
+
+Whether register *changes which businesses get named* is not established here *(inference — the mechanism is that a longer prompt gives the model more retrieval material; we have run no controlled register test)*. The probe that would settle it is at the end of this page.
 
 **Rank** — is this row worth a slot in a rank tracker? `yes` / `weak` / `no`.
 
@@ -103,7 +116,7 @@ Unbranded by construction. This is what the map pack exists to answer, and it is
 | D-15 | `is there a {category} in {area} that does {service}?` | conversational | no | yes |
 | D-16 | `{category} in {city} {audience}` | term | weak | yes |
 
-D-02 is in the corpus because it is one of the highest-volume phrasings a search box receives, and leaving it out would make the tracked-keyword half of the corpus wrong. As a probe it is redundant: the carrier already supplies the geography, so `near me` adds nothing but tokens.
+**D-02 is in the corpus because it is one of the highest-volume phrasings a search box receives**, and leaving it out would make the tracked-keyword half of the corpus wrong. As a probe it is redundant: the carrier already supplies the geography, so `near me` adds nothing but tokens.
 
 ### Comparison — someone has candidates and wants a reason to pick
 
@@ -126,7 +139,7 @@ The weakest rank-tracking rows and the strongest probes. A comparison query asks
 | C-13 | `{brand} vs {rival}` | term | weak | no — branded |
 | C-14 | `is {brand} or {rival} better for {service}?` | spoken | no | no — branded |
 
-C-12 is the one row that names a business without begging its own answer, because the business it names is not yours. It is a legitimate displacement probe — *when someone is already looking at a competitor, does the engine offer you?* — and it must live in its own series, never pooled with the unbranded rows, because naming any business changes what the model retrieves.
+**C-12 is the one row that names a business without begging its own answer**, because the business it names is not yours. It is a legitimate displacement probe — *when someone is already looking at a competitor, does the engine offer you?* — and it must live in its own series, never pooled with the unbranded rows, because naming any business changes what the model retrieves.
 
 ### Trust — someone has your name and is deciding whether to use you
 
@@ -160,7 +173,9 @@ Branded and objective. Answered straight out of your profile's structured fields
 | L-07 | `does {brand} take walk-ins?` | spoken | no | audit |
 | L-08 | `how do I book with {brand}?` | spoken | no | audit |
 
-An accuracy audit records something different from a visibility probe: not *were you named* but *was the fact correct*. Run the eight L rows once per engine, mark each answer right, wrong or absent, and you have a defensible finding — "one engine had our Sunday hours wrong on 2026-07-27" — that costs almost nothing and is immediately fixable. SOCi's 2026 Local Visibility Index (~350,000 locations) reported profile accuracy of 68.3% on ChatGPT and 68.0% on Perplexity against roughly 100% on Gemini — around two-thirds on the web-grounded assistants against near-total accuracy on the Maps-grounded one. It is vendor-published and its methodology is only partly disclosed, so treat the figures as soft and the mechanism as sound ([chapter 1](../01-foundations/what-is-local-seo.md) carries the full citation and its caveats).
+**An accuracy audit records something different from a visibility probe:** not *were you named* but *was the fact correct*. Run the eight L rows once per engine, mark each answer right, wrong or absent, and you have a defensible finding — "one engine had our Sunday hours wrong on 2026-07-27" — that costs almost nothing and is immediately fixable.
+
+SOCi's 2026 Local Visibility Index (~350,000 locations) reported profile accuracy of 68.3% on ChatGPT and 68.0% on Perplexity against roughly 100% on Gemini — around two-thirds on the web-grounded assistants against near-total accuracy on the Maps-grounded one. It is vendor-published and its methodology is only partly disclosed, so treat the figures as soft and the mechanism as sound ([chapter 1](../01-foundations/what-is-local-seo.md) carries the full citation and its caveats).
 
 ## Filling the slots: four worked packs
 
@@ -201,7 +216,9 @@ Select by **cell**, not by preference. A cell is an intent crossed with a place,
 
 That is a six-row unbranded probe set plus two audit series. The unbranded six are the ones that carry a visibility rate. Everything else is reported separately or not at all.
 
-The second discovery cell deserves defending because people cut it first. It is the *same* template from a *different* coordinate, and it is the only duplicate worth paying for: the default probe point is the business's own coordinates, which is the single most flattering point available ([LSM-AI-12](../05-reference/ai-engine-probe-recipes.md#lsm-ai-12--the-default-probe-point-is-the-businesss-own-coordinates-which-is-the-most-flattering-point-available)). Whether moving the coordinate moves an assistant's answer at all is an open question ([LSM-AI-15](../05-reference/ai-engine-probe-recipes.md#lsm-ai-15--whether-moving-the-coordinate-moves-an-assistants-answer-is-unestablished)) — which is a reason to record it, not a reason to skip it.
+**The second discovery cell deserves defending because people cut it first.** It is the *same* template from a *different* coordinate, and it is the only duplicate worth paying for: the default probe point is the business's own coordinates, which is the single most flattering point available ([LSM-AI-12](../05-reference/ai-engine-probe-recipes.md#lsm-ai-12--the-default-probe-point-is-the-businesss-own-coordinates-which-is-the-most-flattering-point-available)).
+
+Whether moving the coordinate moves an assistant's answer at all is an open question ([LSM-AI-15](../05-reference/ai-engine-probe-recipes.md#lsm-ai-15--whether-moving-the-coordinate-moves-an-assistants-answer-is-unestablished)) — which is a reason to record it, not a reason to skip it.
 
 ## What must travel with every run
 

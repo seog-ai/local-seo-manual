@@ -8,7 +8,9 @@ description: What a website contributes to local ranking and what it does not �
 
 The map pack ranks a *profile*, not a page. That is true, it is the single most useful thing a classic SEO can learn about local, and within about a week it gets over-applied into "so the website doesn't matter".
 
-The website matters. It just does a different job than you are used to: it is the corroborating document — the business-controlled page that agrees with the profile, carries the words customers type, and gets cited by machines that answer questions without showing a map at all. This chapter is about doing that job deliberately, and about reading Search Console in a way that will not embarrass you in front of a client.
+**The website matters.** It just does a different job than you are used to: it is the corroborating document — the business-controlled page that agrees with the profile, carries the words customers type, and gets cited by machines that answer questions without showing a map at all.
+
+This chapter is about doing that job deliberately, and about reading Search Console in a way that will not embarrass you in front of a client.
 
 ## The four jobs a local website does
 
@@ -32,6 +34,15 @@ Local on-page work is usually taught as a checklist of equals. It is not — the
 
 **Layer 3 — local relevance and legibility.** City and category in the title and H1. A tappable phone link. An embedded map on the contact page. LocalBusiness structured data. A viewport tag. The ordinary wins, worth doing once the layers below hold.
 
+```mermaid
+flowchart TD
+  A["A local site to work on"] --> B{"Layer 1: reachable? Indexable, HTTPS, text in a plain fetch"}
+  B -->|"No"| B1["Stop and fix. Everything above it is irrelevant"]
+  B -->|"Yes"| C{"Layer 2: name, address and phone identical to the profile?"}
+  C -->|"No"| C1["Fix the contradiction. A conflict is worse than a gap"]
+  C -->|"Yes"| D["Layer 3: city and category, map embed, schema, viewport, click-to-call"]
+```
+
 Here is the weighting one audit uses, published so you can reproduce it by hand or argue with it. It reads the homepage the profile points to, after redirects.
 
 | Check | Weight | Layer |
@@ -48,7 +59,11 @@ Here is the weighting one audit uses, published so you can reproduce it by hand 
 | Click-to-call link | 5 | 3 |
 | Language declared / favicon / social share tags | 2 each | 3 |
 
-Two structural points. A **service-area business** — one that hides its address on Google — is not scored on the address check or the map embed at all; they are dropped, not failed, because demanding a pin for a location the business deliberately does not publish would be wrong ([service-area businesses](../03-advanced/service-area-businesses.md)). And the table is *one page*. Location pages are not audited individually, which is why the next section matters.
+Two structural points.
+
+**A service-area business is scored on fewer checks.** One that hides its address on Google is not scored on the address check or the map embed at all; they are dropped, not failed, because demanding a pin for a location the business deliberately does not publish would be wrong ([service-area businesses](../03-advanced/service-area-businesses.md)).
+
+**The table is *one page*.** Location pages are not audited individually, which is why the next section matters.
 
 ## Location pages
 
@@ -56,39 +71,81 @@ With more than one location, the correct structure is one page per location, and
 
 **Pointing every profile at the homepage.** Then every location corroborates one document naming one address, and the corroboration is worth roughly nothing for the others. Fix it on each profile's website field.
 
-**Doorway pages.** Somebody notices that "plumber in Croydon" is a query, generates forty city pages by find-and-replace, and ships them. Google's spam policies name this directly, under the heading *doorway abuse*: "Doorway abuse is when sites or pages are created to rank for specific, similar search queries. They lead users to intermediate pages that are not as useful as the final destination." One of its own examples is "multiple domains or pages targeted at specific regions or cities that funnel users to one page". (Google Search Essentials, spam policies; checked 2026-07.) The line is not whether the page carries a city name; it is whether the page describes something that exists: a real address, real staff, real service details, real photos, real hours. *(Inference: local practitioners report this as one of the patterns that most often draws manual action. Google publishes no enforcement rates, so treat the frequency as anecdote and the policy as fact.)* [Multi-location and franchise](../03-advanced/multi-location-and-franchise.md) does the structure at scale.
+**Doorway pages.** Somebody notices that "plumber in Croydon" is a query, generates forty city pages by find-and-replace, and ships them.
 
-A location page that earns its place carries the NAP block matching the profile exactly, an embedded map centred on that location, the hours, the services offered *at that site*, and text a human working there could have written. A service-area business substitutes its served areas for the address.
+Google's spam policies name this directly, under the heading *doorway abuse*: "Doorway abuse is when sites or pages are created to rank for specific, similar search queries. They lead users to intermediate pages that are not as useful as the final destination." One of its own examples is "multiple domains or pages targeted at specific regions or cities that funnel users to one page". (Google Search Essentials, spam policies; checked 2026-07.)
+
+> **The line is not whether the page carries a city name. It is whether the page describes something that exists.**
+
+A real address, real staff, real service details, real photos, real hours. *(Inference: local practitioners report this as one of the patterns that most often draws manual action. Google publishes no enforcement rates, so treat the frequency as anecdote and the policy as fact.)* [Multi-location and franchise](../03-advanced/multi-location-and-franchise.md) does the structure at scale.
+
+A location page that earns its place carries:
+
+- The NAP block matching the profile exactly.
+- An embedded map centred on that location.
+- The hours.
+- The services offered *at that site*.
+- Text a human working there could have written.
+
+A service-area business substitutes its served areas for the address.
 
 ## Structured data, without the mythology
 
 `LocalBusiness` JSON-LD is a machine-readable restatement of who and where you are. It goes in a script block on the page and states — unambiguously — name, address, phone, coordinates, opening hours, URL, image, and `sameAs` links to your other profiles.
 
-What it does: it removes parsing risk. Google can *usually* extract an address from a footer, and *usually* is a bad bet on the field that decides which entity you are. `sameAs` is the underrated one — pointing it at your own Google Maps URL is an explicit machine-readable statement that this site and that listing are the same business.
+**What it does: it removes parsing risk.** Google can *usually* extract an address from a footer, and *usually* is a bad bet on the field that decides which entity you are.
 
-What it does not do: it is not a confirmed local ranking factor. Google has never said LocalBusiness markup lifts map-pack position. Sites with good schema do tend to appear in AI answers, but those sites also tend to have everything else right, which makes schema *correlated rather than demonstrated causal* — our reading, marked as inference, and anyone claiming a measured lift owes you their method. Add it because it makes you unambiguous, not because a blog post promised a boost.
+`sameAs` is the underrated one — pointing it at your own Google Maps URL is an explicit machine-readable statement that this site and that listing are the same business.
 
-Completeness is graded, not binary. Eight fields are worth having — `name`, `address`, `telephone`, `geo`, `openingHoursSpecification`, `url`, `image`, `sameAs` — and four of them is genuinely half the job. The usual mistake is pasting a snippet with name and address only, then treating the row as done.
+**What it does not do: it is not a confirmed local ranking factor.** Google has never said LocalBusiness markup lifts map-pack position.
+
+Sites with good schema do tend to appear in AI answers, but those sites also tend to have everything else right, which makes schema *correlated rather than demonstrated causal* — our reading, marked as inference, and anyone claiming a measured lift owes you their method. Add it because it makes you unambiguous, not because a blog post promised a boost.
+
+**Completeness is graded, not binary.** Eight fields are worth having — `name`, `address`, `telephone`, `geo`, `openingHoursSpecification`, `url`, `image`, `sameAs` — and four of them is genuinely half the job. The usual mistake is pasting a snippet with name and address only, then treating the row as done.
 
 ## Two honesty rules for any site score
 
-**Unverifiable is not failing.** If a site renders its content with JavaScript, a plain fetch sees an empty shell, and checks needing visible text — schema detection, the NAP comparison, the keyword check — cannot be answered. Drop them from the denominator: points earned over points *verifiable*, so a JavaScript-rendered site with sound fundamentals is not scored 30 for being modern. A tool that counts "could not verify" as a failure is reporting its own blind spot as your problem. Watch for it in every audit tool you use, including this one.
+**Unverifiable is not failing.** If a site renders its content with JavaScript, a plain fetch sees an empty shell, and checks needing visible text — schema detection, the NAP comparison, the keyword check — cannot be answered.
 
-**There is no lab measurement for INP.** Of the three Core Web Vitals, Interaction to Next Paint can only come from real visitors — Chrome's field data, reported by PageSpeed Insights as the 75th percentile over the preceding 28 days. A lab test simulates a page load; it cannot simulate a human clicking things, and INP needs many interactions before it means anything. So a site with too few Chrome visitors to qualify legitimately has **no INP number at all**, and the honest display is a dash. A tool showing an INP figure for a site with almost no traffic did not get it from Google. (Google's own INP documentation, checked 2026-07.)
+Drop them from the denominator: points earned over points *verifiable*, so a JavaScript-rendered site with sound fundamentals is not scored 30 for being modern. A tool that counts "could not verify" as a failure is reporting its own blind spot as your problem. Watch for it in every audit tool you use, including this one.
+
+**There is no lab measurement for INP.** Of the three Core Web Vitals, Interaction to Next Paint can only come from real visitors — Chrome's field data, reported by PageSpeed Insights as the 75th percentile over the preceding 28 days.
+
+A lab test simulates a page load; it cannot simulate a human clicking things, and INP needs many interactions before it means anything.
+
+So a site with too few Chrome visitors to qualify legitimately has **no INP number at all**, and the honest display is a dash. A tool showing an INP figure for a site with almost no traffic did not get it from Google. (Google's own INP documentation, checked 2026-07.)
 
 ## Search Console: the only place the real queries live
 
-Every other source in this manual reports *positions*. Search Console reports *demand* — the strings people actually typed, with impressions, clicks, click-through rate and average position, for the site rather than the profile. Free, first-party, and the strongest evidence you will get for a keyword decision. Four things to understand before you quote a number from it.
+Every other source in this manual reports *positions*. Search Console reports *demand* — the strings people actually typed, with impressions, clicks, click-through rate and average position, for the site rather than the profile.
 
-**Average position is not your rank.** It is impression-weighted across every query, device and location where you were shown, mixing surfaces. A Search Console average position of 8.4 and a map-pack rank of #2 are not in conflict; they answer different questions. Never put them in the same column of a report. [Why two tools disagree](../03-advanced/why-two-tools-disagree.md) takes this apart properly.
+Free, first-party, and the strongest evidence you will get for a keyword decision. Four things to understand before you quote a number from it.
 
-**The query list will never sum to the total.** Google withholds *anonymized queries* — in its own description, ones "that aren't issued by more than a few dozen users over a two-to-three month period" — to protect the privacy of the people searching. Google is explicit about the consequence: "There is no row for anonymized queries in the report table or API, so if you sum up clicks for all the rows, you'll not find the same number of clicks as the chart totals." Your top-25 list is real, and it is a subset. "We rank for 25 queries" is wrong in a way that is hard to walk back. (Google Search Central, *A deep dive into Search Console performance data filtering and limits*; checked 2026-07.)
+**Average position is not your rank.** It is impression-weighted across every query, device and location where you were shown, mixing surfaces.
 
-**Choose the domain property.** A property registered for the whole domain covers every protocol and subdomain at once; a URL-prefix property covers exactly one variant, so `https://www.example.com/` misses `https://example.com/`. Before you conclude a site has no search traffic, check which property you are reading — an unverified property cannot be queried at all, and a URL-prefix property can be measuring a variant nobody visits *(inference: this is the failure we see most often on inherited accounts; we publish no count)*.
+A Search Console average position of 8.4 and a map-pack rank of #2 are not in conflict; they answer different questions. Never put them in the same column of a report. [Why two tools disagree](../03-advanced/why-two-tools-disagree.md) takes this apart properly.
+
+**The query list will never sum to the total.** Google withholds *anonymized queries* — in its own description, ones "that aren't issued by more than a few dozen users over a two-to-three month period" — to protect the privacy of the people searching.
+
+Google is explicit about the consequence: "There is no row for anonymized queries in the report table or API, so if you sum up clicks for all the rows, you'll not find the same number of clicks as the chart totals." (Google Search Central, *A deep dive into Search Console performance data filtering and limits*; checked 2026-07.)
+
+Your top-25 list is real, and it is a subset. "We rank for 25 queries" is wrong in a way that is hard to walk back.
+
+**Choose the domain property.** A property registered for the whole domain covers every protocol and subdomain at once; a URL-prefix property covers exactly one variant, so `https://www.example.com/` misses `https://example.com/`.
+
+Before you conclude a site has no search traffic, check which property you are reading — an unverified property cannot be queried at all, and a URL-prefix property can be measuring a variant nobody visits *(inference: this is the failure we see most often on inherited accounts; we publish no count)*.
+
+### The reconciliation fact
 
 **And the reconciliation fact** — the one that ends the most corrosive argument in agency work, where the client opens Search Console, opens your report, sees different numbers, and now suspects everything you have sent.
 
-Search Console's interface shows *fresh* data, including the most recent days. The API, asked the same question over the same dates, returns **final** data by default and silently drops those freshest days: Google's own reference says the returned data "will include only finalized data" when the freshness parameter is omitted. Same property, same range, smaller numbers, no error, no footnote. Every tool built on the API that never changed the default understates the client's own dashboard, permanently, by a couple of days' worth. The fix is one switch — ask for all data rather than final; the parameter is named in [what Google's reporting hides](../05-reference/what-googles-reporting-hides.md). (Verified against Google's Search Analytics API reference, 2026-07.) The Search performance card below already asks for all data, which is why its totals should line up.
+Search Console's interface shows *fresh* data, including the most recent days. The API, asked the same question over the same dates, returns **final** data by default and silently drops those freshest days: Google's own reference says the returned data "will include only finalized data" when the freshness parameter is omitted.
+
+> **Same property, same range, smaller numbers, no error, no footnote.**
+
+Every tool built on the API that never changed the default understates the client's own dashboard, permanently, by a couple of days' worth.
+
+The fix is one switch — ask for all data rather than final; the parameter is named in [what Google's reporting hides](../05-reference/what-googles-reporting-hides.md). (Verified against Google's Search Analytics API reference, 2026-07.) The Search performance card below already asks for all data, which is why its totals should line up.
 
 ## Labs
 
@@ -105,7 +162,9 @@ Search Console's interface shows *fresh* data, including the most recent days. T
 *This is the screen before you press anything. The five ticked and crossed rows under **Website support** are the card's own **Example** — its subtitle says so — and they are placeholders, not a measurement of this site. Note the price on the **Check now** button: you see it before you spend it.*
 
 1. Open **Website**. Before any analysis you see an **Example** card with five sample rows — an illustration, not your site.
-2. There are two **Check now** buttons and they are not the same action. The one in the page header refreshes everything, including Search Console; the one inside the **Website support** card runs the site audit alone. Use the card's, and read the price on it before pressing. Search Console gets its own lab further down. If you already ran this audit in [Lab 12.2](./citations-and-nap.md), its result is stored — read the checklist for free and press **Check now** only when you want a fresh run.
+2. There are two **Check now** buttons and they are not the same action. The one in the page header refreshes everything, including Search Console; the one inside the **Website support** card runs the site audit alone.
+
+   Use the card's, and read the price on it before pressing. Search Console gets its own lab further down. If you already ran this audit in [Lab 12.2](./citations-and-nap.md), its result is stored — read the checklist for free and press **Check now** only when you want a fresh run.
 3. Wait, and expect it to feel slow — a manual check forces a fresh Lighthouse run rather than re-serving a cached one, and those take tens of seconds. The checklist and the **Site health** panel arrive together when it finishes.
 4. Read the **Website support** ring and its tier — **Weak**, **Fair** or **Strong**. Hover the ring: it gives points earned out of points *verifiable*.
 5. Count three numbers: green rows, red rows, and rows saying **Could not verify**. That third one is what people skip.

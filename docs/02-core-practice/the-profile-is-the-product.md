@@ -57,25 +57,42 @@ Both halves hold at once. It works, and it is the single easiest thing for a com
 
 ### Services: small, real, cheap
 
-Below category the evidence thins out — and the honest summary of it is qualitative, not a number. Sterling Sky's published testing, cited in [The three forces](../01-foundations/relevance-distance-prominence.md), concluded that Google's *pre-defined* services do affect which queries a profile ranks for, reversing their own earlier 2019 finding. It reported the effect in words rather than percentages ("varies based on the industry and market", changes typically visible in 24–72 hours), from client case examples rather than a controlled test with a stated sample. If you have seen a "2–5% of ranking impact" figure attached to that study — this manual carried it until 2026-07-27 — it is not theirs: it traces to a reader comment under the article, and no published measurement supports it. *(Corrected against the primary source, 2026-07-27.)*
+**Below category the evidence thins out** — and the honest summary of it is qualitative, not a number. Sterling Sky's published testing, cited in [The three forces](../01-foundations/relevance-distance-prominence.md), concluded that Google's *pre-defined* services do affect which queries a profile ranks for, reversing their own earlier 2019 finding.
+
+It reported the effect in words rather than percentages ("varies based on the industry and market", changes typically visible in 24–72 hours), from client case examples rather than a controlled test with a stated sample.
+
+If you have seen a "2–5% of ranking impact" figure attached to that study — this manual carried it until 2026-07-27 — it is not theirs: it traces to a reader comment under the article, and no published measurement supports it. *(Corrected against the primary source, 2026-07-27.)*
 
 So: small, nearly free, twenty minutes. A good use of a Tuesday and a bad thing to build a strategy on. Services are edited in Google's own profile editor; SEOG's editor does not cover them, and this manual is not going to pretend otherwise.
 
 ### Description: not a ranking field
 
-The description is capped at 750 characters — Google's own figure, in its help pages, which also tell you to keep URLs and HTML out of it. It does not appear to move rankings *(inference — no controlled test has shown it does, and Google has never claimed it)*. It does two other jobs: it converts, because it is the only place on the listing where you speak in your own voice, and it is machine-readable text about what you do and where, which matters more every quarter as assistants assemble local answers from entity data rather than from a ranked list ([How an AI assistant answers a local question](../01-foundations/how-ai-answers-a-local-question.md)).
+The description is capped at 750 characters — Google's own figure, in its help pages, which also tell you to keep URLs and HTML out of it. It does not appear to move rankings *(inference — no controlled test has shown it does, and Google has never claimed it)*.
 
-A trap most tools do not surface. **The description in a public place record is not the one the owner wrote.** What the public feed carries is Google's own *editorial summary* — Google's help centre is explicit that "our writers compile editorial summaries" and that, "unlike business descriptions, editorial summaries can't be edited". The owner's text is a different field, lives on the owner side of the profile, and needs an authenticated connection to read back. *(Google Business Profile Help, "Understand business summaries on Google Maps"; confirmed against a live owner-side read, 2026-07-27.)* So you cannot audit a competitor's description from public data, and a tool refreshing from public data alone will show you a description you did not write. SEOG re-reads the owner's real text when the profile is connected — one of the concrete things [connecting Google](../00-start-here/set-up-your-workbench.md) buys.
+It does two other jobs:
+
+- **It converts.** It is the only place on the listing where you speak in your own voice.
+- **It is machine-readable text** about what you do and where — which matters more every quarter as assistants assemble local answers from entity data rather than from a ranked list ([How an AI assistant answers a local question](../01-foundations/how-ai-answers-a-local-question.md)).
+
+A trap most tools do not surface. **The description in a public place record is not the one the owner wrote.** What the public feed carries is Google's own *editorial summary* — Google's help centre is explicit that "our writers compile editorial summaries" and that, "unlike business descriptions, editorial summaries can't be edited".
+
+The owner's text is a different field, lives on the owner side of the profile, and needs an authenticated connection to read back. *(Google Business Profile Help, "Understand business summaries on Google Maps"; confirmed against a live owner-side read, 2026-07-27.)*
+
+So you cannot audit a competitor's description from public data, and a tool refreshing from public data alone will show you a description you did not write. SEOG re-reads the owner's real text when the profile is connected — one of the concrete things [connecting Google](../00-start-here/set-up-your-workbench.md) buys.
 
 ### Hours are a ranking field in disguise
 
-Hours look like housekeeping. They are a filter: Maps offers an "open now" refinement, and a profile with no hours cannot be returned under it at all — an eligibility question rather than a ranking one. (How heavily searchers use that filter is not something Google publishes, so treat any percentage you see attached to it as invented.) Missing hours also read as an abandoned listing. Holiday hours matter more than regular ones for one week a year, and that week is usually when demand peaks.
+**Hours look like housekeeping. They are a filter.** Maps offers an "open now" refinement, and a profile with no hours cannot be returned under it at all — an eligibility question rather than a ranking one. (How heavily searchers use that filter is not something Google publishes, so treat any percentage you see attached to it as invented.)
+
+Missing hours also read as an abandoned listing. Holiday hours matter more than regular ones for one week a year, and that week is usually when demand peaks.
 
 ### Attributes are a catalog you do not control
 
 Attributes are the tickable facts — wheelchair-accessible entrance, accepts cards, offers delivery. Two things about them are not obvious.
 
-**The available set is decided by your category, not by you.** Google publishes a different attribute catalog for a dental clinic than for a taqueria, and for some categories a whole group is simply empty. If your category offers no accessibility attributes, no amount of effort adds one, and any audit demanding you "add accessibility info" is asking for the impossible. SEOG reads the live catalog for your category and marks the group not applicable when it comes back empty — you will see that in Lab 9.1 if your category is one of them.
+**The available set is decided by your category, not by you.** Google publishes a different attribute catalog for a dental clinic than for a taqueria, and for some categories a whole group is simply empty.
+
+If your category offers no accessibility attributes, no amount of effort adds one, and any audit demanding you "add accessibility info" is asking for the impossible. SEOG reads the live catalog for your category and marks the group not applicable when it comes back empty — you will see that in Lab 9.1 if your category is one of them.
 
 ![Profile page for a coffee shop, showing the Attributes on Google card: takeout, dine-in, restroom, good for kids, dog-friendly, breakfast, wheelchair entrance, card payments, contactless, paid street parking](../../static/img/screens/profile.png)
 
@@ -94,7 +111,11 @@ Profile edits fall into two classes with completely different risk profiles.
 | **Ordinary** | Phone, website, hours, open status, description, attributes, photos | Passes through Google's review. Google's own wording: edits "usually take up to 10 minutes to review, but sometimes it can take up to 30 days". Can be rejected. |
 | **Critical** | Name, primary category, address | May force **re-verification**. The listing can go pending or be temporarily unpublished for hours to days, drop out of Search and Maps entirely while it is pending, and in rare cases trigger a suspension needing manual reinstatement. |
 
-*(The two-class split is our operating model, not a Google document. The review window in the top row is quoted from Google Business Profile Help, "Understand what happens to your Business Profile edits". The re-verification behaviour in the bottom row is not: Google's help pages tie full editing to a verified profile without enumerating which later edits re-trigger verification, so **treat the specific list — name, primary category, address — as an open question.** It is what the industry consistently reports and what SEOG's own risk badge encodes, and the one of the three you can actually edit inside SEOG, the business name, is gated behind an explicit acknowledgement. Category and address are not editable in SEOG at all. Well-evidenced, not official. Last reviewed 2026-07-27.)*
+*(The two-class split is our operating model, not a Google document. The review window in the top row is quoted from Google Business Profile Help, "Understand what happens to your Business Profile edits".)*
+
+*(The re-verification behaviour in the bottom row is not from Google: its help pages tie full editing to a verified profile without enumerating which later edits re-trigger verification, so **treat the specific list — name, primary category, address — as an open question.** It is what the industry consistently reports and what SEOG's own risk badge encodes. Well-evidenced, not official. Last reviewed 2026-07-27.)*
+
+*(Of the three, the one you can actually edit inside SEOG — the business name — is gated behind an explicit acknowledgement. Category and address are not editable in SEOG at all.)*
 
 Three rules follow.
 
@@ -102,17 +123,27 @@ Three rules follow.
 
 **Never batch a critical edit with anything else.** If the listing goes pending after you changed name, category and hours together, you cannot tell which one did it and you cannot cleanly revert.
 
-**A rejected edit can be silent.** Google's documented position is that it "might not approve changes if it can't confirm its accuracy" and that you "might be able to appeal rejected business information edits" — so a rejection path exists, but Google does not commit to notifying you, and in practice the first evidence is usually that the old value simply stayed. Assume no notification. That is why the verification step in every lab below is "re-read the field from Google", not "the tool said Applied".
+**A rejected edit can be silent.** Google's documented position is that it "might not approve changes if it can't confirm its accuracy" and that you "might be able to appeal rejected business information edits" — so a rejection path exists, but Google does not commit to notifying you.
+
+In practice the first evidence is usually that the old value simply stayed. Assume no notification. That is why the verification step in every lab below is "re-read the field from Google", not "the tool said Applied".
 
 ## The write budget nobody budgets for
 
-Google publishes exactly one number here, and it is worth memorising: **edits, 10 per minute per Business Profile — cannot be increased.** That is verbatim from Google's own quota page for the Business Profile APIs, so it is fixed, it is per *profile* rather than per tool or per API key, and asking nicely does not move it. *(Google Business Profile APIs, quotas and limits; checked 2026-07-27.)*
+Google publishes exactly one number here, and it is worth memorising:
 
-What Google does **not** say is how wide that allowance is. The quota is listed against the API that writes profile *information* — descriptions, hours, contact details, attributes. Whether photo uploads and Google Posts, which go through different APIs, also drain the same ten is **an open question**: Google's quota page does not address it, and we have found no primary source that does. SEOG treats them as one shared budget, deliberately, because the conservative reading is the only one that cannot cost a customer a failed write. Plan the same way and you are never wrong; assume they are separate and you may be.
+> **edits, 10 per minute per Business Profile — cannot be increased.**
+
+That is verbatim from Google's own quota page for the Business Profile APIs, so it is fixed, it is per *profile* rather than per tool or per API key, and asking nicely does not move it. *(Google Business Profile APIs, quotas and limits; checked 2026-07-27.)*
+
+**What Google does not say is how wide that allowance is.** The quota is listed against the API that writes profile *information* — descriptions, hours, contact details, attributes. Whether photo uploads and Google Posts, which go through different APIs, also drain the same ten is **an open question**: Google's quota page does not address it, and we have found no primary source that does.
+
+SEOG treats them as one shared budget, deliberately, because the conservative reading is the only one that cannot cost a customer a failed write. Plan the same way and you are never wrong; assume they are separate and you may be.
 
 The consequence, if the shared reading is right: a bulk holiday-hours update can starve a scheduled post run in the same minute, from a completely different tool, and the failure looks like an unrelated bug.
 
-Manage one business and you will never notice either way. Run a multi-location account and script anything, and this is the ceiling you hit first — the reason bulk profile work is paced rather than parallelised. [Multi-location and franchise work](../03-advanced/multi-location-and-franchise.md) plans around it; [Write limits and failure modes](../05-reference/write-limits-and-failure-modes.md) is the reference entry, and the place to check whether the open question above has since been closed.
+**Manage one business and you will never notice either way.** Run a multi-location account and script anything, and this is the ceiling you hit first — the reason bulk profile work is paced rather than parallelised.
+
+[Multi-location and franchise work](../03-advanced/multi-location-and-franchise.md) plans around it; [Write limits and failure modes](../05-reference/write-limits-and-failure-modes.md) is the reference entry, and the place to check whether the open question above has since been closed.
 
 ## A procedure for changing one field
 
@@ -123,6 +154,19 @@ Every safe profile edit is the same five steps.
 3. **Wait out the review window.** Usually about ten minutes for an ordinary edit — but Google's own ceiling is 30 days, so a value that has not appeared by lunchtime is not yet evidence of rejection. Longer for anything critical, and check whether the listing went pending.
 4. **Re-read the field from Google**, not from your tool's cached copy.
 5. **If it reverted, it was rejected.** That is information: the value conflicted with something Google believes about you. Do not re-apply it harder.
+
+```mermaid
+flowchart TD
+  A["Write down the current value"] --> B{"Ordinary field or critical field?"}
+  B -->|"Critical: name, primary category, address"| C["One at a time, never on a Friday"]
+  B -->|"Ordinary"| D["Change one field, then stop"]
+  C --> D
+  D --> E["Wait out the review window"]
+  E --> F["Re-read the field from Google, not from the cached copy"]
+  F --> G{"Does it read what you wrote?"}
+  G -->|"Yes"| H["Published: log the date"]
+  G -->|"No, the old value is back"| I["Rejected: do not re-apply it harder"]
+```
 
 The labs below run that loop three times.
 
@@ -190,7 +234,11 @@ The labs below run that loop three times.
 
 **What good looks like.** The original URL is back, confirmed by a refresh rather than by the local copy. You have done a full write–revert cycle on a live listing and know where the button is.
 
-**If it went wrong.** Two real traps. **Undo is a write, not a rollback** — it spends your ten-per-minute budget and goes through the same review, so an undo can itself sit pending. And the undo baseline is only as good as what was recorded: undoing your *first* **Opening hours** edit clears the hours rather than restoring the previous ones, because the earlier value cannot be reconstructed from the public copy. Record hours by hand before you touch them. That is a genuine limitation of the tool, not a step you missed.
+**If it went wrong.** Two real traps.
+
+**Undo is a write, not a rollback** — it spends your ten-per-minute budget and goes through the same review, so an undo can itself sit pending.
+
+**The undo baseline is only as good as what was recorded.** Undoing your *first* **Opening hours** edit clears the hours rather than restoring the previous ones, because the earlier value cannot be reconstructed from the public copy. Record hours by hand before you touch them. That is a genuine limitation of the tool, not a step you missed.
 
 **A gap worth naming.** The description has no one-click undo in the editor. You revert it by re-applying the text you saved in Lab 9.2 step 1 — the entire reason step 1 exists.
 

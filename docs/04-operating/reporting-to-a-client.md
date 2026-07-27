@@ -93,7 +93,11 @@ The PDF is therefore your **evidence annexe**, not your report. The narrative is
 
 *The button in question. It is one click and it produces a competent artefact — which is exactly why it is dangerous to hand over unaccompanied. Everything the client actually asked ("did it work, what did you do, what next") lives in the narrative you write around this, not inside it.*
 
-Two details that bite later. The performance section covers a fixed recent window of the report's own choosing, **not** the period you had selected on screen — the section heading names the window it used (28 days as generated on 2026-07-27), so quote it from there rather than from the Performance panel's selector. And the app keeps the ten most recent reports per business, so an eleventh prunes the oldest: on a monthly cadence your engagement baseline goes first. Copy each dated PDF into your own archive on generation day.
+Two details that bite later.
+
+**The performance window is the report's choice, not yours.** It covers a fixed recent window — **not** the period you had selected on screen. The section heading names the window it used (28 days as generated on 2026-07-27), so quote it from there rather than from the Performance panel's selector.
+
+**Reports are pruned at ten per business.** An eleventh drops the oldest, so on a monthly cadence your engagement baseline is the first thing to go. Copy each dated PDF into your own archive on generation day.
 
 ## The three-layer package
 
@@ -123,9 +127,19 @@ Two rules make it hold. **Re-measure on a pre-committed date, not a convenient o
 
 For a technical reader most of this is a solved problem, and it is worth being precise about which part.
 
-Reading stored data is free; fetching new data from Google costs. A reporting pipeline should therefore be almost entirely reads — stored keyword history, stored grid scans, the profile-score series, stored review data — with the paid fetches on your pre-committed measurement date and nowhere else. If assembling the report costs about what measuring costs, you built it wrong ([How the labs work](../00-start-here/how-the-labs-work.md); the client-facing version is [What the work costs](./what-the-work-costs.md)). An agent connected to the app can queue the PDF, poll until it is ready, pull the period's stored history and lay out layers 1 and 2 — see [Running local SEO with an AI agent](./running-local-seo-with-an-ai-agent.md).
+Reading stored data is free; fetching new data from Google costs. A reporting pipeline should therefore be **almost entirely reads** — stored keyword history, stored grid scans, the profile-score series, stored review data — with the paid fetches on your pre-committed measurement date and nowhere else.
 
-What is not automatable is question 3. Ask a language model why a number moved and it will produce a fluent cause, because producing fluent causes is what it does. It has no access to the change log in your head, the competitor suspended in week two, or the fact that this trade is dead in August. So it will attribute. The sentence that *declines* to attribute is the one you are paid for, and a person whose name is on the document has to write it.
+> If assembling the report costs about what measuring costs, you built it wrong.
+
+([How the labs work](../00-start-here/how-the-labs-work.md); the client-facing version is [What the work costs](./what-the-work-costs.md).)
+
+An agent connected to the app can queue the PDF, poll until it is ready, pull the period's stored history and lay out layers 1 and 2 — see [Running local SEO with an AI agent](./running-local-seo-with-an-ai-agent.md).
+
+**What is not automatable is question 3.** Ask a language model why a number moved and it will produce a fluent cause, because producing fluent causes is what it does.
+
+It has no access to the change log in your head, the competitor suspended in week two, or the fact that this trade is dead in August. So it will attribute anyway.
+
+> The sentence that *declines* to attribute is the one you are paid for — and a person whose name is on the document has to write it.
 
 Hence the last rule: **automated assembly, signed judgement.** A report with no named author is a report nobody has to defend.
 

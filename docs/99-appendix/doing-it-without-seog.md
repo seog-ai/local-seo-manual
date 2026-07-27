@@ -8,7 +8,11 @@ description: Every lab in this manual done by hand — the free tool for each jo
 
 Every practical chapter in this manual ends with a note saying the lab works by hand and pointing here. This is the long version: for each family of lab, the manual method, what it costs in time, and what you give up.
 
-Nothing in local SEO is locked behind a tool. The data comes from Google, and almost all of the useful half is free to anyone with owner access to the profile. What software buys you is not access — it is **history you did not have to remember, conditions you did not have to reproduce, and breadth across a portfolio**. Those three things are worth naming precisely, because they are the only honest argument for tooling, and two of them are the reason hand-run local SEO usually fails in month four rather than week one.
+Nothing in local SEO is locked behind a tool. The data comes from Google, and almost all of the useful half is free to anyone with owner access to the profile.
+
+What software buys you is not access — it is **history you did not have to remember, conditions you did not have to reproduce, and breadth across a portfolio**.
+
+Those three things are worth naming precisely, because they are the only honest argument for tooling, and two of them are the reason hand-run local SEO usually fails in month four rather than week one.
 
 If you read only one section, read [The three things that are genuinely hard](#the-three-things-that-are-genuinely-hard). If you are here to build rather than to click, skip to [If you would rather build it than click it](#if-you-would-rather-build-it-than-click-it).
 
@@ -30,7 +34,20 @@ If you read only one section, read [The three things that are genuinely hard](#t
 | Proving a change worked | Your own baseline, change log and re-reading | **This is where hand-run programmes die.** |
 | Running twenty businesses | All of the above, twenty times | **Not viable past about five.** *(Our estimate, from doing it.)* |
 
-Two patterns run through that table. **Everything that happens once is easy.** **Everything that has to happen identically, repeatedly, with a date attached is where a tool earns its price** — and where an unsupported human loses, not for want of skill but for want of a filing habit that survives a busy Tuesday.
+Two patterns run through that table.
+
+> **Everything that happens once is easy. Everything that has to happen identically, repeatedly, with a date attached is where a tool earns its price** — and where an unsupported human loses, not for want of skill but for want of a filing habit that survives a busy Tuesday.
+
+```mermaid
+flowchart TD
+  A["A job from the table above"] --> B{"Does it happen once?"}
+  B -->|"Once"| C["Do it by hand"]
+  B -->|"Repeatedly, with a date attached"| D{"Must the conditions match exactly?"}
+  D -->|"No"| C
+  D -->|"Same point, query, language, session"| E{"How many businesses?"}
+  E -->|"One to five"| F["By hand, if the filing habit holds"]
+  E -->|"More than five"| G["Where a tool earns its price"]
+```
 
 ## The free toolkit
 
@@ -58,15 +75,35 @@ That last row is not a joke. The spreadsheet is the instrument. A specification 
 
 ### Measuring where you rank — Labs 3.1, 4.1–4.3, 18.1–18.3, 22.1–22.3
 
-**The reading.** Open a private window. Go to Google Maps and centre it on the coordinate you want to measure from — the URL takes the coordinates directly, in the form `/maps/@60.1699,24.9384,14z`. Search your keyword. Count listings from the top until you reach the business; if you pass twenty without finding it, record "not in twenty" rather than a blank. Write down, in the same row: the keyword, the coordinate, the date and time, the language, and whether you were signed out. Map results follow the map's centre *(inference — reliably observed, not documented by Google; the observation is that moving the centre and re-running the identical query reorders the list)*.
+**The reading.** One row per reading, five steps:
 
-**The DevTools route, and its caveat.** Chrome's Sensors panel lets you override the browser's reported location with an arbitrary latitude and longitude. This works cleanly for anything that asks the Geolocation API — Maps does. Google web search is a murkier case: it derives location from several signals and does not always use the browser API, so an override may change nothing on the web results page while changing everything on Maps. Test both on your own machine before trusting either. There is also a widely circulated URL parameter for forcing a search location; it is undocumented, unsupported, has broken before and will break again. Do not put a client report on top of it.
+1. Open a private window.
+2. Go to Google Maps and centre it on the coordinate you want to measure from — the URL takes the coordinates directly, in the form `/maps/@60.1699,24.9384,14z`.
+3. Search your keyword.
+4. Count listings from the top until you reach the business; if you pass twenty without finding it, record "not in twenty" rather than a blank.
+5. Write down, in the same row: the keyword, the coordinate, the date and time, the language, and whether you were signed out.
 
-**A grid.** A grid is the above, repeated. Pick a centre, pick a spacing, lay out an odd-sided lattice so the business sits on a point, and run every point. Twenty-five points is an afternoon done properly — the discipline is that every point must be run under the *same* conditions, which means one sitting, one browser profile, one language, one signed-out session. Record one row per point: coordinate, position, timestamp. Reading the result is arithmetic you do yourself, and [Reading a geo-grid](../03-advanced/reading-a-geo-grid.md) is the arithmetic.
+Map results follow the map's centre *(inference — reliably observed, not documented by Google; the observation is that moving the centre and re-running the identical query reorders the list)*.
 
-**What you lose.** Not accuracy — a careful hand reading is as good as any API reading, and better than a careless one. You lose the ability to run the *same* grid again in six weeks under matched conditions, which is the only form in which a grid means anything. The second scan is the one that matters and the second scan is the one nobody runs.
+**The DevTools route, and its caveat.** Chrome's Sensors panel lets you override the browser's reported location with an arbitrary latitude and longitude. This works cleanly for anything that asks the Geolocation API — Maps does.
 
-**If you would rather script it**, a ranked place search returns results in order and your position is that result's index in the list. Request only the fields you actually need — [what the Places API will and will not give you](../05-reference/what-places-returns.md) explains why a request is priced by its most expensive field — and read Google's current pricing before you run anything at volume. Resolving *who* the businesses above you are is a separate, richer request; make it rarely.
+Google web search is a murkier case: it derives location from several signals and does not always use the browser API, so an override may change nothing on the web results page while changing everything on Maps. Test both on your own machine before trusting either.
+
+**The undocumented URL parameter.** There is also a widely circulated URL parameter for forcing a search location; it is undocumented, unsupported, has broken before and will break again. Do not put a client report on top of it.
+
+**A grid.** A grid is the above, repeated. Pick a centre, pick a spacing, lay out an odd-sided lattice so the business sits on a point, and run every point.
+
+Twenty-five points is an afternoon done properly — the discipline is that every point must be run under the *same* conditions, which means one sitting, one browser profile, one language, one signed-out session.
+
+Record one row per point: coordinate, position, timestamp. Reading the result is arithmetic you do yourself, and [Reading a geo-grid](../03-advanced/reading-a-geo-grid.md) is the arithmetic.
+
+**What you lose.** Not accuracy — a careful hand reading is as good as any API reading, and better than a careless one. You lose the ability to run the *same* grid again in six weeks under matched conditions, which is the only form in which a grid means anything.
+
+> The second scan is the one that matters and the second scan is the one nobody runs.
+
+**If you would rather script it**, a ranked place search returns results in order and your position is that result's index in the list.
+
+Request only the fields you actually need — [what the Places API will and will not give you](../05-reference/what-places-returns.md) explains why a request is priced by its most expensive field — and read Google's current pricing before you run anything at volume. Resolving *who* the businesses above you are is a separate, richer request; make it rarely.
 
 ### Auditing a profile — Labs 1.2, 7.1–7.3
 
@@ -82,7 +119,13 @@ That last row is not a joke. The spreadsheet is the instrument. A specification 
 
 ### Choosing what to track — Labs 6.1–6.3, 8.1–8.3
 
-**With owner access**, the terms people actually used to reach the profile are in the Business Profile dashboard's performance section, free, and there is no substitute for them anywhere. Read them with the caveats in [What Google's own reporting hides](../05-reference/what-googles-reporting-hides.md): the list is a top-N rather than everything, low-volume terms arrive as a privacy threshold rather than a count — "fewer than N", which a naive reading turns into N — and the window rolls, so **export or screenshot every month or you lose the tail permanently**.
+**With owner access**, the terms people actually used to reach the profile are in the Business Profile dashboard's performance section, free, and there is no substitute for them anywhere.
+
+Read them with the caveats in [What Google's own reporting hides](../05-reference/what-googles-reporting-hides.md):
+
+- the list is a top-N rather than everything;
+- low-volume terms arrive as a privacy threshold rather than a count — "fewer than N", which a naive reading turns into N;
+- the window rolls, so **export or screenshot every month or you lose the tail permanently**.
 
 **Without owner access**, type your category into the Google search box and read the autocomplete; repeat with each letter of the alphabet appended. That gives you what people search in your category, never what they searched to find this business, and the difference is the whole reason the owner report is worth having.
 
@@ -147,7 +190,9 @@ Claiming is manual everywhere, in every tool. There is no button on any platform
 This is the easiest section to do without any tool, and one where paying for tooling is hard to justify.
 
 - **Speed and Core Web Vitals:** PageSpeed Insights, free, unlimited. Interaction to Next Paint comes only from real visitors, so a low-traffic site legitimately has no INP figure — a dash is the honest display, and any tool showing you a number there invented it.
-- **Agent-readiness:** the Agentic Browsing category arrived in Lighthouse 13.3, released 2026-05-07, and scores out of four readiness checks rather than out of 100. It reached the hosted PageSpeed Insights within weeks and Chrome DevTools at Chrome 150; on an older Chrome it will not appear at all. The three surfaces have run different Lighthouse versions at different times — through May and June 2026 the CLI (`npm install -g lighthouse@latest`) was the only place it was reliably present — so read the version the report stamps on itself rather than assuming, and if the category is missing, that is the reason. *(Verified 2026-07-27 against the release reporting; Google publishes no compatibility table, so the CLI remains the version you control.)*
+- **Agent-readiness:** the Agentic Browsing category arrived in Lighthouse 13.3, released 2026-05-07, and scores out of four readiness checks rather than out of 100. It reached the hosted PageSpeed Insights within weeks and Chrome DevTools at Chrome 150; on an older Chrome it will not appear at all.
+  - The three surfaces have run different Lighthouse versions at different times — through May and June 2026 the CLI (`npm install -g lighthouse@latest`) was the only place it was reliably present.
+  - So read the version the report stamps on itself rather than assuming; if the category is missing, that is the reason. *(Verified 2026-07-27 against the release reporting; Google publishes no compatibility table, so the CLI remains the version you control.)*
 - **Structured data:** view-source, then Google's Rich Results Test and the Schema Markup Validator. Both free, both authoritative.
 - **Query data:** Search Console. Sixteen months, first-party, free, and there is no substitute. One reconciliation trap worth knowing even by hand: the interface shows fresh data including the last few days, while the API defaults to *final* data and silently drops them. If a report built on the API disagrees with the client's own dashboard by a couple of days' worth, that is why — [LSM-MEASURE-12 in *What Google's reporting hides*](../05-reference/what-googles-reporting-hides.md).
 
@@ -179,11 +224,22 @@ Ask the assistants yourself. This is the one family where the manual method and 
 
 **The cost is multiplication.** Keywords × engines × runs, and it is your afternoon rather than your budget. Five keywords × three engines × five runs is seventy-five conversations. That is the honest reason AI visibility is measured by tools: not access, arithmetic.
 
-**If you script it:** grounding a Gemini answer in Google Search is billed per grounded prompt, and the assistant vendors bill server-side web search per search rather than per token — the rates are in [*What the Places API will and will not give you*](../05-reference/what-places-returns.md). Two implementation traps that will silently ruin a hand-built harness are worth knowing before you write a line: demanding JSON-only output from a grounded model stops its search tool engaging, so it answers from memory and reports nothing found; and a too-small output-token budget returns zero grounding metadata rather than an error. Both are in [*AI engine probe recipes*](../05-reference/ai-engine-probe-recipes.md).
+**If you script it:** grounding a Gemini answer in Google Search is billed per grounded prompt, and the assistant vendors bill server-side web search per search rather than per token — the rates are in [*What the Places API will and will not give you*](../05-reference/what-places-returns.md).
+
+Two implementation traps that will silently ruin a hand-built harness are worth knowing before you write a line:
+
+- demanding JSON-only output from a grounded model stops its search tool engaging, so it answers from memory and reports nothing found;
+- a too-small output-token budget returns zero grounding metadata rather than an error.
+
+Both are in [*AI engine probe recipes*](../05-reference/ai-engine-probe-recipes.md).
 
 ### Proving it worked — Labs 17.1–17.4, 26.1–26.3, 27.1–27.3, 31.1–31.3
 
-**Performance numbers** are in the Business Profile dashboard, free, for the owner. Read them with the caveats in [What Google's own reporting hides](../05-reference/what-googles-reporting-hides.md): there is no "profile views" metric — you sum four impression counts, and you must say so in the report, because a client comparing your one number against Google's four will find the discrepancy. An impression is one unique user per day per metric. The most recent days can be missing and can still change. The dashboard's own window is shorter than the API's, so **export before it rolls off**.
+**Performance numbers** are in the Business Profile dashboard, free, for the owner.
+
+Read them with the caveats in [What Google's own reporting hides](../05-reference/what-googles-reporting-hides.md): there is no "profile views" metric — you sum four impression counts, and you must say so in the report, because a client comparing your one number against Google's four will find the discrepancy.
+
+An impression is one unique user per day per metric. The most recent days can be missing and can still change. The dashboard's own window is shorter than the API's, so **export before it rolls off**.
 
 **The change log** is the whole exercise and it is a text file. One line per change, dated, including changes you did not make: a Google update, a competitor's suspension, a rival's removal, the day the client turned the phones off for a fortnight. Removals and reinstatements move your rank with no action from you, and that is the most common false positive in this discipline.
 
@@ -199,7 +255,13 @@ Ask the assistants yourself. This is the one family where the manual method and 
 
 **The identity pack** — registration documents, utility bills, signage photographs, the dated record of the profile as it was — is a folder. It has to exist *before* the suspension, and the photograph you will be asked for is of the sign that came down last month.
 
-**Service-area businesses** are the one category where the tool question is moot in the other direction — but be precise about why, because the usual shorthand is wrong. A business that hides its street address ranks in Maps and the local pack like any other; what it is missing from is the **Places API**, which excludes pure service-area businesses from Text Search unless the request explicitly asks for them, and returns them with no address and no coordinates when it does ([LSM-PLACES-07](../05-reference/local-search-changelog.md) and [LSM-PLACES-10 in *What the Places API will and will not give you*](../05-reference/what-places-returns.md)). So any instrument built on Text Search — most rank trackers, including the grid method above — cannot see them, while a human reading the pack in a private window can. Read their absence from a tool as an instrument limitation, never as a ranking finding. Owner access is not a convenience here, it is the reliable path: the performance series and the search terms are free in Google's own interface.
+**Service-area businesses** are the one category where the tool question is moot in the other direction — but be precise about why, because the usual shorthand is wrong.
+
+A business that hides its street address ranks in Maps and the local pack like any other; what it is missing from is the **Places API**, which excludes pure service-area businesses from Text Search unless the request explicitly asks for them, and returns them with no address and no coordinates when it does ([LSM-PLACES-07](../05-reference/local-search-changelog.md) and [LSM-PLACES-10 in *What the Places API will and will not give you*](../05-reference/what-places-returns.md)).
+
+So any instrument built on Text Search — most rank trackers, including the grid method above — cannot see them, while a human reading the pack in a private window can. Read their absence from a tool as an instrument limitation, never as a ranking finding.
+
+Owner access is not a convenience here, it is the reliable path: the performance series and the search terms are free in Google's own interface.
 
 **Client inheritance and the exit** are an inventory and a handover folder. Who owns the domain, the DNS, the CMS, the Search Console property, the Business Profile itself, and which of those you could not confirm. "Unknown" is a legitimate row and also a task.
 
@@ -215,21 +277,45 @@ The APIs are open to anyone who applies. If you are a developer reading this as 
 
 **OAuth and its refresh.** Getting a token is an afternoon. Keeping a portfolio of tokens alive, handling revocation, and storing them encrypted at rest with a revoke-then-delete path is the ongoing work. Business Profile API access is application-gated — you request it, and quota starts at zero until approved.
 
-**The write surface.** Documented capability and actual capability differ enough that this manual carries two whole reference chapters about the gap: [the GBP capability matrix](../05-reference/gbp-capability-matrix.md) for what exists, and [write limits and failure modes](../05-reference/write-limits-and-failure-modes.md) for how it fails. Representative examples, so you can calibrate how large the gap is: posts live only on a legacy v4 surface; video on a post returns HTTP 500 rather than a 400; attributes are a separate resource that `locations.patch` cannot write; a bare `locations/{id}` resource name 404s every v4 call because v4 needs the account segment; and a 2xx on a review-reply PUT is not proof the reply is public.
+**The write surface.** Documented capability and actual capability differ enough that this manual carries two whole reference chapters about the gap: [the GBP capability matrix](../05-reference/gbp-capability-matrix.md) for what exists, and [write limits and failure modes](../05-reference/write-limits-and-failure-modes.md) for how it fails.
 
-**The storage rules, which are the part people skip.** Two regimes, and they do not transfer. Business Profile API content is capped at 30 calendar days and "cannot be manipulated or aggregated". Places content has no general caching allowance at all — place IDs are exempt and may be stored indefinitely, latitude and longitude may be cached for 30 consecutive days, and that is the extent of it. [Storing Google data legally](../05-reference/storing-google-data-legally.md) quotes every clause with its section number and date, and marks the genuinely open questions as open.
+Representative examples, so you can calibrate how large the gap is:
 
-**What this manual will not give you, and will not link to, is a scraper.** Google's Maps Platform terms name copying and saving business names, addresses and user reviews as prohibited scraping. Building a redistributable local dataset is the thing that clause exists to prevent, and doing it slowly, by hand, in a spreadsheet does not change what it is. There is a real and unsettled boundary between a practitioner writing five competitor names into a notebook — plainly normal professional work, and not what the clause addresses — and a systematic harvest of a city. We are not going to pretend we can draw that line precisely for you. We can tell you which side each activity in this manual sits on: measuring one business and its immediate competitive set, repeatedly, is the whole of it.
+- posts live only on a legacy v4 surface;
+- video on a post returns HTTP 500 rather than a 400;
+- attributes are a separate resource that `locations.patch` cannot write;
+- a bare `locations/{id}` resource name 404s every v4 call because v4 needs the account segment;
+- a 2xx on a review-reply PUT is not proof the reply is public.
+
+**The storage rules, which are the part people skip.** Two regimes, and they do not transfer. Business Profile API content is capped at 30 calendar days and "cannot be manipulated or aggregated".
+
+Places content has no general caching allowance at all — place IDs are exempt and may be stored indefinitely, latitude and longitude may be cached for 30 consecutive days, and that is the extent of it.
+
+[Storing Google data legally](../05-reference/storing-google-data-legally.md) quotes every clause with its section number and date, and marks the genuinely open questions as open.
+
+**What this manual will not give you, and will not link to, is a scraper.** Google's Maps Platform terms name copying and saving business names, addresses and user reviews as prohibited scraping. Building a redistributable local dataset is the thing that clause exists to prevent, and doing it slowly, by hand, in a spreadsheet does not change what it is.
+
+There is a real and unsettled boundary between a practitioner writing five competitor names into a notebook — plainly normal professional work, and not what the clause addresses — and a systematic harvest of a city. We are not going to pretend we can draw that line precisely for you.
+
+We can tell you which side each activity in this manual sits on: measuring one business and its immediate competitive set, repeatedly, is the whole of it.
 
 ## The three things that are genuinely hard
 
 Everything above is doable. These three are where hand-run programmes fail, and it is worth being specific about *why*, because two of the three are habits rather than capabilities.
 
-**1. History.** You cannot see movement you did not record, and local SEO is judged entirely on movement over weeks. Today's rank is nearly worthless; the pair of readings six weeks apart is the entire product. Recording is trivial per reading and unforgiving in aggregate — miss the March column and the Q1 report has a hole in it that no amount of later work fills. This is the failure mode, and it does not feel like a failure while it is happening. It feels like a busy Tuesday.
+**1. History.** You cannot see movement you did not record, and local SEO is judged entirely on movement over weeks. Today's rank is nearly worthless; the pair of readings six weeks apart is the entire product.
 
-**2. Comparable conditions.** A rank reading is only meaningful against another reading taken under the same conditions: same coordinate, same query text, same language, same signed-out state, ideally the same time of day. Reproducing seven conditions by hand, six weeks later, from notes you wrote quickly, is harder than it sounds — and the failure is silent. You get two numbers that look comparable and are not, and the difference between them gets reported as a result. [Why two tools disagree](../03-advanced/why-two-tools-disagree.md) is the anatomy of this, and it applies to *you* disagreeing with *yourself* just as much as to two vendors.
+Recording is trivial per reading and unforgiving in aggregate — miss the March column and the Q1 report has a hole in it that no amount of later work fills. This is the failure mode, and it does not feel like a failure while it is happening. It feels like a busy Tuesday.
 
-**3. Read-back.** Google accepts writes it has not published. A profile edit, a review reply, a post — each can return success in the interface and never appear publicly, or appear and later vanish. Verifying every write against the public listing in a signed-out window is the correct procedure and nobody does it consistently by hand for long. This is the least glamorous item on the list and the one that causes the most "we definitely did that" arguments.
+**2. Comparable conditions.** A rank reading is only meaningful against another reading taken under the same conditions: same coordinate, same query text, same language, same signed-out state, ideally the same time of day.
+
+Reproducing seven conditions by hand, six weeks later, from notes you wrote quickly, is harder than it sounds — and the failure is silent. You get two numbers that look comparable and are not, and the difference between them gets reported as a result.
+
+[Why two tools disagree](../03-advanced/why-two-tools-disagree.md) is the anatomy of this, and it applies to *you* disagreeing with *yourself* just as much as to two vendors.
+
+**3. Read-back.** Google accepts writes it has not published. A profile edit, a review reply, a post — each can return success in the interface and never appear publicly, or appear and later vanish.
+
+Verifying every write against the public listing in a signed-out window is the correct procedure and nobody does it consistently by hand for long. This is the least glamorous item on the list and the one that causes the most "we definitely did that" arguments.
 
 A fourth, honestly: **breadth**. One business by hand is comfortable. Five is a full week. Twenty is not a thing a person does — not because any single step is hard, but because twenty portfolios of the above is twenty times a discipline that already decays at one. *(Our estimate, from running it both ways.)*
 

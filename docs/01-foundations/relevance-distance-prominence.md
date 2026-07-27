@@ -30,11 +30,17 @@ Note the object: the three forces apply to a *Business Profile*, not a website. 
 
 Relevance is a match between a query and an entity. The entity's fields are the raw material: primary and additional categories, name, services, description, attributes, and the linked website's content.
 
-Category does most of the work. It tells Google what *kind* of thing the business is, and it is picked from Google's own fixed list rather than typed freely — machine-readable in a way a description never is. A dentist whose primary category is "Dental clinic" is a candidate for dentist queries. The same business filed as "Medical clinic" is a weaker one, whatever the website says. *(Inference: Google does not document the field's weight. The observation is that pack members for a query overwhelmingly share one or two primary categories — which you verify in Lab 3.3.)*
+**Category does most of the work.** It tells Google what *kind* of thing the business is, and it is picked from Google's own fixed list rather than typed freely — machine-readable in a way a description never is.
 
-Below category the signals get softer and the evidence thinner. Sterling Sky, one of the few practitioners publishing controlled experiments rather than assertions, has tested the Services fields directly and found they do move rank — custom services included, and even with the price and description left blank, though by less than Google's own pre-defined ones.
+A dentist whose primary category is "Dental clinic" is a candidate for dentist queries. The same business filed as "Medical clinic" is a weaker one, whatever the website says.
 
-What that testing does not publish is a *magnitude*. The write-ups say "measurable" and "significant"; they give no percentage, no average position gain, no share of grid points improved. A figure of "2–5%" circulates with Sterling Sky's name attached to it — it comes from a reader's comment under one of those posts, not from the test. Do not repeat it, and be suspicious of anyone who does. Treat Services as small, real, cheap and unquantified.
+*(Inference: Google does not document the field's weight. The observation is that pack members for a query overwhelmingly share one or two primary categories — which you verify in Lab 3.3.)*
+
+**Below category the signals get softer and the evidence thinner.** Sterling Sky, one of the few practitioners publishing controlled experiments rather than assertions, has tested the Services fields directly and found they do move rank — custom services included, and even with the price and description left blank, though by less than Google's own pre-defined ones.
+
+**What that testing does not publish is a *magnitude*.** The write-ups say "measurable" and "significant"; they give no percentage, no average position gain, no share of grid points improved.
+
+A figure of "2–5%" circulates with Sterling Sky's name attached to it — it comes from a reader's comment under one of those posts, not from the test. Do not repeat it, and be suspicious of anyone who does. Treat Services as small, real, cheap and unquantified.
 
 Relevance is the force you control most directly and most quickly. It is also the one people break by over-reaching: adding categories the business does not serve, to widen the net. [The profile is the product](../02-core-practice/the-profile-is-the-product.md) covers that, with the risk attached.
 
@@ -72,17 +78,30 @@ The triad reads like a formula with three inputs. The behaviour looks more like 
 2. **Distance decides eligibility at a point.** Past some market-dependent range you stop being a candidate for that searcher — not demoted, absent.
 3. **Prominence orders whoever survives.**
 
+```mermaid
+flowchart LR
+  Q["A search, run from a point"] --> R{"Relevance: right kind of business?"}
+  R -->|"No"| X1["Not a candidate, at any distance"]
+  R -->|"Yes"| D{"Distance: inside range for this searcher?"}
+  D -->|"No"| X2["Absent, not demoted"]
+  D -->|"Yes"| P["Prominence orders whoever survives"]
+```
+
 This is why "improve my ranking" is under-specified. A business invisible everywhere has a relevance problem. One that is #1 at its door and gone two miles out has a distance problem whose only real fix is prominence — prominence buys range. One sitting at #7 everywhere has a prominence problem and no distance problem at all.
 
 ## Proximity, quantified — and then corrected
 
+### The 55% is a poll, not a measurement
+
 Everyone quotes a number for proximity. The most-repeated one — roughly 55% — comes from Whitespark's *Local Search Ranking Factors* (2026 edition, published 6 November 2025): 47 practitioners ranking 187 factors. It is an opinion survey: no experiment, no confidence interval, no stated method for turning votes into percentages. The industry's best consensus, and not a measurement.
 
-It is also not on the same scale as the other figures from that survey you will meet later in this manual — profile signals at 32% of local-pack weight, reviews at 20%, citations somewhere in the single digits ([citations and NAP consistency](../02-core-practice/citations-and-nap.md)). Those are shares of a whole; the 55% is proximity's standing as a single named factor, quoted outside that split. Do not add them together, and do not let anyone else.
+**It is also not on the same scale** as the other figures from that survey you will meet later in this manual — profile signals at 32% of local-pack weight, reviews at 20%, citations somewhere in the single digits ([citations and NAP consistency](../02-core-practice/citations-and-nap.md)). Those are shares of a whole; the 55% is proximity's standing as a single named factor, quoted outside that split. Do not add them together, and do not let anyone else.
 
-Treat the small shares as approximate. The report itself sits behind a form, and the second-hand summaries of it disagree with each other — citations appear as 6% in some and 7% in others, with wider disagreement still on on-page and links. When two write-ups of one survey cannot agree on a number to the percentage point, the number was never precise enough to carry an argument.
+**Treat the small shares as approximate.** The report itself sits behind a form, and the second-hand summaries of it disagree with each other — citations appear as 6% in some and 7% in others, with wider disagreement still on on-page and links. When two write-ups of one survey cannot agree on a number to the percentage point, the number was never precise enough to carry an argument.
 
-The largest actual dataset is different in kind. rankings.io's [Google Maps proximity study](https://rankings.io/data-studies/proximity-data-study/) scanned roughly 1,100 law firms — 20 in each of the 50 largest US cities, plus a second pass at a 5-mile radius in the ten largest — on 15×15 grids of 225 points at a 10-mile radius, for the single keyword *car accident lawyer*. It reports:
+### The largest dataset, and its censored tail
+
+**The largest actual dataset is different in kind.** rankings.io's [Google Maps proximity study](https://rankings.io/data-studies/proximity-data-study/) scanned roughly 1,100 law firms — 20 in each of the 50 largest US cities, plus a second pass at a 5-mile radius in the ten largest — on 15×15 grids of 225 points at a 10-mile radius, for the single keyword *car accident lawyer*. It reports:
 
 | Finding | Value |
 | --- | --- |
@@ -95,11 +114,21 @@ That last row is the one people misquote by attaching a mileage to it. The study
 
 Read the first row again: barely more than half ranked first *at their own front door*, for their own core term. Proximity is enormous and still not sufficient.
 
-Now the correction, which matters more than the numbers. The study measured with a tracker that only sees the top 20 and **imputed a constant value of 25 for every observation past that ceiling** — the authors say so themselves. A business genuinely 400th, or absent altogether, was recorded as 25. That pulls the tail toward the centre, so the curve is biased optimistic exactly where decay is steepest. The real drop-off past the first mile is worse than λ ≈ 2.3 says, by an unknown amount.
+**Now the correction, which matters more than the numbers.** The study measured with a tracker that only sees the top 20 and **imputed a constant value of 25 for every observation past that ceiling** — the authors say so themselves. A business genuinely 400th, or absent altogether, was recorded as 25.
 
-The other limits are ordinary but disqualifying if you quote the study as a law: one keyword ("car accident lawyer"), one vertical, one point in time, no repeat measurement, no confidence intervals, grids centred on the firm rather than on demand. Never replicated.
+That pulls the tail toward the centre, so the curve is biased optimistic exactly where decay is steepest. The real drop-off past the first mile is worse than λ ≈ 2.3 says, by an unknown amount.
 
-So carry the *shape*, not the constant: decay is steep in the first mile, and how far your visibility reaches is mostly a function of how crowded your market is — the 27%-versus-92% spread is the real finding. That censoring problem is not a quirk of one study; it is the defect underneath every "average map rank" figure in the category, and Part III takes it apart.
+**The other limits are ordinary but disqualifying** if you quote the study as a law:
+
+- One keyword ("car accident lawyer"), one vertical.
+- One point in time, no repeat measurement.
+- No confidence intervals.
+- Grids centred on the firm rather than on demand.
+- Never replicated.
+
+> **Carry the *shape*, not the constant.** Decay is steep in the first mile, and how far your visibility reaches is mostly a function of how crowded your market is — the 27%-versus-92% spread is the real finding.
+
+That censoring problem is not a quirk of one study; it is the defect underneath every "average map rank" figure in the category, and Part III takes it apart.
 
 ## Proximity in an AI answer: almost nothing
 
@@ -109,7 +138,7 @@ Local Falcon's May 2025 whitepaper on AI Overviews and local visibility ran 60,0
 
 Distance still affected inclusion, barely: businesses within a mile of the search point appeared in 72.0% of answers, against 68.5% for those one to two miles out; average position 3.39 versus 3.49. Once you are in the answer, where the searcher stands has no detectable bearing on your place in it.
 
-Treat that as directional, not settled. It covers Google's AI Overviews only — no ChatGPT, no Perplexity, no AI Mode. The data runs to 7 May 2025, over a year stale, and predates both AI Mode's rollout and ChatGPT shipping opt-in device-location sharing on 26 March 2026. Vendor-published, unreplicated.
+**Treat that as directional, not settled.** It covers Google's AI Overviews only — no ChatGPT, no Perplexity, no AI Mode. The data runs to 7 May 2025, over a year stale, and predates both AI Mode's rollout and ChatGPT shipping opt-in device-location sharing on 26 March 2026. Vendor-published, unreplicated.
 
 The direction is at least coherent with how assistants appear to assemble a local answer: retrieval on entity and reputation signals, not a distance sort *(inference)*. So the force that dominates the map pack is close to irrelevant one surface over, and the two slow, hard forces carry across both. [How an AI assistant answers a local question](./how-ai-answers-a-local-question.md) is the mechanism; [Does the AI recommend this business?](../03-advanced/ai-visibility.md) is the measurement.
 

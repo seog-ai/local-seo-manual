@@ -12,9 +12,21 @@ That panel is the thing being ranked. It is a record Google holds about a place,
 
 ## The ranked object is a record, not a page
 
-Google's own account of local ranking names three factors: relevance, distance and prominence — its help page opens by calling the third one "popularity" and then defines it as prominence, so you will see both words. Look at what those are properties *of*. Relevance is how well a **Business Profile** matches what someone is searching for. Distance is how far each **business** is from the customer searching. Prominence is how well known the **business** is, based, Google says, on information like how many websites link to it and how many reviews it has. Not one of them is a property of a page.
+**Google's own account of local ranking names three factors:** relevance, distance and prominence — its help page opens by calling the third one "popularity" and then defines it as prominence, so you will see both words.
 
-The website has a role. Google's help page carried a sentence for years saying that your position in web results is also a factor, "so SEO best practices also apply to local search optimization"; that line is not in the current text, and Google now describes prominence only in terms of links, reviews and information from across the web. Treat "web ranking feeds prominence" as the long-standing practitioner reading rather than a current Google statement *(open question)*. Either way the direction is the same: the site is evidence about the business. It is not the thing in the ranking.
+Look at what those are properties *of*.
+
+| Factor | What Google says it measures | A property of |
+| --- | --- | --- |
+| **Relevance** | How well a Business Profile matches what someone is searching for | The profile |
+| **Distance** | How far each business is from the customer searching | The business |
+| **Prominence** | How well known the business is — based, Google says, on information like how many websites link to it and how many reviews it has | The business |
+
+> **Not one of them is a property of a page.**
+
+**The website has a role.** Google's help page carried a sentence for years saying that your position in web results is also a factor, "so SEO best practices also apply to local search optimization"; that line is not in the current text, and Google now describes prominence only in terms of links, reviews and information from across the web.
+
+Treat "web ranking feeds prominence" as the long-standing practitioner reading rather than a current Google statement *(open question)*. Either way the direction is the same: the site is evidence about the business. It is not the thing in the ranking.
 
 Five things feed that record, in two different ways:
 
@@ -43,15 +55,20 @@ An entity is a set of fields. Group them by what they *are*, because the groups 
 
 Two things about this table matter more than they look.
 
-First, the machine identifier. Every place in Google's index carries a stable identifier — a **place ID**. It is not the name and not the address. It is the key, and the rest of the record hangs off it. When a tool "tracks your business", the honest description of what it stores is that key plus its own measurements.
+**First, the machine identifier.** Every place in Google's index carries a stable identifier — a **place ID**. It is not the name and not the address. It is the key, and the rest of the record hangs off it. When a tool "tracks your business", the honest description of what it stores is that key plus its own measurements.
 
-Second, notice how many rows are not written by you. Customers add photos and reviews. Google edits fields from other signals it holds — which is why the warning shown before you apply a profile change says Google can reject or change an edit. Your listing is a record you contribute to, not a document you own.
+**Second, notice how many rows are not written by you.** Customers add photos and reviews. Google edits fields from other signals it holds — which is why the warning shown before you apply a profile change says Google can reject or change an edit. Your listing is a record you contribute to, not a document you own.
 
 ## Identity and contents are different classes of thing
 
 Here is the argument that settles it, and it does not come from a ranking study. It comes from what Google's own terms let you keep.
 
-For public place data the default is that you may not store it at all. There are exactly two express permissions: the **place identifier indefinitely**, and **coordinates for at most 30 consecutive calendar days**, after which they must be deleted. The same terms name copying and saving business names, addresses or user reviews as prohibited scraping. On the owner side, Business Profile content carries a 30-day storage cap of its own. (Read against the Maps terms current in June 2026 and the Business Profile API policies dated 2025-08-28.)
+**For public place data the default is that you may not store it at all.** There are exactly two express permissions:
+
+- The **place identifier**, indefinitely.
+- **Coordinates**, for at most 30 consecutive calendar days, after which they must be deleted.
+
+The same terms name copying and saving business names, addresses or user reviews as prohibited scraping. On the owner side, Business Profile content carries a 30-day storage cap of its own. (Read against the Maps terms current in June 2026 and the Business Profile API policies dated 2025-08-28.)
 
 Read that as a description of the data model and it is unambiguous:
 
@@ -89,15 +106,32 @@ You met this split in [Lab 0.4](../00-start-here/set-up-your-workbench.md). It p
 | The search terms people used to find it | No | Yes |
 | Editing anything, replying, posting | No | Yes |
 
-The review row is the one that catches people out. The public data surface returns at most five reviews, ordered by relevance rather than by date. A tool seeing only the public view can honestly show you a rating and a review count. It cannot show you a review history, because it has never had one. Anything longitudinal it shows for a business you have not connected was assembled from its own repeated sampling.
+**The review row is the one that catches people out.** The public data surface returns at most five reviews, ordered by relevance rather than by date.
 
-The description row is the tidy proof that these really are two surfaces: the owner-written "from the business" blurb is not part of the public place data at all. Public place data can carry a blurb — but it is Google's own machine-written summary of the place, a different field with a different author. In SEOG the owner's real description arrives only once the Google connection exists, and it then replaces the machine-written one in the stored record, because that is the only door it comes through.
+A tool seeing only the public view can honestly show you a rating and a review count. It cannot show you a review history, because it has never had one. Anything longitudinal it shows for a business you have not connected was assembled from its own repeated sampling.
 
-And some entities are invisible to the public view entirely. A pure service-area business — a plumber, a mobile locksmith — hides its street address, and Google excludes hidden-address businesses from public place search by default. The entity exists and the owner sees all of it; the public read simply cannot retrieve it, which has consequences big enough to need [their own chapter](../03-advanced/service-area-businesses.md).
+**The description row is the tidy proof that these really are two surfaces.** The owner-written "from the business" blurb is not part of the public place data at all. Public place data can carry a blurb — but it is Google's own machine-written summary of the place, a different field with a different author.
+
+In SEOG the owner's real description arrives only once the Google connection exists, and it then replaces the machine-written one in the stored record, because that is the only door it comes through.
+
+**And some entities are invisible to the public view entirely.** A pure service-area business — a plumber, a mobile locksmith — hides its street address, and Google excludes hidden-address businesses from public place search by default. The entity exists and the owner sees all of it; the public read simply cannot retrieve it, which has consequences big enough to need [their own chapter](../03-advanced/service-area-businesses.md).
 
 ## Why two records for the same shop disagree
 
 Once you see the entity as a record with multiple authors and multiple readers, disagreement stops being mysterious. Five distinct causes, and telling them apart is a real diagnostic skill.
+
+```mermaid
+flowchart TD
+  A["Two readings of the same shop disagree"] --> B{"Same state, different words?"}
+  B -->|"Yes"| V["Vocabulary"]
+  B -->|"No"| C{"Did the business change after your copy was taken?"}
+  C -->|"Yes"| F["Freshness"]
+  C -->|"No"| D{"Visible in Maps but missing from the tool?"}
+  D -->|"Yes"| R["Retrieval"]
+  D -->|"No"| E{"Two records, reviews on both?"}
+  E -->|"Yes"| G["Genuine duplicates"]
+  E -->|"No"| W["Your own website disagrees"]
+```
 
 **1. Vocabulary.** The public read surface and the owner write surface do not use the same words for the same state. A business the public reading calls "operational" is a business the owner side calls "open". Two records can be identical in meaning and differ in text. See [Write limits and failure modes](../05-reference/write-limits-and-failure-modes.md) for the full list of these mismatches.
 

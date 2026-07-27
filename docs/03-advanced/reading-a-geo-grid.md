@@ -142,7 +142,22 @@ On a Quick grid, "coverage rose 11 points" is the smallest non-zero change that 
 
 > **Your minimum detectable effect is the larger of one pin and your measured noise floor. Anything smaller is not a result, whatever direction it points in.**
 
-Now the part that surprises people. Normally you shrink an error bar by increasing the sample size. **Here you cannot**: all three presets scan at the same one-mile spacing and differ only in how far out they reach — the buttons say so, `3×3 · ~2 mi`, `5×5 · ~4 mi`, `7×7 · ~6 mi`. A Detailed scan is therefore a same-density reading of roughly nine times the ground a Quick scan covers, not a sharper reading of the same ground ([Lab 4.2](../01-foundations/rank-is-a-map-not-a-number.md)). Increasing n changes the estimand instead of sharpening the estimate — finer granularity of a *different quantity*, over ground that may be irrelevant.
+That gives you a test you can run on any movement before it reaches a client:
+
+```mermaid
+flowchart TD
+  A["A figure moved between two scans"] --> B{"Were the keyword and the figure named before the scan ran?"}
+  B -->|"No"| X["Not a result: report it as secondary"]
+  B -->|"Yes"| C{"Is the move at least one pin?"}
+  C -->|"No"| X
+  C -->|"Yes"| D{"Is the move above your measured noise floor?"}
+  D -->|"No"| X
+  D -->|"Yes"| E["Report it, with the found rate beside it"]
+```
+
+**Now the part that surprises people.** Normally you shrink an error bar by increasing the sample size. **Here you cannot**: all three presets scan at the same one-mile spacing and differ only in how far out they reach — the buttons say so, `3×3 · ~2 mi`, `5×5 · ~4 mi`, `7×7 · ~6 mi`.
+
+A Detailed scan is therefore a same-density reading of roughly nine times the ground a Quick scan covers, not a sharper reading of the same ground ([Lab 4.2](../01-foundations/rank-is-a-map-not-a-number.md)). Increasing n changes the estimand instead of sharpening the estimate — finer granularity of a *different quantity*, over ground that may be irrelevant.
 
 ## Three traps that survive good statistics
 
@@ -187,7 +202,11 @@ Now the part that surprises people. Normally you shrink an error bar by increasi
 5. Click **Compare with previous scan** and read the strip: *N improved · N newly ranked · N dropped · N lost*. Every non-zero count there is **noise** — nothing changed in the world between the runs.
 6. Write down three figures — how many of the nine pins moved at all, the largest single move in positions, the change in top-3 coverage — then your noise floor as a sentence to reuse: *"Two identical scans an hour apart differed at X of 9 points and by Y coverage points. We do not report movements below that."*
 
-**What good looks like.** Three results, all valid. Zero pins moved — encouraging, and one observation rather than proof. Two or three moved by a position each — the ordinary case, and now you know it. Coverage moved 11 points with the pins otherwise stable — one pin crossed the top-3 line, and the smallest possible change looked like a double-digit gain.
+**What good looks like.** Three results, all valid.
+
+- *Zero pins moved* — encouraging, and one observation rather than proof.
+- *Two or three moved by a position each* — the ordinary case, and now you know it.
+- *Coverage moved 11 points with the pins otherwise stable* — one pin crossed the top-3 line, and the smallest possible change looked like a double-digit gain.
 
 **If it went wrong.**
 - *No **Compare with previous scan** link.* Only one stored scan exists — confirm the first completed before you ran the second.

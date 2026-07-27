@@ -128,9 +128,13 @@ Detailed costs about five times Quick and is priced as exactly what it is. It is
 
 ### 2. Matrix breadth on AI visibility
 
-An AI answer check is one keyword against one engine. Three engines sit on that screen, so a run costs **prompts × connected engines**, and the run bar shows both the arithmetic and the batch total before you press it. An engine marked **Not connected** produces a clearly-labelled sample row instead — free, and it must never count toward a rate.
+An AI answer check is one keyword against one engine. Three engines sit on that screen, so a run costs **prompts × connected engines**, and the run bar shows both the arithmetic and the batch total before you press it.
 
-The trap is that AI visibility is a *rate*, not an answer — one run is a sample ([Does the AI recommend this business?](../03-advanced/ai-visibility.md)). So the real unit is prompts × engines × repeats, and ten prompts across three engines run weekly is thirty times the spend of three prompts on one engine run monthly, for a picture whose error bar you should be computing either way. Decide the matrix deliberately: a small set run enough times beats a large set run once, every time.
+**An engine marked Not connected** produces a clearly-labelled sample row instead — free, and it must never count toward a rate.
+
+**The trap is that AI visibility is a rate, not an answer** — one run is a sample ([Does the AI recommend this business?](../03-advanced/ai-visibility.md)). So the real unit is prompts × engines × repeats.
+
+Ten prompts across three engines run weekly is thirty times the spend of three prompts on one engine run monthly, for a picture whose error bar you should be computing either way. Decide the matrix deliberately: a small set run enough times beats a large set run once, every time.
 
 ### 3. Set size
 
@@ -157,7 +161,9 @@ Those three alone are a factor of several hundred between two operators producin
 
 ## The labs, counted
 
-As of **2026-07-27** the manual has **103 labs**. **51 cost nothing at all.** 48 spend outright, and 4 are part-free — a paid fetch followed by free reading, or free to remove and paid to add. Those four part-free labs are counted in the **Spend** column below, so that column sums to 52, not 48; 51 + 52 = 103.
+As of **2026-07-27** the manual has **103 labs**. **51 cost nothing at all.** 48 spend outright, and 4 are part-free — a paid fetch followed by free reading, or free to remove and paid to add.
+
+Those four part-free labs are counted in the **Spend** column below, so that column sums to 52, not 48; 51 + 52 = 103.
 
 | Part | Labs | Free | Spend |
 | --- | --- | --- | --- |
@@ -167,9 +173,21 @@ As of **2026-07-27** the manual has **103 labs**. **51 cost nothing at all.** 48
 | Part III — Advanced | 25 | 13 | 12 |
 | Part IV — Operating | 18 | 15 | 3 |
 
-The distribution is the honest shape of the discipline. Part II is where you *change* things, and changing things means writing to Google and measuring the result, so that is where the money is. Parts III and IV are mostly reading, judgement and paperwork — the parts that most separate a competent practitioner from an incompetent one, and they are nearly free.
+**The distribution is the honest shape of the discipline.** Part II is where you *change* things, and changing things means writing to Google and measuring the result, so that is where the money is.
 
-**A dozen labs never open the app at all.** They run in a browser, a spreadsheet, your notes or an assistant's chat window: the surface census, the two-machine test, the spam dossier, the spam report, the report grading, the price book, the source file for staying current. If you want to sample the manual before spending anything, those are the ones.
+Parts III and IV are mostly reading, judgement and paperwork — the parts that most separate a competent practitioner from an incompetent one, and they are nearly free.
+
+**A dozen labs never open the app at all.** They run in a browser, a spreadsheet, your notes or an assistant's chat window:
+
+- the surface census
+- the two-machine test
+- the spam dossier
+- the spam report
+- the report grading
+- the price book
+- the source file for staying current
+
+If you want to sample the manual before spending anything, those are the ones.
 
 ---
 
@@ -189,7 +207,9 @@ Every paid fetch in this manual feeds several free labs. The cheapest possible r
 | One matrix run (Lab 20.2) | 20.3, 21.1, 16.4 |
 | One overview refresh + frozen report (Labs 7.2, 7.3) | 27.1, 27.2, 27.3 — the whole ninety-day planning chapter reads off a frozen baseline |
 
-**The baseline in that last row must be exported the day you make it.** A generated report is a frozen copy of Google content, so it ages out on the thirty-day window — and a ninety-day plan that reads off it will outlive it. Download the PDF into your own storage immediately; that copy, and not the one in the tool, is the baseline. The same goes for any review text or performance series you intend to quote later.
+**The baseline in that last row must be exported the day you make it.** A generated report is a frozen copy of Google content, so it ages out on the thirty-day window — and a ninety-day plan that reads off it will outlive it.
+
+Download the PDF into your own storage immediately; that copy, and not the one in the tool, is the baseline. The same goes for any review text or performance series you intend to quote later.
 
 Three ordering rules fall out of that table.
 
@@ -197,9 +217,13 @@ Three ordering rules fall out of that table.
 
 **Do the reading labs before re-fetching.** Labs 4.2, 4.3 and 18.1 all read the *same* stored scan. Run them in one sitting and one scan covers three labs.
 
-**Two labs deserve a warning.** [Lab 18.2](../03-advanced/reading-a-geo-grid.md) runs two grid scans deliberately and is charged twice — use the **Quick** preset, run it once, and keep the result, because a noise floor stays valid for months. [Lab 22.1](../03-advanced/why-two-tools-disagree.md) adds two keyword rows to make an instrument disagree with itself; check your remaining slots before starting so you are not forced to delete a row with history.
+**Two labs deserve a warning.** [Lab 18.2](../03-advanced/reading-a-geo-grid.md) runs two grid scans deliberately and is charged twice — use the **Quick** preset, run it once, and keep the result, because a noise floor stays valid for months.
 
-**If you are on the observe-only path** — working on a business you do not manage — skip the write labs in chapters 9, 10, 11 and 15 entirely. They are the largest block of paid work in the manual, they need owner access you do not have, and you must not write to a listing you do not control anyway. Every one of those chapters states its observe-only variant, and the reading half of each still works.
+[Lab 22.1](../03-advanced/why-two-tools-disagree.md) adds two keyword rows to make an instrument disagree with itself; check your remaining slots before starting so you are not forced to delete a row with history.
+
+**If you are on the observe-only path** — working on a business you do not manage — skip the write labs in chapters 9, 10, 11 and 15 entirely.
+
+They are the largest block of paid work in the manual, they need owner access you do not have, and you must not write to a listing you do not control anyway. Every one of those chapters states its observe-only variant, and the reading half of each still works.
 
 ---
 
@@ -211,7 +235,9 @@ Four, in descending order of how much they cost.
 
 **Scanning at Detailed out of thoroughness.** Detail is not accuracy. A wider grid at the same one-mile spacing answers a wider question, and if you were not asking that question you bought nothing.
 
-**Refreshing everything to refresh one thing.** The per-section buttons exist so you can pay for the domain you asked about. Pressing **Refresh all** because reviews changed also re-pulls the profile. Worth knowing what each composite covers: **Refresh all** on the overview re-pulls profile fields and reviews (and owner performance on a connected profile) — it does **not** re-check keyword positions, re-run a grid, or re-fetch competitors. The whole-page **Check now** on Website is the site audit *and* Search Console together.
+**Refreshing everything to refresh one thing.** The per-section buttons exist so you can pay for the domain you asked about. Pressing **Refresh all** because reviews changed also re-pulls the profile.
+
+Worth knowing what each composite covers: **Refresh all** on the overview re-pulls profile fields and reviews (and owner performance on a connected profile) — it does **not** re-check keyword positions, re-run a grid, or re-fetch competitors. The whole-page **Check now** on Website is the site audit *and* Search Console together.
 
 **Daily anything.** Nothing in local search moves fast enough to justify it, and daily sampling makes normal drift look like results, which is worse than expensive — it is misleading ([Did it work?](../02-core-practice/did-it-work.md)).
 

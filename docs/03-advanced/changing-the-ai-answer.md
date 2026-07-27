@@ -12,7 +12,9 @@ Local AI visibility is new enough that nobody has a long track record in it, and
 
 ## There are only three places to intervene
 
-An assistant answering a local question retrieves documents and writes prose grounded in them — the four steps are in [How an AI assistant answers a local question](../01-foundations/how-ai-answers-a-local-question.md). You control none of the model, the sampling, the retrieval weighting or the query it decides to issue. What is left is the corpus, and the corpus has exactly three attackable properties:
+An assistant answering a local question retrieves documents and writes prose grounded in them — the four steps are in [How an AI assistant answers a local question](../01-foundations/how-ai-answers-a-local-question.md).
+
+**You control none of the model**, the sampling, the retrieval weighting or the query it decides to issue. What is left is the corpus, and the corpus has exactly three attackable properties:
 
 1. **Which documents exist, and what they say about you.** Your profile, directory records, third-party pages about your market, your own site.
 2. **Whether the machine can tell they are all about one business.** Entity resolution — the subject of [citations and NAP consistency](../02-core-practice/citations-and-nap.md).
@@ -22,13 +24,17 @@ Every lever with evidence behind it is one of these three. Hold a vendor proposa
 
 ## Read the source list; that is your intervention plan
 
-Every answer arrives with a bibliography, and it is free to read once a check has been paid for. The **Sources cited by AI** card on `/b/{businessId}/ai-visibility` aggregates the cited domains across your recent live answers, ranked by how many cite each, and tags every row: **You**, **Directory**, **Social**, **Reference** or **Web**. Directory and social rows carry the note *You can influence this*, because those are records you can claim and correct. A Wikipedia row is a *Reference*; a "12 best plumbers in Leeds" listicle lands in *Web*.
+Every answer arrives with a bibliography, and it is free to read once a check has been paid for. The **Sources cited by AI** card on `/b/{businessId}/ai-visibility` aggregates the cited domains across your recent live answers, ranked by how many cite each, and tags every row: **You**, **Directory**, **Social**, **Reference** or **Web**.
+
+Directory and social rows carry the note *You can influence this*, because those are records you can claim and correct. A Wikipedia row is a *Reference*; a "12 best plumbers in Leeds" listicle lands in *Web*.
 
 Two disciplines make the card useful rather than decorative.
 
 **It is per-market and per-keyword.** The claim "ChatGPT gets its local data from *[some platform]*" circulates constantly with no traceable source, and even if it held in somebody's market it would not hold in yours. A dental practice in Manchester and a taqueria in Austin share almost nothing in that table. Read your own.
 
-**Named and cited are separate wins.** Your name in the answer is the customer-visible outcome. Your *domain* in the source list is evidence the model read your own content rather than someone's page about you. The common case is named-but-not-cited: the engine read a directory record and a listicle, named you off those, and cited them. When that is your pattern, the lever is a document you do not own — and no amount of work on your own site changes it.
+**Named and cited are separate wins.** Your name in the answer is the customer-visible outcome. Your *domain* in the source list is evidence the model read your own content rather than someone's page about you.
+
+The common case is named-but-not-cited: the engine read a directory record and a listicle, named you off those, and cited them. When that is your pattern, the lever is a document you do not own — and no amount of work on your own site changes it.
 
 ## The ladder, graded by evidence
 
@@ -55,15 +61,58 @@ Four grades, and the grade matters more than the position.
 | Copy written to be quoted, or instructions hidden for the model | Non-signal, plus risk | The retrieval system reads pages *about* you, not your prose |
 | Paid placement in an assistant's local recommendations | Nothing to buy | No published mechanism for buying a local recommendation slot as of **2026-07**. If a vendor says otherwise, ask which product and read its documentation |
 
-Four rows deserve more than a table cell.
+### Four rows deserve more than a table cell
 
-**The correlational rows rest on one study, so read its shape before you quote it.** Ahrefs published Spearman correlations between AI brand visibility and a set of familiar metrics across ChatGPT, AI Mode and AI Overviews, over roughly 75,000 brands with a Domain Rating above 40. The ordering is the finding and it is the same on all three engines: branded web mentions correlate around 0.66–0.71, branded anchors around 0.51–0.63, branded search volume around 0.35–0.47, and Domain Rating only around 0.27–0.33, with backlink counts weaker still. The authors say "correlation isn't causation" themselves, and two limits matter more here than the coefficients: the sample is established web brands, not the single-location businesses this manual is about, and a strong brand plausibly earns both the mentions and the citations. Take the *ordering* — brand mentions above link metrics — and leave the magnitudes at the door. *(Figures read from the published study on 2026-07-27.)*
+**The correlational rows rest on one study, so read its shape before you quote it.** Ahrefs published Spearman correlations between AI brand visibility and a set of familiar metrics across ChatGPT, AI Mode and AI Overviews, over roughly 75,000 brands with a Domain Rating above 40.
 
-**Reviews are the heaviest lever, and the rubrics say so out loud.** In the AI-readiness score, review volume and rating are worth 22 and 18 of 100 — enough together to reach the middle tier ([diagnosing a business in thirty minutes](../02-core-practice/analyzing-business-visibility.md)). In the Authority pillar on the same page, review authority is worth 25 of 100 and is itself a blend: 30% volume (full marks around 50 reviews), 30% rating (scaled from 3.0 to 5.0), 20% recency (full marks inside 30 days, half inside 90), 20% reply share. Which says something a bare review count hides: **200 old unanswered reviews score worse than 60 recent ones that get replies.**
+The ordering is the finding, and it is the same on all three engines:
 
-**The listicle layer is the under-worked one.** When your probes cite three "best X in *[your city]*" pages and a local news round-up, those pages are functionally the ranking. Being added is ordinary outreach: find who wrote it, show them why the omission is wrong, ask. What you may not do is buy placement without disclosure, spin up your own directory to cite yourself, or seed recommendations in forums under an assumed identity — the last is against every major platform's rules and gets discovered publicly.
+| Metric | Correlation |
+| --- | --- |
+| Branded web mentions | around 0.66–0.71 |
+| Branded anchors | around 0.51–0.63 |
+| Branded search volume | around 0.35–0.47 |
+| Domain Rating | only around 0.27–0.33 |
+| Backlink counts | weaker still |
 
-**Our own instrument excludes two popular levers from the score that matters most.** The Authority pillar weights own-citation share 25, coverage of the cited domains 25, reviews 25, listings consistency 15 and local top-10 rankings 10. `llms.txt` and domain-authority metrics have no row in it — not unmeasured, *excluded*, because no published work supports them as AI retrieval signals. Be exact about the scope of that, because the same page contradicts a sloppier version of it: the separate **AI readiness** estimate lower down *does* carry an "AI-agent-ready website" factor worth 8 of 100, and `llms.txt` is one of the things it looks for, by way of Google's Lighthouse audit. Agent-readiness and retrieval are different claims, and the rubric splits them deliberately. A rubric's exclusions are a claim, and a claim you can argue with beats a score you cannot take apart. If evidence lands, the rubric should change and this paragraph should be dated as wrong. *(Weights read from the code on 2026-07-27.)*
+The authors say "correlation isn't causation" themselves, and two limits matter more here than the coefficients: the sample is established web brands, not the single-location businesses this manual is about, and a strong brand plausibly earns both the mentions and the citations.
+
+> **Take the *ordering* — brand mentions above link metrics — and leave the magnitudes at the door.** *(Figures read from the published study on 2026-07-27.)*
+
+**Reviews are the heaviest lever, and the rubrics say so out loud.** In the AI-readiness score, review volume and rating are worth 22 and 18 of 100 — enough together to reach the middle tier ([diagnosing a business in thirty minutes](../02-core-practice/analyzing-business-visibility.md)).
+
+In the Authority pillar on the same page, review authority is worth 25 of 100 and is itself a blend:
+
+- **30% volume** — full marks around 50 reviews.
+- **30% rating** — scaled from 3.0 to 5.0.
+- **20% recency** — full marks inside 30 days, half inside 90.
+- **20% reply share.**
+
+Which says something a bare review count hides: **200 old unanswered reviews score worse than 60 recent ones that get replies.**
+
+**The listicle layer is the under-worked one.** When your probes cite three "best X in *[your city]*" pages and a local news round-up, those pages are functionally the ranking. Being added is ordinary outreach: find who wrote it, show them why the omission is wrong, ask.
+
+What you may not do:
+
+- Buy placement without disclosure.
+- Spin up your own directory to cite yourself.
+- Seed recommendations in forums under an assumed identity — this last one is against every major platform's rules and gets discovered publicly.
+
+**Our own instrument excludes two popular levers from the score that matters most.** The Authority pillar weights:
+
+| Authority row | Weight |
+| --- | --- |
+| Own-citation share | 25 |
+| Coverage of the cited domains | 25 |
+| Reviews | 25 |
+| Listings consistency | 15 |
+| Local top-10 rankings | 10 |
+
+`llms.txt` and domain-authority metrics have no row in it — not unmeasured, *excluded*, because no published work supports them as AI retrieval signals.
+
+Be exact about the scope of that, because the same page contradicts a sloppier version of it: the separate **AI readiness** estimate lower down *does* carry an "AI-agent-ready website" factor worth 8 of 100, and `llms.txt` is one of the things it looks for, by way of Google's Lighthouse audit. Agent-readiness and retrieval are different claims, and the rubric splits them deliberately.
+
+> **A rubric's exclusions are a claim, and a claim you can argue with beats a score you cannot take apart.** If evidence lands, the rubric should change and this paragraph should be dated as wrong. *(Weights read from the code on 2026-07-27.)*
 
 ![The Authority card on an owner-connected profile: five weighted rows, of which only Review authority carries data, scoring 72 at weight 25 from 3 reviews rated 5.0 with 100% answered](../../static/img/screens/owner-ai-visibility-full.png)
 
@@ -71,21 +120,46 @@ Four rows deserve more than a table cell.
 
 ## The same fix does not reach every engine
 
-Three engines, three grounding stacks, and the same work transmits differently down each. Google's grounded answer reads Google Search and Google's own place data, so profile fields and reviews reach it most directly. The other assistants call a general web-search tool; your profile reaches them only insofar as pages *about* you exist and get retrieved. *(Inference from each vendor's published product behaviour — none publishes its retrieval weighting, and none should be assumed stable.)*
+Three engines, three grounding stacks, and the same work transmits differently down each.
+
+| Engine family | How your work reaches it |
+| --- | --- |
+| Google's grounded answer | Reads Google Search and Google's own place data, so profile fields and reviews reach it most directly |
+| The other assistants | Call a general web-search tool; your profile reaches them only insofar as pages *about* you exist and get retrieved |
+
+*(Inference from each vendor's published product behaviour — none publishes its retrieval weighting, and none should be assumed stable.)*
 
 The consequence is one sentence: **"we rewrote the profile and ChatGPT still does not mention us" is the expected result, not a failure of the work.** The per-engine tiles exist so you notice that instead of averaging it away. A cross-engine average hides the only thing you can act on differently.
 
 ## Now the hard part: proving it was you
 
-[Measuring AI visibility](./ai-visibility.md) settled what a single rate is worth: at five runs per cell the standard error is around ±22 points, a cell that went from 2/5 to 3/5 did not detectably move, and the whole-matrix rate is a summary rather than a precise figure. Comparing *two* rates is harder than reporting one, and five disciplines carry it.
+[Measuring AI visibility](./ai-visibility.md) settled what a single rate is worth: at five runs per cell the standard error is around ±22 points, a cell that went from 2/5 to 3/5 did not detectably move, and the whole-matrix rate is a summary rather than a precise figure.
+
+Comparing *two* rates is harder than reporting one, and five disciplines carry it.
+
+```mermaid
+flowchart TD
+  A["Freeze the probe set"] --> B["Split it: test set and control set"]
+  B --> C["Baseline: uniform passes on both sets, dated"]
+  C --> D["Ship one lever, and date it"]
+  D --> E["Wait, then re-run the identical selection"]
+  E --> F{"Did the test set move more than the control?"}
+  F -->|"Yes, and beyond the granularity"| G["Verified or plausible"]
+  F -->|"Both sets moved together"| H["The engine moved, not the business"]
+  F -->|"Nothing moved anywhere"| I["Unattributable: report it as such"]
+```
 
 **Freeze the probe set before you start.** The pooled matrix rate is a weighted average over your tracked keywords, so it is comparable across time only if the set did not change. Add three keywords mid-experiment and the aggregate moves for reasons unrelated to your work. Freeze it, and say in the report that you did.
 
-**Hold out a control set.** Split your keywords: some you work on, some you deliberately do not. If the untouched ones move by the same amount in the same direction, the engine moved, not your business. The previous chapter's variant — the same probes run against a comparable business you did not touch — is stronger where you can get it; a held-out keyword set is the version you can always afford. Almost nobody does either, because it means paying to measure things you are not optimising.
+**Hold out a control set.** Split your keywords: some you work on, some you deliberately do not. If the untouched ones move by the same amount in the same direction, the engine moved, not your business.
+
+The previous chapter's variant — the same probes run against a comparable business you did not touch — is stronger where you can get it; a held-out keyword set is the version you can always afford. Almost nobody does either, because it means paying to measure things you are not optimising.
 
 **Change one thing, and date it.** A review campaign, three directory fixes and a site rewrite in one fortnight buys an uninterpretable result. Stagger by domain and keep the dated change log from [Did it work?](../02-core-practice/did-it-work.md).
 
-**Watch the denominator drift.** Answers that refuse, generalise, or punt to a platform ("check Yelp") are excluded from the recommendation rate by design — not misses, they left the question. So a shift in how often an engine punts moves your rate with nothing happening to your business. Read the *recommending answers* count on the **How AI recommends you** card beside the percentage, both times.
+**Watch the denominator drift.** Answers that refuse, generalise, or punt to a platform ("check Yelp") are excluded from the recommendation rate by design — not misses, they left the question.
+
+So a shift in how often an engine punts moves your rate with nothing happening to your business. Read the *recommending answers* count on the **How AI recommends you** card beside the percentage, both times.
 
 **Expect wins the mention rate cannot show.** Stance is a separate axis: *hedged* to *recommended*, or third mention to top pick, is a real improvement a named/not-named rate is blind to. The stance mix and average position sit on the same card.
 
@@ -95,9 +169,15 @@ And one thing nobody can give you: **latency**. Nobody has published how long a 
 
 Both look like efficient lever-pulling, and both are against policy.
 
-**Automated review replies.** Review engagement is 20% of the review-authority factor, so automating replies is an obvious way to move a score. Google's *Business Profile APIs policies* (developers.google.com/my-business/content/policies, last updated 2025-08-28) say, under **Prohibited practices → Automated use of your Business Profile project**: *"You may not use the Business Profile APIs to engage in abusive behaviors… For example, you must not automate or trigger review replies, Q&As, listing creations, listing edits, or other actions without the user's prior specific and express consent."* This is our reading of published terms, not legal advice — but the clause files the practice under abusive behaviour, and the merchant's account carries the risk. Draft with a model if you like; a human reads and sends. [Reviews](../02-core-practice/reviews.md) has the full treatment. *(Quote and date verified 2026-07-27.)*
+**Automated review replies.** Review engagement is 20% of the review-authority factor, so automating replies is an obvious way to move a score.
 
-**AI-generated profile imagery.** Google's *Tips for posting media to Maps*, part of the Maps user-generated-content policy, says *"Use media that you captured"* — specifically *"media of a place that you captured using a camera"* — and tells you to *"avoid screenshots, stock photos, GIFs, collages, heavily edited or otherwise manipulated photos, or imagery created by other parties."* Generated images are, on any plain reading, caught by that: cosmetic upside, and the downside lands on a live listing ([photos and the visual profile](../02-core-practice/photos-and-the-visual-profile.md)). *(Quotes verified 2026-07-27.)*
+Google's *Business Profile APIs policies* (developers.google.com/my-business/content/policies, last updated 2025-08-28) say, under **Prohibited practices → Automated use of your Business Profile project**: *"You may not use the Business Profile APIs to engage in abusive behaviors… For example, you must not automate or trigger review replies, Q&As, listing creations, listing edits, or other actions without the user's prior specific and express consent."*
+
+This is our reading of published terms, not legal advice — but the clause files the practice under abusive behaviour, and the merchant's account carries the risk. Draft with a model if you like; a human reads and sends. [Reviews](../02-core-practice/reviews.md) has the full treatment. *(Quote and date verified 2026-07-27.)*
+
+**AI-generated profile imagery.** Google's *Tips for posting media to Maps*, part of the Maps user-generated-content policy, says *"Use media that you captured"* — specifically *"media of a place that you captured using a camera"* — and tells you to *"avoid screenshots, stock photos, GIFs, collages, heavily edited or otherwise manipulated photos, or imagery created by other parties."*
+
+Generated images are, on any plain reading, caught by that: cosmetic upside, and the downside lands on a live listing ([photos and the visual profile](../02-core-practice/photos-and-the-visual-profile.md)). *(Quotes verified 2026-07-27.)*
 
 ## Labs
 

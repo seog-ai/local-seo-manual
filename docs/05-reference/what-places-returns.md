@@ -8,7 +8,9 @@ description: The hard limits of Google's public place data — how deep a search
 
 This chapter is about **capability**, not price: what the public place record contains, what it caps, and what it silently omits. Those limits are the ones that break tools and mislead reports, and they are the same for everybody.
 
-> **On costs.** An earlier version of this chapter published a worked map of Google's SKU pricing and a derivation of how cheaply a rank scan can be run. That has been removed deliberately. Google publishes its own current prices, and pricing changes often enough that any table here would be wrong before it was useful — [Google Maps Platform pricing](https://developers.google.com/maps/billing-and-pricing/pricing) and the [Places API usage-and-billing page](https://developers.google.com/maps/documentation/places/web-service/usage-and-billing) are the sources, and they are the only ones you should build a budget on.
+> **On costs.** An earlier version of this chapter published a worked map of Google's SKU pricing and a derivation of how cheaply a rank scan can be run. That has been removed deliberately.
+>
+> Google publishes its own current prices, and pricing changes often enough that any table here would be wrong before it was useful — [Google Maps Platform pricing](https://developers.google.com/maps/billing-and-pricing/pricing) and the [Places API usage-and-billing page](https://developers.google.com/maps/documentation/places/web-service/usage-and-billing) are the sources, and they are the only ones you should build a budget on.
 >
 > The one structural fact worth carrying is below, because it changes how you read any vendor's costs — including ours.
 
@@ -53,7 +55,7 @@ Paging past 20 exists in the API surface, and each additional page is a separate
 
 The five are Google's selection, not the five most recent and not a random sample. Asking for `reviews` also promotes the request to the most expensive tier Places has, so this is simultaneously the priciest call in ordinary use and the thinnest data it returns.
 
-The owner-side path is different in kind: the Business Profile reviews endpoint pages the full history 50 reviews at a time. Complete history is an owner-connection capability, not something the public record will ever give you.
+**The owner-side path is different in kind:** the Business Profile reviews endpoint pages the full history 50 reviews at a time. Complete history is an owner-connection capability, not something the public record will ever give you.
 
 **What to do instead:** Never compute a rate from Places reviews. Response rate, sentiment mix, review velocity and "reviews mentioning X" are all statistics over a 5-item sample of a population that may number thousands. Compute them from owner data or state the sample size next to every figure. [Why two tools disagree](../03-advanced/why-two-tools-disagree.md) is mostly this problem wearing different hats.
 
@@ -97,7 +99,7 @@ Autocomplete sits in a cheaper tier than a full Text Search, so the fallback is 
 
 A place record's `photos` field contains resource names, not image URLs. Each name needs its own media request before there is anything to put in an `<img>` tag. Ten photos is ten requests, every time the URIs are re-resolved — which is why resolved URLs are worth caching for as long as Google's terms allow.
 
-The asymmetry is worth naming: on a Place Details fetch, *discovering* that a profile has forty photos sits in a much cheaper tier than *showing* any of them. A gallery is priced by what you render, not by what you read.
+**The asymmetry is worth naming.** On a Place Details fetch, *discovering* that a profile has forty photos sits in a much cheaper tier than *showing* any of them. A gallery is priced by what you render, not by what you read.
 
 `skipHttpRedirect=true` matters for a second reason: it keeps the API key server-side. The 302 path requires the key on the request that the browser would otherwise make.
 
@@ -109,7 +111,9 @@ The asymmetry is worth naming: on a Place Details fetch, *discovering* that a pr
 **Last verified:** 2026-07-03 (probe); Google's session-pricing page read 2026-07-27
 **Probe:** `POST places:autocomplete` with a body containing only `input` and an optional `locationBias`, and no `sessionToken`. The billing report shows a standalone "Autocomplete Requests" SKU rather than folding the call into a session.
 
-Per-keystroke autocomplete is the classic way to run up a Maps bill by accident: a ten-character query typed into a naive search box is ten requests, not one. The same is true of a request that carries a `sessionToken` but is never followed by a Place Details call: Google's session-pricing page states that in that case "Autocomplete (New) requests revert to the per-request pricing model and are billed per the SKU: Autocomplete Requests." An abandoned session is a full-price session.
+Per-keystroke autocomplete is the classic way to run up a Maps bill by accident: a ten-character query typed into a naive search box is ten requests, not one.
+
+The same is true of a request that carries a `sessionToken` but is never followed by a Place Details call: Google's session-pricing page states that in that case "Autocomplete (New) requests revert to the per-request pricing model and are billed per the SKU: Autocomplete Requests." An abandoned session is a full-price session.
 
 **What to do instead:** Debounce input and send Autocomplete on a deliberate action rather than on every keystroke. Google also documents a session-token mechanism that changes how a typing session is billed when it ends in a Place Details call — read that on Google's own billing page, which is where the current rules live.
 

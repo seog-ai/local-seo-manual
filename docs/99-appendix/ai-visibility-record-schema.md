@@ -6,7 +6,11 @@ description: The fields one AI-visibility observation must carry to stay compara
 
 # AI visibility record schema
 
-Every AI-visibility number you will ever report is a projection of a pile of individual observations. If those observations were stored as booleans, the pile is worthless: you cannot recompute a metric you have redefined, you cannot audit a match you now suspect, and you cannot tell a client what the machine actually said about their market.
+Every AI-visibility number you will ever report is a projection of a pile of individual observations. If those observations were stored as booleans, the pile is worthless:
+
+- you cannot recompute a metric you have redefined;
+- you cannot audit a match you now suspect;
+- you cannot tell a client what the machine actually said about their market.
 
 This page specifies the observation. One question, put to one engine, from one anchor, at one moment — recorded in enough detail that a run captured today is still comparable to one captured in a year, by a different person, using different tooling.
 
@@ -17,6 +21,13 @@ It is tool-agnostic. A spreadsheet satisfies it; so does a table in Postgres. Tw
 The **observation** is one run: one prompt, one engine, one response. Not "this business's AI visibility", not "this keyword's score" — one run.
 
 Runs group into a **cell**: everything sharing the same question, anchor and engine. A cell is where rates live, because a rate needs repetition ([LSM-AI-16](../05-reference/ai-engine-probe-recipes.md#lsm-ai-16--one-run-is-a-sample-not-a-measurement)). A single observation carries no rate and should never be rendered as a percentage.
+
+```mermaid
+flowchart LR
+  A["One prompt, one engine, one response"] --> B["Observation: one append-only row"]
+  B --> C["Cell: same question, anchor and engine"]
+  C --> D["Rate, over a rolling window of runs"]
+```
 
 The identity of a cell is the tuple below. Change any element and you have started a new series, not continued an old one.
 
@@ -198,7 +209,9 @@ That second row belongs in the mention-rate denominator and **not** in the recom
 
 Everything above earns its place, but four omissions do specific, silent damage.
 
-**The subject's name and domain, snapshotted.** Match flags are usually recomputed at read time against the *current* business record. So a rebrand, or a website move, retroactively changes every historical rate — a series that says "we were mentioned 2 of 5 times last March" quietly becomes a different number, with no event anywhere to explain it. Storing the identity that was used for matching costs two short strings and makes history immutable. *(Established by reading the SEOG implementation on 2026-07-27, where the presence pillar re-derives both flags from the live business row.)*
+**The subject's name and domain, snapshotted.** Match flags are usually recomputed at read time against the *current* business record. So a rebrand, or a website move, retroactively changes every historical rate — a series that says "we were mentioned 2 of 5 times last March" quietly becomes a different number, with no event anywhere to explain it.
+
+Storing the identity that was used for matching costs two short strings and makes history immutable. *(Established by reading the SEOG implementation on 2026-07-27, where the presence pillar re-derives both flags from the live business row.)*
 
 **The anchor, on the row.** Storing a foreign key to a tracked-keyword record is not storing the input, because that record is editable. Someone changes the keyword's **Search from** value in March and every observation from January is now attributed to the new coordinate. Copy the numbers onto the observation.
 
@@ -212,11 +225,17 @@ The rule: **a stored field describes what happened; a metric is computed when yo
 
 Two failure modes follow from breaking it, and both are observable in working software.
 
-**Two definitions, two answers, same rows.** In SEOG, the per-engine `mentioned/checked` fractions near the top of the AI Visibility page count a stored `cited` flag on each cell's *latest* check, while the **Presence** tile recomputes mention and citation from `answerText` and the stored source list across the last five live checks per cell. Different flag, different window, same page, so the two can legitimately disagree. Neither is wrong; a report that quotes one while describing the other is. *(Code-verified 2026-07-27.)*
+**Two definitions, two answers, same rows.** In SEOG, the per-engine `mentioned/checked` fractions near the top of the AI Visibility page count a stored `cited` flag on each cell's *latest* check, while the **Presence** tile recomputes mention and citation from `answerText` and the stored source list across the last five live checks per cell.
 
-**A derived judgement mutating a primitive.** Same implementation, sharper lesson. At write time, when the business name appears in the answer text but no returned source matches it, the pipeline **prepends a synthetic source** carrying the business's own name and domain, and stores that merged list as `sources`. Downstream, "is my own domain among the cited sources" is then true for a business that was merely named in prose — so on rows written this way, the citation axis collapses into the mention axis for any business that has a website on file, and the "#1" beside a source is usually just "named in the answer". *(Established by reading the write path and the read path on 2026-07-27; the unit tests exercise the reader with hand-built rows the writer would not produce, which is why the collapse does not show up as a failing test.)*
+Different flag, different window, same page, so the two can legitimately disagree. Neither is wrong; a report that quotes one while describing the other is. *(Code-verified 2026-07-27.)*
 
-The fix is structural, not clever: store the engine's source list exactly as returned, mark anything you add with `origin: "inserted"`, and let "named" be a separate boolean. Then both axes remain measurable forever, and nobody has to remember which page computes what.
+**A derived judgement mutating a primitive.** Same implementation, sharper lesson. At write time, when the business name appears in the answer text but no returned source matches it, the pipeline **prepends a synthetic source** carrying the business's own name and domain, and stores that merged list as `sources`.
+
+Downstream, "is my own domain among the cited sources" is then true for a business that was merely named in prose — so on rows written this way, the citation axis collapses into the mention axis for any business that has a website on file, and the "#1" beside a source is usually just "named in the answer".
+
+*(Established by reading the write path and the read path on 2026-07-27; the unit tests exercise the reader with hand-built rows the writer would not produce, which is why the collapse does not show up as a failing test.)*
+
+**The fix is structural, not clever:** store the engine's source list exactly as returned, mark anything you add with `origin: "inserted"`, and let "named" be a separate boolean. Then both axes remain measurable forever, and nobody has to remember which page computes what.
 
 > **Note** · This is a general hazard, not a quirk of one product. Any pipeline that helpfully normalises data on the way in has destroyed the ability to ask a different question later. Normalise on the way out.
 
@@ -252,17 +271,28 @@ One implementation, as of **2026-07-27**, so you can see how a shipped instrumen
 | `probe.questionText` | **Not on the row.** Referenced through the tracked keyword |
 | `probe.promptTemplateId`, `engine.model`, `outcome.finishReason`, `engine.toolCalls`, `sources[].origin` | **Not stored** |
 
-Read that table as a worked example of the trade-off rather than a list of defects. Everything in the top half makes the instrument auditable — storing the verbatim answer is what lets you re-check any judgement later. Everything in the bottom half is a question you cannot answer from history: which prompt produced this, which model version, was the empty source list real.
+**Read that table as a worked example of the trade-off**, rather than a list of defects. Everything in the top half makes the instrument auditable — storing the verbatim answer is what lets you re-check any judgement later.
 
-If you are keeping records that must survive a prompt change or a model roll, write the missing fields down beside the run yourself. A dated note saying "pass 3, template v2, run through the Gemini engine on 2026-07-21" costs a line and rescues the series.
+Everything in the bottom half is a question you cannot answer from history: which prompt produced this, which model version, was the empty source list real.
+
+**If you are keeping records that must survive a prompt change or a model roll**, write the missing fields down beside the run yourself. A dated note saying "pass 3, template v2, run through the Gemini engine on 2026-07-21" costs a line and rescues the series.
 
 ## Getting rows out
 
-Free reads, in the app: open **AI Visibility** (`/b/{businessId}/ai-visibility`), expand a keyword row, and each engine panel shows the verdict, how long ago the check ran, the verbatim answer with your name highlighted, and the ordered source list. Note that the panel gives elapsed time — "checked 3 days ago" — not a calendar date, so if the date is the thing you are recording, work it out and write it down at the moment you read it. The **Sources cited by AI** card aggregates domains across the window. Nothing here spends anything; only **Check** does.
+**Free reads, in the app.** Open **AI Visibility** (`/b/{businessId}/ai-visibility`), expand a keyword row, and each engine panel shows the verdict, how long ago the check ran, the verbatim answer with your name highlighted, and the ordered source list.
+
+Note that the panel gives elapsed time — "checked 3 days ago" — not a calendar date, so if the date is the thing you are recording, work it out and write it down at the moment you read it.
+
+The **Sources cited by AI** card aggregates domains across the window. Nothing here spends anything; only **Check** does.
 
 There is **no CSV or JSON export button** as of 2026-07-27. Transcribing by hand is the manual path.
 
-Through an agent connected to the platform's MCP server, three tools matter. `get_ai_presence_matrix` and `get_ai_overview` are **free** reads that return the stored rows — including the answer text and the source list — for a whole business or one keyword. `check_ai_overview` runs a fresh check for one keyword against one engine and is **paid**, because it spends a live model call. That asymmetry is the shape of the whole discipline: looking at what you already measured is free, and measuring again is not.
+**Through an agent connected to the platform's MCP server, three tools matter.**
+
+- `get_ai_presence_matrix` and `get_ai_overview` are **free** reads that return the stored rows — including the answer text and the source list — for a whole business or one keyword.
+- `check_ai_overview` runs a fresh check for one keyword against one engine and is **paid**, because it spends a live model call.
+
+That asymmetry is the shape of the whole discipline: looking at what you already measured is free, and measuring again is not.
 
 Doing this with no platform at all is a script against the vendor APIs plus this schema as your table definition — the long form is in [Doing it without SEOG](./doing-it-without-seog.md), and the prompts to put in `questionText` are in [the local prompt corpus](./the-local-prompt-corpus.md).
 

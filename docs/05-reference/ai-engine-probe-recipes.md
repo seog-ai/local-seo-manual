@@ -71,7 +71,7 @@ flowchart LR
 **Last verified:** 2026-07-27
 **Probe:** Read the request bodies for Vertex `generateContent` with `tools: [{ googleSearch: {} }]`, OpenAI `POST /v1/responses` with `tools: [{ type: "web_search" }]`, and Anthropic `messages.create` with the server-side `web_search` tool. None accepts a latitude/longitude, a place ID, or a locale-as-geography field for the local question itself.
 
-**No first-class location parameter.** Places-style APIs take a location bias as a field on the request. Assistant APIs do not.
+**The coordinate is not a parameter.** Places-style APIs take a location bias as a first-class parameter. Assistant APIs do not.
 
 The only anchor available is prose inside the user turn, which means the coordinate is a *hint the model may honour, ignore, or reinterpret* — not a constraint on retrieval.
 
@@ -104,7 +104,7 @@ For the map pack this is a well-understood distortion. For an assistant probe th
 **Last verified:** 2026-07-27
 **Probe:** Run the same question twice against one engine — once unbranded (`who's the best emergency plumber near {area}?`) and once branded (`is {business} a good emergency plumber near {area}?`) — and compare how often the business is named.
 
-**The defect is structural, not empirical.** A branded prompt puts the business name in the context window, and the model's answer is then a comment on a name you supplied. You have measured recall of your own input.
+**The mechanism is structural rather than empirical.** A branded prompt puts the business name in the context window, and the model's answer is then a comment on a name you supplied. You have measured recall of your own input.
 
 No published A/B is cited here because none is needed to see the problem, and the probe above settles it on your own data in ten minutes.
 
@@ -128,7 +128,9 @@ Without an explicit instruction to name businesses, assistants frequently answer
 **Last verified:** 2026-07-27 — open, no controlled probe run
 **Probe (the one that would settle it):** Pick one keyword and one engine. Choose two coordinates far enough apart to sit in different local markets. Run N ≥ 10 fresh sessions at each. Compare mention rates *against the run-to-run noise floor established by [LSM-AI-16](#lsm-ai-16--one-run-is-a-sample-not-a-measurement)*, not against each other directly.
 
-For the map pack, distance is one of the three components Google itself names — relevance, distance and prominence — and its effect is enormous at short range. For an assistant answering from a web-search tool, no such mechanism is documented, and the coordinate reaches the model only as prose ([LSM-AI-11](#lsm-ai-11--an-assistant-api-has-no-location-parameter--the-coordinate-goes-in-the-prompt-text)). Both "the coordinate is decisive" and "the coordinate is nearly inert" are consistent with what is publicly known.
+For the map pack, distance is one of the three components Google itself names — relevance, distance and prominence — and its effect is enormous at short range.
+
+For an assistant answering from a web-search tool, no such mechanism is documented, and the coordinate reaches the model only as prose ([LSM-AI-11](#lsm-ai-11--an-assistant-api-has-no-location-parameter--the-coordinate-goes-in-the-prompt-text)). Both "the coordinate is decisive" and "the coordinate is nearly inert" are consistent with what is publicly known.
 
 The trap is that this question looks trivially answerable. Two runs at two coordinates will differ, because two runs at *one* coordinate differ. Anyone showing you an AI geo-grid without a stated noise floor has measured nothing.
 
@@ -146,9 +148,20 @@ The trap is that this question looks trivially answerable. Two runs at two coord
 
 Reruns of an identical prompt routinely return different businesses, different orderings and different source domains.
 
-The published measurement to cite is SparkToro's, run by Rand Fishkin with Patrick O'Donnell of Gumshoe.ai, published 2026-01-28 on data collected in November and December 2025: 2,961 prompt runs, 12 prompts, roughly 600 volunteers, across ChatGPT, Claude and Google's AI Overviews and AI Mode. Their headline is that "there's a &lt;1 in 100 chance that ChatGPT or Google's AI, if asked 100X, will give you the same list of brands in any two responses", with identical lists *in identical order* nearer 1 in 1,000. Two caveats travel with it: the co-author sells AI-visibility tracking, and the prompts were brand and product prompts rather than local ones. The direction is reproducible on your own data in fifteen minutes, which is the point of the probe above.
+**The published measurement to cite is SparkToro's**, run by Rand Fishkin with Patrick O'Donnell of Gumshoe.ai, published 2026-01-28 on data collected in November and December 2025: 2,961 prompt runs, 12 prompts, roughly 600 volunteers, across ChatGPT, Claude and Google's AI Overviews and AI Mode.
 
-That study also reports the constructive half, and it is the uncomfortable one for tooling: they found a brand's *visibility percentage* stable enough to track only when measured across **60 to 100+ runs**, and explicitly reject ranking position in AI answers as a metric. Any product reporting an AI-visibility rate from a handful of runs per cell — including the one described in this chapter, which uses five ([LSM-AI-17](#lsm-ai-17--report-rates-over-a-rolling-window-per-keywordengine-not-the-latest-answer)) — is reporting a noisier number than that research says is trustworthy. Say so rather than letting a rate imply a precision it does not have.
+Their headline is that "there's a &lt;1 in 100 chance that ChatGPT or Google's AI, if asked 100X, will give you the same list of brands in any two responses", with identical lists *in identical order* nearer 1 in 1,000.
+
+Two caveats travel with it:
+
+- the co-author sells AI-visibility tracking;
+- the prompts were brand and product prompts rather than local ones.
+
+The direction is reproducible on your own data in fifteen minutes, which is the point of the probe above.
+
+**That study also reports the constructive half, and it is the uncomfortable one for tooling.** They found a brand's *visibility percentage* stable enough to track only when measured across **60 to 100+ runs**, and explicitly reject ranking position in AI answers as a metric.
+
+Any product reporting an AI-visibility rate from a handful of runs per cell — including the one described in this chapter, which uses five ([LSM-AI-17](#lsm-ai-17--report-rates-over-a-rolling-window-per-keywordengine-not-the-latest-answer)) — is reporting a noisier number than that research says is trustworthy. Say so rather than letting a rate imply a precision it does not have.
 
 This is also why a screenshot of an assistant naming a client is worth nothing as evidence and quite a lot as a sales prop. It is a sample of one from a distribution that is now partly characterised, and characterised as very wide.
 
@@ -162,7 +175,11 @@ This is also why a screenshot of an assistant naming a client is worth nothing a
 
 A "latest check" view flips a business between visible and invisible on every run and teaches clients that the tool is broken. The unit of analysis is the *cell* — one keyword against one engine — and the metric is a rate across the last N runs in that cell.
 
-Two honest qualifications. **N = 5 is a compromise, not a sufficient sample**: the only published measurement of rerun variance puts a stable visibility percentage at 60–100+ runs ([LSM-AI-16](#lsm-ai-16--one-run-is-a-sample-not-a-measurement)), so five runs buys most of the improvement over one run and nothing like statistical comfort. And **not every view uses the window**: the same implementation's per-keyword presence matrix shows the *latest* snapshot per cell, because a matrix cell has to show one state. A rate and a matrix on the same page can therefore disagree, and a reader who has not been told which is which will assume the tool is broken.
+Two honest qualifications.
+
+**N = 5 is a compromise, not a sufficient sample.** The only published measurement of rerun variance puts a stable visibility percentage at 60–100+ runs ([LSM-AI-16](#lsm-ai-16--one-run-is-a-sample-not-a-measurement)), so five runs buys most of the improvement over one run and nothing like statistical comfort.
+
+**Not every view uses the window.** The same implementation's per-keyword presence matrix shows the *latest* snapshot per cell, because a matrix cell has to show one state. A rate and a matrix on the same page can therefore disagree, and a reader who has not been told which is which will assume the tool is broken.
 
 The metric definitions, so a competing implementation can be checked against these:
 
@@ -270,9 +287,15 @@ The failure is silent. It inflates mention rate, inflates recommendation rate, a
 **Last verified:** 2026-07-02
 **Probe:** Run a probe pipeline with a provider credential missing. A well-built harness falls back to a deterministic fixture so the interface stays functional; check whether that fixture row is distinguishable from a live one after the fact.
 
-This is the most expensive self-inflicted wound in AI-visibility tooling, and it was a real incident in the implementation described here. Fixture rows *were* flagged — and the headline rates counted them anyway, alongside live rows created before the provider was correctly configured. Rows written on 2026-06-11 were still shaping the numbers on 2026-07-02, when the complaint arrived as "this page only shows test data".
+**This is the most expensive self-inflicted wound in AI-visibility tooling**, and it was a real incident in the implementation described here.
 
-Flagging is necessary and not sufficient. Three rules make it survivable: flag the row at write time with which provider actually produced it; exclude flagged rows from every *rate*, not merely badge them in the interface; and make a batch action run only the engines that are actually configured, or every batch mints fresh fixture rows that look like coverage.
+Fixture rows *were* flagged — and the headline rates counted them anyway, alongside live rows created before the provider was correctly configured. Rows written on 2026-06-11 were still shaping the numbers on 2026-07-02, when the complaint arrived as "this page only shows test data".
+
+Flagging is necessary and not sufficient. Three rules make it survivable:
+
+1. Flag the row at write time with which provider actually produced it.
+2. Exclude flagged rows from every *rate*, not merely badge them in the interface.
+3. Make a batch action run only the engines that are actually configured, or every batch mints fresh fixture rows that look like coverage.
 
 **What to do instead:** Any AI-visibility number you inherit from another tool is unverified until you can see which runs were live. Ask how unconfigured engines behave. "It shows sample data" and "it shows sample data that is counted" are different products.
 
@@ -295,11 +318,15 @@ A judge pass — a second, plain (non-grounded) model call over the stored answe
 }
 ```
 
-`unknown` is not decoration: a model that returns a `kind` outside the enumeration must land somewhere, and silently coercing it to `local` would inflate the competitive set with directories. The parser in the implementation described here maps any unrecognised `kind` to `unknown` and any unrecognised `stance` to `listed`, which is the conservative direction for both.
+`unknown` is not decoration: a model that returns a `kind` outside the enumeration must land somewhere, and silently coercing it to `local` would inflate the competitive set with directories.
+
+The parser in the implementation described here maps any unrecognised `kind` to `unknown` and any unrecognised `stance` to `listed`, which is the conservative direction for both.
 
 `kind` matters because it separates a real competitor from an aggregator punt ([LSM-AI-19](#lsm-ai-19--refusals-and-aggregator-punts-must-leave-the-denominator-not-count-as-a-miss)), and the non-self entities are a competitive set discovered for free — the businesses the engine reaches for in this market, which is not always the same list as the map pack's.
 
-**What to do instead:** Judge the stored text, not the live call, so the judge can be re-run with a better prompt over history. Keep a keyless heuristic as a fallback — and record which path produced each row. That last clause is the one to actually implement: the implementation described here has the heuristic but stores no field distinguishing a judged row from a heuristic one, which means its stance mix silently blends two instruments of very different quality. Do not copy that part.
+**What to do instead:** Judge the stored text, not the live call, so the judge can be re-run with a better prompt over history. Keep a keyless heuristic as a fallback — and record which path produced each row.
+
+That last clause is the one to actually implement: the implementation described here has the heuristic but stores no field distinguishing a judged row from a heuristic one, which means its stance mix silently blends two instruments of very different quality. Do not copy that part.
 
 ### LSM-AI-25 · An unparseable judge reply must store null, never a false
 
@@ -311,9 +338,15 @@ There are three states, and two of them look like `false`: the answer did not re
 
 A judge failure must also never fail the run that produced the answer. The expensive part is the live answer; the judge is a cheap second pass over stored text and can be retried later.
 
-**Where the reference implementation diverges, because it matters.** Its parser does return null on unparseable output, and its rate does exclude nulls from the recommendation denominator — both correct. But between the two, the service catches the null and substitutes a coarse keyword heuristic, which returns a non-null object with `isRecommendation: true`. So a parse failure is not stored as null there; it is stored as a low-quality judgement that enters the denominator. Null is reached only by a different path — fixture rows and answers with no text. The prescription below is what the entry recommends; it is not, on this point, a description of what that code does.
+**Where the reference implementation diverges, because it matters.** Its parser does return null on unparseable output, and its rate does exclude nulls from the recommendation denominator — both correct.
 
-**What to do instead:** Store null for unparseable judge output, exclude nulls from the recommendation denominators, and expose the null count. If you keep a heuristic fallback instead ([LSM-AI-24](#lsm-ai-24--keyword-matching-misclassifies-hedged-mentions--stance-needs-a-judge-pass)), flag those rows so they can be excluded later — an unflagged fallback is indistinguishable from a real judgement, which is the failure this entry exists to prevent. A recommendation rate with an unstated number of unjudged or heuristically-judged runs behind it is not interpretable.
+But between the two, the service catches the null and substitutes a coarse keyword heuristic, which returns a non-null object with `isRecommendation: true`. So a parse failure is not stored as null there; it is stored as a low-quality judgement that enters the denominator. Null is reached only by a different path — fixture rows and answers with no text.
+
+The prescription below is what the entry recommends; it is not, on this point, a description of what that code does.
+
+**What to do instead:** Store null for unparseable judge output, exclude nulls from the recommendation denominators, and expose the null count.
+
+If you keep a heuristic fallback instead ([LSM-AI-24](#lsm-ai-24--keyword-matching-misclassifies-hedged-mentions--stance-needs-a-judge-pass)), flag those rows so they can be excluded later — an unflagged fallback is indistinguishable from a real judgement, which is the failure this entry exists to prevent. A recommendation rate with an unstated number of unjudged or heuristically-judged runs behind it is not interpretable.
 
 ---
 
@@ -325,7 +358,9 @@ A judge failure must also never fail the run that produced the answer. The expen
 **Last verified:** 2026-07-02
 **Probe:** Call Vertex `generateContent` with `tools: [{ googleSearch: {} }]` on a local question and read `candidates[0].groundingMetadata.groundingChunks[].web`. The `uri` field is a Google-hosted redirect, not the source's own address; the `title` field is what carries the publisher identity, frequently as a bare hostname.
 
-Any pipeline that extracts cited domains by parsing the hostname out of `uri` will attribute every citation to Google. The working extraction reads `title` and accepts it as a domain only when it looks like a bare hostname — no spaces, ending in a dot-plus-letters TLD. Google does not document this field's contents; one call on your own key confirms it, and it is worth confirming before you build on it.
+**Any pipeline that extracts cited domains by parsing the hostname out of `uri` will attribute every citation to Google.** The failure is silent.
+
+The working extraction reads `title` and accepts it as a domain only when it looks like a bare hostname — no spaces, ending in a dot-plus-letters TLD. Google does not document this field's contents; one call on your own key confirms it, and it is worth confirming before you build on it.
 
 The consequence of that guard is a real gap, and it should be stated rather than hidden: when a chunk's title is a page headline rather than a hostname, the domain is empty for that source and the citation axis is unmeasurable for it. That is a null, not a zero.
 
@@ -337,7 +372,9 @@ The consequence of that guard is a real gap, and it should be stated rather than
 **Last verified:** 2026-07-02
 **Probe:** Same grounded Vertex call, twice, on a Gemini 2.5 model. At `maxOutputTokens: 700` the response comes back with `finishReason: MAX_TOKENS`, a heavily truncated answer, and **zero** `groundingChunks`. At `maxOutputTokens: 2000` the same call returns `STOP`, a full answer, and a non-empty list of cited domains. (Earlier versions of this entry gave an exact truncated length and an exact source count from the original run; those were single-run artefacts that would not reproduce, and have been removed rather than left to look like constants.)
 
-Gemini 2.5 models spend output tokens on internal reasoning *before* the visible reply. A budget sized for the answer alone is consumed before the answer starts, and the grounding metadata never materialises. Nothing in the response says "your budget was too small" in a form a naive client checks — you get a 200 with an empty source list.
+**Reasoning comes out of the same budget.** Gemini 2.5 models spend output tokens on internal reasoning *before* the visible reply. A budget sized for the answer alone is consumed before the answer starts, and the grounding metadata never materialises.
+
+Nothing in the response says "your budget was too small" in a form a naive client checks — you get a 200 with an empty source list.
 
 This one is dangerous because it fails in the shape of a finding. An empty source list reads as "the engine cited nobody", which reads as "your competitors are not being cited either", which is a comforting and completely fabricated conclusion.
 
@@ -391,7 +428,12 @@ Falling back to the searched list when the model cited nothing keeps the citatio
 **Last verified:** 2026-07-27
 **Probe:** `POST https://api.openai.com/v1/responses` with `tools: [{ "type": "web_search" }]`. Sources appear as `annotations` of type `url_citation` on `output_text` content parts, each carrying a `url` and often a `title`. Web-search invocations appear as separate `web_search_call` items in `output`. Documented shape plus the implementation's parser; the engine had no credential configured in the implementation as of 2026-07-02.
 
-Two operational consequences. First, sources are attached to text parts rather than delivered as a top-level list, so a parser that looks for a `sources` field finds nothing and records a citation-free answer. Second, the tool's search invocations are billed separately from token usage: the vendors price server-side web search per thousand searches, distinct from input and output tokens. Audited figures live in [What the Places API will and will not give you](./what-places-returns.md); they move, so read the vendor's current price page before quoting one.
+Two operational consequences.
+
+1. **Sources are attached to text parts** rather than delivered as a top-level list, so a parser that looks for a `sources` field finds nothing and records a citation-free answer.
+2. **The tool's search invocations are billed separately from token usage:** the vendors price server-side web search per thousand searches, distinct from input and output tokens.
+
+Audited figures live in [What the Places API will and will not give you](./what-places-returns.md); they move, so read the vendor's current price page before quoting one.
 
 Both OpenAI and Anthropic expose a per-request cap on tool invocations (`max_tool_calls` and the tool's `max_uses` respectively). Uncapped, a single probe can silently make several searches, and a batch of probes multiplies that.
 
@@ -407,7 +449,9 @@ Both OpenAI and Anthropic expose a per-request cap on tool invocations (`max_too
 **Last verified:** 2026-07-27
 **Probe:** Ask a grounded assistant a local question through its API a dozen times. It answers every time. Then run the same query in a browser a dozen times: an AI Overview appears on some and not others.
 
-These are two surfaces. A grounded assistant call is Google's generative answer *to you, through an API*; the AI Overview is a block Google may or may not render on a search results page, chosen by a separate trigger you cannot query. An assistant that always answers gives you a presence flag that is always true — a field with no information in it.
+**These are two surfaces.** A grounded assistant call is Google's generative answer *to you, through an API*; the AI Overview is a block Google may or may not render on a search results page, chosen by a separate trigger you cannot query.
+
+An assistant that always answers gives you a presence flag that is always true — a field with no information in it.
 
 Because assistants always answer, the only informative axes from this method are the ones inside the answer: named or not, cited or not, recommended or not.
 
@@ -421,7 +465,15 @@ Measuring AI Overview *incidence* requires capturing search result pages, which 
 **Last verified:** 2026-07-27 — open, no controlled comparison run
 **Probe (the one that would settle it):** Same prompt, same day, same coordinate, N runs through the vendor API and N runs typed into the vendor's own consumer app in a signed-out session. Compare mention rates against the noise floor from [LSM-AI-16](#lsm-ai-16--one-run-is-a-sample-not-a-measurement).
 
-The consumer product wraps the model in an application-level system prompt, its own retrieval configuration, personalisation, conversation memory, and a location signal derived from the device rather than from your prose. None of that is reproduced by an API call, and none of it is published *(inference: the gap is asserted from the presence of these layers in the products, not from a measured comparison)*.
+The consumer product wraps the model in several layers:
+
+- an application-level system prompt;
+- its own retrieval configuration;
+- personalisation;
+- conversation memory;
+- a location signal derived from the device rather than from your prose.
+
+None of that is reproduced by an API call, and none of it is published *(inference: the gap is asserted from the presence of these layers in the products, not from a measured comparison)*.
 
 An API probe is a defensible, repeatable instrument that measures the model plus its search tool. That is a proxy for what a customer sees, and the proxy error is unknown.
 
@@ -433,9 +485,13 @@ An API probe is a defensible, repeatable instrument that measures the model plus
 **Last verified:** 2026-07-27 — open by construction
 **Probe:** There is none. A probe records an outcome; attributing that outcome to a profile field, a review count or a page of website content would require holding everything else constant across an engine you do not control and which returns different answers to identical inputs ([LSM-AI-16](#lsm-ai-16--one-run-is-a-sample-not-a-measurement)).
 
-Correlational evidence circulates, and some of it is worth reading. Almost all of it is vendor-published, computed across someone else's sample, with methodology only partly disclosed — and a correlation on another sample is a hypothesis about your business, not a finding about it. Before repeating any such figure to a client, ask for the query set, the sample size and the date. Most of the time one of the three is missing.
+**Correlational evidence circulates, and some of it is worth reading.** Almost all of it is vendor-published, computed across someone else's sample, with methodology only partly disclosed — and a correlation on another sample is a hypothesis about your business, not a finding about it.
 
-**What would close it:** a controlled intervention on businesses you own or that consented in writing — one change, one holdout group, pre- and post-windows of equal run count on a fixed prompt and coordinate, repeated across enough businesses that the between-business variance is visible. That is a study, not a probe, and it has to be published with its method before anyone should believe it. No such study is cited here because we have not run one.
+Before repeating any such figure to a client, ask for the query set, the sample size and the date. Most of the time one of the three is missing.
+
+**What would close it:** a controlled intervention on businesses you own or that consented in writing — one change, one holdout group, pre- and post-windows of equal run count on a fixed prompt and coordinate, repeated across enough businesses that the between-business variance is visible.
+
+That is a study, not a probe, and it has to be published with its method before anyone should believe it. No such study is cited here because we have not run one.
 
 **What to do instead:** Structure reporting as "we changed X on date D; here is the mention rate over the window before and the window after, with run counts". That is an honest before-and-after on a noisy instrument. It is not attribution, and a report that claims attribution here is claiming something the method cannot deliver.
 
@@ -451,9 +507,14 @@ Correlational evidence circulates, and some of it is worth reading. Almost all o
 
 Ten keywords, three engines and a five-run window is 150 probe calls before a single rate exists, and the same again to refresh it. The multiplication is the whole cost story, and it is why AI-visibility tracking is priced and scheduled differently from rank tracking.
 
-Two structural consequences worth designing around. Probes should run sequentially rather than in a burst, so a batch stays polite to the providers and can be abandoned halfway without having already spent everything. And the batch must skip engines that are not configured, or it spends nothing and produces rows that look like data ([LSM-AI-23](#lsm-ai-23--fixture-answers-poison-every-rate-unless-they-are-flagged-at-write-time)).
+Two structural consequences worth designing around.
 
-In SEOG, a fresh AI answer check is a **paid** action per keyword × engine, and every stored view of the results — the presence matrix, the pillar rates, the cited-sources table — is **free**, because it reads what a previous check stored. Reading an old probe costs nothing; that asymmetry should shape how often you re-run rather than how often you look.
+1. **Probes should run sequentially rather than in a burst**, so a batch stays polite to the providers and can be abandoned halfway without having already spent everything.
+2. **The batch must skip engines that are not configured**, or it spends nothing and produces rows that look like data ([LSM-AI-23](#lsm-ai-23--fixture-answers-poison-every-rate-unless-they-are-flagged-at-write-time)).
+
+In SEOG, a fresh AI answer check is a **paid** action per keyword × engine, and every stored view of the results — the presence matrix, the pillar rates, the cited-sources table — is **free**, because it reads what a previous check stored.
+
+Reading an old probe costs nothing; that asymmetry should shape how often you re-run rather than how often you look.
 
 **What to do instead:** Choose a small tracked set deliberately, fix the window size, and re-probe on a schedule the client is paying for. Probing thirty keywords once is worse than probing six keywords five times, because the first produces thirty anecdotes and the second produces six measurements.
 

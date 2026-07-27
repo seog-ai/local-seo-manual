@@ -54,11 +54,23 @@ Attributes deserve their own line. Rivals declare amenities, accessibility and p
 
 ## Level is history. Slope is strategy.
 
-A review count is a fact about the past several years. It says where a business got to, not what it is doing now. There is no public source for the derivative, because Google does not publish a listing's history. **You can only have the movement you recorded.**
+**A review count is a fact about the past several years.** It says where a business got to, not what it is doing now. There is no public source for the derivative, because Google does not publish a listing's history.
 
-That is what snapshots are for. A snapshot captures one rival's rating, review count and photo count at a moment. One is a level; two are a slope. Almost everything interesting here — deltas, the sparkline, the momentum term in the threat score, the activity feed — needs two. Hence a boring fixed cadence rather than snapshotting when you are curious. Fortnightly is a workable default *(inference: there is no published measurement of how fast these fields move, so the value is in keeping the interval fixed, not in the interval itself)*.
+> **You can only have the movement you recorded.**
 
-Movement also drives the activity feed, on thresholds worth knowing: between snapshots, a rating fall of 0.3 or more (high severity), a rise of 0.5, 20 new reviews, 10 new photos, or a fresh review of two stars or fewer. All of them are per-rival and gated on the bell — **Alerts on** / **Muted** on each rival's card. Muting keeps the rival tracked and keeps its snapshots and metrics updating; what stops is the alerting, including the extra review fetch the review alert needs.
+**That is what snapshots are for.** A snapshot captures one rival's rating, review count and photo count at a moment. One is a level; two are a slope. Almost everything interesting here — deltas, the sparkline, the momentum term in the threat score, the activity feed — needs two.
+
+**Hence a boring fixed cadence** rather than snapshotting when you are curious. Fortnightly is a workable default *(inference: there is no published measurement of how fast these fields move, so the value is in keeping the interval fixed, not in the interval itself)*.
+
+**Movement also drives the activity feed**, on thresholds worth knowing. Between snapshots, it fires on:
+
+- a rating fall of 0.3 or more (high severity);
+- a rise of 0.5;
+- 20 new reviews;
+- 10 new photos;
+- a fresh review of two stars or fewer.
+
+**All of them are per-rival and gated on the bell** — **Alerts on** / **Muted** on each rival's card. Muting keeps the rival tracked and keeps its snapshots and metrics updating; what stops is the alerting, including the extra review fetch the review alert needs.
 
 ## Scoring the threat, published so you can argue with it
 
@@ -70,9 +82,17 @@ Each tracked rival carries a threat score from 0 to 100. Here is the whole formu
 
 70 and above is high, 40–69 medium, below 40 low.
 
-Notice what it does not contain: position. It is a prominence-and-momentum score, deliberately, because prominence is what you can read from outside and [distance is what you cannot change](../01-foundations/relevance-distance-prominence.md). A rival can score 100 and be irrelevant if they sit outside the area you serve, so read the score next to the distance.
+**Notice what it does not contain: position.** It is a prominence-and-momentum score, deliberately, because prominence is what you can read from outside and [distance is what you cannot change](../01-foundations/relevance-distance-prominence.md). A rival can score 100 and be irrelevant if they sit outside the area you serve, so read the score next to the distance.
 
-The flags beside it are often more useful. **Beats you** means a higher rating than yours. **Catching up** starts from a volume test — the rival has fewer reviews than you, so rivals already bigger are excluded by design, because they are ahead, not catching up — and then fires on any one of three things: they gained reviews since the last snapshot, their rating rose, *or* their rating already matches or beats yours. That last clause is why a rival can show as catching up on a single snapshot, before there is any movement to measure. That filter is the early-warning list, and the one most people never open.
+**The flags beside it are often more useful.** **Beats you** means a higher rating than yours.
+
+**Catching up starts from a volume test** — the rival has fewer reviews than you, so rivals already bigger are excluded by design, because they are ahead, not catching up. It then fires on any one of three things:
+
+- they gained reviews since the last snapshot;
+- their rating rose;
+- *or* their rating already matches or beats yours.
+
+That last clause is why a rival can show as catching up on a single snapshot, before there is any movement to measure. That filter is the early-warning list, and the one most people never open.
 
 ## Reading a listing that is winning by breaking the rules
 
@@ -88,11 +108,23 @@ Detection is heuristic, so score signals rather than declare verdicts. Here is t
 | Thin profile | Zero reviews *and* zero photos | 2 |
 | No website | No website linked | 1 |
 
-Add the weights. Under 2, say nothing — a lone "no website" is not a finding. 2–4 is **Review**: one real signal, worth a look. **5 or more is the escalation threshold**, set there because 5 cannot be reached by any single signal; it takes two independent ones. One anomaly is a business; two anomalies are a pattern.
+**Add the weights.** Under 2, say nothing — a lone "no website" is not a finding. 2–4 is **Review**: one real signal, worth a look.
 
-The weights encode how hard each signal is to explain innocently: a duplicate pin, a stuffed name and an implausible rating are difficult to reach by accident; a thin profile is what a legitimate new business also looks like; no website is normal. Copy the table, adjust the weights if your market justifies it, but keep the two-signal rule.
+**5 or more is the escalation threshold**, set there because 5 cannot be reached by any single signal; it takes two independent ones. One anomaly is a business; two anomalies are a pattern.
 
-The scan cannot scan the market: it runs over the rivals *you* track, which makes it free and blind to everything you have not added. And a flag is not proof — verify by hand before reporting anything ([Spam and fake listings](../03-advanced/spam-and-fake-listings.md)).
+```mermaid
+flowchart LR
+  A["Add the weights"] --> B{"Total score?"}
+  B -->|"Under 2"| C["Say nothing"]
+  B -->|"2 to 4"| D["Review - one real signal"]
+  B -->|"5 or more"| E["Escalate - verify by hand, then report"]
+```
+
+**The weights encode how hard each signal is to explain innocently.** A duplicate pin, a stuffed name and an implausible rating are difficult to reach by accident; a thin profile is what a legitimate new business also looks like; no website is normal. Copy the table, adjust the weights if your market justifies it, but keep the two-signal rule.
+
+**The scan cannot scan the market:** it runs over the rivals *you* track, which makes it free and blind to everything you have not added.
+
+**And a flag is not proof** — verify by hand before reporting anything ([Spam and fake listings](../03-advanced/spam-and-fake-listings.md)).
 
 ## The competitive set the AI picked
 
@@ -100,15 +132,26 @@ Here is the part almost nobody exploits. An AI answer check puts an unbranded lo
 
 Those names are tallied as co-mentions: businesses appearing alongside (or instead of) you across recent answers, with a count and a tag for local business, chain or platform. Reading the tally is free.
 
-Two things make it worth more than it looks. The names come only from answers that actually *recommended* somebody — refusals, generic advice and "check Yelp" punts leave the denominator entirely ([how an AI answers a local question](../01-foundations/how-ai-answers-a-local-question.md)). And the tally spans several runs, because identical prompts return different lists on repeat: a name in one answer of five is noise, a name in four of five is a market fact. *(Inference: where to draw that line is judgement, not a measured constant.)*
+**Two things make it worth more than it looks.**
+
+**The names come only from answers that actually *recommended* somebody** — refusals, generic advice and "check Yelp" punts leave the denominator entirely ([how an AI answers a local question](../01-foundations/how-ai-answers-a-local-question.md)).
+
+**And the tally spans several runs**, because identical prompts return different lists on repeat: a name in one answer of five is noise, a name in four of five is a market fact. *(Inference: where to draw that line is judgement, not a measured constant.)*
 
 Platform rows are not rivals. Yelp surfacing in an answer is a citations signal: it names the directory the engine reads *for your queries*, far more targeted than "build citations" ([AI visibility](../03-advanced/ai-visibility.md)).
 
 ## What you cannot see, and why
 
-- **A rival's full review history is not public.** Without owner access, the reviews readable on any business are a sample of **at most five**, sorted by relevance — Google's Places reference states the cap and the ordering outright. Their *count* and *rating* are exact; their review corpus is not, and nobody selling you a report has it either. Every ratio computed over that sample has a denominator of five or fewer ([What Google's reporting hides](../05-reference/what-googles-reporting-hides.md)).
+- **A rival's full review history is not public.** Without owner access, the reviews readable on any business are a sample of **at most five**, sorted by relevance — Google's Places reference states the cap and the ordering outright.
+
+  Their *count* and *rating* are exact; their review corpus is not, and nobody selling you a report has it either. Every ratio computed over that sample has a denominator of five or fewer ([What Google's reporting hides](../05-reference/what-googles-reporting-hides.md)).
+
 - **Their performance data is invisible.** Impressions, calls, direction requests, search terms — all require owning the profile. Anyone showing you a rival's traffic is modelling, not measuring.
-- **Stored competitor data expires, and the reason is stricter than the folklore.** The rule the industry repeats — that you may cache Places data for thirty days — is not in Google's terms; the default there is **no caching of Places content at all**, with place IDs exempt and coordinates allowed for up to 30 consecutive days ([Storing Google data legally](../05-reference/storing-google-data-legally.md)). Competitor history is therefore a short rolling window that any tool has to refresh or purge, not an archive it is entitled to keep. Export as you go if a report needs longer.
+
+- **Stored competitor data expires, and the reason is stricter than the folklore.** The rule the industry repeats — that you may cache Places data for thirty days — is not in Google's terms; the default there is **no caching of Places content at all**, with place IDs exempt and coordinates allowed for up to 30 consecutive days ([Storing Google data legally](../05-reference/storing-google-data-legally.md)).
+
+  Competitor history is therefore a short rolling window that any tool has to refresh or purge, not an archive it is entitled to keep. Export as you go if a report needs longer.
+
 - **Some rivals are structurally invisible.** A pure service-area business with a hidden address never appears in the search discovery uses ([Service-area businesses](../03-advanced/service-area-businesses.md)). Very new listings can be missing too, since discovery ranks by prominence — if you know the name, search for it directly.
 
 ## Labs

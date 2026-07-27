@@ -6,7 +6,9 @@ description: A hidden-address business has no public coordinate, so a rank map c
 
 # Why map-pack rank tracking cannot work for service-area businesses
 
-> **This chapter indicts the tool it is written in.** On a hidden-address business, SEOG will let you run a geo-grid scan, return an all-grey map, and then advise growing reviews — advice that cannot help, because the absence is structural rather than competitive. At the time of writing the product does not say so on screen. We are publishing the explanation before the fix because a practitioner being sold this metric today needs it today, and because a manual that only criticises other people's tools is marketing.
+> **This chapter indicts the tool it is written in.** On a hidden-address business, SEOG will let you run a geo-grid scan, return an all-grey map, and then advise growing reviews — advice that cannot help, because the absence is structural rather than competitive. At the time of writing the product does not say so on screen.
+>
+> We are publishing the explanation before the fix because a practitioner being sold this metric today needs it today, and because a manual that only criticises other people's tools is marketing.
 >
 > If you are reading this after the in-product warning ships, the argument below still stands: the limitation is Google's, not ours, and no vendor can engineer around it.
 
@@ -24,9 +26,24 @@ Google's owner-side record holds an address and a service area as two independen
 | **Hybrid** | Published | Declared | Yes | Works normally |
 | **Pure service-area** | Hidden | Declared | **No** | Structurally impossible |
 
-A hybrid — a tyre shop that also comes to you, a bakery that also caters — publishes a street address, so it has a public pin and Part II applies to it unchanged. Do not let a client's *self-description* decide this: "we're mobile" is said by plenty of businesses that publish an address. Classify by what Google shows, which is Lab 19.1.
+A hybrid — a tyre shop that also comes to you, a bakery that also caters — publishes a street address, so it has a public pin and Part II applies to it unchanged.
 
-Google's own guidance puts the pure case squarely inside the rules: *"If you're a service-area business, you should hide your business address from customers"*, with the worked example of a plumber running the business from a residential address ([Guidelines for representing your business on Google](https://support.google.com/business/answer/3038177), verified 2026-07-27; the address help page phrases the same rule as *"You should only choose to not show your address if your business is a service-area business"*). Note the register — Google writes *should*, not *must*, and states separately that it reserves the right to suspend profiles that violate the guidelines. So the pure case is not an exotic misconfiguration. It is the state Google asks for from a mobile locksmith, a house cleaner, an emergency plumber, and in several trades it is the majority.
+**Do not let a client's *self-description* decide this:** "we're mobile" is said by plenty of businesses that publish an address. Classify by what Google shows, which is Lab 19.1.
+
+```mermaid
+flowchart TD
+  A["Open the business on Google"] --> B{"Is a street address published?"}
+  B -->|"No, areas served only"| F["Pure service-area: rank tracking structurally impossible"]
+  B -->|"Yes"| C{"Is a service area also declared?"}
+  C -->|"No"| D["Storefront: rank tracking works normally"]
+  C -->|"Yes"| E["Hybrid: rank tracking works normally"]
+```
+
+**Google's own guidance puts the pure case squarely inside the rules:** *"If you're a service-area business, you should hide your business address from customers"*, with the worked example of a plumber running the business from a residential address ([Guidelines for representing your business on Google](https://support.google.com/business/answer/3038177), verified 2026-07-27; the address help page phrases the same rule as *"You should only choose to not show your address if your business is a service-area business"*).
+
+Note the register — Google writes *should*, not *must*, and states separately that it reserves the right to suspend profiles that violate the guidelines.
+
+So the pure case is not an exotic misconfiguration. It is the state Google asks for from a mobile locksmith, a house cleaner, an emergency plumber, and in several trades it is the majority.
 
 ## What a rank check is actually doing
 
@@ -41,7 +58,11 @@ Two hard requirements, then: an identifier that *appears in the results*, and a 
 
 ## The first wall: the public record does not contain the business
 
-Google's public place search leaves pure service-area businesses out of its results by default. A request option exists to include them, and Google's own reference is explicit about what that buys you: such businesses *"do not have a physical address or location on Google Maps"*, and Places *"will not return"* the location-related fields for them (Places API text-search reference, verified 2026-07-27 — the option and the exact withheld field list are in [the GBP capability matrix](../05-reference/gbp-capability-matrix.md)). The record that comes back is not a place; it is a business that declines to be one.
+Google's public place search leaves pure service-area businesses out of its results by default.
+
+A request option exists to include them, and Google's own reference is explicit about what that buys you: such businesses *"do not have a physical address or location on Google Maps"*, and Places *"will not return"* the location-related fields for them (Places API text-search reference, verified 2026-07-27 — the option and the exact withheld field list are in [the GBP capability matrix](../05-reference/gbp-capability-matrix.md)).
+
+The record that comes back is not a place; it is a business that declines to be one.
 
 SEOG's rank paths do not ask for that option — deliberately, because a result with no coordinate cannot be placed on a lattice anyway.
 
@@ -70,9 +91,15 @@ Suppose the first wall vanished tomorrow and Google returned these businesses in
 
 A rank map's whole content is *rank as a function of searcher location*. The gradient is the finding: green near the pin, fading outward, because [proximity dominates at short range](../01-foundations/relevance-distance-prominence.md). For a storefront the centre is not an arbitrary choice — it is the building, the same point Google measures distance to.
 
-A pure service-area business has no such point, so a centre has to be manufactured. SEOG manufactures one: with no usable coordinate on the profile it walks the declared service areas in order and takes the point of the first one that resolves — a town or district centroid. That anchor is honest engineering, and it is what makes competitor discovery and AI probes work at all here. It is not a location of the business, and a gradient drawn from it answers "how does my rank vary with distance from the middle of Austin" — a question nobody asked.
+A pure service-area business has no such point, so a centre has to be manufactured. SEOG manufactures one: with no usable coordinate on the profile it walks the declared service areas in order and takes the point of the first one that resolves — a town or district centroid.
 
-Worse, nobody outside Google knows what Google substitutes for distance when ranking a business with no point. Whether the declared service area acts as a boundary, a weight, or nothing is undocumented. *(Inference from absence: Google's local-ranking guidance defines the factor only as "Distance refers to how far each business is from the customer who's searching" and does not address businesses without a physical location at all — [Improve your local ranking on Google](https://support.google.com/business/answer/7091), read 2026-07-27.)* Even a perfect rank-versus-location measurement here would measure a mechanism you cannot name.
+**That anchor is honest engineering**, and it is what makes competitor discovery and AI probes work at all here. It is not a location of the business, and a gradient drawn from it answers "how does my rank vary with distance from the middle of Austin" — a question nobody asked.
+
+Worse, nobody outside Google knows what Google substitutes for distance when ranking a business with no point. Whether the declared service area acts as a boundary, a weight, or nothing is undocumented.
+
+*(Inference from absence: Google's local-ranking guidance defines the factor only as "Distance refers to how far each business is from the customer who's searching" and does not address businesses without a physical location at all — [Improve your local ranking on Google](https://support.google.com/business/answer/7091), read 2026-07-27.)*
+
+Even a perfect rank-versus-location measurement here would measure a mechanism you cannot name.
 
 [The centre is not a neutral place to stand](./reading-a-geo-grid.md) is true of every grid. For this one it is not even a place.
 
@@ -82,21 +109,34 @@ A chapter that says "no tool can do this" while its own tool silently pretends o
 
 **SEOG will run a grid scan on a pure service-area business and charge you for it.** Nothing on the Rankings screen warns you first. You get grey pins, an avg rank of `—` and top-3 coverage of `0%`.
 
-**The summary above the map then gives advice that cannot work.** On an all-grey scan it says the business did not appear in the top 20 at any point checked, and that growing reviews and putting the term in the profile can help it start showing up. For an uncompetitive storefront that is good advice. For a hidden-address business it is false: no quantity of reviews puts a record into a result set it is excluded from.
+**The summary above the map then gives advice that cannot work.** On an all-grey scan it says the business did not appear in the top 20 at any point checked, and that growing reviews and putting the term in the profile can help it start showing up.
+
+For an uncompetitive storefront that is good advice. For a hidden-address business it is false: no quantity of reviews puts a record into a result set it is excluded from.
 
 **Competitor discovery makes a stronger false claim.** Its list is headed by a sentence saying you did not appear in the top 20, so every result below outranks you. The first clause is right for the wrong reason and the second does not follow. You were not outranked; you were not in the population.
 
 **The audits are fine, one by luck and one by design.** None of the profile audit's eleven checks demands an address. The website audit is deliberately correct: it drops the address and map-embed checks for this business type rather than failing them ([the website half](../02-core-practice/the-website-half.md)).
 
-**The add-business path already handles it, though not for the reason its own copy gives.** The name search *does* surface hidden-address profiles — it is one of the few places SEOG asks Google to include them, precisely so they are findable. What it cannot do is import one: with no coordinate to store, the attempt is refused with *"This looks like a service-area business — add it with 'Import from your Google account' below."* The consequence is the useful one: **every pure service-area business in SEOG arrived through the owner connection by construction**, so the one family of measurement that does work was available from the first minute. (The helper text under that section still explains the refusal by saying such profiles "don't appear in search". They now do; the sentence is stale, and goes on the same disclosure fix list as the Rankings and Competitors gaps above.)
+**The add-business path already handles it, though not for the reason its own copy gives.** The name search *does* surface hidden-address profiles — it is one of the few places SEOG asks Google to include them, precisely so they are findable. What it cannot do is import one: with no coordinate to store, the attempt is refused with *"This looks like a service-area business — add it with 'Import from your Google account' below."*
+
+The consequence is the useful one: **every pure service-area business in SEOG arrived through the owner connection by construction**, so the one family of measurement that does work was available from the first minute.
+
+(The helper text under that section still explains the refusal by saying such profiles "don't appear in search". They now do; the sentence is stale, and goes on the same disclosure fix list as the Rankings and Competitors gaps above.)
 
 The gap is on Rankings and Competitors. It is a disclosure gap rather than a data gap, and until it closes this chapter stays a draft.
 
 ## What other tools do about it
 
-Two mechanisms, both described in [why two tools disagree](./why-two-tools-disagree.md). A tool built on **ranked place data** — SEOG's family — hits the first wall and produces no number. A tool that **renders consumer search pages from a spoofed location** can see a hidden-address business, because the pack a human sees contains it, so it does produce one. It still hits the second wall: it has to invent a centre, and its gradient is uninterpretable for the same reason ours would be.
+Two mechanisms, both described in [why two tools disagree](./why-two-tools-disagree.md).
 
-So the accurate claim is not "no tool returns a figure". It is: **for a pure service-area business a map-pack rank is either unmeasurable or uninterpretable, and no tool manages the third thing.**
+| Tool family | First wall — is the business in the data? | Second wall — is there a centre? |
+| --- | --- | --- |
+| **Ranked place data** — SEOG's family | Hits it: the business is not in the results, so no number is produced | Never reached |
+| **Rendered consumer search pages from a spoofed location** | Passes it: it can see a hidden-address business, because the pack a human sees contains it, so a number is produced | Hits it: it has to invent a centre, and its gradient is uninterpretable for the same reason ours would be |
+
+So the accurate claim is not "no tool returns a figure".
+
+> **For a pure service-area business a map-pack rank is either unmeasurable or uninterpretable, and no tool manages the third thing.**
 
 ## What to measure instead
 
@@ -116,21 +156,44 @@ The good news is unusually good: what survives is closer to money than a rank ev
 
 Three deserve a sentence each.
 
-**Owner performance is the spine** — profile views, calls, website clicks, direction requests, messages and bookings, as daily history running back about eighteen months, which is as far as Google's performance data goes. One thing to know about the top tile: Google reports views as four separate metrics (desktop and mobile, Search and Maps) and the app adds them into a single **Profile views** series, so that number cannot be split back into "found us on Maps" and "found us in Search" here.
+**Owner performance is the spine** — profile views, calls, website clicks, direction requests, messages and bookings, as daily history running back about eighteen months, which is as far as Google's performance data goes.
 
-Its harder limit must be stated in every report: Google publishes **no geographic breakdown** at all — the only sub-entity breakdowns the performance data offers are day-of-week and time-of-day, and neither currently carries any metric (verified against Google's performance API reference, 2026-07-27). So "calls went up 40%" can never be attributed to a town ([what Google's reporting hides](../05-reference/what-googles-reporting-hides.md)).
+One thing to know about the top tile: Google reports views as four separate metrics (desktop and mobile, Search and Maps) and the app adds them into a single **Profile views** series, so that number cannot be split back into "found us on Maps" and "found us in Search" here.
 
-**The search-terms report is the closest thing to a keyword measurement you get.** Two caveats govern its use. First, it is not a position and not quite a volume either: Google defines each figure as the number of *unique users* who used that term in the month, so a term you appear for often may be a term you appear for badly, and a hundred searches by one person count once. The app's column is headed **Impressions** — read it as Google's definition, not the word. Second, low-volume terms come back as a privacy threshold rather than a count, rendered as `<N` where N is whatever threshold Google returns rather than a fixed number. You cannot sum a column containing those and present the total as a number.
+Its harder limit must be stated in every report: Google publishes **no geographic breakdown** at all — the only sub-entity breakdowns the performance data offers are day-of-week and time-of-day, and neither currently carries any metric (verified against Google's performance API reference, 2026-07-27).
 
-**AI visibility is the one surface where a service-area business is not disadvantaged.** An assistant asked "who's the best emergency plumber near Kilburn" consults no coordinate index; it answers from text. The town-centroid anchor that is meaningless as a grid centre is exactly right as a probe location, because the probe asks about the town. Run it as a rate over repeated runs across engines — the method in [measuring AI visibility](./ai-visibility.md).
+So "calls went up 40%" can never be attributed to a town ([what Google's reporting hides](../05-reference/what-googles-reporting-hides.md)).
+
+**The search-terms report is the closest thing to a keyword measurement you get.** Two caveats govern its use.
+
+1. **It is not a position, and not quite a volume either.** Google defines each figure as the number of *unique users* who used that term in the month, so a term you appear for often may be a term you appear for badly, and a hundred searches by one person count once. The app's column is headed **Impressions** — read it as Google's definition, not the word.
+2. **Low-volume terms come back as a privacy threshold rather than a count**, rendered as `<N` where N is whatever threshold Google returns rather than a fixed number. You cannot sum a column containing those and present the total as a number.
+
+**AI visibility is the one surface where a service-area business is not disadvantaged.** An assistant asked "who's the best emergency plumber near Kilburn" consults no coordinate index; it answers from text.
+
+The town-centroid anchor that is meaningless as a grid centre is exactly right as a probe location, because the probe asks about the town. Run it as a rate over repeated runs across engines — the method in [measuring AI visibility](./ai-visibility.md).
 
 None of this needs a tool. The performance series and the search terms are in Google's own Business Profile interface, free, for anyone with owner access; the AI probes are a browser and a fixed prompt list. [Doing it without SEOG](../99-appendix/doing-it-without-seog.md) has the manual version.
 
 ## What you promise a service-area client
 
-Rewrite the engagement before you sign it, not after the first report. Do not promise a rank. Promise profile completeness, a review programme with a stated inflow target, the published search terms each month, calls and clicks against a dated baseline, and an AI-visibility rate across a fixed prompt set. All measurable, all defensible, none requiring a coordinate. If you inherit an account whose old reports carried a grid, explain the mechanism and stop producing the picture — you are replacing a coloured map with call volume ([what you inherit with a client](../04-operating/what-you-inherit-with-a-client.md)).
+Rewrite the engagement before you sign it, not after the first report. Do not promise a rank. Promise:
 
-One temptation to kill now: **do not add a street address to make the business trackable.** Publishing an address at which you do not serve customers — a home, a mailbox, a co-working desk — goes against Google's guidelines, and Google states plainly that it *"reserves the right to suspend access to Business Profiles"* over guideline violations ([Guidelines for representing your business on Google](https://support.google.com/business/answer/3038177), verified 2026-07-27). What that costs in practice is the part to be careful about: the profile comes off Search and Maps until an appeal succeeds, and practitioner accounts of the severe case — what the trade calls a hard suspension, not Google's own term — report that reviews and rankings usually return on successful reinstatement. "Usually" is the operative word, and reinstatement is not guaranteed, so the honest framing to a client is that you are risking the listing itself for a metric, not that the reviews are certainly gone ([suspensions and reinstatement](./suspensions-and-reinstatement.md)).
+- profile completeness;
+- a review programme with a stated inflow target;
+- the published search terms each month;
+- calls and clicks against a dated baseline;
+- an AI-visibility rate across a fixed prompt set.
+
+All measurable, all defensible, none requiring a coordinate.
+
+If you inherit an account whose old reports carried a grid, explain the mechanism and stop producing the picture — you are replacing a coloured map with call volume ([what you inherit with a client](../04-operating/what-you-inherit-with-a-client.md)).
+
+One temptation to kill now: **do not add a street address to make the business trackable.** Publishing an address at which you do not serve customers — a home, a mailbox, a co-working desk — goes against Google's guidelines, and Google states plainly that it *"reserves the right to suspend access to Business Profiles"* over guideline violations ([Guidelines for representing your business on Google](https://support.google.com/business/answer/3038177), verified 2026-07-27).
+
+What that costs in practice is the part to be careful about: the profile comes off Search and Maps until an appeal succeeds, and practitioner accounts of the severe case — what the trade calls a hard suspension, not Google's own term — report that reviews and rankings usually return on successful reinstatement.
+
+"Usually" is the operative word, and reinstatement is not guaranteed, so the honest framing to a client is that you are risking the listing itself for a metric, not that the reviews are certainly gone ([suspensions and reinstatement](./suspensions-and-reinstatement.md)).
 
 ## Labs
 
@@ -192,7 +255,10 @@ This lab spends money to produce nothing, deliberately and exactly once. The alt
 
 **What good looks like.** A dated six-line baseline with no position in it, the top search terms with thresholded rows flagged, and one sentence stating what this data cannot tell you — where any of it happened.
 
-**If it went wrong.** The panel offers to link a location instead of loading: the Google connection is not bound to a location — check which business you are on, and that the connection made at import is still in place. The keyword table still shows one total column and no monthly trend after **Load trend**: Google returned a trailing aggregate rather than a per-month series, and the app correctly declines to invent months from it. Everything reads zero: a quiet profile is a finding, not a failure.
+**If it went wrong.**
+- *The panel offers to link a location instead of loading.* The Google connection is not bound to a location — check which business you are on, and that the connection made at import is still in place.
+- *The keyword table still shows one total column and no monthly trend after **Load trend**.* Google returned a trailing aggregate rather than a per-month series, and the app correctly declines to invent months from it.
+- *Everything reads zero.* A quiet profile is a finding, not a failure.
 
 **What you just learned.** Losing rank as a metric costs less than it feels like, because what replaces it is closer to the outcome the client is buying. What you lose irreplaceably is *geography*: no dataset available to you says where the calls came from.
 

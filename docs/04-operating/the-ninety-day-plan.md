@@ -41,7 +41,7 @@ Every task in local SEO sits on one of four clocks. Sorting the work by clock, b
 
 **The aggregate clock dictates the calendar**, because you cannot compress it. Getting a business from 12 reviews to 20 is not an afternoon's work at any price — it is a rate problem.
 
-**The thresholds are counters, not tasks.** Two different gates want two different numbers, and neither can be bought:
+**The thresholds are counters, not tasks.** Two different gates want two different numbers, **and neither can be bought**:
 
 | Gate | What it wants |
 | --- | --- |
@@ -102,7 +102,7 @@ One whole category of finding is structurally absent. The plan is computed from 
 
 ## The quarter at a glance
 
-The rest of the chapter is this shape, in words:
+The rest of this chapter, in one picture:
 
 ```mermaid
 flowchart LR

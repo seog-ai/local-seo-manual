@@ -92,7 +92,11 @@ Kept separate from the text:
 | "Ask the customer to mention your name" | **Prohibited since April 2026** | staff name |
 | A customer naming the technician unprompted | Allowed | no solicitation occurred |
 
-The last two rows carry the change. A review naming the technician is *good* — specific, credible, exactly what the next reader wants. What is prohibited is **asking** for it. Because the ask is invisible in the resulting review, enforcement runs on patterns: a cluster of reviews naming the same three staff members is the signature. In the days after the change, practitioners reported review counts dropping — sometimes by dozens, including short five-star reviews naming an employee *(secondary reporting via PPC Land, not a Google statement)*. Whether a merchant has any appeal route once reviews come down on these grounds is an **open question**; we have not traced one to a Google source.
+**The last two rows carry the change.** A review naming the technician is *good* — specific, credible, exactly what the next reader wants. What is prohibited is **asking** for it.
+
+**Enforcement runs on patterns**, because the ask is invisible in the resulting review: a cluster of reviews naming the same three staff members is the signature. In the days after the change, practitioners reported review counts dropping — sometimes by dozens, including short five-star reviews naming an employee *(secondary reporting via PPC Land, not a Google statement)*.
+
+Whether a merchant has any appeal route once reviews come down on these grounds is an **open question**; we have not traced one to a Google source.
 
 > **The compliant ask, in one line.** Give every customer the same link the moment the work is finished, and say nothing about what to write or what rating to leave. In SEOG, **Reviews → Request review** builds Google's own "write a review" link plus a downloadable QR for invoices and receipts. Free, and nothing you could not do by hand from the place ID.
 
@@ -112,29 +116,51 @@ And under abusive behaviours:
 
 > "You may not use the Business Profile APIs to engage in abusive behaviors, which includes but isn't limited to fraudulent, abusive, or otherwise invalid activity. For example, you must not automate or trigger review replies, Q&As, listing creations, listing edits, or other actions without the user's prior specific and express consent."
 
-Read the second one slowly; a whole product category sits on top of it. **Automated review replies are prohibited without prior specific and express consent** — not discouraged, named as abusive behaviour. A tool that watches for new reviews and posts an AI reply without that consent is outside the policy, and the merchant's account carries the risk.
+Read the second one slowly; a whole product category sits on top of it. **Automated review replies are prohibited without prior specific and express consent** — not discouraged, named as abusive behaviour.
+
+A tool that watches for new reviews and posts an AI reply without that consent is outside the policy, and the merchant's account carries the risk.
 
 This manual documents auto-reply as a constraint; it does not recommend it. A human approving each reply is fine, which is why every lab below has one. Agencies: the first clause binds you too ([what you inherit with a client](../04-operating/what-you-inherit-with-a-client.md)).
 
 ### The quality reason
 
-A reply is not for the reviewer, who has moved on. It is for the next person reading reviews while deciding whether to call you — and that person can tell. An unedited AI draft has a texture: it thanks, it validates, it invites the customer to reach out, and says nothing that could only have been written about this business.
+A reply is not for the reviewer, who has moved on. It is for the next person reading reviews while deciding whether to call you — and that person can tell.
 
-A good reply, in four lines or fewer: **name the specific thing** ("the bathroom fitting on Tuesday" beats "your recent experience"); **say what changed**, not an apology loop; **include no personal data**, because this is public; **do not litigate**, because the audience is not the reviewer.
+**An unedited AI draft has a texture**: it thanks, it validates, it invites the customer to reach out, and says nothing that could only have been written about this business.
+
+A good reply, in four lines or fewer:
+
+- **Name the specific thing** — "the bathroom fitting on Tuesday" beats "your recent experience".
+- **Say what changed**, not an apology loop.
+- **Include no personal data**, because this is public.
+- **Do not litigate**, because the audience is not the reviewer.
 
 For 1–2 star reviews, resist replying immediately — the composer shows an escalation checklist for exactly this. Draft it, have a second person read it, follow up privately, then fix the process.
 
 ## The read-back rule
 
-**A success response on the write is not proof of publication.** Google can accept a reply — cleanly, no error — that never appears on the profile. Two known causes: the profile is not in good standing (unverified, suspended, not publishing), or the reply went to the right location under the wrong owning account, an easy mistake because Google's two generations of business APIs name locations differently. Both look like success.
+**A success response on the write is not proof of publication.** Google can accept a reply — cleanly, no error — that never appears on the profile. Two known causes, and both look like success:
+
+1. **The profile is not in good standing** — unverified, suspended, not publishing.
+2. **The reply went to the right location under the wrong owning account** — an easy mistake, because Google's two generations of business APIs name locations differently.
 
 The only trustworthy confirmation is a **read-back**: fetch the review again from Google, after the write, and require a reply to actually be there. Not "the write returned success", not "our database says published" — the reply itself, coming back out of Google. Allow one short retry; propagation is usually instant but not always.
+
+```mermaid
+flowchart TD
+  A["Publish the reply"] --> B["Google returns success"]
+  B --> C{"Fetch the review back from Google: is the reply there?"}
+  C -->|"Reply present"| D["Confirmed on Google, with a timestamp"]
+  C -->|"Reply missing"| E["Treat as a failure, not a success"]
+  D --> F["Re-check later: confirmation decays"]
+  F --> C
+```
 
 And **confirmation decays** — a reply confirmed in March can be gone in July, because replies disappear with the reviews they hang from. It is an observation, not a state. Re-check before you put "we respond to 100% of reviews" in a client report.
 
 In SEOG this is wired in: a publish that cannot be confirmed is reported as a failure and refunded rather than shown as a success. Each reply then carries **Confirmed on Google** with a timestamp, or an unconfirmed warning, plus a **Re-check on Google** button. See [Write limits and failure modes](../05-reference/write-limits-and-failure-modes.md) for the mechanism.
 
-Evaluating someone else's tooling? Ask one question: *how do you know the reply published?* "The API returned success" is the wrong answer.
+> **Evaluating someone else's tooling? Ask one question: *how do you know the reply published?*** "The API returned success" is the wrong answer.
 
 ## Labs
 

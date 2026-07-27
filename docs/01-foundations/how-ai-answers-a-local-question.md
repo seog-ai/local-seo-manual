@@ -6,7 +6,9 @@ description: What happens between "best plumber near me" and a named recommendat
 
 # How an AI assistant answers a local question
 
-Ask Google for a plumber and you get a ranked list of places. Ask ChatGPT the same thing and you get three names in a paragraph, with links underneath. These look like the same answer in different clothing. They are not. They are produced by different machinery, from different data, with location entering at a completely different point.
+Ask Google for a plumber and you get a ranked list of places. Ask ChatGPT the same thing and you get three names in a paragraph, with links underneath.
+
+These look like the same answer in different clothing. They are not. They are produced by different machinery, from different data, with location entering at a completely different point.
 
 This chapter is about that machinery. Not how to change the answer — that is [Part III](../03-advanced/changing-the-ai-answer.md) — but what the answer actually *is*, so that when you measure it later you know what you are measuring.
 
@@ -92,15 +94,25 @@ When people say "the AI mentions us", they usually mean one of three things, and
 | **Cited** | Your own domain appears in the source list | Evidence the model read *your* content, not someone's page about you |
 | **Stance** | *Recommended*, *listed*, *hedged*, or *negative* | "Also worth a look, though reviews are mixed" is not a recommendation |
 
-These come apart constantly. The common case is **named but not cited**: the assistant read your Yelp page and your Google profile, named you off those, and cited Yelp. You got the customer; your website contributed nothing. The inverse — cited but not named — happens when the model reads your site for background and recommends someone else.
+**These come apart constantly.** The common case is **named but not cited**: the assistant read your Yelp page and your Google profile, named you off those, and cited Yelp. You got the customer; your website contributed nothing.
 
-Stance is the axis people skip, and the one a naive keyword search over the answer text gets wrong. A string match for your name cannot tell "the standout choice" from "a popular option, though several reviews mention delays". Both contain your name. Only one sells anything.
+The inverse — cited but not named — happens when the model reads your site for background and recommends someone else.
+
+**Stance is the axis people skip**, and the one a naive keyword search over the answer text gets wrong. A string match for your name cannot tell "the standout choice" from "a popular option, though several reviews mention delays". Both contain your name. Only one sells anything.
 
 ## A chatbot always answers, so "presence" is a category error
 
-A Google AI Overview genuinely does or does not appear on a results page. Whether it appears is a real, measurable quantity. Ask an assistant a question and it *always* answers — there is no state in which ChatGPT declines to produce text. So a metric called "AI presence", built by asking a chat assistant a question and checking whether an answer came back, is 100% by construction, for every business, forever.
+A Google AI Overview genuinely does or does not appear on a results page. Whether it appears is a real, measurable quantity.
 
-Two things on the panel you are about to open share the word, and they are not the same quantity. Behind every individual check there is a flag for whether an AI answer appeared at all — a leftover from an earlier design that read real AI Overviews off a results page. On the chat engines that flag is always true, so it carries no information; all it drives is the sentence under a checked cell. The tile labelled **Presence** is something else: a mention rate over recent live checks, the share in which you were named or your own domain was cited. That one is a measurement. Keep them apart, and treat any dashboard reporting a chat-engine "presence rate" as owing you an answer to which of the two it is reporting.
+Ask an assistant a question and it *always* answers — there is no state in which ChatGPT declines to produce text. So a metric called "AI presence", built by asking a chat assistant a question and checking whether an answer came back, is 100% by construction, for every business, forever.
+
+Two things on the panel you are about to open share the word, and they are not the same quantity.
+
+**The per-check flag.** Behind every individual check there is a flag for whether an AI answer appeared at all — a leftover from an earlier design that read real AI Overviews off a results page. On the chat engines that flag is always true, so it carries no information; all it drives is the sentence under a checked cell.
+
+**The tile labelled Presence.** Something else entirely: a mention rate over recent live checks, the share in which you were named or your own domain was cited. That one is a measurement.
+
+Keep them apart, and treat any dashboard reporting a chat-engine "presence rate" as owing you an answer to which of the two it is reporting.
 
 ![The AI Visibility page on a business where no check has been run: Presence 64%, Recommendations 52% and AI mention rate 67%, each tagged with a small Example pill, with ChatGPT and Claude marked Not connected](../../static/img/screens/ai-visibility.png)
 
@@ -112,7 +124,9 @@ For chat engines, the axes that carry information are **named** and **cited**. E
 
 Ask the same assistant the same local question twice and you will often get a different set of businesses. Not a different ordering — a different set. Sampling temperature, tool-call variation and a moving index all contribute.
 
-One hard consequence: a screenshot is an anecdote. The only stable quantity is a *rate over runs* — of the last N checks of this keyword on this engine, in how many were you named? [Part III](../03-advanced/ai-visibility.md) makes that rigorous, including how large the window needs to be and what leaves the denominator. In Part I, learn the reflex: **one AI answer is not evidence of anything.**
+One hard consequence: a screenshot is an anecdote. The only stable quantity is a *rate over runs* — of the last N checks of this keyword on this engine, in how many were you named?
+
+[Part III](../03-advanced/ai-visibility.md) makes that rigorous, including how large the window needs to be and what leaves the denominator. In Part I, learn the reflex: **one AI answer is not evidence of anything.**
 
 ## Claims you will see repeated, and what they are worth
 

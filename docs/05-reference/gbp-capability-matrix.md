@@ -61,9 +61,15 @@ The column Google does not have is the last one: **what the endpoint returns whe
 | `accounts.locations.localPosts.reportInsights` | Method | None | 2022-11-21 | 2023-02-20 | no replacement exists · [LSM-GBP-14](#lsm-gbp-14--per-post-metrics-have-no-api-at-all) |
 | *(absent from Google's table)* | API | None stated | — | 2025-11-03 | **Q&A: GONE** · 2026-07-13 · [LSM-GBP-12](#lsm-gbp-12--the-qa-api-is-gone-and-google-never-added-it-to-the-deprecation-table) |
 
-**This is a selection, not the whole schedule.** On the 2026-07-27 read the page carried roughly two dozen rows. The ones omitted above are almost all individual retired Insights enum values — `QUERIES_DIRECT`, `QUERIES_INDIRECT`, `QUERIES_CHAIN`, `VIEWS_MAPS`, `VIEWS_SEARCH`, `ACTIONS_WEBSITE`, `ACTIONS_PHONE`, `ACTIONS_DRIVING_DIRECTIONS`, `PHOTOS_VIEWS_MERCHANT`, `PHOTOS_VIEWS_CUSTOMERS`, `PHOTOS_COUNT_MERCHANT`, `PHOTOS_COUNT_CUSTOMERS`, `LOCAL_POST_VIEWS_SEARCH`, `LOCAL_POST_ACTIONS_CALL_TO_ACTION` — plus `DrivingDirectionMetricsRequest` / `LocationDrivingDirectionMetrics` and `MediaInsights`. Go and read the page rather than treating the table above as a mirror of it. Three of those omitted rows matter here: `LOCAL_POST_VIEWS_SEARCH` and `LOCAL_POST_ACTIONS_CALL_TO_ACTION` are the post-level metrics themselves, retired individually ([LSM-GBP-14](#lsm-gbp-14--per-post-metrics-have-no-api-at-all)), and `MediaInsights` is the photo-view metric ([LSM-GBP-15](#lsm-gbp-15--v4-media-is-the-only-photo-write-surface-and-it-uploads-by-a-three-step-bytes-handshake)).
+**This is a selection, not the whole schedule.** On the 2026-07-27 read the page carried roughly two dozen rows. Go and read the page rather than treating the table above as a mirror of it.
 
-Two rows do the work. `localPosts.reportInsights` is the entry whose Replacement Resource is *None* and for which no replacement has appeared since — that is why per-post metrics are unobtainable in 2026. And the last row is not Google's; it is the retirement that Google's deprecation table does not record.
+The ones omitted above are almost all individual retired Insights enum values — `QUERIES_DIRECT`, `QUERIES_INDIRECT`, `QUERIES_CHAIN`, `VIEWS_MAPS`, `VIEWS_SEARCH`, `ACTIONS_WEBSITE`, `ACTIONS_PHONE`, `ACTIONS_DRIVING_DIRECTIONS`, `PHOTOS_VIEWS_MERCHANT`, `PHOTOS_VIEWS_CUSTOMERS`, `PHOTOS_COUNT_MERCHANT`, `PHOTOS_COUNT_CUSTOMERS`, `LOCAL_POST_VIEWS_SEARCH`, `LOCAL_POST_ACTIONS_CALL_TO_ACTION` — plus `DrivingDirectionMetricsRequest` / `LocationDrivingDirectionMetrics` and `MediaInsights`.
+
+Three of those omitted rows matter here: `LOCAL_POST_VIEWS_SEARCH` and `LOCAL_POST_ACTIONS_CALL_TO_ACTION` are the post-level metrics themselves, retired individually ([LSM-GBP-14](#lsm-gbp-14--per-post-metrics-have-no-api-at-all)), and `MediaInsights` is the photo-view metric ([LSM-GBP-15](#lsm-gbp-15--v4-media-is-the-only-photo-write-surface-and-it-uploads-by-a-three-step-bytes-handshake)).
+
+**Two rows do the work.** `localPosts.reportInsights` is the entry whose Replacement Resource is *None* and for which no replacement has appeared since — that is why per-post metrics are unobtainable in 2026.
+
+And the last row is not Google's; it is the retirement that Google's deprecation table does not record.
 
 ---
 
@@ -168,7 +174,9 @@ Eleven metrics exist, not counting the `DAILY_METRIC_UNKNOWN` sentinel:
 | `BUSINESS_FOOD_ORDERS` | Food orders from the profile |
 | `BUSINESS_FOOD_MENU_CLICKS` | Menu interaction clicks |
 
-Google publishes no per-call price for the Business Profile APIs: the usage-limits page states the constraint as queries per minute and per day, and there is no SKU table for this family the way there is for the Maps Platform APIs. The binding constraint is quota, not money — the opposite of the Places API on the public side. *(Inference: absence of a published rate is not the same as a written guarantee that the surface is free, and we have not found a Google sentence saying so in terms.)*
+**Google publishes no per-call price for the Business Profile APIs.** The usage-limits page states the constraint as queries per minute and per day, and there is no SKU table for this family the way there is for the Maps Platform APIs. The binding constraint is quota, not money — the opposite of the Places API on the public side.
+
+*(Inference: absence of a published rate is not the same as a written guarantee that the surface is free, and we have not found a Google sentence saying so in terms.)*
 
 **Stale-stamp warning:** the `DailyMetric` reference page carried `Last updated 2024-10-16 UTC` when read on 2026-07-27. Age of the page is not evidence the enum changed, but it is a reason to enumerate the values from a live call rather than from the page.
 
@@ -239,15 +247,28 @@ This is an OPEN QUESTION rather than a WORKS because **we have not exercised the
 **Probe:** any `mybusinessqanda/v1` method with a valid token → `501` `API_UNSUPPORTED`
 **Source:** Q&A API change log at `developers.google.com/my-business/content/qanda/change-log`, `Last updated 2025-11-06 UTC`. Entry **v1: 2025-11-03**: "The My Business Q&A API was discontinued on November 3, 2025. You can no longer read or post questions and answers using the API." The same log's earlier entry **v1: 2025-09-15** gave the notice: "On November 3, 2025, we will be discontinuing the My Business Q&A API as we are in the process of updating the Q&A functionality and user experience."
 
-The discontinuation is real and Google states it plainly — on the Q&A API's own change log, twice, with seven weeks' notice. It does **not** appear on the deprecation schedule at `content/sunset-dates`, whose most recent Discontinuation Date is 2024-07-01 and whose own page stamp on 2026-07-27 was `Last updated 2025-08-28 UTC` — six weeks before Google even announced the retirement. The Business Profile APIs FAQ, read the same day, still lists "My Business Q&A API" among the eight current APIs. So does the Q&A API's own REST reference, `Last updated 2024-10-16 UTC`, which carries no retirement notice at all: only the change log records it.
+**The discontinuation is real and Google states it plainly** — on the Q&A API's own change log, twice, with seven weeks' notice. And nowhere else. Four of Google's own pages, all read on 2026-07-27:
 
-So four of Google's own pages disagree about whether this API exists. The change log is the correct one, and it is the *only* one that is correct.
+| Google page | What it says about the Q&A API |
+| --- | --- |
+| Q&A API change log | Records the discontinuation, twice: the notice and the retirement |
+| Deprecation schedule, `content/sunset-dates` | No entry at all. Its most recent Discontinuation Date is 2024-07-01, and its own page stamp was `Last updated 2025-08-28 UTC` — six weeks before Google even announced the retirement |
+| Business Profile APIs FAQ | Still lists "My Business Q&A API" among the eight current APIs |
+| Q&A API REST reference, `Last updated 2024-10-16 UTC` | Carries no retirement notice at all |
+
+They disagree about whether this API exists. The change log is the correct one, and it is the *only* one that is correct.
 
 This matters beyond Q&A. It is the demonstration that **the deprecation schedule is not a complete record of retirements**, which means an endpoint's absence from that table is not evidence it is alive.
 
 **What to do instead:** treat per-API change logs as the authority and the deprecation schedule as a partial index. Any tool or client deliverable that still promises Q&A monitoring through the API is describing something that stopped existing.
 
-**Open on the consumer side.** The API retirement is settled. What happened to the *panel* on public profiles is not, at least not from a Google source we can cite. Third-party accounts consistently report that the questions-and-answers panel began disappearing from Search and Maps around 3 December 2025, replaced by a Gemini-powered "Ask" / "Ask Maps" experience with no API behind it. We have found no Google announcement, help-centre page or change log fixing that date. Treat the December date as reported rather than established, and treat the direction of travel — panel replaced by generative answers — as well attested but undated by Google. **What would settle it:** a Google help-centre or Search/Maps blog post naming the consumer rollout date.
+**Open on the consumer side.** The API retirement is settled. What happened to the *panel* on public profiles is not, at least not from a Google source we can cite.
+
+Third-party accounts consistently report that the questions-and-answers panel began disappearing from Search and Maps around 3 December 2025, replaced by a Gemini-powered "Ask" / "Ask Maps" experience with no API behind it. We have found no Google announcement, help-centre page or change log fixing that date.
+
+Treat the December date as reported rather than established, and treat the direction of travel — panel replaced by generative answers — as well attested but undated by Google.
+
+**What would settle it:** a Google help-centre or Search/Maps blog post naming the consumer rollout date.
 
 ### LSM-GBP-13 · v4 `localPosts` is alive, and Google is still shipping features for it
 
@@ -258,11 +279,15 @@ This matters beyond Q&A. It is the demonstration that **the deprecation schedule
 
 Local Posts is routinely described as retired. It is not. The endpoint answers, the reference page carried `Last updated 2026-04-15 UTC`, and the v4 change log records a **new** capability shipped on 2026-04-07: "You can now schedule recurring posts by setting RecurrenceInfo when creating a LocalPost", with daily, weekly and monthly occurrence patterns and an optional `seriesEndTime`.
 
-`LocalPostState` values are `LIVE`, `PROCESSING`, `REJECTED`, `SCHEDULED` and `RECURRING`, plus the `LOCAL_POST_STATE_UNSPECIFIED` sentinel. Topic types are `STANDARD`, `EVENT`, `OFFER` and `ALERT`, plus `LOCAL_POST_TOPIC_TYPE_UNSPECIFIED`; `ALERT` is documented as "High-priority, and timely announcements related to an ongoing event. These types of posts are not always available for authoring". There is no product topic type in the enum, so product posts are not creatable through the API at all.
+**The enums.** `LocalPostState` values are `LIVE`, `PROCESSING`, `REJECTED`, `SCHEDULED` and `RECURRING`, plus the `LOCAL_POST_STATE_UNSPECIFIED` sentinel.
+
+Topic types are `STANDARD`, `EVENT`, `OFFER` and `ALERT`, plus `LOCAL_POST_TOPIC_TYPE_UNSPECIFIED`; `ALERT` is documented as "High-priority, and timely announcements related to an ongoing event. These types of posts are not always available for authoring". There is no product topic type in the enum, so product posts are not creatable through the API at all.
 
 Call-to-action types are `BOOK`, `ORDER`, `SHOP`, `LEARN_MORE`, `SIGN_UP` and `CALL`, plus the `ACTION_TYPE_UNSPECIFIED` sentinel. `url` is required on every type **except** `CALL`, where it must be unset — `CALL` uses the profile's verified phone number.
 
-*Correction, 2026-07-27:* an earlier version of this entry listed a deprecated `GET_OFFER` action type. On a re-read of the reference dated 2026-04-15, `GET_OFFER` **does not appear in the `ActionType` enum**. It is present in older copies of the reference and in third-party material, and the `OFFER` topic type covers the use case. Treat `GET_OFFER` as removed from the current enum rather than as a deprecated-but-present value; if you have a live response containing it, that observation would change this paragraph.
+*Correction, 2026-07-27:* an earlier version of this entry listed a deprecated `GET_OFFER` action type. On a re-read of the reference dated 2026-04-15, `GET_OFFER` **does not appear in the `ActionType` enum**. It is present in older copies of the reference and in third-party material, and the `OFFER` topic type covers the use case.
+
+Treat `GET_OFFER` as removed from the current enum rather than as a deprecated-but-present value; if you have a live response containing it, that observation would change this paragraph.
 
 **What to do instead:** stop citing the "Local Posts API was retired in 2022" pages; a page making that claim was still ranking in July 2026. The write-side failure modes — character limits, media restrictions, rejection triggers — are in [write limits and failure modes](./write-limits-and-failure-modes.md).
 
@@ -272,7 +297,9 @@ Call-to-action types are `BOOK`, `ORDER`, `SHOP`, `LEARN_MORE`, `SIGN_UP` and `C
 **Last verified:** 2026-07-27 (documentation); no replacement found on any probe since 2026-07-13
 **Source:** Google's deprecation schedule (`content/sunset-dates`, page stamp `Last updated 2025-08-28 UTC`, re-read 2026-07-27), row `accounts.locations.localPosts.reportInsights` — Type `Method`, Replacement Resource **None**, Support Ended 2022-11-21, Discontinuation Date **2023-02-20**. The same schedule separately retires the two post-level metric values, `LOCAL_POST_VIEWS_SEARCH` and `LOCAL_POST_ACTIONS_CALL_TO_ACTION`.
 
-`reportInsights` for local posts was discontinued on 2023-02-20 with no replacement, and none has appeared. The Business Profile Performance API that replaced location-level insights has **zero post-level metrics** — none of the 11 values in its `DailyMetric` enum is scoped to a post ([LSM-GBP-05](#lsm-gbp-05--performance-v1-serves-11-daily-metrics-and-the-published-constraint-on-them-is-quota-not-price)). That is a two-sided confirmation: the old metrics are on the retirement schedule, and the new enum does not contain replacements for them.
+`reportInsights` for local posts was discontinued on 2023-02-20 with no replacement, and none has appeared. The Business Profile Performance API that replaced location-level insights has **zero post-level metrics** — none of the 11 values in its `DailyMetric` enum is scoped to a post ([LSM-GBP-05](#lsm-gbp-05--performance-v1-serves-11-daily-metrics-and-the-published-constraint-on-them-is-quota-not-price)).
+
+That is a two-sided confirmation: the old metrics are on the retirement schedule, and the new enum does not contain replacements for them.
 
 What a post exposes through the API is its `state` and a `searchUrl`. Views, clicks and CTA taps are not obtainable programmatically in 2026, by anybody.
 
@@ -314,7 +341,9 @@ Business Information returns location resource names as bare `locations/{id}`. E
 
 This is the single most expensive gotcha on the surface, because the symptom is indistinguishable from a retired API. A whole integration can look "dead" when what is wrong is a missing path segment.
 
-**What to do instead:** thread the owning account through from the `accounts.list` response that produced the location list, and persist it with the connection. When a stored connection lacks it, re-resolve by listing accounts rather than guessing — and never assume `accounts[0]`, which silently succeeds against the wrong account on any multi-account user. A `2xx` write against the wrong account is worse than a failure: it reports success and nothing appears.
+**What to do instead:** thread the owning account through from the `accounts.list` response that produced the location list, and persist it with the connection. When a stored connection lacks it, re-resolve by listing accounts rather than guessing.
+
+Never assume `accounts[0]`, which silently succeeds against the wrong account on any multi-account user. A `2xx` write against the wrong account is worse than a failure: it reports success and nothing appears.
 
 ### LSM-GBP-18 · Profile edits are capped at 10 per minute per profile and the cap cannot be raised
 
@@ -350,7 +379,9 @@ Both fields are simply absent. `serviceArea.places.placeInfos` carries the decla
 
 **Consequence:** any code path that assumes a location has coordinates will either crash or — far worse — substitute `0, 0`, which is a real point in the Gulf of Guinea. Every geographic feature built on that value silently produces nonsense.
 
-**What to do instead:** never persist `0, 0`. Derive an anchor point from the first declared service area, or ask the operator for a base location. And note the separate consequence on the public side: hidden-address businesses are excluded from Places text search unless the request explicitly opts them in, which is why they are effectively invisible to conventional rank tracking — see [service-area businesses](../03-advanced/service-area-businesses.md).
+**What to do instead:** never persist `0, 0`. Derive an anchor point from the first declared service area, or ask the operator for a base location.
+
+And note the separate consequence on the public side: hidden-address businesses are excluded from Places text search unless the request explicitly opts them in, which is why they are effectively invisible to conventional rank tracking — see [service-area businesses](../03-advanced/service-area-businesses.md).
 
 ### LSM-GBP-21 · `Metadata.canOperateLocalPost` tells you in advance whether a location may post
 
@@ -362,7 +393,9 @@ Some locations cannot use the Local Posts API at all. Locations Google internall
 
 The same `Metadata` object also carries `canDelete` — "Indicates whether the location can be deleted using the API" — and `placeId`, "If this location appears on Google Maps, this field is populated with the place ID for the location", which is the only bridge between the owner surface and Places-keyed data.
 
-**What is settled and what is not:** the flag and the error code are documented. The **trigger** is not. The widely repeated "more than ten locations makes you a chain" threshold appears in no Google document we can find; treat it as community lore, and treat the flag as the only reliable answer. That half is an open question — see [LSM-GBP-22](#lsm-gbp-22--the-chain-detection-threshold-behind-location_disabled_for_local_post_api-is-not-published).
+**What is settled and what is not:** the flag and the error code are documented. The **trigger** is not.
+
+The widely repeated "more than ten locations makes you a chain" threshold appears in no Google document we can find; treat it as community lore, and treat the flag as the only reliable answer. That half is an open question — see [LSM-GBP-22](#lsm-gbp-22--the-chain-detection-threshold-behind-location_disabled_for_local_post_api-is-not-published).
 
 **What to do instead:** include `metadata` in your `readMask` and check `canOperateLocalPost` before offering a posting interface. Telling an operator their post failed is a much worse experience than telling them up front that Google does not allow posting on their profile.
 
@@ -426,7 +459,9 @@ Two access paths, and the gap between them is the largest single difference betw
 
 The v4 response also carries `totalReviewCount` and `averageRating` for the location — Google's own authoritative totals, which is the only trustworthy denominator for a response-rate metric.
 
-**What to do instead:** never compute a reply rate, a rating trend or a review-velocity figure from the public path. Five relevance-sorted reviews are a sample chosen by Google for display, not a sample drawn for measurement, and a response rate computed over them is meaningless. Without owner access, report review counts and rating from the profile's own totals and mark everything else unknown.
+**What to do instead:** never compute a reply rate, a rating trend or a review-velocity figure from the public path. Five relevance-sorted reviews are a sample chosen by Google for display, not a sample drawn for measurement, and a response rate computed over them is meaningless.
+
+Without owner access, report review counts and rating from the profile's own totals and mark everything else unknown.
 
 ### LSM-REVIEWS-02 · A review reply `PUT` can return 2xx without the reply appearing
 
@@ -438,7 +473,9 @@ The write can succeed at the HTTP level and the reply can still not be visible. 
 
 There is exactly one trustworthy proof that a reply published: **read the review back and find your text in `reviewReply`.**
 
-**What to do instead:** treat every reply as a two-call operation — write, then read back — and surface the confirmation state to whoever pressed the button. A "sent" tick driven by a 200 is a promise the status code does not make. Log the exact resource path you wrote to; when a reply goes missing, that log is the difference between a five-minute diagnosis and a week of guessing.
+**What to do instead:** treat every reply as a two-call operation — write, then read back — and surface the confirmation state to whoever pressed the button. A "sent" tick driven by a 200 is a promise the status code does not make.
+
+Log the exact resource path you wrote to; when a reply goes missing, that log is the difference between a five-minute diagnosis and a week of guessing.
 
 ### LSM-REVIEWS-03 · Reviews cannot be deleted through the API — only replies can
 
@@ -524,7 +561,9 @@ Six capability additions across five dated change-log entries between 2026-04-01
 
 ## Re-probe notes
 
-Every behavioural entry above was established against a small number of real profiles on a single API project with approved quota. A `WORKS` demonstrates that the call succeeded for that project on that date; it is not a guarantee for yours. Your project may have a different API enabled, your account may be in a different verification state, and quota approval is per project and per API.
+Every behavioural entry above was established against a small number of real profiles on a single API project with approved quota. A `WORKS` demonstrates that the call succeeded for that project on that date; it is not a guarantee for yours.
+
+Your project may have a different API enabled, your account may be in a different verification state, and quota approval is per project and per API.
 
 The strongest entries here are the ones with deterministic failures reproduced more than once. The weakest are the OPEN QUESTIONs, and each of those names the experiment that would close it.
 

@@ -48,7 +48,10 @@ The eleven weights total **86**. The action plan labels each step with its raw w
 
 *A 36% profile taken apart into the rows that produced it. Each step names the failing check, its category and its raw weight — the first three, phone and reviews and photos, are 29 of the 86 points on offer. This is the table above rendered as a to-do list, which is the only form in which a score is useful.*
 
-Two choices there are worth stealing whatever tool you use. The photo bar is modest at five because the publicly observable photo list caps out at around ten images *(observed; Google does not document the limit)* — a stricter bar would be one the instrument cannot see over. And the attribute checks pass automatically when Google's catalogue offers no options of that kind for the category; an audit that demands the impossible trains people to ignore red rows.
+**Two choices there are worth stealing whatever tool you use.**
+
+- **The photo bar is modest at five** because the publicly observable photo list caps out at around ten images *(observed; Google does not document the limit)* — a stricter bar would be one the instrument cannot see over.
+- **The attribute checks pass automatically** when Google's catalogue offers no options of that kind for the category. An audit that demands the impossible trains people to ignore red rows.
 
 ### The AI-readiness rubric
 
@@ -72,9 +75,21 @@ Tiers: **70+ is strong, 40–69 is building, below 40 is low.**
 
 *The same business on the AI Visibility screen — 53 of 100, in the building tier, with every factor shown as passed or failed against its weight. Review volume scores 0 of 22 on three reviews, and it is the heaviest single factor on the sheet. The three tiles at the top are **Presence**, **Recommendations** and **Authority**; the first two carry an **Example** badge until a live check is run, and nothing in any of them fed the 53.*
 
-Now read the two tables together. The audit passes reviews at 20 and rating at 4.0; readiness wants 25 and 4.2. Not an inconsistency to be tidied away: the audit asks *is this profile complete enough to compete in the pack*, readiness asks *is this reputation strong enough that a language model would name this business to a stranger*. The second bar is higher because the AI surfaces recommend far fewer businesses than the pack lists — the subject of [how an AI assistant answers a local question](../01-foundations/how-ai-answers-a-local-question.md).
+**Now read the two tables together.** They set different bars on the same two inputs, because they are asking different questions:
 
-And one line is a thesis written as arithmetic: **22 + 18 = 40**, exactly the *building* threshold. A business passing review volume and rating and *nothing else* lands precisely on the boundary; everything else is upside. That calibration was held deliberately when the rubric was rebalanced, and it encodes a claim you should accept or argue with: reputation is the gateway to AI answers, and no amount of structured data compensates for a thin one.
+| | Profile audit | AI readiness |
+| --- | --- | --- |
+| Reviews bar | 20 | 25 |
+| Rating bar | 4.0 | 4.2 |
+| The question it asks | Is this profile complete enough to compete in the pack? | Is this reputation strong enough that a language model would name this business to a stranger? |
+
+That is not an inconsistency to be tidied away. The second bar is higher because the AI surfaces recommend far fewer businesses than the pack lists — the subject of [how an AI assistant answers a local question](../01-foundations/how-ai-answers-a-local-question.md).
+
+**And one line is a thesis written as arithmetic:** **22 + 18 = 40**, exactly the *building* threshold. A business passing review volume and rating and *nothing else* lands precisely on the boundary; everything else is upside.
+
+That calibration was held deliberately when the rubric was rebalanced, and it encodes a claim you should accept or argue with:
+
+> **Reputation is the gateway to AI answers, and no amount of structured data compensates for a thin one.**
 
 ### What neither score is
 
@@ -84,7 +99,9 @@ A score is a *diagnostic input*, never a finding. "Your profile score is 62%" is
 
 ## Missing, or invisible?
 
-This is where most first-pass audits quietly lie, and it is what separates a diagnostic from a checklist. Every field has **three** possible states, not two: present, absent, or *not observable from where you are standing*. The public record Google exposes to search is a subset of what the owner sees, so on an unconnected business several checks report on data that was never visible to you. Three mislead constantly.
+**This is where most first-pass audits quietly lie**, and it is what separates a diagnostic from a checklist. Every field has **three** possible states, not two: present, absent, or *not observable from where you are standing*.
+
+The public record Google exposes to search is a subset of what the owner sees, so on an unconnected business several checks report on data that was never visible to you. Three mislead constantly.
 
 **The description.** The public place record does not carry the *owner-written* description; it is readable only through the owner connection. On an unconnected business a failing description check means *unknown*, not *missing* — and telling a prospect they have no description when they wrote one last year is an expensive way to lose the room. There is a second trap in the same field, covered where it belongs in [The profile is the product](./the-profile-is-the-product.md).
 
@@ -92,17 +109,29 @@ This is where most first-pass audits quietly lie, and it is what separates a dia
 
 *A healthy profile, observed from outside. Step 1 of the plan is "Add a business description" — but this business is not connected, and the public record never carries the owner-written one. That row is the trap: read it as **unknown**, and note that the connect panel above it is precisely the list of things you cannot currently see.*
 
-**Review engagement.** The readiness rubric divides the replies it has stored by Google's authoritative total review count. Without owner access you hold only a small recent sample of reviews, so that ratio is near zero by construction and measures nothing. The response-rate ring on the overview's **Review momentum** card uses a different denominator — replies over reviews *stored* — so the two can disagree sharply on the same business. [Why two tools disagree](../03-advanced/why-two-tools-disagree.md) generalises the point.
+**Review engagement.** The readiness rubric divides the replies it has stored by Google's authoritative total review count. Without owner access you hold only a small recent sample of reviews, so that ratio is near zero by construction and measures nothing.
+
+The response-rate ring on the overview's **Review momentum** card uses a different denominator — replies over reviews *stored* — so the two can disagree sharply on the same business. [Why two tools disagree](../03-advanced/why-two-tools-disagree.md) generalises the point.
 
 **Owner performance.** Views, calls, direction requests and the search terms people used are owner-only. An empty performance panel means "not connected", not "no traffic".
 
 So: when you cannot see something, write **unknown**, never "missing". A diagnostic that distinguishes the two is worth paying for; one that does not is a template with a business name pasted in.
 
+```mermaid
+flowchart TD
+  C["A check fails"] --> O{"Can you observe this field from where you stand?"}
+  O -->|"No: owner-only field, no connection"| U["Write: unknown"]
+  O -->|"Yes, and the field is empty"| A["Write: absent"]
+  O -->|"Yes, and the field is under the bar"| B["Write: below threshold"]
+```
+
 > **Observe-only readers.** All three labs in this chapter work on a business you do not own — none of them writes anything to Google. Your verdict simply carries more `unknown` rows, and writing them honestly is the exercise. The public-versus-owner split is tabulated in [Set up your workbench](../00-start-here/set-up-your-workbench.md).
 
 ## The order of work
 
-Sorting by weight is the default the app gives you. The action plan merges four sources — the failing audit checks, the two readiness factors the audit does not already cover (fresh reviews and review engagement), and any stored website and listings fixes — then tiers them by impact and orders by recoverable points inside each tier. Only the audit rows carry points, because only they move the profile score. Take that order as a first draft, because weight is not the only axis.
+**Sorting by weight is the default the app gives you.** The action plan merges four sources — the failing audit checks, the two readiness factors the audit does not already cover (fresh reviews and review engagement), and any stored website and listings fixes — then tiers them by impact and orders by recoverable points inside each tier.
+
+Only the audit rows carry points, because only they move the profile score. Take that order as a first draft, because weight is not the only axis.
 
 **Effort.** Adding opening hours takes ninety seconds and recovers 10 of 86. Getting from 12 reviews to 20 takes a quarter and recovers the same 10. Identical on the scoreboard, nothing alike as work. Sort by weight *per unit of effort* and the real first day falls out: the fields that are simply absent.
 
@@ -122,7 +151,11 @@ One caution: the list is generated from the *profile*, so it cannot contain the 
 
 Reading stored data is free; fetching new data from Google is not — the economics are in [how the labs work](../00-start-here/how-the-labs-work.md). Each domain on the overview has its own refresh button and its own price — **Refresh all**, **Refresh rankings**, **Refresh map**, **Refresh reviews**, **Refresh competitors**, **Refresh check** — separate on purpose, so you pay for the domain you asked about.
 
-**Refresh all** re-pulls the profile fields and the reviews, plus the owner performance series on a connected business. It does **not** re-check keyword positions, re-run a grid scan, or re-fetch competitors. So if a position on **Rankings at a glance** looks different afterwards, it did not change — you are misremembering, or reading a scan from another date. Every card that shows fetched data stamps it with the date it was fetched. Read the stamp before the number, every time.
+**Refresh all** re-pulls the profile fields and the reviews, plus the owner performance series on a connected business. It does **not** re-check keyword positions, re-run a grid scan, or re-fetch competitors.
+
+So if a position on **Rankings at a glance** looks different afterwards, it did not change — you are misremembering, or reading a scan from another date. Every card that shows fetched data stamps it with the date it was fetched.
+
+> **Read the stamp before the number, every time.**
 
 ## Freeze the baseline
 

@@ -31,15 +31,33 @@ Separating them takes five minutes and three checkpoints, in order.
 
 Skipping step 3 is how people spend a week optimising a listing that was fine and an account that was not.
 
+```mermaid
+flowchart TD
+  A["A client says they have disappeared"] --> B{"Knowledge panel for name plus city?"}
+  B -->|"No panel"| C{"What does the owner dashboard say?"}
+  B -->|"Panel appears"| D{"Does Maps show a closed status?"}
+  D -->|"Temporarily or permanently closed"| E["Closed status: a two-click fix"]
+  D -->|"Nothing unusual"| C
+  C -->|"Suspended"| F["Hard suspension: correct, then appeal"]
+  C -->|"Unverified or management lost"| G["Soft suspension: re-verify"]
+  C -->|"Verified and normal"| H["A ranking outcome, not enforcement"]
+```
+
 ## Hard and soft
 
-The terms are industry vocabulary; Google's documentation uses neither *(the underlying states are what the dashboard shows)*. A **soft suspension** removes your verified ownership. The listing stays live and customers see no difference — what you lose is control: no editing, no review replies, and anything reading the profile through an owner login stops returning data. It usually resolves by re-verifying, not by appealing.
+The terms are industry vocabulary; Google's documentation uses neither *(the underlying states are what the dashboard shows)*.
 
-A **hard suspension** removes the listing from Search and Maps, and the reviews go with it. That is the one that costs money by the day, and the one the reinstatement process exists for. So **check the dashboard before you tell anyone what happened** — only one of the two is an emergency.
+**A soft suspension removes your verified ownership.** The listing stays live and customers see no difference — what you lose is control: no editing, no review replies, and anything reading the profile through an owner login stops returning data. It usually resolves by re-verifying, not by appealing.
+
+**A hard suspension removes the listing from Search and Maps**, and the reviews go with it. That is the one that costs money by the day, and the one the reinstatement process exists for.
+
+> So **check the dashboard before you tell anyone what happened** — only one of the two is an emergency.
 
 ## What actually triggers it
 
-Nobody outside Google can rank these by weight, and anyone publishing a percentage breakdown of suspension causes is showing you their sample, not the mechanism. What is observable is the *shape*: suspensions cluster around claims of identity — who you are and where you are — and almost never around content quality. A thin description does not get you suspended. An address you cannot document does.
+Nobody outside Google can rank these by weight, and anyone publishing a percentage breakdown of suspension causes is showing you their sample, not the mechanism.
+
+**What is observable is the *shape*.** Suspensions cluster around claims of identity — who you are and where you are — and almost never around content quality. A thin description does not get you suspended. An address you cannot document does.
 
 **The address does not hold up.** Virtual offices, mail-forwarding addresses, coworking desks, a registered-agent address, a unit number that does not exist, a service-area business showing a street address it does not staff. The largest cluster in every practitioner account, and the hardest to argue out of: the fix is usually "change the address", not "explain the address". [Service-area businesses](./service-area-businesses.md) covers the rules that keep SABs clear of it.
 
@@ -49,9 +67,17 @@ Nobody outside Google can rank these by weight, and anyone publishing a percenta
 
 **A pattern of edits.** Critical fields changed in bursts, ownership changing hands, an edit that contradicts what Google already believes. This is the category behind the "I only changed the phone number" reports: the phone number was not the trigger, the sequence was.
 
-**Category-level scrutiny.** Some verticals face harder verification — locksmiths, garage-door repair, addiction treatment. Be careful what you attribute to what, though. The *Advanced Verification* programme Google actually documents belongs to **Google Ads and Local Services**, not to Business Profiles: locksmith and garage-door advertisers must pass it to serve in the Local Services unit. That the same categories also draw stricter *Business Profile* verification is a consistent practitioner observation and an **open question** against published documentation — Google has not published a category list for it. Treat vertical-specific advice as observation, not policy.
+**Category-level scrutiny.** Some verticals face harder verification — locksmiths, garage-door repair, addiction treatment. Be careful what you attribute to what, though.
 
-Trigger and enforcement are usually weeks apart, which is why almost every account begins "it happened for no reason": the reason happened in March, the suspension in May, and nobody kept a record joining them. An appeal that names no corrected violation is an appeal asking Google to re-examine an unchanged listing. The app records each fix it applies with the value it replaced — that is what undo restores from — but surfaces only a count, *N profile edits applied since your last refresh*, and there is no browsable history screen. **Your own dated change log is still the artefact that matters**, as [Did it work?](../02-core-practice/did-it-work.md) sets it up.
+**The documented programme is not the one people mean.** The *Advanced Verification* programme Google actually documents belongs to **Google Ads and Local Services**, not to Business Profiles: locksmith and garage-door advertisers must pass it to serve in the Local Services unit.
+
+That the same categories also draw stricter *Business Profile* verification is a consistent practitioner observation and an **open question** against published documentation — Google has not published a category list for it. Treat vertical-specific advice as observation, not policy.
+
+### The gap between cause and consequence
+
+**Trigger and enforcement are usually weeks apart**, which is why almost every account begins "it happened for no reason": the reason happened in March, the suspension in May, and nobody kept a record joining them. An appeal that names no corrected violation is an appeal asking Google to re-examine an unchanged listing.
+
+The app records each fix it applies with the value it replaced — that is what undo restores from — but surfaces only a count, *N profile edits applied since your last refresh*, and there is no browsable history screen. **Your own dated change log is still the artefact that matters**, as [Did it work?](../02-core-practice/did-it-work.md) sets it up.
 
 ## The edit cap, and why it bites hardest here
 
@@ -67,7 +93,9 @@ So the rule is **pace your edits and verify each one**: the cap makes bulk work 
 
 ## What a suspension does to your measurements
 
-**Rank checks record a real absence with a false cause.** During a hard suspension every keyword check comes back *not in the results* and every grid scan comes back empty. The readings are correct — the business genuinely was not there — but they are not a *ranking* measurement. Six months later the chart shows a crater and a recovery, and whoever reads it credits whatever work was running at the time. Annotate the window at the point of use; do not delete the readings, because deleting evidence to make a chart look sensible is how a change log stops being usable.
+**Rank checks record a real absence with a false cause.** During a hard suspension every keyword check comes back *not in the results* and every grid scan comes back empty. The readings are correct — the business genuinely was not there — but they are not a *ranking* measurement.
+
+Six months later the chart shows a crater and a recovery, and whoever reads it credits whatever work was running at the time. Annotate the window at the point of use; do not delete the readings, because deleting evidence to make a chart look sensible is how a change log stops being usable.
 
 **A profile refresh on a delisted listing looks like success.** When the underlying place record is gone the re-pull finds nothing, the stored copy is left exactly as it was, and the header stamps *Synced just now*. Every field reads the same because it is the same — the last known good copy, preserved. Useful (it is the pack you appeal with), and a trap if you read the fresh timestamp as fresh data. *(Verified against current behaviour, 2026-07-27.)*
 

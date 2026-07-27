@@ -77,15 +77,53 @@ A working rule, marked as what it is: *(inference)* profile and review changes t
 
 Connect a Google Business Profile and you get the owner side: how many people saw the profile and what they did next. It is the closest thing to an outcome metric local SEO has, and slipperier than it looks.
 
-**There is no "profile views" number.** Google publishes impressions as four separate counts — desktop Maps, desktop Search, mobile Maps, mobile Search — and never a combined one; any single "views" figure is a construction whoever showed it to you performed. A report built from one of the four is a quarter of the truth, and such reports exist. The app sums all four into one **Profile views** series; if you build this yourself, sum them or say which you used.
+### There is no "profile views" number
 
-Summing has its own edge, worth a footnote in a client report. Google defines each of those four as deduplicated per unique user per day — *"Multiple impressions by a unique user within a single day are counted as a single impression"* — but documents no deduplication *across* the four. So a customer who saw you on mobile Search and again on mobile Maps the same day plausibly counts once in each and twice in the sum *(inference from the per-metric definition; we have not probed a controlled single-user case)*. A month of "3,000 views" is at most 3,000 people-days, and fewer people. The mechanism is [What Google's reporting hides](../05-reference/what-googles-reporting-hides.md).
+Google publishes impressions as four separate counts, and never a combined one:
 
-**Zeros at the right-hand edge are usually reporting lag, not a collapse.** The documented half first: Google's own legacy Insights reference warns that *"in some cases, the data may still be missing for days close to the request date"*, and nothing in the response marks a day as provisional — so a value read today and the same day re-read next week can differ without either being wrong. What is **not** settled is the mechanism: whether Google omits a zero-activity day from the series entirely or returns it explicitly as zero is undocumented, and we have no probe on file *(open question — [What Google's reporting hides](../05-reference/what-googles-reporting-hides.md) carries the probe that would close it)*. Either way the practice is the same: back-fill absent dates to zero, keep count of how many dates Google actually returned, and exclude the trailing few days from every total and every comparison. If the last day or two of every metric read zero while the preceding weeks look healthy, treat it as lag and check again in a week. That tail also drags each tile's trend badge, which compares roughly the first week of the window against the last. Read the sparkline, not just the percentage.
+- desktop Maps
+- desktop Search
+- mobile Maps
+- mobile Search
 
-**A click-to-call is not a call.** Google's own definitions are the whole argument here: **Calls** is *"the number of times the business profile call button was clicked"*. Whether the call connected, was answered, or lasted two seconds is not in the data — Google does not report it, so no tool has it. Likewise **Direction requests** is the number of times directions were requested, not the number of people who arrived, and **Website clicks** counts clicks out, which will not match your analytics *(inference on that gap's direction: consent banners and blockers make analytics the lower number)*. **Bookings** is narrower than it sounds — Google defines it as bookings made through Reserve with Google, not every appointment you took.
+Any single "views" figure is therefore a construction whoever showed it to you performed. A report built from one of the four is a quarter of the truth, and such reports exist. The app sums all four into one **Profile views** series; if you build this yourself, sum them or say which you used.
 
-The search-terms table further down the page is a separate dataset with separate rules: Google aggregates it monthly, not daily, and low-volume terms come back with the count withheld. What you get instead is a threshold — documented as *"the threshold below which the actual value falls"* — which the app renders as `<N`. Any total built from those rows is an upper bound, and it inflates most for the smallest businesses. Label it as one ([Building a tracked set that tells the truth](./choosing-what-to-track.md)).
+**Summing has its own edge**, worth a footnote in a client report. Google defines each of those four as deduplicated per unique user per day — *"Multiple impressions by a unique user within a single day are counted as a single impression"* — but documents no deduplication *across* the four.
+
+So a customer who saw you on mobile Search and again on mobile Maps the same day plausibly counts once in each and twice in the sum *(inference from the per-metric definition; we have not probed a controlled single-user case)*.
+
+A month of "3,000 views" is at most 3,000 people-days, and fewer people. The mechanism is [What Google's reporting hides](../05-reference/what-googles-reporting-hides.md).
+
+### Zeros at the right-hand edge are usually reporting lag, not a collapse
+
+**The documented half first.** Google's own legacy Insights reference warns that *"in some cases, the data may still be missing for days close to the request date"*, and nothing in the response marks a day as provisional — so a value read today and the same day re-read next week can differ without either being wrong.
+
+**What is not settled is the mechanism.** Whether Google omits a zero-activity day from the series entirely or returns it explicitly as zero is undocumented, and we have no probe on file *(open question — [What Google's reporting hides](../05-reference/what-googles-reporting-hides.md) carries the probe that would close it)*.
+
+Either way the practice is the same:
+
+1. Back-fill absent dates to zero.
+2. Keep count of how many dates Google actually returned.
+3. Exclude the trailing few days from every total and every comparison.
+
+If the last day or two of every metric read zero while the preceding weeks look healthy, treat it as lag and check again in a week. That tail also drags each tile's trend badge, which compares roughly the first week of the window against the last. Read the sparkline, not just the percentage.
+
+### A click-to-call is not a call
+
+Google's own definitions are the whole argument here.
+
+| Metric | What Google counts | What it does *not* tell you |
+| --- | --- | --- |
+| **Calls** | *"the number of times the business profile call button was clicked"* | Whether the call connected, was answered, or lasted two seconds. That is not in the data — Google does not report it, so no tool has it. |
+| **Direction requests** | The number of times directions were requested | The number of people who arrived |
+| **Website clicks** | Clicks out | Sessions in your analytics, which this will not match *(inference on that gap's direction: consent banners and blockers make analytics the lower number)* |
+| **Bookings** | Narrower than it sounds: bookings made through Reserve with Google | Every appointment you took |
+
+### The search-terms table is a separate dataset
+
+The search-terms table further down the page plays by separate rules: Google aggregates it monthly, not daily, and low-volume terms come back with the count withheld.
+
+What you get instead is a threshold — documented as *"the threshold below which the actual value falls"* — which the app renders as `<N`. Any total built from those rows is an upper bound, and it inflates most for the smallest businesses. Label it as one ([Building a tracked set that tells the truth](./choosing-what-to-track.md)).
 
 ## What you may honestly claim
 

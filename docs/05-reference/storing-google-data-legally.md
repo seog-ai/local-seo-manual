@@ -16,13 +16,22 @@ description: What Google's published terms permit you to store from the Places a
 
 Every entry below is our reading of published terms, not legal advice. We are engineers who read the documents and quoted them; we are not your lawyers, and nothing here is a substitute for one.
 
-Two things make this material worth writing down anyway. The first is that the industry's most repeated storage rule — that you may cache Places data for thirty days — does not appear in the terms at all, in the current version or in the archived one we compared it against ([LSM-POLICY-07](#lsm-policy-07--the-30-day-places-caching-allowance-does-not-exist-in-the-terms)). The second is that the two Google APIs a local SEO tool touches are governed by **two different documents with two different rules**, and conclusions from one do not transfer to the other ([LSM-POLICY-05](#lsm-policy-05--two-separate-regimes-govern-google-local-data-and-their-rules-do-not-transfer)).
+Two things make this material worth writing down anyway.
 
-**What this chapter is not.** It is not a claim that any particular product is in breach. We cannot see other operators' contracts. Google negotiates enterprise agreements; some tools buy their place data from third-party providers whose licences permit storage; some are billed from the EEA and governed by separate documents we have not read. A tool that shows you a two-year history of a competitor's review count may have an arrangement we know nothing about. These entries state what the published, generally-available terms say. Drawing a conclusion about a specific product from them requires facts about that product that are not public.
+1. **The industry's most repeated storage rule is not in the terms.** That you may cache Places data for thirty days does not appear in them at all — not in the current version, and not in the archived one we compared it against ([LSM-POLICY-07](#lsm-policy-07--the-30-day-places-caching-allowance-does-not-exist-in-the-terms)).
+2. **Two APIs, two documents, two rule sets.** The two Google APIs a local SEO tool touches are governed by **two different documents with two different rules**, and conclusions from one do not transfer to the other ([LSM-POLICY-05](#lsm-policy-05--two-separate-regimes-govern-google-local-data-and-their-rules-do-not-transfer)).
+
+**What this chapter is not.** It is not a claim that any particular product is in breach. We cannot see other operators' contracts.
+
+Google negotiates enterprise agreements; some tools buy their place data from third-party providers whose licences permit storage; some are billed from the EEA and governed by separate documents we have not read. A tool that shows you a two-year history of a competitor's review count may have an arrangement we know nothing about.
+
+These entries state what the published, generally-available terms say. Drawing a conclusion about a specific product from them requires facts about that product that are not public.
 
 ## How to read a policy entry
 
-Behavioural entries elsewhere in Part V carry a **Probe** — an API call you can re-run. Policy entries carry a **Source** instead: the document, the section number, and the document's own revision date. You verify one by opening the document and reading the section, which is a reproducible act with a different failure mode from an API call. A few entries carry both, where there is also something observable (a string that is absent from a page, a URL that 404s).
+**Policy entries carry a Source, not a Probe.** Behavioural entries elsewhere in Part V carry a **Probe** — an API call you can re-run. A policy entry names the document, the section number, and the document's own revision date instead.
+
+You verify one by opening the document and reading the section, which is a reproducible act with a different failure mode from an API call. A few entries carry both, where there is also something observable (a string that is absent from a page, a URL that 404s).
 
 The five verdicts map onto documents like this.
 
@@ -36,7 +45,13 @@ The five verdicts map onto documents like this.
 
 All documents below were fetched and quoted on **2026-07-16**. Each entry's `Last verified` is that date unless it says otherwise. The re-probe trigger for this area is a change to the source document's own revision date; several of these documents changed within a month of being read, so check the stamps before relying on an entry.
 
-**The trigger has already fired once.** On a re-read of **2026-07-27**, both the Places policies page and the Place IDs guide had moved from `Last updated 2026-07-10 UTC` to `Last updated 2026-07-20 UTC` — four days after this chapter was written. The entries drawn from those two pages were re-read on 2026-07-27 and carry that date; one of them ([LSM-POLICY-06](#lsm-policy-06--the-default-rule-for-places-content-is-no-caching-at-all)) had its quoted sentence replaced by Google in that revision, and is corrected below. The two Maps Platform contract documents (Terms of Service, Service Specific Terms) could **not** be re-read in full on 2026-07-27 — the pages exceed what our fetch tool returns — so their `Last verified` stays 2026-07-16 and their revision dates are as recorded then, not as re-confirmed. Treat that as a known gap, not as a re-verification.
+**The trigger has already fired once.** On a re-read of **2026-07-27**, both the Places policies page and the Place IDs guide had moved from `Last updated 2026-07-10 UTC` to `Last updated 2026-07-20 UTC` — four days after this chapter was written.
+
+The entries drawn from those two pages were re-read on 2026-07-27 and carry that date; one of them ([LSM-POLICY-06](#lsm-policy-06--the-default-rule-for-places-content-is-no-caching-at-all)) had its quoted sentence replaced by Google in that revision, and is corrected below.
+
+The two Maps Platform contract documents (Terms of Service, Service Specific Terms) could **not** be re-read in full on 2026-07-27 — the pages exceed what our fetch tool returns — so their `Last verified` stays 2026-07-16 and their revision dates are as recorded then, not as re-confirmed.
+
+Treat that as a known gap, not as a re-verification.
 
 This chapter's entries begin at `LSM-POLICY-05`. IDs are assigned in the order a fact was added to its area rather than by chapter, and `LSM-POLICY-01` to `-04` are defined elsewhere in Part V — in [the local search changelog](./local-search-changelog.md) and [write limits and failure modes](./write-limits-and-failure-modes.md).
 
@@ -58,7 +73,10 @@ This chapter's entries begin at `LSM-POLICY-05`. IDs are assigned in the order a
 | Google OAuth 2.0 Policies | Google Identity OAuth policies page | Changelog entries through December 15, 2025 | Token handling |
 | GMP Service Specific Terms (archived) | `cloud.google.com/archive/maps-platform/terms/maps-service-terms-20250501` | Last modified May 01, 2025 | Version comparison only |
 
-Two scope notes that change which documents apply to you. The Terms of Service and Service Specific Terms above are the **non-EEA** versions — see [LSM-POLICY-42](#lsm-policy-42--eea-billed-customers-are-governed-by-separate-documents-not-read-here). And the Business Profile third-party policies page displays no last-updated date at all, so there is no way to tell from the page whether the version you are reading is the version you read last year.
+Two scope notes change which documents apply to you.
+
+- The Terms of Service and Service Specific Terms above are the **non-EEA** versions — see [LSM-POLICY-42](#lsm-policy-42--eea-billed-customers-are-governed-by-separate-documents-not-read-here).
+- The Business Profile third-party policies page displays no last-updated date at all, so there is no way to tell from the page whether the version you are reading is the version you read last year.
 
 ## The storage decision table
 
@@ -112,7 +130,9 @@ Public place data and owner-consented profile data come from different APIs unde
 
 The clause is a default-deny. It does not enumerate what you may not store; it prohibits everything and defers the exceptions to a second document. The Places API's exceptions in that second document are two, and they are entries [LSM-POLICY-08](#lsm-policy-08--place-ids-are-exempt-from-the-caching-restrictions-and-may-be-stored-indefinitely) and [LSM-POLICY-09](#lsm-policy-09--places-latitudelongitude-may-be-cached-for-30-consecutive-calendar-days-then-must-be-deleted).
 
-**Correction, 2026-07-27.** An earlier version of this entry quoted the Places policies page as reading: "You must not pre-fetch, cache, or store Places API content beyond the allowed exceptions, although the `place_id` is exempt from caching restrictions." On the `Last updated 2026-07-20 UTC` revision that sentence is **not on the page**, and we cannot now establish that it ever was in that form. What the page carries on the 2026-07-27 read is the exemption stated from the other direction:
+**Correction, 2026-07-27.** An earlier version of this entry quoted the Places policies page as reading: "You must not pre-fetch, cache, or store Places API content beyond the allowed exceptions, although the `place_id` is exempt from caching restrictions."
+
+On the `Last updated 2026-07-20 UTC` revision that sentence is **not on the page**, and we cannot now establish that it ever was in that form. What the page carries on the 2026-07-27 read is the exemption stated from the other direction:
 
 > Note that the place ID, used to uniquely identify a place, is exempt from the caching restrictions. You can therefore store place ID values indefinitely.
 
@@ -163,9 +183,15 @@ The developer documentation states the same permission in plainer terms and adds
 
 > 14.3 Caching. Customer may temporarily cache latitude and longitude values from the Places API for up to 30 consecutive calendar days, after which Customer must delete the cached latitude and longitude values.
 
-Three words in that sentence do work. **"Temporarily"** frames the grant as a cache, not a store. **"Consecutive"** means the clock does not reset because you stopped looking at the row; it runs from when you cached the value. **"Delete"** is an affirmative act — the clause does not say "stop using", it says delete, which implies a scheduled job and, in practice, a record that the job ran.
+Three words in that sentence do work:
 
-**What to do instead:** Put a deletion sweep on any Places-sourced coordinate column and make it auditable. If the coordinate is load-bearing for something long-lived — a map pin on a saved report — either regenerate it from the place ID at render time or source it from an API whose grant is broader; the Geocoding contrast in [LSM-POLICY-11](#lsm-policy-11--geocoding-has-an-indefinite-per-field-caching-grant-that-places-does-not) is the relevant comparison.
+- **"Temporarily"** frames the grant as a cache, not a store.
+- **"Consecutive"** means the clock does not reset because you stopped looking at the row; it runs from when you cached the value.
+- **"Delete"** is an affirmative act — the clause does not say "stop using", it says delete, which implies a scheduled job and, in practice, a record that the job ran.
+
+**What to do instead:** Put a deletion sweep on any Places-sourced coordinate column and make it auditable.
+
+If the coordinate is load-bearing for something long-lived — a map pin on a saved report — either regenerate it from the place ID at render time or source it from an API whose grant is broader; the Geocoding contrast in [LSM-POLICY-11](#lsm-policy-11--geocoding-has-an-indefinite-per-field-caching-grant-that-places-does-not) is the relevant comparison.
 
 ### LSM-POLICY-10 · Copying and saving business names, addresses or user reviews is named as prohibited scraping
 
@@ -175,7 +201,9 @@ Three words in that sentence do work. **"Temporarily"** frames the grant as a ca
 
 > No Scraping. Customer will not export, extract, or otherwise scrape Google Maps Content for use outside the Services. For example, Customer will not: (i) pre-fetch, index, store, reshare, or rehost Google Maps Content outside the services; (ii) bulk download Google Maps tiles, Street View images, geocodes, directions, distance matrix results, roads information, places information, elevation values, and time zone details; (iii) copy and save business names, addresses, or user reviews; or (iv) use Google Maps Content with text-to-speech services.
 
-This clause matters because it is specific. A general no-caching rule invites argument about what counts as a cache; sub-clause (iii) names the three fields a local SEO tool most wants to keep, and names them as examples of scraping rather than of caching. Sub-clause (i) independently prohibits "pre-fetch, index, store, reshare, or rehost" — five verbs, of which at least two describe any competitor-tracking table with a `name` column in it.
+**This clause matters because it is specific.** A general no-caching rule invites argument about what counts as a cache; sub-clause (iii) names the three fields a local SEO tool most wants to keep, and names them as examples of scraping rather than of caching.
+
+Sub-clause (i) independently prohibits "pre-fetch, index, store, reshare, or rehost" — five verbs, of which at least two describe any competitor-tracking table with a `name` column in it.
 
 **Consequence:** "We only cache it for performance" is not responsive to §3.2.3(a). The clause does not turn on duration or intent; it names the act of copying and saving those fields.
 
@@ -457,7 +485,11 @@ Four constraints, written unconditionally: **limited amounts**, **performance pu
 
 The aggregation wording deserves separate attention. On a literal reading, computing a monthly average rating or a review-count trend from stored GBP Content is manipulation or aggregation of Stored Content.
 
-**Consequence:** If you show a merchant three years of their own review history, the plain text of this clause does not authorise it and you are relying on a reading the document does not state — most likely the permissive one in [LSM-POLICY-37](#lsm-policy-37--open--whether-the-30-day-gbp-cap-applies-to-a-merchants-own-data-under-their-own-oauth-grant). That is a position to take deliberately, write down, and put in front of counsel. It is not a position to arrive at by never reading the clause. Nothing here supports a conclusion about anyone else's product: as set out at the top of this chapter, an operator's contracts, licences and data sources are not public, and the same feature can rest on an arrangement we cannot see.
+**Consequence:** If you show a merchant three years of their own review history, the plain text of this clause does not authorise it and you are relying on a reading the document does not state — most likely the permissive one in [LSM-POLICY-37](#lsm-policy-37--open--whether-the-30-day-gbp-cap-applies-to-a-merchants-own-data-under-their-own-oauth-grant).
+
+That is a position to take deliberately, write down, and put in front of counsel. It is not a position to arrive at by never reading the clause.
+
+Nothing here supports a conclusion about anyone else's product: as set out at the top of this chapter, an operator's contracts, licences and data sources are not public, and the same feature can rest on an arrangement we cannot see.
 
 ### LSM-POLICY-28 · Automating review replies without prior specific and express consent is prohibited
 
@@ -469,7 +501,9 @@ The aggregation wording deserves separate attention. On a literal reading, compu
 
 Three words carry the requirement: **prior**, **specific**, **express**. A general grant of permission at sign-up is not specific. An OAuth consent screen is not consent to a particular reply. "Prior" rules out notifying afterwards.
 
-**What to do instead:** Keep a human approval step between a drafted reply and the push to Google. An AI that drafts and a person who approves is a defensible architecture; an AI that replies on a trigger is the named prohibited case, and no amount of quality in the reply changes that. If you want an auto-reply mode at all, it needs an explicit, specific, per-purpose opt-in that a reviewer would recognise as consent to that exact action.
+**What to do instead:** Keep a human approval step between a drafted reply and the push to Google. An AI that drafts and a person who approves is a defensible architecture; an AI that replies on a trigger is the named prohibited case, and no amount of quality in the reply changes that.
+
+If you want an auto-reply mode at all, it needs an explicit, specific, per-purpose opt-in that a reviewer would recognise as consent to that exact action.
 
 ### LSM-POLICY-29 · Replying on a client's behalf requires explicit approval, and verbal consent is not sufficient
 
@@ -493,7 +527,9 @@ The third-party policies page is stricter about the form that authorisation take
 
 > You cannot allow agencies, end-clients, or other third parties to use your Business Profile project, or your own APIs, in a way that allows those third parties to avoid applying for their own Business Profile project. Any automatic or programmatic use of Business Profile by agencies or end-clients requires them to use their own Business Profile project. You cannot provide indirect access to your Business Profile project. End users of your Business Profile APIs need to manually sign in to use it. They're not allowed automatic access to make manual or programmatic changes to their accounts. For example, if you're a tool provider that licenses listings-management software to agencies and end-clients, you cannot develop your own API that allows your clients to access the Business Profile APIs through automatic or programmatic computer scripts. Note: This policy doesn't restrict your own use of the Business Profile APIs in a programmatic or automated way. The policy just doesn't allow third-parties to access the Business Profile APIs in a programmatic or automated way when they use your API project.
 
-**Correction, 2026-07-27:** an earlier version of this entry stopped the quote at "…in a programmatic or automated way." and omitted the sentence after it. That omission mattered. The full Note does not merely preserve your own automation as an exception — its second sentence states the *scope of the whole prohibition*: what is disallowed is **third parties accessing the Business Profile APIs programmatically when they use your API project**. Read with that sentence, the clause is aimed at third-party pass-through, not at automation as such.
+**Correction, 2026-07-27:** an earlier version of this entry stopped the quote at "…in a programmatic or automated way." and omitted the sentence after it. That omission mattered.
+
+The full Note does not merely preserve your own automation as an exception — its second sentence states the *scope of the whole prohibition*: what is disallowed is **third parties accessing the Business Profile APIs programmatically when they use your API project**. Read with that sentence, the clause is aimed at third-party pass-through, not at automation as such.
 
 The closing note is as important as the prohibition. **Your own** background automation on behalf of consented merchants is expressly unrestricted; what is prohibited is handing third parties a programmatic path through your project.
 
@@ -631,7 +667,11 @@ The clause was written before agentic tooling was common, and it does not addres
 
 Both readings survive the text. The explicit example in the policy — a tool provider developing "your own API that allows your clients to access the Business Profile APIs through automatic or programmatic computer scripts" — is closer to the second, and the note preserving your own automation is closer to the first.
 
-**Re-read 2026-07-27, and the balance shifted.** The Note's second sentence — recovered on this re-read and missing from the earlier version of this chapter ([LSM-POLICY-30](#lsm-policy-30--no-indirect-or-programmatic-third-party-access-to-your-business-profile-project)) — defines the prohibition as third parties "access[ing] the Business Profile APIs in a programmatic or automated way **when they use your API project**". That wording points at a third party operating through your project, which an agent acting for the account's own signed-in owner arguably is not. It does not close the question — "third party" is undefined, and an agent is not obviously the user — but it is the strongest textual support for the permissive reading, and it was absent from the analysis before. The question stays OPEN; the argument is now less evenly balanced than the table above suggests.
+**Re-read 2026-07-27, and the balance shifted.** The Note's second sentence — recovered on this re-read and missing from the earlier version of this chapter ([LSM-POLICY-30](#lsm-policy-30--no-indirect-or-programmatic-third-party-access-to-your-business-profile-project)) — defines the prohibition as third parties "access[ing] the Business Profile APIs in a programmatic or automated way **when they use your API project**".
+
+That wording points at a third party operating through your project, which an agent acting for the account's own signed-in owner arguably is not. It does not close the question — "third party" is undefined, and an agent is not obviously the user — but it is the strongest textual support for the permissive reading, and it was absent from the analysis before.
+
+The question stays OPEN; the argument is now less evenly balanced than the table above suggests.
 
 **What would close it:** a Google statement on agent-mediated access, or a policy revision that names it. Until then, mitigations rather than conclusions: human sign-in before any grant, a human approval step before any write ([LSM-POLICY-28](#lsm-policy-28--automating-review-replies-without-prior-specific-and-express-consent-is-prohibited)), no bulk operations, and no path for an agency or partner to drive another party's profile programmatically.
 
@@ -643,7 +683,9 @@ Both readings survive the text. The explicit example in the policy — a tool pr
 
 No document in either regime addresses PDFs, emails or other fixed artifacts containing Places content. The relevant provisions cut both ways: a report rendered on demand from a fresh API call is arguably display within the Customer Application, while a PDF written to object storage and re-served later is "store, reshare, or rehost" on the face of §3.2.3(a).
 
-One requirement leans against static documents specifically. Reviews must give end users access to the source on Google Maps via `googleMapsUri` ([LSM-POLICY-24](#lsm-policy-24--every-displayed-review-and-photo-needs-author-attribution-and-a-live-link-to-the-source-on-google-maps)) — hard to satisfy in a printed page and impossible from a stale copy. Note also that some other Maps APIs (Solar, for instance) have express fixed-media provisions, and Places does not: *(inference)* the absence of a carve-out where Google wrote one elsewhere is evidence, not silence.
+**One requirement leans against static documents specifically.** Reviews must give end users access to the source on Google Maps via `googleMapsUri` ([LSM-POLICY-24](#lsm-policy-24--every-displayed-review-and-photo-needs-author-attribution-and-a-live-link-to-the-source-on-google-maps)) — hard to satisfy in a printed page and impossible from a stale copy.
+
+Note also that some other Maps APIs (Solar, for instance) have express fixed-media provisions, and Places does not: *(inference)* the absence of a carve-out where Google wrote one elsewhere is evidence, not silence.
 
 **What would close it:** an express Places provision on fixed media, or counsel's judgement on a specific artifact and retention period.
 
@@ -707,9 +749,26 @@ Faced with [LSM-POLICY-06](#lsm-policy-06--the-default-rule-for-places-content-i
 4. **Keep an inventory.** Every table and every object-storage prefix holding Google-derived content, with its source API, whether it is raw or derived, and which purge covers it. A new table storing Google content and not listed in the inventory is the failure mode; a written inventory is what makes that visible in review.
 5. **Attribute at the page level, not per field.** One mark inside the container that holds the Google content ([LSM-POLICY-23](#lsm-policy-23--attribution-must-sit-in-the-same-visual-container-and-google-content-must-be-visually-distinguished)), with your computed metrics visually separated so they are not attributed to Google.
 
-Three positions inside that pattern are ours and are not settled by any text quoted above, and we mark them as open rather than solved: keeping the customer's own identity fields (name, address, coordinates) beyond the window as **customer-asserted data** rather than Google content; retaining derived metrics against the GBP "cannot be … aggregated" wording ([LSM-POLICY-37](#lsm-policy-37--open--whether-the-30-day-gbp-cap-applies-to-a-merchants-own-data-under-their-own-oauth-grant)); and treating a generated report as a transient artifact ([LSM-POLICY-39](#lsm-policy-39--open--whether-places-content-in-a-generated-pdf-or-email-is-display-or-storage)).
+```mermaid
+flowchart TD
+  A["A Google-derived field, aged on its last refresh"] --> B{"Was it refreshed inside the window?"}
+  B -->|"Yes"| C["Current data, not a stale cache — serve it"]
+  B -->|"No"| D["Strip the Google-authored fields; keep the place ID, your derived values and anything the user wrote"]
+  D --> E["Render the stripped row as a real empty state: refresh to update"]
+  E --> F{"Is the table in the written inventory?"}
+  F -->|"Yes"| G["A purge already covers it"]
+  F -->|"No"| H["This is the failure mode — add it, with its source API and covering purge"]
+```
 
-There is a real cost to the pattern, and pretending otherwise would be dishonest: **you lose long-run history of Google-authored fields.** A competitor's review count eighteen months ago is not recoverable if you never stored it. Tools that show that history either have a licence that permits it, a reading of the terms different from ours, or an exposure. Which of the three is a question about that tool, not about this chapter.
+Three positions inside that pattern are ours and are not settled by any text quoted above, and we mark them as open rather than solved:
+
+- keeping the customer's own identity fields (name, address, coordinates) beyond the window as **customer-asserted data** rather than Google content;
+- retaining derived metrics against the GBP "cannot be … aggregated" wording ([LSM-POLICY-37](#lsm-policy-37--open--whether-the-30-day-gbp-cap-applies-to-a-merchants-own-data-under-their-own-oauth-grant));
+- and treating a generated report as a transient artifact ([LSM-POLICY-39](#lsm-policy-39--open--whether-places-content-in-a-generated-pdf-or-email-is-display-or-storage)).
+
+There is a real cost to the pattern, and pretending otherwise would be dishonest: **you lose long-run history of Google-authored fields.** A competitor's review count eighteen months ago is not recoverable if you never stored it.
+
+Tools that show that history either have a licence that permits it, a reading of the terms different from ours, or an exposure. Which of the three is a question about that tool, not about this chapter.
 
 If you need durable historical business attributes, the compliant routes are: data the merchant supplies or authorises about their own business, data from a third-party provider whose licence expressly permits storage, and your own measurements. Not the Places API.
 
