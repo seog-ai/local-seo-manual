@@ -30,7 +30,7 @@ Three rules govern what is here.
 
 Google prices Places API (New) by *field mask*, not by endpoint. Each field belongs to a tier — Essentials, Pro, Enterprise, Enterprise + Atmosphere — and a request is billed once, at the tier of the most expensive field it asked for. The number of fields is irrelevant. Thirty Pro fields plus one Enterprise field is an Enterprise request. One Enterprise field alone is the same Enterprise request.
 
-This is the single highest-leverage fact about the cost of local SEO tooling, and it is the reason two tools doing visibly identical work can have API bills two orders of magnitude apart.
+This is the fact that decides the cost of local-SEO tooling, and it is why two tools doing visibly identical work can differ in Google fees by more than a hundredfold — the arithmetic is in `LSM-PLACES-06`.
 
 **What to do instead:** Build a mask per use case, never one shared mask reused everywhere. Ask what the *answer* needs, then delete every field the answer does not use, then check which tier the survivors sit in.
 
@@ -53,9 +53,9 @@ This is the single highest-leverage fact about the cost of local SEO tooling, an
 
 Pro-tier and Essentials-tier rows for Place Details and Nearby Search are deliberately absent: they were not audited, and the SKU page is the authority for them.
 
-Two structural facts about the money that the table does not show. Volume tiers exist above 100,000 requests per month and the rate falls; every figure here is the top-of-list 0–100,000 rate, which is the one that applies to essentially every agency. And since March 2025 the free allowance is granted **per SKU per month** rather than as a flat monthly dollar credit, so "free tier" is now a different quantity for every row in that table.
+Two structural facts about the money that the table does not show. Volume tiers exist above 100,000 requests per month and the rate falls at each one; every figure here is the top-of-list 0–100,000 rate, which is the tier essentially every agency operates in. And since March 2025 the monthly free allowance is granted **per SKU** rather than as one flat dollar credit across the platform, so "free tier" is a different quantity for every row above — read the allowance off the same table as the price.
 
-**What to do instead:** Cost a workflow by counting *requests per SKU*, not requests. A hundred Place Details calls and a hundred Text Search calls differ by $1.50 at the Enterprise tier and by $3.50 if one of them drifts into Atmosphere.
+**What to do instead:** Cost a workflow by counting *requests per SKU*, not requests. A hundred Text Search Enterprise requests cost $3.50; a hundred Place Details Enterprise requests cost $2.00; a hundred Place Details Enterprise + Atmosphere requests cost $2.50. Same call count, three different bills.
 
 ### LSM-PLACES-03 · Which fields promote a Places request to which tier
 

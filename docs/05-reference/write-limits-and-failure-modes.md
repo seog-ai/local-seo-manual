@@ -28,7 +28,7 @@ Search this table by the string you actually saw.
 | `REVIEW_NOT_SYNCED` / no reply target | [LSM-REVIEWS-03](#lsm-reviews-03--only-reviews-read-through-the-owner-v4-path-are-replyable) |
 | Attribute you tried to clear is still set | [LSM-GBP-04](#lsm-gbp-04--attribute-ids-in-the-mask-but-absent-from-the-body-are-unset) |
 | Listing went "pending" after an edit | [LSM-GBP-08](#lsm-gbp-08--editing-name-category-or-address-can-force-re-verification) |
-| Photo uploaded, not visible yet | [LSM-GBP-12](#lsm-gbp-12--uploaded-photos-are-reviewed-before-they-appear-google-documents-2448-hours) |
+| Photo uploaded, not visible yet | [LSM-GBP-12](#lsm-gbp-12--uploaded-photos-are-reviewed-before-they-appear--google-documents-2448-hours) |
 
 ---
 

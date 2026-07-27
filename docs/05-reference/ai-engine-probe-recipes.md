@@ -240,9 +240,9 @@ The failure is silent. It inflates mention rate, inflates recommendation rate, a
 **Last verified:** 2026-07-02
 **Probe:** Run a probe pipeline with a provider credential missing. A well-built harness falls back to a deterministic fixture so the interface stays functional; check whether that fixture row is distinguishable from a live one after the fact.
 
-This is the most expensive self-inflicted wound in AI-visibility tooling, and it was a real incident in the implementation described here: a page reported "test data" for weeks because stored rows predated a working provider configuration and nothing in the schema separated them from live rows.
+This is the most expensive self-inflicted wound in AI-visibility tooling, and it was a real incident in the implementation described here. Fixture rows *were* flagged — and the headline rates counted them anyway, alongside live rows created before the provider was correctly configured. Rows written on 2026-06-11 were still shaping the numbers on 2026-07-02, when the complaint arrived as "this page only shows test data".
 
-Two rules make it survivable. Flag the row at write time with which provider actually produced it, and exclude flagged rows from every rate rather than filtering them in the UI. A batch action that runs "all engines" must run only the *configured* ones, or every batch mints new fixture rows that look like coverage.
+Flagging is necessary and not sufficient. Three rules make it survivable: flag the row at write time with which provider actually produced it; exclude flagged rows from every *rate*, not merely badge them in the interface; and make a batch action run only the engines that are actually configured, or every batch mints fresh fixture rows that look like coverage.
 
 **What to do instead / consequence:** Any AI-visibility number you inherit from another tool is unverified until you can see which runs were live. Ask how unconfigured engines behave. "It shows sample data" and "it shows sample data that is counted" are different products.
 
@@ -301,7 +301,7 @@ The consequence of that guard is a real gap, and it should be stated rather than
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-02
-**Probe:** Same grounded Vertex call, twice, on a Gemini 2.5 model. At `maxOutputTokens: 700` the response comes back with `finishReason: MAX_TOKENS`, a truncated answer of roughly sixty characters, and **zero** `groundingChunks`. At `maxOutputTokens: 2000` the same call returns `STOP`, a full answer, and real cited domains — six in the run that established this.
+**Probe:** Same grounded Vertex call, twice, on a Gemini 2.5 model. At `maxOutputTokens: 700` the response comes back with `finishReason: MAX_TOKENS`, a truncated answer of about 66 characters, and **zero** `groundingChunks`. At `maxOutputTokens: 2000` the same call returns `STOP`, a full answer, and real cited domains — six in the run that established this.
 
 Gemini 2.5 models spend output tokens on internal reasoning *before* the visible reply. A budget sized for the answer alone is consumed before the answer starts, and the grounding metadata never materialises. Nothing in the response says "your budget was too small" in a form a naive client checks — you get a 200 with an empty source list.
 
