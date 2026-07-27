@@ -135,4 +135,15 @@ npm run build    # catches broken links; `dev` does not
 
 ## License
 
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — read it, share it, teach from it, translate it. Attribution appreciated.
+Two licenses, because this repository holds two different kinds of thing.
+
+| What | License | Covers |
+| --- | --- | --- |
+| **The manual** | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — [`LICENSE`](LICENSE) | `docs/`, and the images in `static/` |
+| **The tooling** | MIT — [`LICENSE-CODE`](LICENSE-CODE) | `scripts/`, the Docusaurus config, theme CSS, Dockerfile |
+
+Read it, share it, teach from it, translate it, quote it in a client deliverable. Attribution appreciated — a link to [learn.seog.ai](https://learn.seog.ai) is plenty.
+
+The split exists because Creative Commons explicitly recommends against using CC licenses for software, and a repository that publishes a chapter on reading licenses carefully should not fumble its own.
+
+One thing CC BY does **not** cover: the screenshots contain Google Maps and Places content, which remains subject to Google's own terms. Keep the attribution visible if you reuse them — [Storing Google data legally](docs/05-reference/storing-google-data-legally.md) explains why.
