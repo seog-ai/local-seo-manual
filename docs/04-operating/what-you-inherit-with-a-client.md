@@ -36,6 +36,10 @@ Most onboarding damage happens in the first ten minutes, when someone says "just
 
 Primary ownership is the version to refuse: a primary owner cannot simply be removed, ownership has to be transferred first, and offboarding becomes a task only you can perform. If a client's previous agency holds primary ownership, that is the first item of work.
 
+![A business overview before any Google connection, showing a "Connect to unlock your owner data" panel beside a list headed "What you unlock": 18 months of performance, full review history, one-click profile fixes, publish Google posts, search-keyword history](../../static/img/screens/overview.png)
+
+*Read the "What you unlock" list as a duty list rather than a feature list. Every line is something you gain the power to see or change on someone else's business — eighteen months of their performance data, their complete review history, the ability to write to their live listing. The four obligations in the next section all follow from that panel, and they attach the moment it is dismissed.*
+
 Then there is a clock:
 
 > "When you become a profile owner or manager, you have to wait 7 days before you can manage some profile features."

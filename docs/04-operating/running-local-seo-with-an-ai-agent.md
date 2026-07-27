@@ -32,7 +32,13 @@ Two facts about the credential matter more than the setup steps.
 
 **It is shown once, revocable, and attributable.** The plaintext appears at creation and never again — treat it like an SSH key, never in a repo, never in a pasted transcript. Each token carries a name and a last-used stamp, revoking takes effect immediately, and every agent action lands in the same usage record as a click in the app. That last part is what makes an agent-run practice auditable at all.
 
-Mint one at **Settings → Agents & MCP** (`/settings/agents`), then register the server. In Claude Code:
+Mint one at **Settings → Agents & MCP** (`/settings/agents`), then register the server.
+
+![The Agents and MCP settings tab: the connection endpoint with a copy button, an empty token list reading "No tokens yet", a token-name field with a Generate token button, and setup instructions offering a Claude Code plugin or any MCP client](../../static/img/screens/settings-agents.png)
+
+*The whole surface on one screen. The endpoint at the top is what your client connects to; the token you generate below it is the only credential involved. Note the two setup paths — a Claude Code plugin, or the raw endpoint for any MCP client — and the line that matters most: the token is **shown only once**. The endpoint here reads `localhost` because the capture is from a local instance; yours will show the real host.*
+
+In Claude Code:
 
 ```bash
 claude mcp add --transport http seog https://api.seog.ai/mcp \

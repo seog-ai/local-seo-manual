@@ -43,6 +43,10 @@ So **there is no data moat in local SEO.** You cannot accumulate one, you cannot
 
 ## Labour is the business
 
+![A portfolio dashboard showing one business with summary tiles for count, average profile score, average rating and total reviews, and a card carrying a miniature nine-point rank grid and a "Connect Google for views & calls" prompt](../../static/img/screens/dashboard.png)
+
+*This is what a book of clients looks like from above, and it is the right picture to hold while reading the numbers below. The tiles and the mini-grid cost you nothing to look at — they are stored readings. What costs is the sentence a human has to write underneath each card once a month, and the phone call that follows it.*
+
 The hours below are an example, built from this manual's own lab times — honest for someone who has done each thing a few times. Your first month will be slower; measure your own in Lab 30.2.
 
 | Phase | Work | Example hours |

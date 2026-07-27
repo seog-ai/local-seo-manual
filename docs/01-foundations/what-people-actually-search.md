@@ -62,13 +62,33 @@ Make the prediction explicitly: it tells you which instrument to point at each k
 
 Suggestions — in the lab below, and in every tool built the same way — are permutations of three strings the tool already holds: your category, your city, and your business name. `category`, `category near me`, `category in city`, `best category`, `top category`, `best category in city`, `your name`, `your name near me`. That skeleton is topped up with head terms lifted from Google's autocomplete, seeded with the same category. Then a fixed priority ordering decides which ones you see first.
 
-Look at what that machinery can and cannot produce.
+![The Rankings page with an AI keyword-suggestion panel reading "Get AI-suggested keywords to track, based on your business and area", beside a Suggest keywords button](../../static/img/screens/rankings-tracked.png)
 
-Category permutations are discovery queries by construction. The superlative permutations — `best category`, `top category` — technically land in comparison, and you will see a few of them, but they are superlatives applied to *your category name*. They are not `cheapest emergency locksmith glasgow` and they are certainly not `Acme vs Riverside`. The vocabulary a comparison query actually uses is the customer's, and the generator has never met a customer.
+*Read the panel's own description literally: suggestions are built "based on your business and area". That is the entire seed — and it is why the list that comes back can only ever contain one of the four intents.*
 
-The branded rows are the giveaway. A generator will happily emit your bare business name and `your name near me`, because it has your name. Neither is a trust query and neither is a logistics query. To produce `is Acme Plumbing legit` you need a worry; to produce `does Acme deliver` you need a fact about the business. Neither a worry nor a fact is in the seed, so neither comes out. The intents are missing not because they were filtered but because nothing in the input could generate them.
+Now look at what that machinery can and cannot produce.
 
-The autocomplete top-up is worth understanding, because it is not what it sounds like. It is a *places* autocomplete: it returns predicted businesses near you, and the tool lifts the leading words of each name as a keyword idea. That is closer to a list of your neighbours' trading names than to a record of what people type. Useful vocabulary; still category vocabulary.
+| The generator emits | Because the seed contains | Intent it lands in |
+| --- | --- | --- |
+| `category`, `category near me`, `category in city` | your category and your city | **Discovery** |
+| `best category`, `top category in city` | the same two, plus a superlative | Nominally comparison — see below |
+| `your name`, `your name near me` | your business name | Neither trust nor logistics |
+| Leading words of nearby business names | a places autocomplete top-up | Discovery vocabulary |
+
+| It cannot produce | Because it would need | Intent lost |
+| --- | --- | --- |
+| `cheapest emergency locksmith glasgow` | the customer's words, not your category name | **Comparison** |
+| `Acme vs Riverside` | a rival the customer has in mind | **Comparison** |
+| `is Acme Plumbing legit` | a *worry* | **Trust** |
+| `does Acme deliver on Sundays` | a *fact about the business* | **Logistics** |
+
+Two of those rows deserve a sentence each.
+
+**The superlatives are a fringe, not a category.** `best category` is a superlative applied to *your own category name*. The vocabulary a real comparison query uses is the customer's, and the generator has never met a customer.
+
+**The autocomplete top-up is not what it sounds like.** It is a *places* autocomplete — it returns predicted businesses near you, and the tool lifts the leading words of each name. That is closer to a list of your neighbours' trading names than to a record of what anyone typed. Useful vocabulary; still category vocabulary.
+
+The missing intents are missing not because they were filtered out, but because **nothing in the input could have generated them.**
 
 So a suggestion list is, in practice, a discovery list with a superlative fringe *(inference — read off the construction of the suggestion generator, not from testing every tool on the market)*.
 

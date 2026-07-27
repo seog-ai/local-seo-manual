@@ -24,6 +24,21 @@ Policy changes are *findable* but nobody pushes them to you. The two new review-
 
 Behaviour changes are what everybody writes about and nobody can establish. Positions move constantly, because rank is a sort over near-tied scores and a sort is discontinuous ([reading a geo-grid without fooling yourself](../03-advanced/reading-a-geo-grid.md)). One account's movement is never evidence of a system change, and almost every "I've noticed Google is now…" post was built from exactly that.
 
+```mermaid
+flowchart LR
+  A["Something looks different"] --> B{"Which kind of change?"}
+  B -->|"Wording on a help page"| P["POLICY: diff the page you cite"]
+  B -->|"A call fails, a field vanishes"| C["CAPABILITY: re-probe, record the error"]
+  B -->|"The numbers moved"| D["BEHAVIOUR: check your own series"]
+  P --> R["Dated entry in your change log"]
+  C --> R
+  D --> E{"Bigger than your noise floor?"}
+  E -->|"No"| F["Not a finding. Say nothing."]
+  E -->|"Yes"| R
+```
+
+*The third branch is the one that catches people. Everything on the behaviour path has to clear your own measurement noise before it is allowed to become a claim — and most of it never does.*
+
 Dated entries for the first two kinds — what changed, when, and what it broke — are in [the local search changelog](../05-reference/local-search-changelog.md). Read it before you accept anyone's account of what Google "just" did.
 
 ## Documentation is a lagging indicator

@@ -43,6 +43,10 @@ The instrument clock is the one people forget. Nothing re-measures on its own �
 
 Open the overview and **Action plan — your next steps** is already sitting there, ordered, with impact labels and point values. It is a useful starting object and it is not a schedule. Knowing how it was built is what lets you overrule it with confidence.
 
+![The Action plan panel on a business overview: a 36% profile score, seven recommended steps, each row carrying a point value such as "+10 pts" and an impact tag such as "High impact", with a "show me how to do it manually" option beneath each](../../static/img/screens/owner-overview.png)
+
+*A real plan on a real profile, and a good illustration of the argument. Seven rows, each with a point value and a tier. **Add a phone number** and **Get more reviews** both read "+10 pts, High impact" — one takes ninety seconds and the other takes a quarter. The list is arithmetic on completeness weights; the sequencing is your job, and it is the job you are paid for.*
+
 It merges three sources into one deduplicated list: the failing checks from the weighted profile audit, the AI-readiness factors the audit does *not* already cover, and any stored website and listing fixes. Only two AI factors survive that deduplication — *Get a fresh review* and *Reply to your reviews* — because everything else in the readiness rubric is already an audit check. And when the audit's own review-volume check has also failed, *Get a fresh review* is folded into it rather than listed twice, so you often see just the one row.
 
 The sort is impact tier first, then recoverable profile-score points, then alphabetical by title. For a profile-audit row the impact tier is a pure function of that check's weight — 9 or more is **High impact**, 6 to 8 is **Medium**, below 6 is **Low**. The other two sources are tiered on their own scales rather than on audit weight: the AI-visibility rows from the readiness factor's weight, the website and listing rows from the stored fix's priority. So a tier compares rows within a source, and comparing tiers *across* sources means less than the shared label suggests.

@@ -323,6 +323,28 @@ const steps = {
     await shot(page, 'profile');
     await shot(page, 'profile-full', { full: true });
   },
+  /** Part IV screens: the agent surface, the portfolio dashboard, settings. */
+  async agents(page) {
+    await page.goto(`${APP}/settings/agents`, { waitUntil: 'domcontentloaded' });
+    await settle(page, 2000);
+    await shot(page, 'settings-agents');
+    await shot(page, 'settings-agents-full', { full: true });
+  },
+  async dashboard(page) {
+    await page.goto(`${APP}/dashboard`, { waitUntil: 'domcontentloaded' });
+    await settle(page, 2500);
+    await shot(page, 'dashboard');
+  },
+  async reports(page, id) {
+    await page.goto(`${APP}/b/${id}/overview`, { waitUntil: 'domcontentloaded' });
+    await settle(page, 2500);
+    const reports = page.locator('main').getByRole('button', { name: /Reports/i }).first();
+    if (await reports.isVisible().catch(() => false)) {
+      await reports.click().catch(() => {});
+      await settle(page, 2000);
+      await shot(page, 'reports');
+    }
+  },
   async businesses(page) {
     await page.goto(`${APP}/businesses`, { waitUntil: 'domcontentloaded' });
     await settle(page, 1500);

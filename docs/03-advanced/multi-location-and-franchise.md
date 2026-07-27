@@ -50,13 +50,30 @@ This is a measurement problem before it is a strategy problem.
 
 At any given searcher coordinate, the map pack very rarely shows two branches of the same brand for the same query *(inference — a consistent observation across grid scans and query samples; Google has never published how affiliated listings are filtered)*. Whatever the mechanism, the consequence is firm: **where two of your branches both compete, one branch's win is the other's absence.** Zero-sum between them, and not zero-sum against an unaffiliated rival.
 
-Geography decides how much overlap exists, and a geo-grid measures it directly. Grid points sit a mile apart, so reach follows detail level: a 3×3 covers roughly two miles across, a 5×5 roughly four, a 7×7 roughly six. Two branches four miles apart share most of a Standard scan's area and all of a Detailed one's. Run the same keyword at the same level from each branch: in the overlap, the branch that is green is why the other is grey. [Reading a geo-grid](./reading-a-geo-grid.md) is the prerequisite for that picture.
+Geography decides how much overlap exists, and a geo-grid measures it directly. Grid points sit a mile apart, so reach follows detail level:
 
-The metric that survives scrutiny is **union coverage**: across both grids, in how many distinct places does *some* branch of yours reach the top three? Adding the two percentages double-counts the overlap and can exceed the territory you hold. Reporting the sum is the most common way a multi-location rankings report inflates itself.
+| Preset | Covers roughly | Two branches 4 miles apart |
+| --- | --- | --- |
+| 3×3 | 2 miles across | no shared area |
+| 5×5 | 4 miles across | **most** of the scan overlaps |
+| 7×7 | 6 miles across | **all** of it overlaps |
 
-Then the instrument trap. Competitor discovery drops two things from its candidate list: the business you ran it from, and anything you already track. Your other branch is neither — a separate profile, not yet on the list — so it comes back as an ordinary candidate and can be tracked like any rival. Sometimes that is exactly what you want — it keeps the overlap visible. It is also how a client report ends up naming a business's own branch as its top competitor. Decide deliberately, and label it either way.
+Run the same keyword at the same level from each branch. In the overlap, the branch that is green is why the other is grey. [Reading a geo-grid](./reading-a-geo-grid.md) is the prerequisite for that picture.
 
-One caution on the response. The instinct on finding cannibalisation is to de-optimise a branch — spending effort to be less visible — and it is almost always wrong. The productive responses are differentiation (distinct primary categories where the businesses genuinely differ, distinct services, distinct landing pages) and accepting that two branches inside one catchment share it. Total overlap is a property of the estate, not something a profile can fix.
+**Report union coverage, never the sum.** Across both grids, in how many *distinct* places does some branch of yours reach the top three? Adding the two percentages double-counts the overlap and can exceed the territory you actually hold — which is the most common way a multi-location rankings report inflates itself.
+
+### The instrument trap
+
+Competitor discovery drops two things from its candidate list: the business you ran it from, and anything you already track. **Your other branch is neither.** It is a separate profile, not yet on the list, so it comes back as an ordinary candidate and can be tracked like any rival.
+
+Sometimes that is exactly what you want — it keeps the overlap visible. It is also how a client report ends up naming a business's own branch as its top competitor. Decide deliberately, and label it either way.
+
+### Do not de-optimise a branch
+
+The instinct on finding cannibalisation is to spend effort making one branch *less* visible. It is almost always wrong. The productive responses are:
+
+- **Differentiate** — distinct primary categories where the businesses genuinely differ, distinct services, distinct landing pages.
+- **Accept the overlap** — two branches inside one catchment share it, and that is a property of the estate rather than something a profile can fix.
 
 ## Per-location pages
 

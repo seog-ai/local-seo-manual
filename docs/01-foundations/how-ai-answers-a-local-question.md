@@ -32,9 +32,19 @@ In an AI answer, location is a *string*. It arrives one of three ways: you typed
 
 Two things follow.
 
-First, the proximity decay that governs a geo-grid is much weaker inside an AI answer. The only published measurement points the same way — Local Falcon's whitepaper on AI Overviews (published May 2025, roughly 60,000 simulated searches) reported a correlation of 0.001 between distance and position *inside* a Google AI Overview: effectively none. It is quoted with its limits in [the three forces](./relevance-distance-prominence.md). Note what it does *not* say: the same study reported that proximity still moved whether a business was included at all, which is a different question from where it sits once it is. The explanation above is ours *(inference — the mechanism is our reading; we have not run a controlled test)*. Either way the consequence is the same: a business that vanishes from the map pack two miles from its door can still be named by an assistant, because the assistant is not measuring the two miles.
+**First: proximity decay is much weaker inside an AI answer than inside a map pack.**
 
-Second, **location handling in these products is young and changes under you.** ChatGPT did not share device location with its search tool by default; OpenAI shipped an opt-in location-sharing setting on 26 March 2026 — off by default, managed under Settings → Data Controls. That single change invalidates much of the published "we tested AI local search" writing, because earlier tests were measuring an engine that often had no reliable idea where the user was standing. Check anything you read on this subject against its publication date before acting on it. *(Stated as of 2026-07; re-check before citing.)*
+The only published measurement points the same way. Local Falcon's whitepaper on AI Overviews (May 2025, roughly 60,000 simulated searches) reported a correlation of **0.001** between distance and position *inside* an AI Overview — effectively none. It is quoted with its limits in [the three forces](./relevance-distance-prominence.md).
+
+Note carefully what that does *not* say. The same study found proximity still moved **whether a business was included at all** — a different question from where it sits once it is in. And the mechanism offered above is ours *(inference — our reading, not a controlled test)*.
+
+> The consequence holds either way: a business that vanishes from the map pack two miles from its door can still be named by an assistant, because the assistant is not measuring the two miles.
+
+**Second: location handling in these products is young, and it changes under you.**
+
+ChatGPT did not share device location with its search tool by default. OpenAI shipped an opt-in location-sharing setting on 26 March 2026 — off by default, under Settings → Data Controls.
+
+That single change invalidates much of the published "we tested AI local search" writing, because those earlier tests were measuring an engine that often had no reliable idea where the user was standing. **Check anything you read on this subject against its publication date before you act on it.** *(Stated as of 2026-07; re-check before citing.)*
 
 This is why probe design matters. To learn what an assistant says about your market, the question must carry the location explicitly and must not name the business:
 

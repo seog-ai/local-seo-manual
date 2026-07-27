@@ -47,11 +47,22 @@ SEOG's rank paths do not ask for that option — deliberately, because a result 
 
 So step 3 never succeeds. The identifier is not in the list at any coordinate, ever, for any query. Twenty-five points, twenty-five misses, twenty-five grey pins.
 
-Read what that does to the two summary figures from [the previous chapter](./reading-a-geo-grid.md). Average rank is computed over the points where you appeared — there are none, so the figure is undefined and the app prints a dash. Top-3 coverage counts every point in its denominator, so it prints a confident **0%**. Same empty measurement, two very different-looking outputs, one of which reads as a devastating result rather than as no result.
+Now read what that does to the two summary figures from [the previous chapter](./reading-a-geo-grid.md). They are computed on different denominators, so the *same* empty measurement comes out looking two completely different ways.
 
-The trap is that this looks exactly like a genuinely uncompetitive storefront: a new coffee shop with four reviews also produces twenty-five grey pins. No statistic computed from the grid separates the two cases. Only the classification does — which is why Lab 19.1 comes before every other measurement decision for this kind of client.
+| Figure | Denominator | What it prints on an all-grey scan | How it reads |
+| --- | --- | --- | --- |
+| **Avg rank** | points where you appeared — **none** | undefined, so the app shows a dash | Honestly: "no data" |
+| **Top-3 coverage** | **all** points scanned | a confident **0%** | Dishonestly: "you are nowhere" |
 
-And the cruellest part: the business is not invisible to *customers*. A hidden-address plumber appears in the pack on a phone, gets called, takes the job. The absence is in the data layer rank tools read, not in the result the searcher sees. You are watching a real business win real work through an instrument that reports nothing.
+One of those is a measurement. The other is a division by an empty set wearing a percentage sign.
+
+**The trap is that this looks exactly like a genuinely uncompetitive storefront.** A new coffee shop with four reviews also produces twenty-five grey pins. No statistic computed from the grid separates the two cases — only the classification does, which is why Lab 19.1 comes before every other measurement decision for this kind of client.
+
+And the cruellest part:
+
+> The business is not invisible to *customers*. A hidden-address plumber appears in the pack on a phone, gets called, and takes the job. The absence is in the data layer rank tools read, not in the result the searcher sees.
+
+You are watching a real business win real work through an instrument that reports nothing.
 
 ## The second wall: there is no centre to draw from
 
