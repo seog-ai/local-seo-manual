@@ -53,6 +53,10 @@ Attributes are the tickable facts — wheelchair-accessible entrance, accepts ca
 
 **The available set is decided by your category, not by you.** Google publishes a different attribute catalog for a dental clinic than for a taqueria, and for some categories a whole group is simply empty. If your category offers no accessibility attributes, no amount of effort adds one, and any audit demanding you "add accessibility info" is asking for the impossible. SEOG reads the live catalog for your category and marks the group not applicable when it comes back empty — you will see that in Lab 9.1 if your category is one of them.
 
+![Profile page for a coffee shop, showing the Attributes on Google card: takeout, dine-in, restroom, good for kids, dog-friendly, breakfast, wheelchair entrance, card payments, contactless, paid street parking](../../static/img/screens/profile.png)
+
+*Look at the Attributes on Google row. The owner chose which of those chips to tick; they did not choose which chips exist. Every one comes from Google's catalog for Coffee Shop, and a dental clinic's card has a different set.*
+
 **Removing an attribute is a different operation from leaving it out.** The underlying write distinguishes "this is false" from "no value set", and clearing one requires naming it explicitly. In practice: untick and re-apply, rather than applying a shorter list and assuming the rest vanished. The mechanism is in [Write limits and failure modes](../05-reference/write-limits-and-failure-modes.md).
 
 ## The sensitivity taxonomy
