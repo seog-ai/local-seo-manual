@@ -36,9 +36,9 @@ Two things make that surface less tidy than the word "decay" suggests.
 
 A geo-grid measures rank the way you would measure temperature across a room: sample it at many points and look at the field. Pick a centre, lay out an n×n lattice of points at a fixed spacing, run the *same* search from each point as though a person were standing there, and record where the business appears. What you get back is n² positions with coordinates attached. Drawn on a map with colour, that is a heatmap.
 
-![A real 3x3 geo-grid scan over Helsinki: nine amber rank pins carrying positions between 4 and 7, with avg rank 4.7 and top-3 coverage 0% below the map](../../static/img/screens/geo-grid.png)
+![A real 3x3 geo-grid scan over Helsinki: nine amber rank pins carrying positions between 4 and 7, with avg rank 4.8 and top-3 coverage 0% below the map](../../static/img/screens/geo-grid.png)
 
-*A real scan, not an illustration: nine live searches for one keyword, one from each point. The pins read #4, #5 and #7 depending on where the searcher stands — same keyword, same minute, different answers. The two figures under the map compress all nine into `Avg rank 4.7` and `Top-3 coverage 0%`, which is where the trouble in the rest of this chapter starts. Note what those two numbers do and do not agree about: the business was **found at every single point**, and still scores zero on the headline coverage metric, because "top 3" is a threshold and #4 is on the wrong side of it.*
+*A real scan, not an illustration: nine live searches for one keyword, one from each point. The pins read #4, #5 and #7 depending on where the searcher stands — same keyword, same minute, different answers. The two figures under the map compress all nine into `Avg rank 4.8` and `Top-3 coverage 0%`, which is where the trouble in the rest of this chapter starts. Note what those two numbers do and do not agree about: the business was **found at every single point**, and still scores zero on the headline coverage metric, because "top 3" is a threshold and #4 is on the wrong side of it.*
 
 Doing it by hand is possible and instructive — an incognito window plus a location override in your browser's dev tools produces one grid point at a time, and twenty-five of them is an afternoon. See [Doing all of this without SEOG](../99-appendix/doing-it-without-seog.md).
 

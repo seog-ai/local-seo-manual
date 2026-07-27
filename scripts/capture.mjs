@@ -257,13 +257,24 @@ const steps = {
     // Check now to map your real positions"), and the search-volume panel carries
     // a "Test data" badge. Neither may be published as a measurement, so run a
     // real scan and only capture after it returns.
+    // Running a scan is OPT-IN (MANUAL_RESCAN=1), for a reason that cost us twice:
+    // every scan returns different positions, and chapters quote those positions
+    // in their captions. A routine re-capture that silently re-scans invalidates
+    // every caption citing "Avg rank X" without anyone noticing. When there is a
+    // stored scan, re-use it; only scan when there is nothing to show or when the
+    // caller explicitly asks for fresh numbers — and then re-read the captions.
     const gridCard = main.locator('div').filter({ hasText: /Geographic visibility/ }).last();
+    const hasStoredScan = await gridCard.getByText(/Avg rank/i).first().isVisible().catch(() => false);
     const checkNow = gridCard.getByRole('button', { name: /Check now/ }).first();
-    if (await checkNow.isVisible().catch(() => false)) {
+
+    if ((process.env.MANUAL_RESCAN === '1' || !hasStoredScan) && (await checkNow.isVisible().catch(() => false))) {
+      console.log('  running a live grid scan — CAPTIONS QUOTING RANK NUMBERS WILL NEED RE-READING');
       await checkNow.click();
       // 9 live Google searches, one per grid point.
       await page.waitForTimeout(45000);
       await settle(page, 5000);
+    } else {
+      console.log('  re-using the stored scan (set MANUAL_RESCAN=1 to measure again)');
     }
     await shot(page, 'geo-grid', { full: true });
 
