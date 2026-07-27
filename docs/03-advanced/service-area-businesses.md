@@ -2,12 +2,13 @@
 title: Why map-pack rank tracking cannot work for service-area businesses
 sidebar_position: 2
 description: A hidden-address business has no public coordinate, so a rank map cannot be measured for it — in this tool or any other. What to measure instead.
-draft: true
 ---
 
 # Why map-pack rank tracking cannot work for service-area businesses
 
-> **Unpublished draft.** This chapter names a defect in SEOG's own screens: on a hidden-address business a geo-grid scan returns an all-grey map, and the app then advises growing reviews — advice that cannot help, because the absence is structural rather than competitive. It does not publish until the product says so on screen. It sits in the repository meanwhile so the argument is readable and arguable while that is fixed.
+> **This chapter indicts the tool it is written in.** On a hidden-address business, SEOG will let you run a geo-grid scan, return an all-grey map, and then advise growing reviews — advice that cannot help, because the absence is structural rather than competitive. At the time of writing the product does not say so on screen. We are publishing the explanation before the fix because a practitioner being sold this metric today needs it today, and because a manual that only criticises other people's tools is marketing.
+>
+> If you are reading this after the in-product warning ships, the argument below still stands: the limitation is Google's, not ours, and no vendor can engineer around it.
 
 A plumber with no shopfront can sit in the map pack all day and be permanently invisible to the instruments that measure the map pack. Not ranking badly — unmeasurable. Every grid you run for that business comes back the same colour whatever you do to the profile, and the two numbers underneath it are arithmetic on an empty set.
 

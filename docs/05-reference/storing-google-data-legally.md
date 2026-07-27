@@ -2,12 +2,15 @@
 title: Storing Google data legally
 sidebar_position: 4
 description: What Google's published terms permit you to store from the Places and Business Profile APIs — every clause quoted verbatim with its section number and revision date, plus the questions the documents do not answer.
-draft: true
 ---
 
-> **Unpublished draft.** This chapter is held back from publication pending review by counsel.
-> It is in the repository so it can be read and corrected, not because it is finished. Do not
-> cite it as settled, and do not treat any entry in it as advice.
+> **Not legal advice, and not reviewed by a lawyer.** This chapter is written by engineers who
+> read the published documents and quoted them verbatim with their revision dates. It has not
+> been through counsel. Treat every entry as a starting point for your own review, not as a
+> settled position — and where an entry is marked `OPEN QUESTION`, that is exactly what it is.
+>
+> Corrections are welcome and wanted: [open an issue](https://github.com/seog-ai/local-seo-manual/issues)
+> with the clause and its date.
 
 # Storing Google data legally
 

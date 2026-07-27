@@ -24,8 +24,13 @@ const OUT = join(HERE, '..', 'static', 'img', 'screens');
 const VID = join(HERE, '..', 'static', 'video');
 
 const APP = process.env.MANUAL_APP_URL ?? 'http://localhost:3005';
-const EMAIL = process.env.MANUAL_EMAIL ?? 'manual.demo@seog.ai';
-const PASSWORD = process.env.MANUAL_PASSWORD ?? 'ManualDemo2026';
+const EMAIL = process.env.MANUAL_EMAIL;
+const PASSWORD = process.env.MANUAL_PASSWORD;
+
+if (!EMAIL || !PASSWORD) {
+  console.error('Set MANUAL_EMAIL and MANUAL_PASSWORD (see scripts/README.md).');
+  process.exit(1);
+}
 
 const only = process.argv.slice(2);
 const want = (step) => only.length === 0 || only.includes(step);

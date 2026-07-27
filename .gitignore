@@ -22,3 +22,4 @@ yarn-error.log*
 
 # capture tooling symlinks (playwright is installed outside the repo — see scripts/README.md)
 /node_modules
+/scripts/node_modules
