@@ -24,9 +24,15 @@ A healthy profile shows the destination. A broken one shows the work. Most "what
 
    `geo-grid.png` is a **real** scan: the capture script presses **Check now** and waits for the nine live searches, because the grid that renders on first view is an *"Example scan"*.
 
-2. **Keep Google's attribution in frame.** Any screenshot showing Places or Maps content must retain the visible "Map data ©2026 Google" / Google logo. Do not crop it out. This is a licence requirement, and the manual has a chapter about it.
+2. **No credit prices, ever — including in images.** The prose says only "free" or "paid" (STYLE.md, *Never publish*), and the screenshots must not undercut it. `capture.mjs` masks them at render time: price pills keep the pill and show `·· CR` instead of a number, and the sidebar balance is hidden outright.
 
-3. **Caption what the reader should look at.** A screenshot with no caption is decoration. Say what to notice.
+   The pill is deliberately kept rather than removed, because *"the exact price is shown on the button before you commit"* is itself something the manual teaches. The number is what must not be published.
+
+   An earlier version of this file wrongly said in-app button prices were acceptable in screenshots. They are not. It shipped 24 images publishing our per-action prices and account balance while the prose carefully refused to — and prices change, so a screenshot price becomes a false claim on its own. `billing.png` was deleted for the same reason: it was the entire plan price sheet, at local dev prices that do not match production.
+
+3. **Keep Google's attribution in frame.** Any screenshot showing Places or Maps content must retain the visible "Map data ©2026 Google" / Google logo. Do not crop it out. This is a licence requirement, and the manual has a chapter about it.
+
+4. **Caption what the reader should look at.** A screenshot with no caption is decoration. Say what to notice.
 
 ## Inventory
 
@@ -36,11 +42,10 @@ A healthy profile shows the destination. A broken one shows the work. Most "what
 | `onboarding-step1.png` | Onboarding step 1 of 3 — role picker |
 | `onboarding-step2.png` | Onboarding step 2 — goals |
 | `onboarding-step3.png` | Onboarding step 3 — attribution, finish/skip |
-| `add-business-empty.png` | **Add a business**, empty. Note the price on the button and the service-area import path below it |
+| `add-business-empty.png` | **Add a business**, empty. Note that the Search button carries a price pill at all (masked to `·· CR`), and the service-area import path below it |
 | `add-business-typed.png` | Query typed, Search button now enabled |
 | `add-business-results.png` | Google Places results to pick from |
 | `businesses.png` | The **My Businesses** portfolio |
-| `billing.png` | Billing / plan page |
 
 ### Public view — Kaffa Roastery
 | File | Shows |
@@ -48,11 +53,12 @@ A healthy profile shows the destination. A broken one shows the work. Most "what
 | `overview.png` | Business overview. The "Connect to unlock your owner data" panel, profile score 91%, rating 4.7 / 572 reviews, action plan |
 | `overview-full.png` | Same, whole page |
 | `rankings-empty.png` | Rankings before anything is tracked. **Sample rows — not real positions** |
-| `rankings-typed.png` | A keyword typed, with the price on the Track button |
+| `rankings-typed.png` | A keyword typed; the Track button carries a masked price pill |
 | `rankings-tracked.png` | A **real** tracked keyword after its first live check |
 | `rankings-tracked-full.png` | Same, whole page |
 | `keyword-detail.png` | Keyword detail panel — position, competitors beating you, history |
-| `geo-grid.png` | **Real 3×3 grid scan.** Top 3 across 100% of the area, top 20 at 9 of 9 points, averaging #2.4, on a real Helsinki map with rank-coloured pins |
+| `geo-grid-compare.png` | The per-pin diff between the last two scans — `=` unchanged, a signed number where the position moved, with an Improved / Dropped / No-change legend. The manual's own evidence about re-measurement |
+| `geo-grid.png` | **Real 3×3 grid scan.** "Limited visibility — top 3 in 0% of the area": found at 9 of 9 points, averaging #4.7, on a real Helsinki map with rank-coloured pins. An earlier scan of the SAME nine points hours before read #2.4 and 100% top-3 — do not describe this image from memory, read it |
 | `reviews.png`, `reviews-full.png` | Reviews list, public view (recent sample only) |
 | `competitors.png` | Competitors page |
 | `ai-visibility.png`, `ai-visibility-full.png` | AI visibility page |

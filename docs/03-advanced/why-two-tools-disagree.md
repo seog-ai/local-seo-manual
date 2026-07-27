@@ -128,9 +128,9 @@ That ends the meeting. "Their tool is inaccurate" starts an argument you cannot 
 4. On the map, find the **centre** pin — the one on the blue dot marking your business. Record its position and the time.
 5. Write the two readings as a pair with their conditions: same keyword, same coordinate, minutes apart, radii of three miles and one mile.
 
-![A completed 3x3 geo-grid scan over Helsinki, pins reading between 1 and 3](../../static/img/screens/geo-grid.png)
+![A completed 3x3 geo-grid scan over Helsinki, pins reading between 4 and 7](../../static/img/screens/geo-grid.png)
 
-*A real scan: nine live searches for one keyword, one per point. The same business reads #1, #2 and #3 depending only on which coordinate the search ran from. Here the centre pin agrees with the single check at the top of the page — the outer pins are the disagreement, and they are all correct. One detail in the legend is worth knowing before a client asks: it offers a **20+** band, and that band can never fill. The scan reads twenty deep, so a point either has a position of twenty or better or it is **Not found**. A colour with nothing that can land in it is the ruler's end stop, drawn.*
+*A real scan: nine live searches for one keyword, one per point. The same business reads #4, #5 and #7 depending only on which coordinate the search ran from — one keyword, one minute, three answers, none of them wrong. One detail in the legend is worth knowing before a client asks: it offers a **20+** band, and that band can never fill. The scan reads twenty deep, so a point either has a position of twenty or better or it is **Not found**. A colour with nothing that can land in it is the ruler's end stop, drawn.*
 
 **What good looks like.** Two numbers you can defend individually and would never average. If they match, that is a real result too — record it and repeat on a second keyword before concluding anything.
 

@@ -25,9 +25,15 @@ The consequence is the mechanism by which grids flatter people, and it deserves 
 
 A third figure makes the other two safe. The plain-language paragraph above the map states it: *"You appear in the top 20 at 9 of 25 points."* That is the **found rate**, the denominator information the average threw away. Quote it every time, first.
 
-![A finished 3x3 geo-grid scan over Helsinki: nine green rank pins on the map, the summary line above it, and Avg rank 2.4 with Top-3 coverage 100% below](../../static/img/screens/geo-grid.png)
+![A finished 3x3 geo-grid scan over Helsinki: nine amber rank pins reading between 4 and 7, the summary line above the map, and Avg rank 4.7 with Top-3 coverage 0% below it](../../static/img/screens/geo-grid.png)
 
-*The whole argument on one screen. This scan is real — **Check now** at the Quick preset ran nine live searches, one per point, and each pin carries the position that point returned. Read the plain-language line first (top 20 at **9 of 9** points), then **Avg rank 2.4**, computed over found pins only, then **Top-3 coverage 100%**, computed over all nine. Here the two agree, because nothing is missing; the legend's grey **Not found** band is what pulls them apart. (The search-volume card higher up the page carries a **Test data** badge — those figures are placeholders, not market data.)*
+*The whole argument on one screen, and a real scan — **Check now** at the Quick preset ran nine live searches, one per point, and each pin carries the position that point returned.*
+
+*Read the three figures in order and watch them disagree. The plain-language line first: found in the top 20 at **9 of 9** points — perfect coverage, nothing missing. Then **Avg rank 4.7**, which sounds like a mid-table result. Then **Top-3 coverage 0%**, which sounds like a catastrophe. All three describe the same nine numbers.*
+
+*They diverge because they answer different questions. The average is computed over found pins and is blind to thresholds. Top-3 coverage is computed over all nine and is nothing **but** a threshold — #4 scores exactly the same as #40. A business one position outside the pack everywhere reads as a total failure on one metric and an unremarkable middle on another, and neither is lying. This is why the found rate goes first, every time.*
+
+*(The search-volume card higher up the page carries a **Test data** badge — those figures are placeholders, not market data.)*
 
 ## Rank is ordinal, and an average of ordinals is not a distance
 

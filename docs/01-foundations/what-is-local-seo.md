@@ -22,7 +22,7 @@ The consequence is the single most important structural fact in this discipline:
 
 ![A 3x3 grid scan over Helsinki for one keyword, with a rank number on the pin at each of the nine measurement points](../../static/img/screens/geo-grid.png)
 
-*One keyword, nine live searches run from nine coordinates around Helsinki — a real scan, not a mock-up. The pins read #1 near the shop and #2 or #3 a couple of kilometres out, which is exactly what a single "we rank #1" hides. Ignore the search-volume figure further up that page: it carries a **Test data** badge, because no volume provider was configured on the machine that took the capture.*
+*One keyword, nine live searches run from nine coordinates around Helsinki — a real scan, not a mock-up. The pins read #4 in some places and #5 or #7 in others, a couple of kilometres apart, which is exactly what a single "we rank #4" would hide. Ignore the search-volume figure further up that page: it carries a **Test data** badge, because no volume provider was configured on the machine that took the capture.*
 
 Local intent is also a spectrum rather than a switch. `emergency plumber` is almost pure local intent. `how do I stop a dripping tap` is almost none. `best plumber in Bristol for a boiler swap` is both, which is exactly why it gets answered by a different machine than the first one does.
 

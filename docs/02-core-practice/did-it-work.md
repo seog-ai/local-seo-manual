@@ -90,9 +90,11 @@ And never assemble the before-picture *after* the change: the baseline you froze
 4. Write down the summary strip — *N improved · N newly ranked · N dropped · N lost* — and check every point on the trend line above the map was run at the same preset.
 5. Write one sentence naming *where* the movement is, not just how much: "the three eastern pins improved; the centre is unchanged."
 
-![Geographic visibility panel: the Quick/Standard/Detailed preset row, then a 3x3 grid scan on a Helsinki map with nine green rank pins, and below the map a line reading avg rank 2.4, top-3 coverage 100%](../../static/img/screens/geo-grid.png)
+![Compare mode on a geo-grid: the same nine points shown as movement markers — equals signs where the position did not change and a signed number where it did — with a legend reading Improved / new, Dropped / lost, No change](../../static/img/screens/geo-grid-compare.png)
 
-*A finished scan, and a real one: nine live searches, one per pin, averaging #2.4 with top 3 at every point. The preset row above the map — **Quick**, **Standard**, **Detailed** — is the setting that must match your baseline, and the **Checked …** stamp tells you which reading you are looking at. (The search-volume card higher up carries a **Test data** badge: no volume provider was configured for this capture, so those figures are placeholders, not measurement.)*
+*Compare mode, on a real pair of scans. The pins stop showing positions and start showing **movement**: `=` where the point did not move, a signed number where it did, and the legend underneath tells you which is which. This is the view that answers the question in the chapter title, because a single scan cannot — it shows you where you are, never whether you got there.*
+
+*Read the trend strip above the map too. It is a running record of every scan at this keyword, and it is the honest check on your own claim: one big move followed by two flat re-measurements means something different from three steady steps, even when the endpoints match.*
 
 **What good looks like.** Four movement counts plus a geographic statement. Lifting your weak edge and lifting your strong centre are different results, and only the map tells them apart.
 

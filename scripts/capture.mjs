@@ -32,12 +32,34 @@ const want = (step) => only.length === 0 || only.includes(step);
 
 for (const d of [OUT, VID]) if (!existsSync(d)) mkdirSync(d, { recursive: true });
 
-/** Chrome/Next dev affordances that must never appear in a published screenshot. */
+/**
+ * Things that must never appear in a published screenshot.
+ *
+ * Dev affordances are obvious. The important part is the PRICING MASK: the manual
+ * is a public artifact and its prose deliberately says only "free" or "paid",
+ * never a credit number (see STYLE.md, "Never publish"). Screenshots that show
+ * `Search 5 CR` and a `20,084 Credits` balance publish exactly what the prose
+ * refuses to — and they go stale the moment a price changes, turning an
+ * illustration into a false claim.
+ *
+ * The price PILL is kept and only its number replaced, because "the exact price
+ * is shown on the button before you commit" is itself a lesson the manual teaches.
+ * The account balance is hidden outright; it teaches nothing.
+ */
 const HIDE_CSS = `
   [data-nextjs-dev-tools-button], nextjs-portal, #__next-dev-tools-indicator,
   [aria-label="Open Next.js Dev Tools"], [data-nextjs-toast] { display: none !important; }
   /* freeze spinners so screenshots are deterministic */
   *, *::before, *::after { animation-play-state: paused !important; }
+
+  /* CrPrice renders <span title="Costs N credits">N CR</span> */
+  span[title^="Costs "] { font-size: 0 !important; }
+  span[title^="Costs "]::after {
+    content: '\\00B7\\00B7 CR';
+    font-size: 10px !important; font-weight: 600; line-height: 1;
+  }
+  /* SidebarCredits: balance + plan badge */
+  [aria-label="Credit balance"] { visibility: hidden !important; }
 `;
 
 /**
@@ -147,6 +169,28 @@ async function addBusiness(page, query) {
 }
 
 const steps = {
+  /**
+   * Captures the add-business screens WITHOUT importing. The full import path only
+   * runs when the account has no business (see main), but these three screens still
+   * need re-capturing whenever the masking or the UI changes.
+   */
+  async addbusiness(page) {
+    await page.goto(`${APP}/businesses/new`, { waitUntil: 'domcontentloaded' });
+    await settle(page, 1200);
+    await shot(page, 'add-business-empty');
+
+    const main = page.locator('main');
+    const box = main.getByPlaceholder(/Bella/i).first();
+    await box.click();
+    await box.fill(process.env.MANUAL_QUERY ?? 'Kaffa Roastery Helsinki');
+    await page.waitForTimeout(500);
+    await shot(page, 'add-business-typed');
+
+    const searchBtn = main.getByRole('button', { name: /^Search/ }).first();
+    if (await searchBtn.isEnabled().catch(() => false)) await searchBtn.click();
+    await settle(page, 3500);
+    await shot(page, 'add-business-results');
+  },
   async overview(page, id) {
     await page.goto(`${APP}/b/${id}/overview`, { waitUntil: 'domcontentloaded' });
     await settle(page, 2500);
@@ -173,15 +217,25 @@ const steps = {
     const main = page.locator('main');
 
     const kw = process.env.MANUAL_KEYWORD ?? 'specialty coffee helsinki';
+    // Uniqueness is (business, keyword, location, language), so re-adding an
+    // already-tracked keyword is rejected. Re-running the capture must not depend
+    // on starting from an empty tracker.
+    const already = await main.getByText(kw, { exact: false }).first().isVisible().catch(() => false);
+
     const box = main.getByPlaceholder(/Track a keyword/i).first();
     await box.click();
     await box.fill(kw);
     await page.waitForTimeout(400);
     await shot(page, 'rankings-typed');
 
-    await main.getByRole('button', { name: /^Track/ }).first().click();
-    // The add runs a first rank check inline against live Google — give it room.
-    await page.waitForTimeout(20000);
+    if (already) {
+      console.log(`  (already tracking "${kw}" — skipping the add)`);
+      await box.fill('');
+    } else {
+      await main.getByRole('button', { name: /^Track/ }).first().click();
+      // The add runs a first rank check inline against live Google — give it room.
+      await page.waitForTimeout(20000);
+    }
     await settle(page, 3000);
     await shot(page, 'rankings-tracked');
     await shot(page, 'rankings-tracked-full', { full: true });
@@ -207,6 +261,18 @@ const steps = {
       await settle(page, 5000);
     }
     await shot(page, 'geo-grid', { full: true });
+
+    // The per-pin diff between the last two scans. This is the manual's own
+    // evidence for test-retest instability: the same nine points, hours apart,
+    // can move a business from top-3 everywhere to top-3 nowhere. Only renders
+    // once at least two scans are stored.
+    const compare = main.getByRole('button', { name: /Compare with previous scan/i }).first()
+      .or(main.getByText(/Compare with previous scan/i).first());
+    if (await compare.isVisible().catch(() => false)) {
+      await compare.click().catch(() => {});
+      await settle(page, 3000);
+      await shot(page, 'geo-grid-compare', { full: true });
+    }
   },
   async reviews(page, id) {
     await page.goto(`${APP}/b/${id}/reviews`, { waitUntil: 'domcontentloaded' });
