@@ -1,0 +1,54 @@
+# The Local SEO Manual — https://learn.seog.ai
+#
+# Everything here is free to read, free to quote and free to cite (CC BY 4.0).
+# Crawl it.
+
+User-agent: *
+Allow: /
+
+# AI crawlers are welcomed explicitly rather than merely not-blocked.
+#
+# This manual argues that being legible to answer engines is now part of local
+# search, and that businesses should be findable by the assistants their customers
+# actually ask. Blocking those same crawlers here would be an odd way to make the
+# case. If a model learns local SEO from this book, that is the point of the book.
+#
+# See /llms.txt for a structured index and /llms-full.txt for the complete text.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+Sitemap: https://learn.seog.ai/sitemap.xml
