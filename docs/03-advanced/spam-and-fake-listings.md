@@ -104,6 +104,10 @@ So: **time-box it.** Pick a fixed budget — an hour a month is defensible — s
 4. Apply the name test to every name: the exact string, in quotation marks, in a web search. Mark each *plausible*, *stuffed* or *unknown*.
 5. Write the count: of the listings recorded above you on your main keyword, how many survive?
 
+![Keyword detail page: the business at #1, with two rivals listed at positions 2 and 3 under a heading reading Who ranks above you](../../static/img/screens/keyword-detail.png)
+
+*Step 2, in one screen. This business ranks **#1** for the keyword, and the card headed "Who ranks above you" still lists two names — because what is stored is the top three with your own listing removed. Read the positions, not the heading, before either name goes in a client deck. (Two panels on this screen are illustrative, and the app says so: the grid is labelled "Example scan", and the search-volume figure carries a "Test data" badge. Neither is a measurement.)*
+
 **What good looks like.** A verdict beside each name and a count at the bottom. In most markets the honest answer is "all of them — they are simply better", worth writing down because it closes the question.
 
 **If it went wrong.** No **Who ranks above you** card means that keyword has no stored check yet. A rival you know exists is missing: only the top few results are recorded per check, so absence is not evidence.

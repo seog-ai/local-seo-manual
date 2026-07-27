@@ -137,6 +137,10 @@ The website audit needs no Google connection — it runs against your public sit
 >
 > You need: a business added (Lab 0.3) with a website on its Google profile. No owner access required.
 
+![The Website page on an owner-connected business before the audit runs — Connect Search Console card, then the Website support card in its example state](../../static/img/screens/owner-website.png)
+
+*Where this lab starts. There is no **AI agent readiness** card on the page yet — it exists only after a run, below the PageSpeed card, so an empty page is not a missing feature. The checklist you can see here is the card's **Example**: placeholder rows, not this site's result.*
+
 1. Open `/b/{businessId}/website`.
 2. Press **Check now**. The top-right button refreshes the whole page (site audit plus Search Console performance); the **Check now** on the **Website support** card lower down re-runs the site audit only. Either produces the agent-readiness data, and both show their price before you confirm. If you ran [Lab 13.1](./the-website-half.md) recently, skip this step — the stored result already carries the card, and reading it is free.
 3. Scroll to the **AI agent readiness** card, directly below the PageSpeed card.

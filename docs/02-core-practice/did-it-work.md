@@ -34,6 +34,10 @@ Name, category and address are a different class of field — they can put a lis
 
 **Tier 2 — did the scored state move?** The profile score and the AI-readiness score are computed from data *already stored*, so they move when the stored copy updates — after a refresh, not after your edit. If a rewritten description does not move the score, either the edit has not published, the field already passed that check, or the check is not weighted the way you assumed. All three are informative; none are about ranking.
 
+![Owner overview: profile score 36% in red, "Not synced yet" beside a Refresh all button, and a seven-step action plan with per-step point values](../../static/img/screens/owner-overview.png)
+
+*Tier 2 in one screen. The score is computed from the stored copy of the profile — note **Not synced yet** beside **Refresh all**: an edit you made ten minutes ago cannot be in this number until you re-pull. Each action-plan step carries the points it is worth, so you know in advance what the score should do if that fix lands.*
+
 **Tier 3 — did visibility move?** Slow, noisy, and the only tier a client cares about. Nobody outside Google knows how long a local change takes to affect ranking, and anyone offering a confident number is guessing. A working rule, marked as what it is: *(inference)* profile and review changes tend to show over weeks rather than days, so re-scan fortnightly at most and judge on three readings, not two — see [Building a tracked set that tells the truth](./choosing-what-to-track.md).
 
 ## Google's owner numbers, and their three distortions
@@ -81,6 +85,10 @@ And never assemble the before-picture *after* the change: the baseline you froze
 3. When the new map appears, click **Compare with previous scan**. Pins recolour by movement: green improved or newly ranked, red dropped or lost, grey unchanged.
 4. Write down the summary strip — *N improved · N newly ranked · N dropped · N lost* — and check every point on the trend line above the map was run at the same preset.
 5. Write one sentence naming *where* the movement is, not just how much: "the three eastern pins improved; the centre is unchanged."
+
+![Geographic visibility panel: a 3x3 grid scan on a Helsinki map with nine green rank pins, avg rank 2.4, top-3 coverage 100%, above the Quick/Standard/Detailed preset row](../../static/img/screens/geo-grid.png)
+
+*A finished scan, and a real one: nine live searches, one per pin, averaging #2.4 with top 3 at every point. The preset row above the map — **Quick**, **Standard**, **Detailed** — is the setting that must match your baseline, and the **Checked …** stamp tells you which reading you are looking at. (The search-volume card higher up carries a **Test data** badge: no volume provider was configured for this capture, so those figures are placeholders, not measurement.)*
 
 **What good looks like.** Four movement counts plus a geographic statement. Lifting your weak edge and lifting your strong centre are different results, and only the map tells them apart.
 
@@ -153,6 +161,10 @@ And never assemble the before-picture *after* the change: the baseline you froze
 **Reading the average without the found rate.** Carried forward from [Rank is a map, not a number](../01-foundations/rank-is-a-map-not-a-number.md), and worse in comparisons: average rank counts only points where you appear, so *vanishing from your worst pins improves it*. A rising average with a falling found rate is a decline wearing a smile.
 
 **Treating one re-scan as a result.** A line fits any two points. Three readings are the minimum at which a trend exists, and the reproducibility of a single scan is itself an open question — [Part III has you measure it](../03-advanced/reading-a-geo-grid.md).
+
+![Keyword detail after a single check: position #1 labelled "First check", the message "Run a few checks to see the trend", and a grid below banner-labelled "Example scan"](../../static/img/screens/keyword-detail.png)
+
+*The app declines to draw a trend from one reading too: **— First check** under the position, and **Run a few checks to see the trend** where the line would be. Two panels here are illustrative, not measured — the grid still carries its **Example scan** banner ("pick a detail level above and press Check now to map your real positions"), and the volume card carries a **Test data** badge.*
 
 **Calling a screenshot of an AI answer "improved AI visibility".** Assistant answers vary run to run for the same prompt, so only a rate over a window of runs compares to an earlier rate — see [Does the AI recommend this business?](../03-advanced/ai-visibility.md).
 

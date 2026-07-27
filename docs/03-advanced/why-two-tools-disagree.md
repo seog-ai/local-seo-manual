@@ -46,6 +46,10 @@ An origin gets set three ways: explicit coordinates, a place name the tool geoco
 
 Here the origin is never left to that fallback: it is the keyword's own search point when you set one, the business coordinates otherwise. But note the trap. **A keyword with no location chip is not a keyword with no location.** It is measured from the business's front door — the most flattering point on the map, the one coordinate where your distance term is zero and every rival's is not. An unstated default is still a condition; write it down as if it were a setting, because it is one.
 
+![The Rankings add-keyword form with Search from, Language and Radius all left at their defaults](../../static/img/screens/rankings-tracked.png)
+
+*Three conditions, all unset and all still in force: **Search from** falls back to the business address, **Language** to the provider's default, **Radius** to three miles. The fields do not say "none" — they name what was chosen for you. Note the "Checked 2h ago" stamp in the corner: that is condition six.*
+
 ## Radius is two different words
 
 Two tools both say "5 km radius" and mean opposite things.
@@ -123,6 +127,10 @@ That ends the meeting. "Their tool is inaccurate" starts an argument you cannot 
 3. Scroll to **Geographic visibility**, leave the level on **Quick** (`3×3 · ~2 mi`), read the price on **Check now**, then press it.
 4. On the map, find the **centre** pin — the one on the blue dot marking your business. Record its position and the time.
 5. Write the two readings as a pair with their conditions: same keyword, same coordinate, minutes apart, radii of three miles and one mile.
+
+![A completed 3x3 geo-grid scan over Helsinki, pins reading between 1 and 3](../../static/img/screens/geo-grid.png)
+
+*A real scan: nine live searches for one keyword, one per point. The same business reads #1, #2 and #3 depending only on which coordinate the search ran from. Here the centre pin agrees with the single check at the top of the page — the outer pins are the disagreement, and they are all correct. The legend doubles as the ruler's end stop: past twenty there is no position, only "Not found".*
 
 **What good looks like.** Two numbers you can defend individually and would never average. If they match, that is a real result too — record it and repeat on a second keyword before concluding anything.
 
