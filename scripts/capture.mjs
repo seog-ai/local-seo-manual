@@ -74,12 +74,37 @@ const HIDE_CSS = `
  */
 const PREFIX = process.env.MANUAL_PREFIX ?? '';
 
+/**
+ * `full` captures the <main> ELEMENT, not the full page.
+ *
+ * A `fullPage: true` screenshot of this app is unusable: the sidebar and top bar
+ * are `position: fixed`, so they render at their VIEWPORT offset — which lands
+ * them a third of the way down a tall capture, floating over the content, with a
+ * blank void above them. It reads as a broken image, and several shipped that way.
+ *
+ * Scoping the shot to <main> drops the fixed chrome entirely and yields a clean
+ * tall column of the actual content, which is what a manual wants anyway.
+ */
 async function shot(page, name, { full = false } = {}) {
   await page.addStyleTag({ content: HIDE_CSS }).catch(() => {});
   await page.waitForTimeout(600);
   const path = join(OUT, `${PREFIX}${name}.png`);
-  await page.screenshot({ path, fullPage: full });
-  console.log(`  ✓ ${name}.png${full ? ' (full page)' : ''}`);
+  const main = page.locator('main').first();
+  if (full && (await main.count()) > 0) {
+    // An element screenshot captures that element's REGION of the rendered page,
+    // so anything fixed or sticky still paints over it — the app's top bar
+    // otherwise lands as a stray band of breadcrumb + search across the middle
+    // of a tall capture. Hide the shell chrome for the shot, then restore it.
+    const hide = await page.addStyleTag({
+      content: 'header, [role="banner"], aside, nav[class*="sidebar"] { display: none !important; }',
+    });
+    await page.waitForTimeout(250);
+    await main.screenshot({ path });
+    await hide.evaluate((el) => el.remove()).catch(() => {});
+  } else {
+    await page.screenshot({ path });
+  }
+  console.log(`  ✓ ${name}.png${full ? ' (main element)' : ''}`);
   return path;
 }
 
@@ -263,11 +288,15 @@ const steps = {
     // every caption citing "Avg rank X" without anyone noticing. When there is a
     // stored scan, re-use it; only scan when there is nothing to show or when the
     // caller explicitly asks for fresh numbers — and then re-read the captions.
+    // STRICTLY opt-in. An earlier version also scanned when it could not detect a
+    // stored scan, and its detection was unreliable — it re-measured on five
+    // consecutive runs, and every one of them silently falsified the chapter
+    // captions that quote "Avg rank X" and "Top-3 coverage Y%". Defaulting to
+    // "do not measure" is the only safe default when prose depends on the output.
     const gridCard = main.locator('div').filter({ hasText: /Geographic visibility/ }).last();
-    const hasStoredScan = await gridCard.getByText(/Avg rank/i).first().isVisible().catch(() => false);
     const checkNow = gridCard.getByRole('button', { name: /Check now/ }).first();
 
-    if ((process.env.MANUAL_RESCAN === '1' || !hasStoredScan) && (await checkNow.isVisible().catch(() => false))) {
+    if (process.env.MANUAL_RESCAN === '1' && (await checkNow.isVisible().catch(() => false))) {
       console.log('  running a live grid scan — CAPTIONS QUOTING RANK NUMBERS WILL NEED RE-READING');
       await checkNow.click();
       // 9 live Google searches, one per grid point.

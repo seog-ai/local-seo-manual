@@ -25,13 +25,17 @@ The consequence is the mechanism by which grids flatter people, and it deserves 
 
 A third figure makes the other two safe. The plain-language paragraph above the map states it: *"You appear in the top 20 at 9 of 25 points."* That is the **found rate**, the denominator information the average threw away. Quote it every time, first.
 
-![A finished 3x3 geo-grid scan over Helsinki: nine amber rank pins reading between 4 and 7, the summary line above the map, and Avg rank 4.8 with Top-3 coverage 0% below it](../../static/img/screens/geo-grid.png)
+![A finished 3x3 geo-grid scan over Helsinki with the summary line above the map, Avg rank 2.8 and Top-3 coverage 67% below it, and a trend strip showing five scans reading 100%, 0%, 0%, 67% and 67%](../../static/img/screens/geo-grid.png)
 
 *The whole argument on one screen, and a real scan — **Check now** at the Quick preset ran nine live searches, one per point, and each pin carries the position that point returned.*
 
-*Read the three figures in order and watch them disagree. The plain-language line first: found in the top 20 at **9 of 9** points — perfect coverage, nothing missing. Then **Avg rank 4.8**, which sounds like a mid-table result. Then **Top-3 coverage 0%**, which sounds like a catastrophe. All three describe the same nine numbers.*
+*Read the figures in order. The plain-language line first: found in the top 20 at **9 of 9** points. Then **Avg rank 2.8**, computed only over the pins where the business appeared. Then **Top-3 coverage 67%**, computed over all nine. Three numbers, one set of nine measurements.*
 
-*They diverge because they answer different questions. The average is computed over found pins and is blind to thresholds. Top-3 coverage is computed over all nine and is nothing **but** a threshold — #4 scores exactly the same as #40. A business one position outside the pack everywhere reads as a total failure on one metric and an unremarkable middle on another, and neither is lying. This is why the found rate goes first, every time.*
+*Now read the trend strip above the map, because it is the more important object on this screen. It plots **five scans of these same nine points, taken across a single day**: 100%, 0%, 0%, 67%, 67%. No profile edit, no new review, no competitor move — the business did nothing at all between them. The header even prints a verdict on it: **-33 pts**.*
+
+*Any two of those five could be presented as a quarter's work. Take the third and the fourth and you have "top-3 coverage up 67 points". Take the first and the second and you have a catastrophe to pin on an algorithm update. Both are honest arithmetic on real measurements. Both are worthless.*
+
+*This is not a defect in one vendor's tool — it is what sampling a discontinuous sort looks like. It is also why the rest of this chapter exists, and why Lab 18.2 makes you measure your own noise floor before you report a single movement.*
 
 *(The search-volume card higher up the page carries a **Test data** badge — those figures are placeholders, not market data.)*
 
