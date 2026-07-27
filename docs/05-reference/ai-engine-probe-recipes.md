@@ -8,44 +8,44 @@ description: Reproducible recipes for testing whether an AI engine recommends a 
 
 Entries for constructing, running and recording a probe that asks an AI engine a local question and records whether a business is named. Each entry stands alone.
 
-Scope: assistant-style engines reached through a vendor API (Google's Gemini with search grounding, OpenAI's Responses API with the `web_search` tool, Anthropic's Messages API with the server-side web-search tool). Out of scope: capturing a Google SERP AI Overview, which is a different surface measured a different way — see [LSM-AI-23](#lsm-ai-23--an-assistant-probe-cannot-tell-you-whether-google-rendered-an-ai-overview).
+Scope: assistant-style engines reached through a vendor API (Google's Gemini with search grounding, OpenAI's Responses API with the `web_search` tool, Anthropic's Messages API with the server-side web-search tool). Out of scope: capturing a Google SERP AI Overview, which is a different surface measured a different way — see [LSM-AI-33](#lsm-ai-33--an-assistant-probe-cannot-tell-you-whether-google-rendered-an-ai-overview).
 
-The record format these recipes produce is specified in [the AI visibility record schema](../99-appendix/ai-visibility-record-schema.md). Verdict vocabulary is defined in [how to read this reference](./how-to-read-this-reference.md).
+Where an entry cites a working implementation, that is SEOG's; every probe below runs against the vendor APIs directly and needs no tooling from anyone. The record format these recipes produce is specified in [the AI visibility record schema](../99-appendix/ai-visibility-record-schema.md). Verdict vocabulary is defined in [how to read this reference](./how-to-read-this-reference.md).
 
 | ID | Claim | Verdict |
 | --- | --- | --- |
-| [LSM-AI-01](#lsm-ai-01--an-assistant-api-has-no-location-parameter--the-coordinate-goes-in-the-prompt-text) | An assistant API has no location parameter — the coordinate goes in the prompt text | WORKS |
-| [LSM-AI-02](#lsm-ai-02--the-default-probe-point-is-the-businesss-own-coordinates-which-is-the-most-flattering-point-available) | The default probe point is the business's own coordinates, the most flattering point available | WORKS |
-| [LSM-AI-03](#lsm-ai-03--a-prompt-that-names-the-business-cannot-measure-whether-the-business-is-recommended) | A prompt that names the business cannot measure whether it is recommended | NEVER WORKED |
-| [LSM-AI-04](#lsm-ai-04--the-prompt-must-demand-named-businesses-and-sources-or-neither-axis-is-measurable) | The prompt must demand named businesses and sources, or neither axis is measurable | WORKS |
-| [LSM-AI-05](#lsm-ai-05--whether-moving-the-coordinate-moves-an-assistants-answer-is-unestablished) | Whether moving the coordinate moves an assistant's answer is unestablished | OPEN QUESTION |
-| [LSM-AI-06](#lsm-ai-06--one-run-is-a-sample-not-a-measurement) | One run is a sample, not a measurement | WORKS |
-| [LSM-AI-07](#lsm-ai-07--report-rates-over-a-rolling-window-per-keywordengine-not-the-latest-answer) | Report rates over a rolling window per keyword×engine, not the latest answer | WORKS |
-| [LSM-AI-08](#lsm-ai-08--a-consistency-figure-requires-at-least-two-runs-in-a-cell-single-run-cells-must-be-excluded) | A consistency figure requires ≥2 runs in a cell; single-run cells must be excluded | WORKS |
-| [LSM-AI-09](#lsm-ai-09--refusals-and-aggregator-punts-must-leave-the-denominator-not-count-as-a-miss) | Refusals and aggregator punts must leave the denominator, not count as a miss | WORKS |
-| [LSM-AI-10](#lsm-ai-10--mention-and-citation-are-independent-axes-and-must-be-recorded-separately) | Mention and citation are independent axes and must be recorded separately | WORKS |
-| [LSM-AI-11](#lsm-ai-11--a-boolean-is-not-a-re-auditable-record--store-the-answer-text-verbatim) | A boolean is not a re-auditable record — store the answer text verbatim | WORKS |
-| [LSM-AI-12](#lsm-ai-12--substring-self-matching-cannot-separate-you-from-a-similarly-named-business) | Substring self-matching cannot separate you from a similarly named business | NEVER WORKED |
-| [LSM-AI-13](#lsm-ai-13--fixture-answers-poison-every-rate-unless-they-are-flagged-at-write-time) | Fixture answers poison every rate unless they are flagged at write time | WORKS |
-| [LSM-AI-14](#lsm-ai-14--keyword-matching-misclassifies-hedged-mentions--stance-needs-a-judge-pass) | Keyword matching misclassifies hedged mentions — stance needs a judge pass | WORKS |
-| [LSM-AI-15](#lsm-ai-15--an-unparseable-judge-reply-must-store-null-never-a-false) | An unparseable judge reply must store null, never a false | WORKS |
-| [LSM-AI-16](#lsm-ai-16--gemini-grounding-chunks-carry-a-redirect-uri-not-the-publishers-url) | Gemini grounding chunks carry a redirect URI, not the publisher's URL | UNDOCUMENTED |
-| [LSM-AI-17](#lsm-ai-17--a-too-small-output-token-budget-returns-zero-grounding-metadata-not-an-error) | A too-small output-token budget returns zero grounding metadata, not an error | WORKS |
-| [LSM-AI-18](#lsm-ai-18--demanding-json-only-in-a-grounded-gemini-prompt-stops-the-search-tool-engaging) | Demanding JSON-only in a grounded Gemini prompt stops the search tool engaging | WORKS |
-| [LSM-AI-19](#lsm-ai-19--gemini-25-splits-a-reply-across-parts--reading-parts0-truncates-it) | Gemini 2.5 splits a reply across `parts` — reading `parts[0]` truncates it | WORKS |
-| [LSM-AI-20](#lsm-ai-20--claude-can-end-a-turn-with-stop_reason-refusal-which-is-a-null-not-a-miss) | Claude can end a turn with `stop_reason: refusal`, which is a null, not a miss | WORKS |
-| [LSM-AI-21](#lsm-ai-21--claudes-inline-citations-are-a-subset-of-the-pages-it-searched) | Claude's inline citations are a subset of the pages it searched | WORKS |
-| [LSM-AI-22](#lsm-ai-22--openai-returns-cited-sources-as-url_citation-annotations-and-bills-web-searches-apart-from-tokens) | OpenAI returns cited sources as `url_citation` annotations and bills web searches apart from tokens | WORKS |
-| [LSM-AI-23](#lsm-ai-23--an-assistant-probe-cannot-tell-you-whether-google-rendered-an-ai-overview) | An assistant probe cannot tell you whether Google rendered an AI Overview | NEVER WORKED |
-| [LSM-AI-24](#lsm-ai-24--the-api-is-not-the-consumer-app-and-the-size-of-the-gap-is-unmeasured) | The API is not the consumer app, and the size of the gap is unmeasured | OPEN QUESTION |
-| [LSM-AI-25](#lsm-ai-25--no-probe-in-this-chapter-establishes-why-an-engine-named-a-business) | No probe in this chapter establishes *why* an engine named a business | OPEN QUESTION |
-| [LSM-AI-26](#lsm-ai-26--probe-cost-multiplies-keywords--engines--runs) | Probe cost multiplies keywords × engines × runs | WORKS |
+| [LSM-AI-11](#lsm-ai-11--an-assistant-api-has-no-location-parameter--the-coordinate-goes-in-the-prompt-text) | An assistant API has no location parameter — the coordinate goes in the prompt text | WORKS |
+| [LSM-AI-12](#lsm-ai-12--the-default-probe-point-is-the-businesss-own-coordinates-which-is-the-most-flattering-point-available) | The default probe point is the business's own coordinates, the most flattering point available | WORKS |
+| [LSM-AI-13](#lsm-ai-13--a-prompt-that-names-the-business-cannot-measure-whether-the-business-is-recommended) | A prompt that names the business cannot measure whether it is recommended | NEVER WORKED |
+| [LSM-AI-14](#lsm-ai-14--the-prompt-must-demand-named-businesses-and-sources-or-neither-axis-is-measurable) | The prompt must demand named businesses and sources, or neither axis is measurable | WORKS |
+| [LSM-AI-15](#lsm-ai-15--whether-moving-the-coordinate-moves-an-assistants-answer-is-unestablished) | Whether moving the coordinate moves an assistant's answer is unestablished | OPEN QUESTION |
+| [LSM-AI-16](#lsm-ai-16--one-run-is-a-sample-not-a-measurement) | One run is a sample, not a measurement | WORKS |
+| [LSM-AI-17](#lsm-ai-17--report-rates-over-a-rolling-window-per-keywordengine-not-the-latest-answer) | Report rates over a rolling window per keyword×engine, not the latest answer | WORKS |
+| [LSM-AI-18](#lsm-ai-18--a-consistency-figure-requires-at-least-two-runs-in-a-cell-single-run-cells-must-be-excluded) | A consistency figure requires ≥2 runs in a cell; single-run cells must be excluded | WORKS |
+| [LSM-AI-19](#lsm-ai-19--refusals-and-aggregator-punts-must-leave-the-denominator-not-count-as-a-miss) | Refusals and aggregator punts must leave the denominator, not count as a miss | WORKS |
+| [LSM-AI-20](#lsm-ai-20--mention-and-citation-are-independent-axes-and-must-be-recorded-separately) | Mention and citation are independent axes and must be recorded separately | WORKS |
+| [LSM-AI-21](#lsm-ai-21--a-boolean-is-not-a-re-auditable-record--store-the-answer-text-verbatim) | A boolean is not a re-auditable record — store the answer text verbatim | WORKS |
+| [LSM-AI-22](#lsm-ai-22--substring-self-matching-cannot-separate-you-from-a-similarly-named-business) | Substring self-matching cannot separate you from a similarly named business | NEVER WORKED |
+| [LSM-AI-23](#lsm-ai-23--fixture-answers-poison-every-rate-unless-they-are-flagged-at-write-time) | Fixture answers poison every rate unless they are flagged at write time | WORKS |
+| [LSM-AI-24](#lsm-ai-24--keyword-matching-misclassifies-hedged-mentions--stance-needs-a-judge-pass) | Keyword matching misclassifies hedged mentions — stance needs a judge pass | WORKS |
+| [LSM-AI-25](#lsm-ai-25--an-unparseable-judge-reply-must-store-null-never-a-false) | An unparseable judge reply must store null, never a false | WORKS |
+| [LSM-AI-26](#lsm-ai-26--gemini-grounding-chunks-carry-a-redirect-uri-not-the-publishers-url) | Gemini grounding chunks carry a redirect URI, not the publisher's URL | UNDOCUMENTED |
+| [LSM-AI-27](#lsm-ai-27--a-too-small-output-token-budget-returns-zero-grounding-metadata-not-an-error) | A too-small output-token budget returns zero grounding metadata, not an error | WORKS |
+| [LSM-AI-28](#lsm-ai-28--demanding-json-only-in-a-grounded-gemini-prompt-stops-the-search-tool-engaging) | Demanding JSON-only in a grounded Gemini prompt stops the search tool engaging | WORKS |
+| [LSM-AI-29](#lsm-ai-29--gemini-25-splits-a-reply-across-parts--reading-parts0-truncates-it) | Gemini 2.5 splits a reply across `parts` — reading `parts[0]` truncates it | WORKS |
+| [LSM-AI-30](#lsm-ai-30--claude-can-end-a-turn-with-stop_reason-refusal-which-is-a-null-not-a-miss) | Claude can end a turn with `stop_reason: refusal`, which is a null, not a miss | WORKS |
+| [LSM-AI-31](#lsm-ai-31--claudes-inline-citations-are-a-subset-of-the-pages-it-searched) | Claude's inline citations are a subset of the pages it searched | WORKS |
+| [LSM-AI-32](#lsm-ai-32--openai-returns-cited-sources-as-url_citation-annotations-and-bills-web-searches-apart-from-tokens) | OpenAI returns cited sources as `url_citation` annotations and bills web searches apart from tokens | WORKS |
+| [LSM-AI-33](#lsm-ai-33--an-assistant-probe-cannot-tell-you-whether-google-rendered-an-ai-overview) | An assistant probe cannot tell you whether Google rendered an AI Overview | NEVER WORKED |
+| [LSM-AI-34](#lsm-ai-34--the-api-is-not-the-consumer-app-and-the-size-of-the-gap-is-unmeasured) | The API is not the consumer app, and the size of the gap is unmeasured | OPEN QUESTION |
+| [LSM-AI-35](#lsm-ai-35--no-probe-in-this-chapter-establishes-why-an-engine-named-a-business) | No probe in this chapter establishes *why* an engine named a business | OPEN QUESTION |
+| [LSM-AI-36](#lsm-ai-36--probe-cost-multiplies-keywords--engines--runs) | Probe cost multiplies keywords × engines × runs | WORKS |
 
 ---
 
 ## Prompt construction and geo-anchoring
 
-### LSM-AI-01 · An assistant API has no location parameter — the coordinate goes in the prompt text
+### LSM-AI-11 · An assistant API has no location parameter — the coordinate goes in the prompt text
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-27
@@ -53,7 +53,7 @@ The record format these recipes produce is specified in [the AI visibility recor
 
 Places-style APIs take a location bias as a first-class parameter. Assistant APIs do not. The only anchor available is prose inside the user turn, which means the coordinate is a *hint the model may honour, ignore, or reinterpret* — not a constraint on retrieval.
 
-The template used by the implementation this manual is written alongside, reproduced verbatim so you can run the same probe by hand:
+The template SEOG uses, reproduced verbatim so you can run the same probe by hand:
 
 ```text
 Someone near latitude {lat}, longitude {lng} asks: "{keyword}".
@@ -62,9 +62,9 @@ Recommend the specific local businesses that best answer this, by name, citing y
 
 The Google-engine variant differs by one clause — `asks Google's AI assistant:` — which is a framing device, not a routing instruction.
 
-**What to do instead / consequence:** Record the coordinate you asked *from* as an input to the run, never as a property of the result. "Gemini named the business when asked from 53.9006, 27.5590" is defensible. "The business is visible in AI answers at that location" is not.
+**What to do instead:** Record the coordinate you asked *from* as an input to the run, never as a property of the result. "Gemini named the business when asked from 53.9006, 27.5590" is defensible. "The business is visible in AI answers at that location" is not.
 
-### LSM-AI-02 · The default probe point is the business's own coordinates, which is the most flattering point available
+### LSM-AI-12 · The default probe point is the business's own coordinates, which is the most flattering point available
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-27
@@ -74,9 +74,9 @@ Every rank-tracking tool has to default the search point to something, and the b
 
 For the map pack this is a well-understood distortion. For an assistant probe the distortion is unproven but the asymmetry is the same: you chose the point, and you chose the one with your name on it.
 
-**What to do instead / consequence:** Probe from at least one point you did not choose for convenience — the edge of the claimed service area, or the centre of the town the client says they want customers from. Keep the two series separate. Never merge answers from different coordinates into one rate without saying so.
+**What to do instead:** Probe from at least one point you did not choose for convenience — the edge of the claimed service area, or the centre of the town the client says they want customers from. Keep the two series separate. Never merge answers from different coordinates into one rate without saying so.
 
-### LSM-AI-03 · A prompt that names the business cannot measure whether the business is recommended
+### LSM-AI-13 · A prompt that names the business cannot measure whether the business is recommended
 
 **Verdict:** NEVER WORKED
 **Last verified:** 2026-07-27
@@ -86,35 +86,35 @@ The mechanism is structural rather than empirical: a branded prompt puts the bus
 
 The same defect appears in a subtler form when the prompt names the *category* the way the business describes itself rather than the way a customer would ask. `artisanal third-wave espresso bar` is a branded prompt wearing a disguise.
 
-**What to do instead / consequence:** Probe prompts must be unbranded and customer-phrased. Branded prompts are a legitimate separate exercise — they measure whether the engine knows facts about a business it has been told exists — but their results must never be pooled with unbranded ones.
+**What to do instead:** Probe prompts must be unbranded and customer-phrased. Branded prompts are a legitimate separate exercise — they measure whether the engine knows facts about a business it has been told exists — but their results must never be pooled with unbranded ones.
 
-### LSM-AI-04 · The prompt must demand named businesses and sources, or neither axis is measurable
+### LSM-AI-14 · The prompt must demand named businesses and sources, or neither axis is measurable
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-27
 **Probe:** Ask one engine `what's the best coffee near {lat},{lng}?` and then the same question ending `Recommend the specific local businesses that best answer this, by name, citing your sources.` Compare how many extractable business names and source domains each answer contains.
 
-Without an explicit instruction to name businesses, assistants frequently answer with categories, criteria and advice ("look for somewhere that roasts in-house"). Without an explicit instruction to cite, several engines answer with no source list at all — which makes the citation axis ([LSM-AI-10](#lsm-ai-10--mention-and-citation-are-independent-axes-and-must-be-recorded-separately)) unmeasurable for that run rather than negative.
+Without an explicit instruction to name businesses, assistants frequently answer with categories, criteria and advice ("look for somewhere that roasts in-house"). Without an explicit instruction to cite, several engines answer with no source list at all — which makes the citation axis ([LSM-AI-20](#lsm-ai-20--mention-and-citation-are-independent-axes-and-must-be-recorded-separately)) unmeasurable for that run rather than negative.
 
-**What to do instead / consequence:** Fix the instruction clause once and never edit it again mid-series. A prompt change resets the series: results before and after are not comparable, and the change date belongs in the record.
+**What to do instead:** Fix the instruction clause once and never edit it again mid-series. A prompt change resets the series: results before and after are not comparable, and the change date belongs in the record.
 
-### LSM-AI-05 · Whether moving the coordinate moves an assistant's answer is unestablished
+### LSM-AI-15 · Whether moving the coordinate moves an assistant's answer is unestablished
 
 **Verdict:** OPEN QUESTION
 **Last verified:** 2026-07-27 — open, no controlled probe run
-**Probe (the one that would settle it):** Pick one keyword and one engine. Choose two coordinates far enough apart to sit in different local markets. Run N ≥ 10 fresh sessions at each. Compare mention rates *against the run-to-run noise floor established by [LSM-AI-06](#lsm-ai-06--one-run-is-a-sample-not-a-measurement)*, not against each other directly.
+**Probe (the one that would settle it):** Pick one keyword and one engine. Choose two coordinates far enough apart to sit in different local markets. Run N ≥ 10 fresh sessions at each. Compare mention rates *against the run-to-run noise floor established by [LSM-AI-16](#lsm-ai-16--one-run-is-a-sample-not-a-measurement)*, not against each other directly.
 
-For the map pack, proximity is one of the three documented ranking components and its effect is enormous at short range. For an assistant answering from a web-search tool, no such mechanism is documented, and the coordinate reaches the model only as prose ([LSM-AI-01](#lsm-ai-01--an-assistant-api-has-no-location-parameter--the-coordinate-goes-in-the-prompt-text)). Both "the coordinate is decisive" and "the coordinate is nearly inert" are consistent with what is publicly known.
+For the map pack, proximity is one of the three documented ranking components and its effect is enormous at short range. For an assistant answering from a web-search tool, no such mechanism is documented, and the coordinate reaches the model only as prose ([LSM-AI-11](#lsm-ai-11--an-assistant-api-has-no-location-parameter--the-coordinate-goes-in-the-prompt-text)). Both "the coordinate is decisive" and "the coordinate is nearly inert" are consistent with what is publicly known.
 
 The trap is that this question looks trivially answerable. Two runs at two coordinates will differ, because two runs at *one* coordinate differ. Anyone showing you an AI geo-grid without a stated noise floor has measured nothing.
 
-**What to do instead / consequence:** Do not sell AI-visibility-by-location as a finding. Report AI visibility per market you actually probed, with the run count attached, and treat the between-market comparison as a hypothesis until the noise floor is published alongside it.
+**What to do instead:** Do not sell AI-visibility-by-location as a finding. Report AI visibility per market you actually probed, with the run count attached, and treat the between-market comparison as a hypothesis until the noise floor is published alongside it.
 
 ---
 
 ## Sampling and run counts
 
-### LSM-AI-06 · One run is a sample, not a measurement
+### LSM-AI-16 · One run is a sample, not a measurement
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-02
@@ -124,9 +124,9 @@ Reruns of an identical local prompt routinely return different businesses, diffe
 
 This is why a screenshot of an assistant naming a client is worth nothing as evidence and quite a lot as a sales prop. It is a sample of one from a distribution nobody has characterised.
 
-**What to do instead / consequence:** Never publish, report or bill against a single run. Every claim is a rate over a stated number of runs, or it is an anecdote.
+**What to do instead:** Never publish, report or bill against a single run. Every claim is a rate over a stated number of runs, or it is an anecdote.
 
-### LSM-AI-07 · Report rates over a rolling window per keyword×engine, not the latest answer
+### LSM-AI-17 · Report rates over a rolling window per keyword×engine, not the latest answer
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-02
@@ -147,9 +147,9 @@ The metric definitions, so a competing implementation can be checked against the
 
 Note that top-pick rate and recommendation rate share a denominator, and average position does not. Mixing them is the most common arithmetic error in this area.
 
-**What to do instead / consequence:** Publish N with every rate. "Mentioned in 3 of 5 Gemini runs" is a measurement; "60% AI visibility" is a number with the measurement removed.
+**What to do instead:** Publish N with every rate. "Mentioned in 3 of 5 Gemini runs" is a measurement; "60% AI visibility" is a number with the measurement removed.
 
-### LSM-AI-08 · A consistency figure requires at least two runs in a cell; single-run cells must be excluded
+### LSM-AI-18 · A consistency figure requires at least two runs in a cell; single-run cells must be excluded
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-02
@@ -157,9 +157,9 @@ Note that top-pick rate and recommendation rate share a denominator, and average
 
 Consistency is the share of multi-run cells whose runs agree. A cell with one run agrees with itself trivially, and counting it inflates consistency exactly when you have the least data — a new keyword, a newly connected engine, the first week of an engagement.
 
-**What to do instead / consequence:** Exclude single-run cells from the denominator and show the excluded count. A consistency figure with no run counts beside it is unfalsifiable.
+**What to do instead:** Exclude single-run cells from the denominator and show the excluded count. A consistency figure with no run counts beside it is unfalsifiable.
 
-### LSM-AI-09 · Refusals and aggregator punts must leave the denominator, not count as a miss
+### LSM-AI-19 · Refusals and aggregator punts must leave the denominator, not count as a miss
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-02
@@ -177,13 +177,13 @@ Counting punts and refusals as misses makes a business look invisible when the e
 
 How often an engine punts is itself a finding worth recording per engine and per keyword — it is the clearest signal that a query type is not yet being answered generatively at all.
 
-**What to do instead / consequence:** Store the outcome class, not a boolean. Presence rates may use all live runs; recommendation rates use only runs judged to recommend businesses.
+**What to do instead:** Store the outcome class, not a boolean. Presence rates may use all live runs; recommendation rates use only runs judged to recommend businesses.
 
 ---
 
 ## Recording a result
 
-### LSM-AI-10 · Mention and citation are independent axes and must be recorded separately
+### LSM-AI-20 · Mention and citation are independent axes and must be recorded separately
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-02
@@ -195,9 +195,9 @@ Citation is the stronger signal of the two, because it means the engine's retrie
 
 A useful convenience — "mentioned" defined as named **or** own-domain-cited — is fine for a headline rate, provided the two components are stored separately and can be read apart. Once collapsed at write time, they cannot be recovered.
 
-**What to do instead / consequence:** Store `named`, `domainCited` and the ordered source list per run. Derive the headline number at read time.
+**What to do instead:** Store `named`, `domainCited` and the ordered source list per run. Derive the headline number at read time.
 
-### LSM-AI-11 · A boolean is not a re-auditable record — store the answer text verbatim
+### LSM-AI-21 · A boolean is not a re-auditable record — store the answer text verbatim
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-02
@@ -210,31 +210,31 @@ The minimum record per run, which the [record schema](../99-appendix/ai-visibili
 | Timestamp | Every rate is a rate as of a date |
 | Engine and provider | "Gemini" and "the Vertex grounded call" are not interchangeable claims |
 | Keyword, verbatim | The tracked phrase, not a tidied version |
-| Coordinate probed from | See [LSM-AI-01](#lsm-ai-01--an-assistant-api-has-no-location-parameter--the-coordinate-goes-in-the-prompt-text) |
+| Coordinate probed from | See [LSM-AI-11](#lsm-ai-11--an-assistant-api-has-no-location-parameter--the-coordinate-goes-in-the-prompt-text) |
 | Prompt template version | A prompt edit resets the series |
 | Answer text, verbatim | The only field that makes every other field re-derivable |
 | Cited sources, ordered | Domain plus title, in the order the engine gave them |
 | Named / domain-cited flags | Cheap to store, expensive to recompute from text later |
-| Judge output, or null | See [LSM-AI-15](#lsm-ai-15--an-unparseable-judge-reply-must-store-null-never-a-false) |
-| Live-or-fixture flag | See [LSM-AI-13](#lsm-ai-13--fixture-answers-poison-every-rate-unless-they-are-flagged-at-write-time) |
+| Judge output, or null | See [LSM-AI-25](#lsm-ai-25--an-unparseable-judge-reply-must-store-null-never-a-false) |
+| Live-or-fixture flag | See [LSM-AI-23](#lsm-ai-23--fixture-answers-poison-every-rate-unless-they-are-flagged-at-write-time) |
 
 Storing the answer text also lets a client read what the machine actually said about their market, which is usually the single most persuasive artefact in an AI-visibility report.
 
-**What to do instead / consequence:** Treat the stored answer as the record and every metric as a projection of it. If a metric definition changes, you can recompute history. If you stored booleans, you cannot.
+**What to do instead:** Treat the stored answer as the record and every metric as a projection of it. If a metric definition changes, you can recompute history. If you stored booleans, you cannot.
 
-### LSM-AI-12 · Substring self-matching cannot separate you from a similarly named business
+### LSM-AI-22 · Substring self-matching cannot separate you from a similarly named business
 
 **Verdict:** NEVER WORKED
 **Last verified:** 2026-07-27
 **Probe:** Run bidirectional containment matching — `candidate.includes(self) || self.includes(candidate)` on lowercased, trimmed names — against a business called *Coffee* in a market containing *Coffee Republic*, or *Bella* in a market containing *Bella Italia*. Both match.
 
-Bidirectional containment is the standard cheap self-match, and it is used in the implementation this manual is written alongside. It is right often enough to ship and wrong in a specific, predictable direction: short generic names, franchise-adjacent names, and names that are a common word.
+Bidirectional containment is the standard cheap self-match, and SEOG uses it. It is right often enough to ship and wrong in a specific, predictable direction: short generic names, franchise-adjacent names, and names that are a common word.
 
 The failure is silent. It inflates mention rate, inflates recommendation rate, and produces the most flattering possible error — which is exactly the error a client will never catch and a competitor will.
 
-**What to do instead / consequence:** For any business whose name is a common word or a substring of a nearby brand, verify self-matches by hand against the stored answer text before reporting, and prefer domain matching ([LSM-AI-10](#lsm-ai-10--mention-and-citation-are-independent-axes-and-must-be-recorded-separately)), which does not have this failure mode. Where a tool cannot be corrected, say in the report that the mention rate is an upper bound.
+**What to do instead:** For any business whose name is a common word or a substring of a nearby brand, verify self-matches by hand against the stored answer text before reporting, and prefer domain matching ([LSM-AI-20](#lsm-ai-20--mention-and-citation-are-independent-axes-and-must-be-recorded-separately)), which does not have this failure mode. Where a tool cannot be corrected, say in the report that the mention rate is an upper bound.
 
-### LSM-AI-13 · Fixture answers poison every rate unless they are flagged at write time
+### LSM-AI-23 · Fixture answers poison every rate unless they are flagged at write time
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-02
@@ -244,9 +244,9 @@ This is the most expensive self-inflicted wound in AI-visibility tooling, and it
 
 Flagging is necessary and not sufficient. Three rules make it survivable: flag the row at write time with which provider actually produced it; exclude flagged rows from every *rate*, not merely badge them in the interface; and make a batch action run only the engines that are actually configured, or every batch mints fresh fixture rows that look like coverage.
 
-**What to do instead / consequence:** Any AI-visibility number you inherit from another tool is unverified until you can see which runs were live. Ask how unconfigured engines behave. "It shows sample data" and "it shows sample data that is counted" are different products.
+**What to do instead:** Any AI-visibility number you inherit from another tool is unverified until you can see which runs were live. Ask how unconfigured engines behave. "It shows sample data" and "it shows sample data that is counted" are different products.
 
-### LSM-AI-14 · Keyword matching misclassifies hedged mentions — stance needs a judge pass
+### LSM-AI-24 · Keyword matching misclassifies hedged mentions — stance needs a judge pass
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-02
@@ -265,11 +265,11 @@ A judge pass — a second, plain (non-grounded) model call over the stored answe
 }
 ```
 
-`kind` matters because it separates a real competitor from an aggregator punt ([LSM-AI-09](#lsm-ai-09--refusals-and-aggregator-punts-must-leave-the-denominator-not-count-as-a-miss)), and the non-self entities are a competitive set discovered for free — the businesses the engine reaches for in this market, which is not always the same list as the map pack's.
+`kind` matters because it separates a real competitor from an aggregator punt ([LSM-AI-19](#lsm-ai-19--refusals-and-aggregator-punts-must-leave-the-denominator-not-count-as-a-miss)), and the non-self entities are a competitive set discovered for free — the businesses the engine reaches for in this market, which is not always the same list as the map pack's.
 
-**What to do instead / consequence:** Judge the stored text, not the live call, so the judge can be re-run with a better prompt over history. Keep a keyless heuristic as a fallback and record which path produced each row.
+**What to do instead:** Judge the stored text, not the live call, so the judge can be re-run with a better prompt over history. Keep a keyless heuristic as a fallback and record which path produced each row.
 
-### LSM-AI-15 · An unparseable judge reply must store null, never a false
+### LSM-AI-25 · An unparseable judge reply must store null, never a false
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-02
@@ -279,25 +279,25 @@ There are three states, and two of them look like `false`: the answer did not re
 
 A judge failure must also never fail the run that produced the answer. The expensive part is the live answer; the judge is a cheap second pass over stored text and can be retried later.
 
-**What to do instead / consequence:** Store null for unparseable judge output, exclude nulls from the recommendation denominators, and expose the null count. A recommendation rate with an unstated number of unjudged runs behind it is not interpretable.
+**What to do instead:** Store null for unparseable judge output, exclude nulls from the recommendation denominators, and expose the null count. A recommendation rate with an unstated number of unjudged runs behind it is not interpretable.
 
 ---
 
 ## Engine and API behaviour
 
-### LSM-AI-16 · Gemini grounding chunks carry a redirect URI, not the publisher's URL
+### LSM-AI-26 · Gemini grounding chunks carry a redirect URI, not the publisher's URL
 
 **Verdict:** UNDOCUMENTED
 **Last verified:** 2026-07-02
 **Probe:** Call Vertex `generateContent` with `tools: [{ googleSearch: {} }]` on a local question and read `candidates[0].groundingMetadata.groundingChunks[].web`. The `uri` field is a Google-hosted redirect, not the source's own address; the `title` field is what carries the publisher identity, frequently as a bare hostname.
 
-Any pipeline that extracts cited domains by parsing the hostname out of `uri` will attribute every citation to Google. The working extraction reads `title` and accepts it as a domain only when it looks like a bare hostname — no spaces, ending in a dot-plus-letters TLD.
+Any pipeline that extracts cited domains by parsing the hostname out of `uri` will attribute every citation to Google. The working extraction reads `title` and accepts it as a domain only when it looks like a bare hostname — no spaces, ending in a dot-plus-letters TLD. Google does not document this field's contents; one call on your own key confirms it, and it is worth confirming before you build on it.
 
 The consequence of that guard is a real gap, and it should be stated rather than hidden: when a chunk's title is a page headline rather than a hostname, the domain is empty for that source and the citation axis is unmeasurable for it. That is a null, not a zero.
 
-**What to do instead / consequence:** Extract cited domains from `title`, keep the raw chunk, and count title-only chunks separately. Do not resolve the redirect URIs in bulk to recover publishers — that is a crawling pattern with its own terms problems, and it is not necessary for a rate.
+**What to do instead:** Extract cited domains from `title`, keep the raw chunk, and count title-only chunks separately. Do not resolve the redirect URIs in bulk to recover publishers — that is a crawling pattern with its own terms problems, and it is not necessary for a rate.
 
-### LSM-AI-17 · A too-small output-token budget returns zero grounding metadata, not an error
+### LSM-AI-27 · A too-small output-token budget returns zero grounding metadata, not an error
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-02
@@ -307,9 +307,9 @@ Gemini 2.5 models spend output tokens on internal reasoning *before* the visible
 
 This one is dangerous because it fails in the shape of a finding. An empty source list reads as "the engine cited nobody", which reads as "your competitors are not being cited either", which is a comforting and completely fabricated conclusion.
 
-**What to do instead / consequence:** Budget output tokens for reasoning plus answer, and treat `sources.length === 0` on a grounded call as a suspected instrumentation failure until proven otherwise. Check `finishReason` on every run and store it.
+**What to do instead:** Budget output tokens for reasoning plus answer, and treat `sources.length === 0` on a grounded call as a suspected instrumentation failure until proven otherwise. Check `finishReason` on every run and store it.
 
-### LSM-AI-18 · Demanding JSON-only in a grounded Gemini prompt stops the search tool engaging
+### LSM-AI-28 · Demanding JSON-only in a grounded Gemini prompt stops the search tool engaging
 
 **Verdict:** WORKS
 **Last verified:** 2026-06-13
@@ -317,9 +317,9 @@ This one is dangerous because it fails in the shape of a finding. An empty sourc
 
 Strict output-format instructions and the search tool do not coexist. The model satisfies the format constraint by answering from parameters instead of searching, and the failure is invisible unless you check whether any grounding metadata came back.
 
-**What to do instead / consequence:** Split the call in two. Ask the grounded question in natural language, then convert the resulting text to JSON in a second, ungrounded call. Never structure-constrain a retrieval call. As a live detector, assert that grounded calls return a non-empty source list and alarm when they do not.
+**What to do instead:** Split the call in two. Ask the grounded question in natural language, then convert the resulting text to JSON in a second, ungrounded call. Never structure-constrain a retrieval call. As a live detector, assert that grounded calls return a non-empty source list and alarm when they do not.
 
-### LSM-AI-19 · Gemini 2.5 splits a reply across `parts` — reading `parts[0]` truncates it
+### LSM-AI-29 · Gemini 2.5 splits a reply across `parts` — reading `parts[0]` truncates it
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-02
@@ -327,9 +327,9 @@ Strict output-format instructions and the search tool do not coexist. The model 
 
 A client that reads the first part gets a silently shortened answer. Downstream, that surfaces as judge parse failures and as answers whose stored text does not contain a business name the human tester can plainly see in the vendor's own console.
 
-**What to do instead / consequence:** Join every `part`'s text before parsing or storing anything. If stored answers look oddly short or a judge starts failing to parse in bulk, check this before blaming the prompt.
+**What to do instead:** Join every `part`'s text before parsing or storing anything. If stored answers look oddly short or a judge starts failing to parse in bulk, check this before blaming the prompt.
 
-### LSM-AI-20 · Claude can end a turn with `stop_reason: refusal`, which is a null, not a miss
+### LSM-AI-30 · Claude can end a turn with `stop_reason: refusal`, which is a null, not a miss
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-27
@@ -337,9 +337,9 @@ A client that reads the first part gets a silently shortened answer. Downstream,
 
 A refused turn carries no usable answer. Pipelines that read the content blocks without checking `stop_reason` will store an empty or partial answer and count it as a run in which the business was not mentioned.
 
-**What to do instead / consequence:** Check `stop_reason` before parsing content, discard refusals from the run rather than storing them as negatives, and record the refusal count per engine — see [LSM-AI-09](#lsm-ai-09--refusals-and-aggregator-punts-must-leave-the-denominator-not-count-as-a-miss).
+**What to do instead:** Check `stop_reason` before parsing content, discard refusals from the run rather than storing them as negatives, and record the refusal count per engine — see [LSM-AI-19](#lsm-ai-19--refusals-and-aggregator-punts-must-leave-the-denominator-not-count-as-a-miss).
 
-### LSM-AI-21 · Claude's inline citations are a subset of the pages it searched
+### LSM-AI-31 · Claude's inline citations are a subset of the pages it searched
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-27
@@ -349,25 +349,25 @@ These are two different claims about a source. An inline citation means the mode
 
 Falling back to the searched list when the model cited nothing keeps the citation axis populated, at the cost of mixing two signal strengths in one column.
 
-**What to do instead / consequence:** Prefer inline citations. If you fall back to the searched set, flag which of the two produced each row, and never present "searched" rows to a client as "the AI cited you".
+**What to do instead:** Prefer inline citations. If you fall back to the searched set, flag which of the two produced each row, and never present "searched" rows to a client as "the AI cited you".
 
-### LSM-AI-22 · OpenAI returns cited sources as `url_citation` annotations and bills web searches apart from tokens
+### LSM-AI-32 · OpenAI returns cited sources as `url_citation` annotations and bills web searches apart from tokens
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-27
 **Probe:** `POST https://api.openai.com/v1/responses` with `tools: [{ "type": "web_search" }]`. Sources appear as `annotations` of type `url_citation` on `output_text` content parts, each carrying a `url` and often a `title`. Web-search invocations appear as separate `web_search_call` items in `output`. Documented shape plus the implementation's parser; the engine had no credential configured in the implementation as of 2026-07-02.
 
-Two operational consequences. First, sources are attached to text parts rather than delivered as a top-level list, so a parser that looks for a `sources` field finds nothing and records a citation-free answer. Second, the tool's search invocations are billed separately from token usage — as of 2026-07-27 the vendors price server-side web search per thousand searches, distinct from input and output tokens, and those prices move; read the current price page rather than a number copied from a blog post.
+Two operational consequences. First, sources are attached to text parts rather than delivered as a top-level list, so a parser that looks for a `sources` field finds nothing and records a citation-free answer. Second, the tool's search invocations are billed separately from token usage: the vendors price server-side web search per thousand searches, distinct from input and output tokens. Audited figures live in [What Google's APIs actually cost](./what-googles-apis-cost.md); they move, so read the vendor's current price page before quoting one.
 
 Both OpenAI and Anthropic expose a per-request cap on tool invocations (`max_tool_calls` and the tool's `max_uses` respectively). Uncapped, a single probe can silently make several searches, and a batch of probes multiplies that.
 
-**What to do instead / consequence:** Cap tool calls per request so a probe's worst-case cost is knowable in advance, count the `web_search_call` items actually returned, and budget searches as a separate line from tokens.
+**What to do instead:** Cap tool calls per request so a probe's worst-case cost is knowable in advance, count the `web_search_call` items actually returned, and budget searches as a separate line from tokens.
 
 ---
 
 ## What this method cannot measure
 
-### LSM-AI-23 · An assistant probe cannot tell you whether Google rendered an AI Overview
+### LSM-AI-33 · An assistant probe cannot tell you whether Google rendered an AI Overview
 
 **Verdict:** NEVER WORKED
 **Last verified:** 2026-07-27
@@ -379,47 +379,49 @@ Because assistants always answer, the only informative axes from this method are
 
 Measuring AI Overview *incidence* requires capturing search result pages, which is a different instrument with different terms-of-service exposure and different costs. Do not present a rate from one as a rate from the other.
 
-**What to do instead / consequence:** Report an assistant probe as "Gemini, ChatGPT and Claude were asked N times each and named the business in M of them". Never as "the business appears in X% of AI Overviews". If a stored record carries a presence flag that is always true, drop the column rather than charting it.
+**What to do instead:** Report an assistant probe as "Gemini, ChatGPT and Claude were asked N times each and named the business in M of them". Never as "the business appears in X% of AI Overviews". If a stored record carries a presence flag that is always true, drop the column rather than charting it.
 
-### LSM-AI-24 · The API is not the consumer app, and the size of the gap is unmeasured
+### LSM-AI-34 · The API is not the consumer app, and the size of the gap is unmeasured
 
 **Verdict:** OPEN QUESTION
 **Last verified:** 2026-07-27 — open, no controlled comparison run
-**Probe (the one that would settle it):** Same prompt, same day, same coordinate, N runs through the vendor API and N runs typed into the vendor's own consumer app in a signed-out session. Compare mention rates against the noise floor from [LSM-AI-06](#lsm-ai-06--one-run-is-a-sample-not-a-measurement).
+**Probe (the one that would settle it):** Same prompt, same day, same coordinate, N runs through the vendor API and N runs typed into the vendor's own consumer app in a signed-out session. Compare mention rates against the noise floor from [LSM-AI-16](#lsm-ai-16--one-run-is-a-sample-not-a-measurement).
 
 The consumer product wraps the model in an application-level system prompt, its own retrieval configuration, personalisation, conversation memory, and a location signal derived from the device rather than from your prose. None of that is reproduced by an API call, and none of it is published *(inference: the gap is asserted from the presence of these layers in the products, not from a measured comparison)*.
 
 An API probe is a defensible, repeatable instrument that measures the model plus its search tool. That is a proxy for what a customer sees, and the proxy error is unknown.
 
-**What to do instead / consequence:** Say "measured through the API" in the report, once, in plain words. It costs one sentence and it is the sentence that survives a technically literate client asking how the number was produced.
+**What to do instead:** Say "measured through the API" in the report, once, in plain words. It costs one sentence and it is the sentence that survives a technically literate client asking how the number was produced.
 
-### LSM-AI-25 · No probe in this chapter establishes *why* an engine named a business
+### LSM-AI-35 · No probe in this chapter establishes *why* an engine named a business
 
 **Verdict:** OPEN QUESTION
 **Last verified:** 2026-07-27 — open by construction
-**Probe:** There is none. A probe records an outcome; attributing that outcome to a profile field, a review count or a page of website content would require holding everything else constant across an engine you do not control and which returns different answers to identical inputs ([LSM-AI-06](#lsm-ai-06--one-run-is-a-sample-not-a-measurement)).
+**Probe:** There is none. A probe records an outcome; attributing that outcome to a profile field, a review count or a page of website content would require holding everything else constant across an engine you do not control and which returns different answers to identical inputs ([LSM-AI-16](#lsm-ai-16--one-run-is-a-sample-not-a-measurement)).
 
-Correlational evidence is available and is worth having — vendors and researchers have reported that brand mention volume tracks AI visibility considerably more closely than backlink-authority metrics do, and that some widely-sold interventions correlate with nothing measurable. Those are correlations across other people's samples, with methodologies that are only partly published, and they are not causal claims about your business.
+Correlational evidence circulates, and some of it is worth reading. Almost all of it is vendor-published, computed across someone else's sample, with methodology only partly disclosed — and a correlation on another sample is a hypothesis about your business, not a finding about it. Before repeating any such figure to a client, ask for the query set, the sample size and the date. Most of the time one of the three is missing.
 
-**What to do instead / consequence:** Structure reporting as "we changed X on date D; here is the mention rate over the window before and the window after, with run counts". That is an honest before-and-after on a noisy instrument. It is not attribution, and a report that claims attribution here is claiming something the method cannot deliver.
+**What would close it:** a controlled intervention on businesses you own or that consented in writing — one change, one holdout group, pre- and post-windows of equal run count on a fixed prompt and coordinate, repeated across enough businesses that the between-business variance is visible. That is a study, not a probe, and it has to be published with its method before anyone should believe it. No such study is cited here because we have not run one.
+
+**What to do instead:** Structure reporting as "we changed X on date D; here is the mention rate over the window before and the window after, with run counts". That is an honest before-and-after on a noisy instrument. It is not attribution, and a report that claims attribution here is claiming something the method cannot deliver.
 
 ---
 
 ## Cost and run planning
 
-### LSM-AI-26 · Probe cost multiplies keywords × engines × runs
+### LSM-AI-36 · Probe cost multiplies keywords × engines × runs
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-27
-**Probe:** Count billable calls for one batch. Each keyword × engine pair is one probe call; a windowed rate over N runs per cell is N of them; and each probe may make several tool-based web searches billed apart from tokens ([LSM-AI-22](#lsm-ai-22--openai-returns-cited-sources-as-url_citation-annotations-and-bills-web-searches-apart-from-tokens)), plus a judge call over the stored answer ([LSM-AI-14](#lsm-ai-14--keyword-matching-misclassifies-hedged-mentions--stance-needs-a-judge-pass)).
+**Probe:** Count billable calls for one batch. Each keyword × engine pair is one probe call; a windowed rate over N runs per cell is N of them; and each probe may make several tool-based web searches billed apart from tokens ([LSM-AI-32](#lsm-ai-32--openai-returns-cited-sources-as-url_citation-annotations-and-bills-web-searches-apart-from-tokens)), plus a judge call over the stored answer ([LSM-AI-24](#lsm-ai-24--keyword-matching-misclassifies-hedged-mentions--stance-needs-a-judge-pass)).
 
 Ten keywords, three engines and a five-run window is 150 probe calls before a single rate exists, and the same again to refresh it. The multiplication is the whole cost story, and it is why AI-visibility tracking is priced and scheduled differently from rank tracking.
 
-Two structural consequences worth designing around. Probes should run sequentially rather than in a burst, so a batch stays polite to the providers and can be abandoned halfway without having already spent everything. And the batch must skip engines that are not configured, or it spends nothing and produces rows that look like data ([LSM-AI-13](#lsm-ai-13--fixture-answers-poison-every-rate-unless-they-are-flagged-at-write-time)).
+Two structural consequences worth designing around. Probes should run sequentially rather than in a burst, so a batch stays polite to the providers and can be abandoned halfway without having already spent everything. And the batch must skip engines that are not configured, or it spends nothing and produces rows that look like data ([LSM-AI-23](#lsm-ai-23--fixture-answers-poison-every-rate-unless-they-are-flagged-at-write-time)).
 
-In the app, a fresh AI answer check is a **paid** action per keyword × engine, and every stored view of the results — the presence matrix, the pillar rates, the cited-sources table — is **free**, because it reads what a previous check stored. Reading an old probe costs nothing; that asymmetry should shape how often you re-run rather than how often you look.
+In SEOG, a fresh AI answer check is a **paid** action per keyword × engine, and every stored view of the results — the presence matrix, the pillar rates, the cited-sources table — is **free**, because it reads what a previous check stored. Reading an old probe costs nothing; that asymmetry should shape how often you re-run rather than how often you look.
 
-**What to do instead / consequence:** Choose a small tracked set deliberately, fix the window size, and re-probe on a schedule the client is paying for. Probing thirty keywords once is worse than probing six keywords five times, because the first produces thirty anecdotes and the second produces six measurements.
+**What to do instead:** Choose a small tracked set deliberately, fix the window size, and re-probe on a schedule the client is paying for. Probing thirty keywords once is worse than probing six keywords five times, because the first produces thirty anecdotes and the second produces six measurements.
 
 ---
 

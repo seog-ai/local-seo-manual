@@ -435,6 +435,8 @@ Write-to-read propagation is usually immediate; a single short retry covers the 
 
 **What to do instead:** read the review back and require your own reply text to be present before reporting success anywhere — to a client, to a dashboard, or to a billing record. A read-back is one extra call and it converts a class of silent failure into a visible error.
 
+This is also the concrete argument against an unattended reply loop: a pipeline that publishes on a trigger and never reads back cannot distinguish a published reply from a lost one, and will report a month of replies that nobody outside your system ever saw. Draft with a model if you like; keep a human between the draft and the PUT, and read the result back.
+
 ### LSM-REVIEWS-02 · The reply length cap is unconfirmed
 
 **Verdict:** OPEN QUESTION

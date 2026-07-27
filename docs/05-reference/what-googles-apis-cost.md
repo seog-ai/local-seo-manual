@@ -128,7 +128,7 @@ A centred grid runs from `−floor(n/2)` to `+floor(n/2)` in both axes, so it ha
 | Map render the result is drawn on | 1 | Dynamic Maps | $7.00 | **$0.0070** |
 | **Total** | | | | **$0.0070** |
 
-Both tables use list price and ignore the monthly free allowance, which is applied afterwards and is per SKU.
+Every figure in this entry is list price. The monthly free allowance is per SKU and is applied on top of it.
 
 The same scan with a mask carrying `rating` and `userRatingCount` — the default mask of most search code:
 
@@ -247,11 +247,11 @@ Google publishes a separate session-based billing model in which an Autocomplete
 
 ## The half that costs nothing
 
-### LSM-GBP-01 · The owner-side Google APIs carry no per-call charge
+### LSM-GBP-01 · Business Profile, Search Console, PageSpeed and Ads keyword metrics carry no per-call charge
 
 **Verdict:** WORKS
 **Last verified:** 2026-07-03
-**Probe:** Exercise each API below with a connected account, then open Cloud Console → Billing → Reports filtered to that project. No SKU line appears for any of them.
+**Probe:** Exercise each API below with a connected account, then open Cloud Console → Billing → Reports for the project the credentials belong to. None of them produces a SKU line.
 
 | API | Per-call charge | The real constraint |
 | --- | --- | --- |
@@ -263,7 +263,7 @@ Google publishes a separate session-based billing model in which an Autocomplete
 | PageSpeed Insights | $0.00 | quota; unkeyed use is rate-limited harder |
 | Google Ads — keyword historical metrics | $0.00 | requires an Ads account and an approved developer token |
 
-Everything an *owner* can read about their own profile is free of charge. Everything a *stranger* reads about a business through Places is billed. The dividing line in the cost model is not the kind of data — it is whether you are authenticated as the business.
+Everything an *owner* can read about their own profile is free of charge. Everything a *stranger* reads about a business through Places is billed. The dividing line in the cost model is not the kind of data — it is whether you are authenticated as the business. The three non-profile APIs in the table sit on the free side for their own reasons, but the practical effect is the same: outside Places and the Maps renderers, Google's local-SEO surface area does not bill per call.
 
 **What to do instead:** Connect the profile before optimising the API bill. The single cheapest change available to most local-SEO tooling is moving a data need from the Places side of that line to the owner side: full review history, the owner-written description, real impression counts and the search terms people used are all free, and none of them are purchasable from Places at any price.
 
