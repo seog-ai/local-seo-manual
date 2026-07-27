@@ -563,7 +563,7 @@ A photo can pass every technical bound in [LSM-POSTS-15](#lsm-posts-15--post-pho
 
 ## What is not in this chapter
 
-Read limits, quota values for read endpoints and the full owner-API surface live in [The GBP capability matrix](./gbp-capability-matrix.md). What each Google API charges is in [What Google's APIs actually cost](./what-googles-apis-cost.md). Retention and attribution obligations for data you receive back from these calls are in [Storing Google data legally](./storing-google-data-legally.md).
+Read limits, quota values for read endpoints and the full owner-API surface live in [The GBP capability matrix](./gbp-capability-matrix.md). What each Google API charges is in [What the Places API will and will not give you](./what-places-returns.md). Retention and attribution obligations for data you receive back from these calls are in [Storing Google data legally](./storing-google-data-legally.md).
 
 Counter-evidence changes entries here faster than anything else. If you ran one of these probes and got a different answer, [contributing](../99-appendix/contributing.md) has the format: the call you made, what came back, and the date.
 

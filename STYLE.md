@@ -50,7 +50,13 @@ The labs run in SEOG. That is the deal, it is disclosed on the homepage, and it 
 
 These are hard prohibitions, for legal, competitive and safety reasons.
 
-- **Our pricing mechanics.** No credit-to-dollar conversion, no markup multiples, no per-feature margins, no cost-vs-charged data. Labs say **free** or **paid**, never a number. What *Google* charges is the whole point and must be published; what *we* charge is not.
+- **Our pricing mechanics.** No credit-to-dollar conversion, no markup multiples, no per-feature margins, no cost-vs-charged data. Labs say **free** or **paid**, never a number.
+
+- **Third-party API rates, and any recipe for minimising them.** No SKU tables, no per-request or per-1,000 figures, no worked "this costs $X" derivations, and above all no field-mask-to-free-tier technique. Google publishes its own current prices; link to them and let the reader do their own arithmetic against their own volumes.
+
+  This rule was reversed on 2026-07-27, and the reversal is deliberate. An earlier draft treated publishing Google's cost structure as the manual's unfair advantage. It is also a build guide: the manual's stated audience is technical people who ship things, and handing that audience a costed recipe for running rank tracking at the floor is handing them the one genuinely non-obvious part of building a competing platform. The distribution goal and the content do not get to conflict.
+
+  What *is* publishable is the **shape**: that requests are priced by what they ask for, that owner-side data behaves differently from place search, and that cadence dominates efficiency. Those help a buyer evaluate a vendor. None of them is a build recipe.
 - **Anti-abuse thresholds.** No rate-limit values, daily ceilings or alert thresholds. Publish the design principle ("breadth of distinct places, not call volume, is the signature of dataset-building"), never the numbers.
 - **Deployment detail of our own infrastructure.** Publish patterns and principles; never our endpoint configuration, session-key layout, token schemes or middleware config.
 - **Anything built from aggregated customer data.** Original studies run only on businesses we own or that gave written consent, with the method published so others can reproduce it on their own data.

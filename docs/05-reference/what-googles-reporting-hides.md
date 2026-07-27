@@ -275,7 +275,7 @@ Four of the nineteen change a headline number rather than a caveat, and they are
 | Are any keyword figures thresholded? | `LSM-MEASURE-08` | A total that is a sum of upper bounds |
 | Do query rows get summed into a total? | `LSM-MEASURE-13`, `LSM-MEASURE-14` | A headline Google never claimed |
 
-The quotes above are from Google's technical references and help pages, each carrying its own last-updated date where one is shown. They are documentation, not terms of service — the compliance material, with the legal-register disclaimer that goes with it, is in [Storing Google data legally](./storing-google-data-legally.md). What these calls cost to make is in [What Google's APIs actually cost](./what-googles-apis-cost.md).
+The quotes above are from Google's technical references and help pages, each carrying its own last-updated date where one is shown. They are documentation, not terms of service — the compliance material, with the legal-register disclaimer that goes with it, is in [Storing Google data legally](./storing-google-data-legally.md). What these calls cost to make is in [What the Places API will and will not give you](./what-places-returns.md).
 
 ---
 

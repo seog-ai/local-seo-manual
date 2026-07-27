@@ -191,7 +191,7 @@ The website audit needs no Google connection — it runs against your public sit
 - *It now shows a cross.* The file is found but does not follow the recommended shape. The card's hint says what is missing — usually the heading, the summary, or any links at all.
 - *The figure fell.* Correct behaviour. You added an applicable check and it failed, so the denominator grew. Fix the file rather than deleting it.
 
-**Observe-only alternative.** Write the file anyway — it is the artefact you would hand a client — and get the result another way: Lighthouse ships this category in the tool itself, so you can run it locally against any URL for free (Chrome DevTools or the Lighthouse CLI, Lighthouse 13.3 or newer, which per Google's documentation means Chrome 150 or later; an older Chrome will not show the category). The data source behind it is free to query — see [what Google's APIs actually cost](../05-reference/what-googles-apis-cost.md).
+**Observe-only alternative.** Write the file anyway — it is the artefact you would hand a client — and get the result another way: Lighthouse ships this category in the tool itself, so you can run it locally against any URL for free (Chrome DevTools or the Lighthouse CLI, Lighthouse 13.3 or newer, which per Google's documentation means Chrome 150 or later; an older Chrome will not show the category). The data source behind it is free to query — see [what the Places API will and will not give you](../05-reference/what-places-returns.md).
 
 **What you just learned.** Not-applicable is a question you have not answered yet, and answering it badly costs you more than silence did.
 

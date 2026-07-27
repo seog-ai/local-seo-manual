@@ -112,7 +112,7 @@ Importing gives SEOG the *public* view of the business — the same thing any se
 
 That bottom half is the data local SEO is actually judged on, and Google gives it to nobody but the owner. If you have access, connect it now.
 
-Two of those rows have documented limits worth knowing before you build a report on them. The five-review cap on the public view is Google's own, stated in the Places documentation ([LSM-PLACES-08](../05-reference/what-googles-apis-cost.md)). The 18-month figure everyone quotes for performance history appears only on the deprecated version of the request object; the current interface states no maximum at all, so treat 18 months as a working assumption rather than a guarantee ([LSM-MEASURE-04](../05-reference/what-googles-reporting-hides.md)).
+Two of those rows have documented limits worth knowing before you build a report on them. The five-review cap on the public view is Google's own, stated in the Places documentation ([LSM-PLACES-08](../05-reference/what-places-returns.md)). The 18-month figure everyone quotes for performance history appears only on the deprecated version of the request object; the current interface states no maximum at all, so treat 18 months as a working assumption rather than a guarantee ([LSM-MEASURE-04](../05-reference/what-googles-reporting-hides.md)).
 
 ### Lab 0.4 — Connect the Google Business Profile
 

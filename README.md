@@ -92,7 +92,7 @@ Turning the skill into work someone pays for.
 ### Part V — The field reference
 One fact per heading, each with a verdict, the date it was last verified, and the probe that established it.
 - [How to read this reference](docs/05-reference/how-to-read-this-reference.md)
-- [What Google's APIs actually cost](docs/05-reference/what-googles-apis-cost.md) ⭐
+- [What the Places API will and will not give you](docs/05-reference/what-places-returns.md) ⭐
 - [The Google Business Profile surface: what is alive, what is dead, what never worked](docs/05-reference/gbp-capability-matrix.md) ⭐
 - [Storing Google data legally](docs/05-reference/storing-google-data-legally.md) ⭐
 - [Write limits and failure modes](docs/05-reference/write-limits-and-failure-modes.md)

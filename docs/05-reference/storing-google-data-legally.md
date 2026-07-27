@@ -153,7 +153,7 @@ The developer documentation states the same permission in plainer terms and adds
 
 > Place IDs are exempt from the caching restrictions stated in Section 3.2.3(b) of the Google Maps Platform Terms of Service. You can therefore store place ID values for later use. … Because Place IDs may change due to updates on the Google Maps database, Google recommends refreshing place IDs if they are more than 12 months old. You can refresh Place IDs at no charge by making a Place Details request, specifying only the place ID field in the fields parameter.
 
-**What to do instead:** Make the place ID your primary key for every business you track, including competitors, and hang your own derived data off it. Refresh IDs older than twelve months with an IDs-only Place Details request, which is not billed. Note the interaction with [LSM-POLICY-13](#lsm-policy-13--on-termination-you-must-delete-all-content-from-the-services): "indefinitely" lasts as long as the agreement does.
+**What to do instead:** Make the place ID your primary key for every business you track, including competitors, and hang your own derived data off it. Refresh IDs older than twelve months using the minimal Place Details request Google describes above. Note the interaction with [LSM-POLICY-13](#lsm-policy-13--on-termination-you-must-delete-all-content-from-the-services): "indefinitely" lasts as long as the agreement does.
 
 ### LSM-POLICY-09 · Places latitude/longitude may be cached for 30 consecutive calendar days, then must be deleted
 

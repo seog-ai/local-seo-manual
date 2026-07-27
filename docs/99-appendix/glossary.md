@@ -110,7 +110,7 @@ Each entry is meant to be quotable on its own, without the chapter around it. Wh
 
 ## F
 
-**Field mask.** The list of fields a Places request asks for. It decides the billing tier: the same call, with the same result set, costs nothing or the top SKU rate depending on which fields the mask names (`LSM-PLACES-01`). See [What Google's APIs cost](../05-reference/what-googles-apis-cost.md).
+**Field mask.** The list of fields a Places request asks for. It decides the billing tier: the same call, with the same result set, costs nothing or the top SKU rate depending on which fields the mask names (`LSM-PLACES-01`). See [What the Places API will and will not give you](../05-reference/what-places-returns.md).
 
 **Found rate** *(ours)*. Points where the business appeared, over **all** points scanned — the denominator information that average rank throws away. Quote it first, every time: "top 20 at 9 of 25 points". See [Reading a geo-grid without fooling yourself](../03-advanced/reading-a-geo-grid.md).
 
@@ -218,7 +218,7 @@ Each entry is meant to be quotable on its own, without the chapter around it. Wh
 
 **Place ID.** Google's stable identifier for a place. Exempt from the Places caching restrictions and storable indefinitely, which makes it the anchor every compliant local data model is built on (`LSM-POLICY-08`). See [Storing Google data legally](../05-reference/storing-google-data-legally.md).
 
-**Places API.** Google's public place-data API — the record any member of the public can see, served under Maps Platform terms. It returns at most five reviews per place, chosen by Google, and does not carry the owner-written description (`LSM-PLACES-08`, `LSM-PLACES-09`). Not the same data, and not the same rules, as GBP. See [What Google's APIs cost](../05-reference/what-googles-apis-cost.md).
+**Places API.** Google's public place-data API — the record any member of the public can see, served under Maps Platform terms. It returns at most five reviews per place, chosen by Google, and does not carry the owner-written description (`LSM-PLACES-08`, `LSM-PLACES-09`). Not the same data, and not the same rules, as GBP. See [What the Places API will and will not give you](../05-reference/what-places-returns.md).
 
 **Practice business** *(ours)*. The single real business you run every lab against, chosen at the start so that each lab builds on the last. See [Set up your workbench](../00-start-here/set-up-your-workbench.md).
 
@@ -290,7 +290,7 @@ Each entry is meant to be quotable on its own, without the chapter around it. Wh
 
 ## T
 
-**Text Search.** The Places endpoint behind most rank checks. Returns at most 20 places per request, excludes pure service-area businesses unless you explicitly ask for them, and returns no location for them when you do (`LSM-PLACES-07`, `LSM-PLACES-10`). See [What Google's APIs cost](../05-reference/what-googles-apis-cost.md).
+**Text Search.** The Places endpoint behind most rank checks. Returns at most 20 places per request, excludes pure service-area businesses unless you explicitly ask for them, and returns no location for them when you do (`LSM-PLACES-07`, `LSM-PLACES-10`). See [What the Places API will and will not give you](../05-reference/what-places-returns.md).
 
 **Threat score** *(ours)*. A 0–100 competitor score: 30 points for a rating above yours, up to 40 for review volume relative to yours, up to 30 for momentum across two snapshots. 70+ high, 40–69 medium, below 40 low. It contains **no position** by design — it scores prominence and momentum, the parts you can read from outside. See [Reading a competitor off their public data](../02-core-practice/competitors.md).
 

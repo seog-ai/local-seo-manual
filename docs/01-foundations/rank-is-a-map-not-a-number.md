@@ -67,9 +67,9 @@ Almost everyone learns grid size as a spending decision: small grid cheap, big g
 
 A rank measurement needs exactly one thing from Google: **which places came back, in what order.** Not their ratings, not their phone numbers, not their hours — you are looking for your own entry in a list and reading off its index.
 
-Google prices a place search by *how much it tells you about each result*. Ask for the rich profile of every result and you are in the expensive tier. Ask for nothing but which places came back, in order, and the request lands in a tier Google's own published price list marks **unlimited, at no charge** (checked 2026-07-27 — API pricing changes, so check it again before you build anything on it). Critically, asking for less does not change the results or their order — only how much of each result is described back to you. The position is the index either way.
+Google prices a place search by *how much it tells you about each result*, not by how many results come back. Ask for the rich profile of every result and you are in an expensive tier; ask for less and you are in a cheaper one. What does not change is the result set or its order — the field mask governs how much each result is described, not which results Google returns. The position is the index either way.
 
-So the search half of a geo-grid scan has a wholesale cost of zero, at any grid size, at any volume. What remains genuinely chargeable is drawing the result on a real Google map, which happens once per scan and does not depend on n. The derivation — which requested fields push a call into which billed tier, with the tier prices — is [What Google's APIs actually cost](../05-reference/what-googles-apis-cost.md).
+So the search half of a geo-grid scan has a wholesale cost of zero, at any grid size, at any volume. What remains genuinely chargeable is drawing the result on a real Google map, which happens once per scan and does not depend on n. The derivation — which requested fields push a call into which billed tier, with the tier prices — is [What the Places API will and will not give you](../05-reference/what-places-returns.md).
 
 The consequence is not "grids are free" — every tool prices its own work, this one included, and you should read the price on the button before pressing it. The consequence is about *reasoning*:
 

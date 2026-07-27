@@ -39,7 +39,7 @@ IDs are `LSM-<AREA>-<NN>`. `LSM` is the manual. `AREA` is one of seven, fixed:
 
 | Area | Covers | Mostly lives in |
 | --- | --- | --- |
-| `PLACES` | The Places API — what it returns, what a request costs, what may be stored | [What Google's APIs actually cost](./what-googles-apis-cost.md), [Storing Google data legally](./storing-google-data-legally.md) |
+| `PLACES` | The Places API — what it returns, what a request costs, what may be stored | [What the Places API will and will not give you](./what-places-returns.md), [Storing Google data legally](./storing-google-data-legally.md) |
 | `GBP` | The owner-side Business Profile APIs: accounts, locations, attributes, performance, verification | [The GBP capability matrix](./gbp-capability-matrix.md) |
 | `POSTS` | Local Posts specifically — creation, media, scheduling, states, validation | [Write limits and failure modes](./write-limits-and-failure-modes.md) |
 | `REVIEWS` | Reading reviews, replying, and what each access path can see | [The GBP capability matrix](./gbp-capability-matrix.md) |
@@ -69,7 +69,7 @@ Each chapter now owns a disjoint block within every area it touches:
 
 | Chapter | Blocks it owns |
 | --- | --- |
-| [What Google's APIs actually cost](./what-googles-apis-cost.md) | `PLACES-01`–`14`, `GBP-31`–`33`, `AI-01`–`02` |
+| [What the Places API will and will not give you](./what-places-returns.md) | `PLACES-01`–`14`, `GBP-31`–`33`, `AI-01`–`02` |
 | [The GBP capability matrix](./gbp-capability-matrix.md) | `GBP-01`–`24`, `REVIEWS-01`–`08` |
 | [What Google's own reporting hides](./what-googles-reporting-hides.md) | `MEASURE-01`–`19` |
 | [Write limits and failure modes](./write-limits-and-failure-modes.md) | `POSTS-01`–`19`, `GBP-101`–`112`, `REVIEWS-101`–`104`, `POLICY-101`–`102` |
@@ -183,4 +183,4 @@ The correction rate is the health metric for a reference like this one. An entry
 
 ---
 
-**Next:** [What Google's APIs actually cost →](./what-googles-apis-cost.md)
+**Next:** [What the Places API will and will not give you →](./what-places-returns.md)

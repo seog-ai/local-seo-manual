@@ -14,7 +14,7 @@ This page is the reference for that rule: what spends on every screen, what neve
 
 **No prices appear here.** Labs are marked **free** or **paid**, never with a number. Prices change, tools change, and a manual that hard-codes a figure lies to you six months later. What matters — and what does not change — is *which class of action* a click belongs to.
 
-**This is about the labs, not about the work.** What Google charges for the data underneath any local SEO tool is published to the cent and is in [What Google's APIs actually cost](../05-reference/what-googles-apis-cost.md). What a client engagement costs to deliver, in data and in hours, is in [What the work costs](../04-operating/what-the-work-costs.md). Those are the two pages to read before quoting anybody. This one is about working through the curriculum without wasting money.
+**This is about the labs, not about the work.** What Google charges for the data underneath any local SEO tool is published to the cent and is in [What the Places API will and will not give you](../05-reference/what-places-returns.md). What a client engagement costs to deliver, in data and in hours, is in [What the work costs](../04-operating/what-the-work-costs.md). Those are the two pages to read before quoting anybody. This one is about working through the curriculum without wasting money.
 
 **Counts are dated.** The lab tallies below were taken from the repository on **2026-07-27**. Chapters get added; re-count rather than trusting the number if the manual has moved on.
 
@@ -194,7 +194,7 @@ Four, in descending order of how much they cost.
 
 **Any price.** By design — see Scope. The app shows the exact price on every button before you press it, including the batch total on multi-item runs.
 
-**What Google charges.** Published to the cent, and the more useful number for anyone building or buying: [What Google's APIs actually cost](../05-reference/what-googles-apis-cost.md).
+**What Google charges.** Published to the cent, and the more useful number for anyone building or buying: [What the Places API will and will not give you](../05-reference/what-places-returns.md).
 
 **What an engagement costs to deliver.** Data is a small fraction of it; labour is the business. [What the work costs](../04-operating/what-the-work-costs.md).
 

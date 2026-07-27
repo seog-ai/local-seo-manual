@@ -135,7 +135,7 @@ A human approving each reply is fine, and is the loop every lab below uses. The 
 
 ## Doing this without SEOG
 
-The pattern generalises: a small MCP server over the Google Business Profile and Places APIs, your own store behind it, the same five classes exposed. Three things take the effort, and none is the MCP part — OAuth and its refresh; the write surface, where documented and actual capability differ enough to need [a matrix](../05-reference/gbp-capability-matrix.md) and [a failure table](../05-reference/write-limits-and-failure-modes.md); and the rules on what you may store and for how long ([storing Google data legally](../05-reference/storing-google-data-legally.md)). Budget with [what Google's APIs cost](../05-reference/what-googles-apis-cost.md); long form in [Doing it without SEOG](../99-appendix/doing-it-without-seog.md).
+The pattern generalises: a small MCP server over the Google Business Profile and Places APIs, your own store behind it, the same five classes exposed. Three things take the effort, and none is the MCP part — OAuth and its refresh; the write surface, where documented and actual capability differ enough to need [a matrix](../05-reference/gbp-capability-matrix.md) and [a failure table](../05-reference/write-limits-and-failure-modes.md); and the rules on what you may store and for how long ([storing Google data legally](../05-reference/storing-google-data-legally.md)). Budget with [what the Places API will and will not give you](../05-reference/what-places-returns.md); long form in [Doing it without SEOG](../99-appendix/doing-it-without-seog.md).
 
 ## Labs
 

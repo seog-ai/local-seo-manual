@@ -30,7 +30,7 @@ A number with seven unstated arguments is not a measurement. It is a rumour with
 
 Start with the one nobody says out loud: **no rank tracker observes the map pack.** The pack is rendered to a human, in a browser session, in a place, with a history. A tool observes a proxy — a result page fetched with a location parameter attached, a ranked place search against Google's places data, or a third-party search API resold under another name. Different corpora, different orderings, no two agreeing about a marginal business.
 
-SEOG's rank check and geo-grid are the second kind: a ranked place search run from an explicit coordinate. A deliberate trade — reproducible, and it takes a coordinate as a real argument rather than a hint ([what Google's APIs actually cost](../05-reference/what-googles-apis-cost.md)). It is not what a human sees, and two of its properties bite immediately.
+SEOG's rank check and geo-grid are the second kind: a ranked place search run from an explicit coordinate. A deliberate trade — reproducible, and it takes a coordinate as a real argument rather than a hint ([what the Places API will and will not give you](../05-reference/what-places-returns.md)). It is not what a human sees, and two of its properties bite immediately.
 
 **It returns Google's relevance ordering for the query, and drops businesses Google's own search box still finds.** A new or thin listing can be missing from a ranked place search while remaining findable by someone typing its name into Maps, which resolves names through a different mechanism. So "the tool cannot find us but Maps can" is the expected result for a low-prominence business, not a defect.
 

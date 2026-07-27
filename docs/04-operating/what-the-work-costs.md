@@ -1,113 +1,39 @@
 ---
 title: What the work costs
 sidebar_position: 5
-description: What local search data costs at wholesale from Google's published prices, what the labour costs, and where the margin in this work actually sits.
+description: Why the data bill is a rounding error, what the labour actually costs, and where the margin in local SEO work really sits.
 ---
 
 # What the work costs
 
-You can do the work now. Whether it is a business depends on three numbers: what the data costs, what your time costs, and what someone will pay. Only the first is knowable to the cent — Google publishes it — and it is the one almost nobody in this industry can quote.
+You can do the work now. Whether it is a business depends on three numbers: what the data costs, what your time costs, and what someone will pay.
 
-Knowing the real figure protects you from two mistakes at once: paying ten times what a deliverable needs to cost, and quoting a price anchored to a bill that is a rounding error.
+Most people entering this trade get the order of those wrong. They assume the data is the expensive part, because it is the part that arrives as an invoice from a technology company. It is not. Getting the order right protects you from two mistakes at once: building an operation optimised against the smallest line on your P&L, and quoting a price anchored to a bill that is a rounding error.
 
 ## Three cost lines, and only one is large
 
 | Line | What it is | Order of magnitude, per managed client per month |
 | --- | --- | --- |
-| **Data** | Live calls to Google and to model vendors | Single-digit dollars |
+| **Data** | Live calls to Google and to model vendors | Small — the smallest of the three, by a wide margin |
 | **Labour** | Your hours, or someone's | Hundreds of dollars |
 | **Fixed** | Tooling, your own site, accounting, unbilled hours | Amortised across your whole book |
 
 **The API bill is not the cost of delivery; it is a rounding error on it** — which is why pricing off it is a trap. People who lose money doing local SEO lose it on unpriced hours, on clients who leave before onboarding is repaid, and on producing a monthly report nobody reads.
 
-## What the data costs at wholesale
+This is the single most important thing in the chapter, and it has a consequence people miss: **optimising your data costs is optimising the wrong line.** Halving a rounding error changes nothing. Halving the hours it takes to produce a monthly deliverable changes the business.
 
-Google publishes per-request prices for the place data underneath every local SEO tool. Below are list prices at the most expensive volume tier — the first 0–100,000 requests a month, discounted above that — read off Google Maps Platform's core-services pricing list, page stamped **last updated 2026-07-20**, re-checked **2026-07-27**.
+## What the data costs, in shape rather than in dollars
 
-| What you are buying, one request at a time | Per request | Per 1,000 |
-| --- | --- | --- |
-| A ranked list of businesses for a query at a point, **with** rating, review count and phone on every row | $0.035 | $35 |
-| The same ranked list, **identities only** | $0 | $0 |
-| One business's public record — contact details, hours, rating | $0.020 | $20 |
-| The same record **plus** its attribute set and editorial summaries | $0.025 | $25 |
-| A sample of one business's public reviews | $0.025 | $25 |
-| One resolved photo URL | $0.007 | $7 |
-| One interactive map render | $0.007 | $7 (first 10,000 a month free) |
-| One typeahead suggestion request | $0.00283 | $2.83 |
+Google publishes current per-request prices for the place data underneath every local SEO tool, and those prices move — the platform was restructured in March 2025 and the rate card has been revised since. Any table printed here would be stale before it was useful, so this manual does not print one. Read it at source: [Google Maps Platform pricing](https://developers.google.com/maps/billing-and-pricing/pricing).
 
-Three rules govern that table, and they are the whole game.
+What is stable is the *shape*, and the shape is what you need in order to reason:
 
-**A request is priced by the most expensive thing in it.** Ask a search for names and coordinates and you are in a free or near-free tier. Ask for the rating as well and the *entire request* re-prices upward — not the extra field, the request. That is how two tools running what looks like the same search differ a hundredfold in cost. The tiers and the mapping: [what Google's APIs cost](../05-reference/what-googles-apis-cost.md).
+- **You are billed per request, by what you ask for.** A request is priced at the tier of the most expensive field in it, so two calls that look identical can cost very differently ([what the Places API will and will not give you](../05-reference/what-places-returns.md)).
+- **The owner-side half is a different economic animal.** Business Profile, Search Console and PageSpeed are not billed the way place search is, so the richest data in local SEO — performance, full review history, the search terms people actually used — does not scale in cost with how often you look at it. It scales with whether the client connected their profile.
+- **Cadence is a bigger lever than efficiency.** Map-pack positions drift over weeks. Scanning daily costs several times more than scanning fortnightly and tells you *less*, because the extra runs mostly measure your own noise floor ([did it work?](../02-core-practice/did-it-work.md)).
+- **Model calls follow the same logic.** A monthly AI-visibility panel is a few dozen prompts, not a few thousand; the vendor's rate matters far less than how many times you decide to ask.
 
-**The free tier is real and useful.** A search returning only the identities of the businesses ranked at a point is billed at zero — and that is enough to compute a position, which is the entire content of a rank check.
-
-**The free monthly allowance is real but unstable.** Google grants a free monthly volume per request type, and the allowance shrinks as the request gets richer — the cheapest tier carries the largest, the most expensive the smallest. It has been restructured wholesale before: the flat $200-a-month credit that every tutorial written before 2025 assumes was withdrawn on **1 March 2025** and replaced by these per-request-type allowances. Read the current page before budgeting on it, and date what you read.
-
-Some local data is not for sale at any price — a profile's own view and call counts, the terms that produced its impressions, a competitor's internals: [what Google's reporting hides](../05-reference/what-googles-reporting-hides.md).
-
-### A prospect audit costs less than a stamp
-
-To produce the diagnostic in [Diagnosing a business in thirty minutes](../02-core-practice/analyzing-business-visibility.md) on a business you have no access to, you need one search to find it, one rich profile record, one review sample, up to ten photo URLs, and a handful of competitor records: **about twenty-five cents**. Whatever is stopping you from auditing fifty prospects this month, it is not the data bill.
-
-## The free half nobody prices in
-
-Here is the fact that reorganises the economics: **once a business connects its Google Business Profile to you, the data is free.**
-
-Google charges nothing to call the owner-side interfaces. Reviews and their full history, publishing replies, performance metrics and the search terms people used, posts, photo uploads, edits to fields and attributes — none of it is metered. Neither is keyword volume from an Ads account, nor Search Console, nor PageSpeed.
-
-So your billable data cost sits almost entirely where you *lack* access:
-
-| Work | Who is observed | Data cost |
-| --- | --- | --- |
-| Prospecting and audits | A business you do not manage | Paid, per business |
-| Competitor tracking | Businesses nobody gives you access to | Paid, per competitor, per refresh |
-| Public rank and grid measurement | The search result, not the profile | Paid or free, by how the request is built |
-| Everything on a connected client's own profile | Your client | Free to call |
-
-Three consequences. **Connect the profile in week one** — cost is the least of the reasons, since connected access also converts a pile of *unknowns* into facts. **Your data bill scales with businesses you do not manage**: twenty connected clients tracking five competitors each cost more in competitor snapshots than everything else combined. And **free of money is not free of limits** — the owner interfaces carry write limits, silent partial failures and content rejections that have nothing to do with billing ([write limits and failure modes](../05-reference/write-limits-and-failure-modes.md)).
-
-## The model is the cheap part
-
-The instinct that AI features are the expensive line is wrong by an order of magnitude. Generated text is nearly free; **the lookups behind it are the cost.**
-
-At list prices read on 2026-07-27, the small fast tier runs $0.20–$0.30 per million input tokens and $1.25–$2.50 per million output depending on vendor, so a review-reply draft — a prompt under a thousand tokens, a couple of hundred out — costs a **fraction of a cent**. You can draft several dozen replies for the price of one grounded lookup. Because a *grounded* answer, where the model runs a live search before replying, is charged separately, and that charge dominates:
-
-| Vendor-published charge, read 2026-07-27 | Price |
-| --- | --- |
-| Grounding with Google Search, Gemini 2.5 generation | $35 per 1,000 grounded prompts, past a free daily quota |
-| Grounding with Google Search, Gemini 3 generation | $14 per 1,000 search queries, past a free monthly quota |
-| Server-side web search on the two other major assistant APIs | $10 per 1,000 calls |
-| Frontier model tokens | ~$5 per million in, ~$30 per million out |
-| Small fast model tokens | $0.20–$0.30 per million in, $1.25–$2.50 per million out |
-
-Read the first two rows together: the same vendor's grounded search costs two and a half times as much on one model generation as on the next. A good deal of what you will read about AI-visibility costs is quoting a rate that has already moved.
-
-One probe — a prompt asked of three engines, each answer judged for whether the business was named — works out at **roughly ten to fifteen cents** on the more expensive combinations, nearly all of it the grounded searches plus the search-result tokens they pull into the prompt. That is arithmetic from the rates above, not a quoted price, and choosing the cheaper grounding generation moves it materially. At the cadence [AI visibility](../03-advanced/ai-visibility.md) argues for, since one run is a sample and not a measurement:
-
-```
-10 prompts × 4 runs a month  = 40 prompt-runs
-40 × ~$0.13 per prompt across three engines
-≈ $5.20 per client per month
-```
-
-Two things fall out. The choice of *writing* model barely matters; the choice of *grounded* engine and generation matters enormously — a frontier model making three web searches per answer costs several times a small model making one. And the wholesale input to an AI-visibility deliverable is a few dollars a month, so the build-or-buy question is what the interpretation is worth, not what the lookups cost.
-
-## Two builds of the same deliverable, 250× apart
-
-A geo-grid scan is one search per grid point — nine, twenty-five or forty-nine of them ([reading a geo-grid](../03-advanced/reading-a-geo-grid.md)).
-
-Build it the obvious way, asking each point for ranked businesses with ratings and phone numbers attached, and a 7×7 scan buys 49 requests at the top rate: **$1.72 a scan**. Ask each point only who ranked where — all a heatmap contains — and those 49 requests bill at zero. You pay for the one map render the result is drawn on, and the first ten thousand of those each month are free.
-
-Twenty clients, scanned weekly:
-
-| Build | Monthly data cost |
-| --- | --- |
-| Rich rows at every grid point | ~$137 |
-| Identities only | ~$0.56, often $0 |
-
-Same picture on screen, same numbers under it, a roughly 250× difference in cost of goods — produced entirely by which fields the request asked for. If you came to this from engineering, that is where your advantage in this market is: not ranking better than an agency, but delivering the same artefact at a cost structure they cannot see.
-
-Cadence is the second lever and free to pull. Map-pack positions drift over weeks; scanning daily costs seven times as much and tells you less, because the extra runs mostly measure your own noise floor ([did it work?](../02-core-practice/did-it-work.md)).
+If you are costing a build or comparing vendors, take those four properties, put today's published rates against your own expected call volumes, and you will get a real number. It will be specific to your volumes and to this month, which is exactly why it belongs in your spreadsheet and not in a book.
 
 ## You cannot amortise the data
 
@@ -125,7 +51,7 @@ The hours below are an example, built from this manual's own lab times — hones
 | Monthly, recurring | Re-scan and read, reviews and replies, a post or two, competitor read, report, client conversation | 2.5–4 |
 | Occasional | A suspension, a merge, a migration, a review crisis | Unbudgeted, and it will happen |
 
-Put an example rate on it — $60 an hour; use your own. Onboarding is roughly **$400 of your time**, a steady month **$150–240**. Against those, a managed client's data bill is under ten dollars: **data lands in the low single digits as a share of delivery cost — call it 3–6%,** and the exact figure is one you compute in Lab 30.1, not one you take from here. Cost-plus pricing on the data bill is therefore not conservative, it is arithmetic that prices your month at nothing.
+Put an example rate on it — $60 an hour; use your own. Onboarding is roughly **$400 of your time**, a steady month **$150–240**. Against those, a managed client's data bill is a small fraction of delivery cost — the exact share is one you compute in Lab 30.1 from your own volumes and today's rates, not one you take from here. Cost-plus pricing on the data bill is therefore not conservative; it is arithmetic that prices your month at nothing.
 
 Onboarding is also front-loaded and unrecovered — a client who leaves at month three cost you more than they paid, which is what a minimum term is for. And the "occasional" row is not padding: [what you inherit with a client](./what-you-inherit-with-a-client.md) and [suspensions and reinstatement](../03-advanced/suspensions-and-reinstatement.md) exist because those events land on somebody's calendar without warning.
 
@@ -167,23 +93,23 @@ So price from the client's side with a floor on your own. The floor is delivery 
 
 ## Labs
 
-### Lab 30.1 — Cost a client-month at wholesale
+### Lab 30.1 — Cost a client-month, and find which line dominates
 
-> **Lab** · Where: a spreadsheet, plus [what Google's APIs cost](../05-reference/what-googles-apis-cost.md) · Cost: **free** · Time: ~30 min
+> **Lab** · Where: a spreadsheet, plus [what the Places API will and will not give you](../05-reference/what-places-returns.md) · Cost: **free** · Time: ~30 min
 >
 > You need: your tracked keyword set (Lab 8.2) and tracked competitor set (Lab 16.1), so the counts are real rather than imagined.
 
 1. List every deliverable for one client in one month, specifically: *four weekly 5×5 grid scans*, *ten keyword positions weekly*, *review sync and replies*, *five competitor refreshes*, *ten AI prompts across three engines weekly*, *one report*.
 2. Beside each, write the live requests it needs. A grid scan is one per point; a rank check is one per keyword per run; a competitor refresh is one record per competitor.
-3. Price every row twice: once assuming each request asks for the rich fields, once assuming it asks the minimum that answers the question. Sum both columns; write the ratio at the bottom.
+3. Price each row against Google's current published rates for the calls it needs. Sum the column.
 4. Add labour — hours from the table above, at your own rate — and write the data share of delivery cost as a percentage.
 5. Repeat for a *prospect audit* on a business you have no access to, then work out how many audits equal one hour of your time.
 
-**What good looks like.** Two totals differing by more than 10×, and a data share in the low single digits. You can name the deliverable that dominates your data bill.
+**What good looks like.** A data share that is a small fraction of delivery cost, and the name of the one deliverable that dominates it — almost always the one you run most often, not the one that looks most expensive per call.
 
-**If it went wrong.** A rich-fields total under a dollar means you counted a grid scan as one request rather than one per point. Two identical columns mean you have not found the cheap path for anything — usually every row priced at the top tier out of habit.
+**If it went wrong.** A total under a dollar usually means you counted a grid scan as one request rather than one per point. A data share above a quarter means you are either scanning far more often than the data moves, or you have not counted your own hours honestly.
 
-**What you just learned.** Cost of goods here is a design decision, not a fact handed to you — and a computed number is the only defence against both overpaying for tooling and underpricing your month.
+**What you just learned.** Which line your business actually runs on. Almost everyone entering this trade optimises the data bill because it arrives as an invoice, and almost nobody optimises the hours, which is where the money goes. Cadence — how often you re-measure — moves your data cost far more than any other choice, and it is the one you can change this afternoon.
 
 ### Lab 30.2 — Time the cycle, not the tooling
 
