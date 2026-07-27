@@ -44,6 +44,7 @@ Labs are marked **free** (reads stored data) or **paid** (fetches new data from 
 
 ### Start here
 - [About this manual](docs/00-start-here/about-this-manual.md)
+- **[Local SEO Essentials](docs/00-start-here/local-seo-essentials.md)** — the whole discipline on one page
 - [How the labs work](docs/00-start-here/how-the-labs-work.md)
 - [Set up your workbench](docs/00-start-here/set-up-your-workbench.md)
 

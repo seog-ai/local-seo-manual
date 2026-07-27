@@ -109,6 +109,7 @@ const config: Config = {
       logo: { alt: 'SEOG', src: 'img/logo.png', srcDark: 'img/logo-dark.png' },
       items: [
         { type: 'docSidebar', sidebarId: 'manual', position: 'left', label: 'Manual' },
+        { to: '/essentials', position: 'left', label: 'Essentials' },
         { to: "/reference/gbp-capability-matrix", position: "left", label: "Field reference" },
         {
           href: 'https://github.com/seog-ai/local-seo-manual',
@@ -132,6 +133,7 @@ const config: Config = {
           title: 'The manual',
           items: [
             { label: 'Start here', to: '/' },
+            { label: 'Local SEO Essentials', to: '/essentials' },
             { label: 'Foundations', to: '/foundations/what-is-local-seo' },
             { label: 'Core practice', to: '/core-practice/analyzing-business-visibility' },
             { label: 'What labs cost', to: '/appendix/what-things-cost' },

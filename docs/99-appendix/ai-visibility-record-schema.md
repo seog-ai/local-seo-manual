@@ -22,13 +22,6 @@ The **observation** is one run: one prompt, one engine, one response. Not "this 
 
 Runs group into a **cell**: everything sharing the same question, anchor and engine. A cell is where rates live, because a rate needs repetition ([LSM-AI-16](../05-reference/ai-engine-probe-recipes.md#lsm-ai-16--one-run-is-a-sample-not-a-measurement)). A single observation carries no rate and should never be rendered as a percentage.
 
-```mermaid
-flowchart LR
-  A["One prompt, one engine, one response"] --> B["Observation: one append-only row"]
-  B --> C["Cell: same question, anchor and engine"]
-  C --> D["Rate, over a rolling window of runs"]
-```
-
 The identity of a cell is the tuple below. Change any element and you have started a new series, not continued an old one.
 
 | Key element | Change it and… |

@@ -51,12 +51,14 @@ You are not required to use it. Every lab states the underlying concept and the 
 
 The manual is written to be read in order — later chapters assume the vocabulary and the workbench from earlier ones. If you are impatient, the honest shortcut is:
 
+- **Want the rules in five minutes** → [Local SEO Essentials](./local-seo-essentials.md). It is the whole discipline on one page, with a link out of every line.
 - **Never done any of this** → start at [How the labs work](./how-the-labs-work.md) and go straight through.
 - **You own a business and want results this month** → Start here, then [Part II](../02-core-practice/analyzing-business-visibility.md), then come back to Part I when something surprises you.
 - **You already do SEO professionally** → skim [Part I](../01-foundations/what-is-local-seo.md) for the local-specific model, then work Part II and Part III properly.
 
 | Part | What it covers |
 | --- | --- |
+| **[Local SEO Essentials](./local-seo-essentials.md)** | **The short version — what must be true, what gets you suspended, what moves visibility** |
 | [Start here](./how-the-labs-work.md) | The lab format, the free account, picking a practice business |
 | [Part I — Foundations](../01-foundations/what-is-local-seo.md) | The map pack, the ranking forces, what a business *is* to Google |
 | [Part II — Core practice](../02-core-practice/analyzing-business-visibility.md) | The working loop: measure, diagnose, fix, re-measure |

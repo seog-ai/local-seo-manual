@@ -1,6 +1,6 @@
 ---
 title: Set up your workbench
-sidebar_position: 3
+sidebar_position: 4
 description: Create a free SEOG account, choose the business you will practise on for the rest of the manual, and add it.
 ---
 

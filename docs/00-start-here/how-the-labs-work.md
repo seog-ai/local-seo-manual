@@ -1,6 +1,6 @@
 ---
 title: How the labs work
-sidebar_position: 2
+sidebar_position: 3
 description: The lab format used throughout the manual, the workbench you will run them in, and the difference between reading data and fetching it.
 ---
 

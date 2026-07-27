@@ -47,24 +47,6 @@ These are the manual's names for them. Google officially calls the first one "lo
 
 The same question, then, fans out into six answers chosen by five different selectors:
 
-```mermaid
-flowchart LR
-  Q["Local query"] --> G["Google results page"]
-  Q --> A["Question put to an assistant"]
-  G --> MP["Map pack"]
-  G --> LF["Local finder"]
-  G --> LO["Local organic"]
-  G --> AO["AI Overview"]
-  G --> ALP["AI local pack"]
-  A --> SA["Standalone assistant answer"]
-  MP --> S1["Google's local ranking system"]
-  LF --> S1
-  LO --> S2["Google's web ranking"]
-  AO --> S3["Generative layer over Google's index"]
-  ALP --> S4["Undocumented"]
-  SA --> S5["Each vendor's own retrieval and place data"]
-```
-
 Three of these are routinely confused, so be precise about them.
 
 **The local finder is not the map pack.** It is the deep list behind "More places", and it is where a business at position 7 actually lives. People who "cannot find themselves anywhere" are usually visible immediately in the finder — which is the difference between a ranking problem and a panic.
