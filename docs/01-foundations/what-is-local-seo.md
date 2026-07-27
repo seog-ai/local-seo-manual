@@ -6,7 +6,9 @@ description: Local search has six separate answer surfaces, each with its own se
 
 # What local SEO actually is
 
-Local SEO is the practice of making a business appear when someone nearby searches for what it sells. That used to be one job with one target: three results in a box next to a map. It is now at least six targets, chosen by different machines, from partly different data — and a business can own one of them while being invisible on the rest.
+Local SEO is the practice of making a business appear when someone nearby searches for what it sells. That used to be one job with one target: three results in a box next to a map.
+
+It is now at least six targets, chosen by different machines, from partly different data — and a business can own one of them while being invisible on the rest.
 
 This chapter is the map of those surfaces. Every decision later in the manual — which keyword to track, which number to report, whether a change worked — depends on being able to say *which surface* you are talking about.
 
@@ -18,13 +20,17 @@ A query is local when the answer depends on where the person is standing. That h
 
 **Implicitly** — the query names no place, and the search engine supplies one. `dentist near me`, or just `dentist` typed on a phone. Most local searches are this kind. The searcher never states a location because they assume the machine knows it, and it does.
 
-The consequence is the single most important structural fact in this discipline: **the same words produce different results at different coordinates**. There is no such thing as "our rank for plumber" — only "our rank for plumber, measured from this point, on this surface, on this date". [Rank is a map, not a number](./rank-is-a-map-not-a-number.md) makes that rigorous. For now, just stop trusting any sentence of the form "we rank #3".
+The consequence is the single most important structural fact in this discipline:
+
+> **The same words produce different results at different coordinates.**
+
+There is no such thing as "our rank for plumber" — only "our rank for plumber, measured from this point, on this surface, on this date". [Rank is a map, not a number](./rank-is-a-map-not-a-number.md) makes that rigorous. For now, just stop trusting any sentence of the form "we rank #3".
 
 ![A 3x3 grid scan over Helsinki for one keyword, with a rank number on the pin at each of the nine measurement points](../../static/img/screens/geo-grid.png)
 
 *One keyword, nine live searches run from nine coordinates around Helsinki — a real scan, not a mock-up. The pins carry different positions a couple of kilometres apart, which is exactly what a single "we rank #3" would hide. Ignore the search-volume figure further up that page: it carries a **Test data** badge, because no volume provider was configured on the machine that took the capture.*
 
-Local intent is also a spectrum rather than a switch. `emergency plumber` is almost pure local intent. `how do I stop a dripping tap` is almost none. `best plumber in Bristol for a boiler swap` is both, which is exactly why it gets answered by a different machine than the first one does.
+**Local intent is a spectrum, not a switch.** `emergency plumber` is almost pure local intent. `how do I stop a dripping tap` is almost none. `best plumber in Bristol for a boiler swap` is both, which is exactly why it gets answered by a different machine than the first one does.
 
 ## The six answer surfaces
 
@@ -39,35 +45,99 @@ These are the manual's names for them. Google officially calls the first one "lo
 | **AI local pack** | A generated local answer containing one or two businesses, in place of the pack | A subset of local queries; so far observed only on mobile, and only in the US | Undocumented |
 | **Standalone assistant** | A named recommendation in ChatGPT, Gemini, Perplexity or Claude, sometimes with sources | The person asking an assistant instead of a search box | Each vendor's own retrieval and place data |
 
+The same question, then, fans out into six answers chosen by five different selectors:
+
+```mermaid
+flowchart LR
+  Q["Local query"] --> G["Google results page"]
+  Q --> A["Question put to an assistant"]
+  G --> MP["Map pack"]
+  G --> LF["Local finder"]
+  G --> LO["Local organic"]
+  G --> AO["AI Overview"]
+  G --> ALP["AI local pack"]
+  A --> SA["Standalone assistant answer"]
+  MP --> S1["Google's local ranking system"]
+  LF --> S1
+  LO --> S2["Google's web ranking"]
+  AO --> S3["Generative layer over Google's index"]
+  ALP --> S4["Undocumented"]
+  SA --> S5["Each vendor's own retrieval and place data"]
+```
+
 Three of these are routinely confused, so be precise about them.
 
 **The local finder is not the map pack.** It is the deep list behind "More places", and it is where a business at position 7 actually lives. People who "cannot find themselves anywhere" are usually visible immediately in the finder — which is the difference between a ranking problem and a panic.
 
-**The AI Overview and the AI local pack are different things.** An AI Overview is a generated block that answers a question and links to sources; a business is lucky to be named in one. The AI local pack is a generated *local* result that lists businesses the way the pack does, and the practitioner who has tracked it most closely — Joy Hawkins of Sterling Sky — describes it as **displacing** the traditional 3-pack rather than sitting above it. That is a materially worse outcome for a business than an AI Overview, because there is nothing left underneath to fall back to. Google has published nothing about the surface, so the displacement claim rests on one vendor's observation *(open question)*.
+**The AI Overview and the AI local pack are different things.** An AI Overview is a generated block that answers a question and links to sources; a business is lucky to be named in one.
+
+The AI local pack is a generated *local* result that lists businesses the way the pack does. The practitioner who has tracked it most closely — Joy Hawkins of Sterling Sky — describes it as **displacing** the traditional 3-pack rather than sitting above it.
+
+That is a materially worse outcome for a business than an AI Overview, because there is nothing left underneath to fall back to. Google has published nothing about the surface, so the displacement claim rests on one vendor's observation *(open question)*.
 
 **A standalone assistant is not a search engine with a nicer voice.** It answers from its own retrieval stack. Gemini is grounded in Google Maps data; ChatGPT and Perplexity are grounded in something else. This is why the same question can produce three disjoint answers, which you will see for yourself in Lab 1.3, and why [How an AI assistant answers a local question](./how-ai-answers-a-local-question.md) is a chapter rather than a paragraph.
 
-> **Note** · There is a seventh thing on the page and it is not a ranking surface: ads. Sterling Sky's *The State of Local SEO in 2026* reports local pack ads on 1% of its mobile reports at the start of 2025 and almost 22% by December 2025, and Local Services Ads on roughly 11% of tracked queries at the start of 2025 and 31% by November. That is one agency's tracking sample, not a census. You cannot rank your way into those slots — count them separately when you audit a page, or you will misread how much room is actually available.
+> **Note** · There is a seventh thing on the page and it is not a ranking surface: ads.
+>
+> Sterling Sky's *The State of Local SEO in 2026* reports local pack ads on 1% of its mobile reports at the start of 2025 and almost 22% by December 2025, and Local Services Ads on roughly 11% of tracked queries at the start of 2025 and 31% by November. That is one agency's tracking sample, not a census.
+>
+> You cannot rank your way into those slots — count them separately when you audit a page, or you will misread how much room is actually available.
 
 ## The 2026 inventory, with dates on it
 
 Most "what is local SEO" pages describe a three-result pack and one machine. Here is what has actually been measured, and by whom. Every figure below is vendor-published and observational — useful, but none of it is a controlled experiment, and the methodologies are only partly disclosed.
 
-**The AI local pack surfaces roughly a third as many businesses as the pack it displaces.** Sterling Sky's *The State of Local SEO in 2026* (published June 2026) reports AI local packs surfacing **5,943 unique businesses where regular 3-packs surfaced 18,330** across the same tracked set — about **32% coverage**, so two businesses in three vanish. Read the figure carefully: several write-ups render it as "32% fewer businesses", which is the opposite of what the two counts say. In the same tracking, AI local packs appeared on about **7%** of tracked keywords, showed **one or two** businesses instead of three, and **had no call button**; across 322 markets, 88% had fewer unique businesses in the AI pack than in the traditional one. Nothing is published on which businesses survive the cut or why, and Google's documentation does not acknowledge the surface at all.
+**The AI local pack surfaces roughly a third as many businesses as the pack it displaces.** Sterling Sky's *The State of Local SEO in 2026* (published June 2026) reports AI local packs surfacing **5,943 unique businesses where regular 3-packs surfaced 18,330** across the same tracked set — about **32% coverage**, so two businesses in three vanish.
 
-**AI Overviews are common on local searches, and much rarer on local-intent ones.** Whitespark's May 2025 study — 540 queries across three US cities and six industries — found AI Overviews on about 68% of the set overall but on only about **15% of queries with clear local intent**, where the local pack appeared in 93%. Local Falcon's May 2025 whitepaper (60,000 queries) put overall incidence at 40.2% with the same gradient: reason 59.9%, informational 58.3%, instructional 54.4%, transactional 47.4%, commercial 17.2%, navigational 10.5%. The two headline rates are not comparable — different query sets, different intent taxonomies — but the gradient is. **The more the query looks like a purchase, the less likely a generated answer is to intercept it, for now.**
+Read the figure carefully: several write-ups render it as "32% fewer businesses", which is the opposite of what the two counts say.
 
-**The assistants recommend far fewer businesses than the pack does.** SOCi's 2026 Local Visibility Index (~350,000 locations) reported recommendation rates of 1.2% for ChatGPT, 7.4% for Perplexity and 11% for Gemini, against 35.9% for the Google local 3-pack. The same study reported profile accuracy of roughly 68% on ChatGPT and Perplexity versus ~100% on Gemini — which tracks with Gemini being Maps-grounded — and only 45% overlap in retail between the brands that win Google local and the brands the assistants recommend. Treat the exact percentages as soft; the methodology is not fully published. Treat the *shape* as solid: these are different populations of winners.
+In the same tracking, AI local packs appeared on about **7%** of tracked keywords, showed **one or two** businesses instead of three, and **had no call button**; across 322 markets, 88% had fewer unique businesses in the AI pack than in the traditional one.
 
-**One surface has already been retired.** The questions-and-answers API was switched off on 3 November 2025; on 3 December 2025 Google confirmed it was removing the public Q&A panel from business profiles, rolling out over the following months and replacing it with Gemini-powered "Ask Maps". A capability that a whole category of tooling was built on stopped existing, and a surprising amount of current published advice still describes it as live. Dated facts are in [the local search changelog](../05-reference/local-search-changelog.md).
+Nothing is published on which businesses survive the cut or why, and Google's documentation does not acknowledge the surface at all.
+
+**AI Overviews are common on local searches, and much rarer on local-intent ones.** Whitespark's May 2025 study — 540 queries across three US cities and six industries — found AI Overviews on about 68% of the set overall but on only about **15% of queries with clear local intent**, where the local pack appeared in 93%.
+
+Local Falcon's May 2025 whitepaper (60,000 queries) put overall incidence at 40.2%, with the same gradient running down the intent types:
+
+- reason 59.9%
+- informational 58.3%
+- instructional 54.4%
+- transactional 47.4%
+- commercial 17.2%
+- navigational 10.5%
+
+The two headline rates are not comparable — different query sets, different intent taxonomies — but the gradient is. **The more the query looks like a purchase, the less likely a generated answer is to intercept it, for now.**
+
+**The assistants recommend far fewer businesses than the pack does.** SOCi's 2026 Local Visibility Index (~350,000 locations) reported recommendation rates of 1.2% for ChatGPT, 7.4% for Perplexity and 11% for Gemini, against 35.9% for the Google local 3-pack:
+
+| Surface | Recommendation rate |
+| --- | --- |
+| ChatGPT | 1.2% |
+| Perplexity | 7.4% |
+| Gemini | 11% |
+| Google local 3-pack | 35.9% |
+
+The same study reported profile accuracy of roughly 68% on ChatGPT and Perplexity versus ~100% on Gemini — which tracks with Gemini being Maps-grounded — and only 45% overlap in retail between the brands that win Google local and the brands the assistants recommend.
+
+Treat the exact percentages as soft; the methodology is not fully published. Treat the *shape* as solid: these are different populations of winners.
+
+**One surface has already been retired.** The questions-and-answers API was switched off on 3 November 2025; on 3 December 2025 Google confirmed it was removing the public Q&A panel from business profiles, rolling out over the following months and replacing it with Gemini-powered "Ask Maps".
+
+A capability that a whole category of tooling was built on stopped existing, and a surprising amount of current published advice still describes it as live. Dated facts are in [the local search changelog](../05-reference/local-search-changelog.md).
 
 ## Who decides, and why the answers diverge
 
 Each surface has its own selector.
 
-The map pack and the local finder are chosen by Google's local ranking system, described in terms of relevance, distance and prominence — the subject of [the next-but-one chapter](./relevance-distance-prominence.md). Local organic is chosen by ordinary web ranking, which is why directories and listicles beat business homepages there. The AI Overview is generated over Google's index; the AI local pack is generated over something local, and nobody outside Google knows what. Assistants each retrieve from their own stack.
+**The pack and the finder share a selector.** Both are chosen by Google's local ranking system, described in terms of relevance, distance and prominence — the subject of [the next-but-one chapter](./relevance-distance-prominence.md). Local organic is chosen by ordinary web ranking, which is why directories and listicles beat business homepages there.
 
-They diverge because they are grounded differently, not because any of them is broken. One measurement worth carrying: Ahrefs, comparing 540,000 query pairs of September 2025 US data, found AI Mode and AI Overview citations — two surfaces from *the same company* — overlapping only 13.7% (16.3% across just the top three citations). If Google cannot agree with itself about which sources to cite, an assistant from a different company disagreeing with your map pack is the normal condition, not an anomaly to be fixed.
+**The generated surfaces do not.** The AI Overview is generated over Google's index; the AI local pack is generated over something local, and nobody outside Google knows what. Assistants each retrieve from their own stack.
+
+They diverge because they are grounded differently, not because any of them is broken.
+
+One measurement worth carrying: Ahrefs, comparing 540,000 query pairs of September 2025 US data, found AI Mode and AI Overview citations — two surfaces from *the same company* — overlapping only 13.7% (16.3% across just the top three citations).
+
+If Google cannot agree with itself about which sources to cite, an assistant from a different company disagreeing with your map pack is the normal condition, not an anomaly to be fixed.
 
 Which gives the manual its spine question, and you should ask it before every piece of work you do:
 
@@ -81,7 +151,9 @@ The picture above is fragmenting, but not infinitely. Underneath all six surface
 
 - **They are all ranking a business entity, not a website.** The profile — name, address, category, hours, attributes — is the object. The website is a supporting signal attached to it. That is [the next chapter](./the-business-entity.md), and it is the single idea that reorganises most people's mental model.
 - **Reputation is the heaviest shared input.** Review volume, rating and recency feed both the pack and the assistants' answers. In SEOG's AI-readiness score, review count and rating together are enough to reach the middle tier on their own — a deliberate calibration, defended in [Diagnosing a business in thirty minutes](../02-core-practice/analyzing-business-visibility.md).
-- **Consistency of the entity's facts across the web** matters to every surface, and disproportionately to the AI ones. Whitespark's 2026 Local Search Ranking Factors survey puts citation signals at roughly 7% of local-pack weight (write-ups of it quote 6–7%) — small, and a poll of practitioners rather than a measurement. The case for doing the work anyway is now mostly an AI case, and it is a mechanism argument rather than a statistic: [Citations and NAP consistency](../02-core-practice/citations-and-nap.md) sets out what is and is not knowable there.
+- **Consistency of the entity's facts across the web** matters to every surface, and disproportionately to the AI ones. Whitespark's 2026 Local Search Ranking Factors survey puts citation signals at roughly 7% of local-pack weight (write-ups of it quote 6–7%) — small, and a poll of practitioners rather than a measurement.
+
+  The case for doing the work anyway is now mostly an AI case, and it is a mechanism argument rather than a statistic: [Citations and NAP consistency](../02-core-practice/citations-and-nap.md) sets out what is and is not knowable there.
 
 What does **not** follow is "do good local SEO and the AI surfaces come along". A 45% brand overlap between Google-local winners and AI-recommended winners says the opposite. Shared inputs, different selectors.
 

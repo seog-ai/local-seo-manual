@@ -12,9 +12,15 @@ This chapter is the document: what it must contain, what gets put in instead, an
 
 ## The report is a liability document
 
-If you are coming to this from engineering and thinking about selling it, notice what recurs. Fixes are one-off. The report is what you ship every period, forever, and what renewal is decided on. It is also what you may have to defend — to a successor consultant hired to review you, or to the client in a year with four reports side by side. Write every sentence as though the next reader is paid to find the flaw in it. That one constraint removes most of what is wrong with local SEO reporting and costs nothing to adopt.
+**Notice what recurs.** If you are coming to this from engineering and thinking about selling it: fixes are one-off. The report is what you ship every period, forever, and what renewal is decided on.
 
-A second consequence people miss: **what you report is what you have agreed to be judged on.** Lead with map-pack coverage and you have signed up to move map-pack coverage; lead with calls and you have signed up for an outcome you only partly control. Pick it on purpose, in month zero — [The ninety-day plan](./the-ninety-day-plan.md) is where that becomes a schedule.
+It is also what you may have to defend — to a successor consultant hired to review you, or to the client in a year with four reports side by side.
+
+> **Write every sentence as though the next reader is paid to find the flaw in it.** That one constraint removes most of what is wrong with local SEO reporting and costs nothing to adopt.
+
+A second consequence people miss: **what you report is what you have agreed to be judged on.** Lead with map-pack coverage and you have signed up to move map-pack coverage; lead with calls and you have signed up for an outcome you only partly control.
+
+Pick it on purpose, in month zero — [The ninety-day plan](./the-ninety-day-plan.md) is where that becomes a schedule.
 
 ## The four questions
 

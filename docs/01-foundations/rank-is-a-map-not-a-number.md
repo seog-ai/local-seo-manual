@@ -34,7 +34,16 @@ Two things make that surface less tidy than the word "decay" suggests.
 
 ## A geo-grid is the instrument
 
-A geo-grid measures rank the way you would measure temperature across a room: sample it at many points and look at the field. Pick a centre, lay out an n×n lattice of points at a fixed spacing, run the *same* search from each point as though a person were standing there, and record where the business appears. What you get back is n² positions with coordinates attached. Drawn on a map with colour, that is a heatmap.
+**Sample the field, do not take one reading.** A geo-grid measures rank the way you would measure temperature across a room: sample it at many points and look at the field.
+
+The procedure is four steps:
+
+1. Pick a centre.
+2. Lay out an n×n lattice of points at a fixed spacing.
+3. Run the *same* search from each point, as though a person were standing there.
+4. Record where the business appears.
+
+What you get back is n² positions with coordinates attached. Drawn on a map with colour, that is a heatmap.
 
 ![A real 3x3 geo-grid scan over Helsinki: nine rank pins carrying different positions, with avg rank 2.8 and top-3 coverage 67% below the map](../../static/img/screens/geo-grid.png)
 
@@ -65,11 +74,13 @@ An n×n scan is exactly n² live searches. Nine for 3×3, twenty-five for 5×5, 
 
 ## Resolution is a statistical choice, not a budget one
 
-Almost everyone learns grid size as a spending decision: small grid cheap, big grid expensive, choose by the client's budget. That framing is mostly wrong, and it is worth understanding why before you form the habit.
+**Grid size is usually taught as a spending decision:** small grid cheap, big grid expensive, choose by the client's budget. That framing is mostly wrong, and it is worth understanding why before you form the habit.
 
 A rank measurement needs exactly one thing from Google: **which places came back, in what order.** Not their ratings, not their phone numbers, not their hours — you are looking for your own entry in a list and reading off its index.
 
-Google prices a place search by *how much it tells you about each result*, not by how many results come back. Ask for the rich profile of every result and you are in an expensive tier; ask for less and you are in a cheaper one. What does not change is the result set or its order — the field mask governs how much each result is described, not which results Google returns. The position is the index either way.
+**Google prices description, not results.** It charges a place search by *how much it tells you about each result*, not by how many results come back. Ask for the rich profile of every result and you are in an expensive tier; ask for less and you are in a cheaper one.
+
+What does not change is the result set or its order — the field mask governs how much each result is described, not which results Google returns. The position is the index either way.
 
 So the search half of a geo-grid scan has a wholesale cost of zero, at any grid size, at any volume. What remains genuinely chargeable is drawing the result on a real Google map, which happens once per scan and does not depend on n. The derivation — which requested fields push a call into which billed tier, with the tier prices — is [What the Places API will and will not give you](../05-reference/what-places-returns.md).
 
@@ -77,11 +88,32 @@ The consequence is not "grids are free" — every tool prices its own work, this
 
 > **Choose the grid for the question, not for the invoice.** If the question is "do I hold my immediate neighbourhood", 3×3 answers it and 7×7 adds noise. If the question is "where does my visibility stop", 3×3 cannot answer it at any price, because the answer is outside the grid.
 
+```mermaid
+flowchart TD
+  Q["What are you actually asking?"] --> A{"How far, or how fine?"}
+  A -->|"How far does my visibility reach?"| B["Buy extent: a larger preset"]
+  A -->|"How fine a feature can I see?"| C["Buy resolution: tighter spacing, run by hand"]
+  B --> D["3x3 tests the neighbourhood; 7x7 looks for the edge"]
+  C --> E["No preset resolves anything below one mile"]
+```
+
 ## Reading your first heatmap
 
 Read the shape first. Read the numbers second, and read them suspiciously.
 
-Pins are coloured by position. The legend under the map carries five swatches: green for top 3, yellow for 4–10, orange for 11–20, red for 20+, grey for not found. The red one is vestigial — a grid reads exactly twenty deep, so a point either comes back with a position of 20 or better or comes back with nothing, and in a real scan you will only ever see the other four. The distinction that matters is **coloured versus grey**.
+### The legend
+
+**Pins are coloured by position.** The legend under the map carries five swatches:
+
+- **Green** — top 3
+- **Yellow** — 4–10
+- **Orange** — 11–20
+- **Red** — 20+
+- **Grey** — not found
+
+The red one is vestigial. A grid reads exactly twenty deep, so a point either comes back with a position of 20 or better or comes back with nothing, and in a real scan you will only ever see the other four. The distinction that matters is **coloured versus grey**.
+
+### Five shapes
 
 Five shapes cover most real grids. The causes below are inference from repeated reading, not documented behaviour.
 
@@ -93,14 +125,20 @@ Five shapes cover most real grids. The causes below are inference from repeated 
 | **Ring** | Weak at the centre, better further out | A dominant near neighbour sitting on top of you, or a centre point that is not really your address. |
 | **Scatter** | No spatial structure at all | Low prominence. Position is decided by tie-breaks, not geography. |
 
-*Above* the map the app prints a plain-language reading of the same thing — coverage, the average, the found rate ("you appear in the top 20 at 9 of 9 points"), and the compass direction you are strongest and weakest in ("strongest to the west and weakest to the south-east"). Treat that as a second opinion to check your own reading against. It only claims a direction when the gap between the best and worst side is large enough to mean something, so a genuine plateau produces no direction claim at all.
+### The two readings around the map
 
-*Beneath* the map sit the two summary figures, which have **different denominators** and are routinely misread because of it:
+**Above the map: a written second opinion.** The app prints a plain-language reading of the same thing — coverage, the average, the found rate ("you appear in the top 20 at 9 of 9 points"), and the compass direction you are strongest and weakest in ("strongest to the west and weakest to the south-east").
+
+Treat that as a second opinion to check your own reading against. It only claims a direction when the gap between the best and worst side is large enough to mean something, so a genuine plateau produces no direction claim at all.
+
+**Beneath the map** sit the two summary figures, which have **different denominators** and are routinely misread because of it:
 
 - **Avg rank** — your average position *across the points where you appear*. Grey pins are not in it.
 - **Top-3 coverage** — the share of *all* points where you rank in the top 3.
 
-A business found at 2 of 25 points, at #1 in both, shows an average rank of 1.0 and top-3 coverage of 8%. The first number is true and nearly useless. **Never quote the average without the found rate beside it** — how many of the points you appeared at, out of how many were checked.
+A business found at 2 of 25 points, at #1 in both, shows an average rank of 1.0 and top-3 coverage of 8%. The first number is true and nearly useless.
+
+> **Never quote the average without the found rate beside it** — how many of the points you appeared at, out of how many were checked.
 
 ## Two properties to carry forward
 
@@ -178,7 +216,9 @@ Statisticians call this right-censoring. It matters because every average over a
 
 **What good looks like.** Your one-sentence shape and the generated summary agree, and you can name a specific business responsible for your weak direction. You end with three figures, not two, and the third is what makes the other two safe to quote.
 
-**If it went wrong.** If the honest description is *scatter*, that is a finding, not a failure — it usually means prominence is too low for geography to be deciding anything yet, and the fix is reviews and profile completeness rather than anything spatial. If your sentence and the summary disagree, note that the summary only claims a compass split when the gap is large enough to be meaningful; a genuine plateau produces no direction claim at all.
+**If it went wrong.** If the honest description is *scatter*, that is a finding, not a failure — it usually means prominence is too low for geography to be deciding anything yet, and the fix is reviews and profile completeness rather than anything spatial.
+
+If your sentence and the summary disagree, note that the summary only claims a compass split when the gap is large enough to be meaningful; a genuine plateau produces no direction claim at all.
 
 **What you just learned.** The shape carries the diagnosis. The average carries a summary of the shape with the worst points deleted from it.
 
@@ -198,7 +238,9 @@ Statisticians call this right-censoring. It matters because every average over a
 
 Answer these against your own scan, not from memory.
 
-1. **Your tracker says #3. From where?** If you cannot name the coordinate the check ran from, you cannot defend the number. On a tracked keyword the detail panel shows chips for the **Search from** label, the language and the radius — but only for the ones you set yourself. Leave all three on their defaults, as Lab 3.1 does, and there are no chips at all: the origin is the business address, the language is Google's default for the region, the radius is three miles. A parameter you cannot see is still a parameter.
+1. **Your tracker says #3. From where?** If you cannot name the coordinate the check ran from, you cannot defend the number. On a tracked keyword the detail panel shows chips for the **Search from** label, the language and the radius — but only for the ones you set yourself.
+
+   Leave all three on their defaults, as Lab 3.1 does, and there are no chips at all: the origin is the business address, the language is Google's default for the region, the radius is three miles. A parameter you cannot see is still a parameter.
 2. **At how many of your nine points did you appear at all?** Say that before you say your average rank. If they disagree in tone — strong average, weak found rate — the average is the one lying.
 3. **A competitor claims "we rank #1 for *emergency plumber*".** What single question tells you whether the claim means anything? (*From what location, and how many locations were checked.*)
 4. **Your grid is a clean cliff — green to the north, grey to the south.** Name two plausible causes that have nothing to do with your profile, and one way to check each.

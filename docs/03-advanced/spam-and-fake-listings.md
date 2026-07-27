@@ -6,15 +6,22 @@ description: Local spam is a measurement problem before it is a fairness problem
 
 # Spam, fake listings, and the market you are measured against
 
-The listing above you may be a mailbox with a keyword-stuffed name and forty reviews that arrived in one week. Everyone treats that as a fairness problem, and it is one. It is also a measurement problem, and almost nobody treats it as that: your position, the local average, the target you set for a client — every one of those is computed against a market that includes businesses which do not exist.
+The listing above you may be a mailbox with a keyword-stuffed name and forty reviews that arrived in one week. Everyone treats that as a fairness problem, and it is one.
+
+It is also a measurement problem, and almost nobody treats it as that: your position, the local average, the target you set for a client — every one of those is computed against a market that includes businesses which do not exist.
 
 This chapter is about detecting that to a standard you could defend, reporting it without losing a week, and knowing what it does to your numbers.
 
 ## What is actually out there
 
-Google publishes removal figures annually. From its 2025 Trust and Safety summary, [published 16 April 2026](https://blog.google/products-and-platforms/products/maps/new-ways-were-protecting-businesses-on-maps/): "over 13 million fake Business Profiles" removed during 2025, "over 292 million policy-violating reviews" blocked or removed, restrictions on "more than 782,000 policy-violating accounts", and "79 million inaccurate or unverified edits" blocked.
+Google publishes removal figures annually. From its 2025 Trust and Safety summary, [published 16 April 2026](https://blog.google/products-and-platforms/products/maps/new-ways-were-protecting-businesses-on-maps/), for 2025:
 
-Read what those numbers are before quoting them. They are **removals, not prevalence**. Thirteen million removed says nothing about how many remain, and a rising count is equally consistent with more spam and with better enforcement. Anyone selling you a "% of listings are fake" figure has estimated it.
+- "over 13 million fake Business Profiles" removed
+- "over 292 million policy-violating reviews" blocked or removed
+- restrictions on "more than 782,000 policy-violating accounts"
+- "79 million inaccurate or unverified edits" blocked
+
+**Read what those numbers are before quoting them.** They are **removals, not prevalence**. Thirteen million removed says nothing about how many remain, and a rising count is equally consistent with more spam and with better enforcement. Anyone selling you a "% of listings are fake" figure has estimated it.
 
 The nearest thing to a prevalence measurement is old and narrow. Sterling Sky's [Google Maps spam study](https://www.sterlingsky.ca/google-maps-spam-study/) (published 11 April 2022) worked through 5,306 listings across 16 industries over a four-year period, measuring for each trade the share of listings Google removed after they were reported. It found wildly different rates by trade — garage-door repair worst at 87.6%, then junk cars and personal-injury law; funeral services, realtors and dentists at the bottom, all under 13%. How listings were selected is not fully published, so treat **the ordering as the finding and the percentages as indicative**. Spam concentrates in high-ticket, urgent, one-off services where the customer never returns and cannot tell providers apart. Assume contamination in every set you measure there.
 

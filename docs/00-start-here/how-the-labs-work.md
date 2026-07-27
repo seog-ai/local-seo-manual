@@ -27,7 +27,11 @@ Every lab looks like this:
 
 ## The workbench
 
-The labs run in **SEOG** (`app.seog.ai`). Creating an account is free and takes about a minute — you will do it in [Set up your workbench](./set-up-your-workbench.md). A new account starts on a time-limited free trial with a credit balance included; the app shows the balance and how long the trial has left. When the trial ends the account goes **view-only** — everything already fetched stays readable, and running a paid action again needs a plan. Work on one business and pace the paid labs accordingly.
+The labs run in **SEOG** (`app.seog.ai`). Creating an account is free and takes about a minute — you will do it in [Set up your workbench](./set-up-your-workbench.md).
+
+**A new account starts on a time-limited free trial** with a credit balance included; the app shows the balance and how long the trial has left.
+
+**When the trial ends the account goes view-only.** Everything already fetched stays readable, and running a paid action again needs a plan. Work on one business and pace the paid labs accordingly.
 
 We built SEOG, and we wrote this manual. That is worth knowing up front, and it is also why the labs can be precise: we can tell you exactly which screen to open and exactly what you should see, which no tool-agnostic guide can do.
 
@@ -39,7 +43,25 @@ This is the most useful economic fact in local-SEO tooling, and it is not a SEOG
 
 **Fetching new data costs.** A rank check is a live search against Google. A geo-grid scan is one live search *per grid point* — the largest preset is a 7×7 grid, so 49 of them. An AI draft is a call to a language model. Publishing a reply writes to Google's API. These cost real money to run, so they are metered.
 
-**Stored is not the same as permanent, and the limit is Google's, not the tool's.** Google's terms cap how long raw Google content may be kept: Business Profile content at 30 calendar days, and Places content carries no general caching grant at all beyond a short list of exemptions such as place IDs. So the raw Google material — review text, a competitor's name and rating, profile hours and description — is deleted or stripped on that clock unless a fresh sync re-fetched it, while what the tool *derived* stays: your rank positions, your grid history, profile scores, the trends built from them. It is also why a re-sync is charged: it is a new fetch, not a re-read. The clauses and their sources are in [Storing Google data legally](../05-reference/storing-google-data-legally.md) — LSM-POLICY-06 for Places, LSM-POLICY-27 for Business Profile.
+```mermaid
+flowchart LR
+  A["Paid fetch: live search, model call or write"] --> B["Result stored"]
+  B --> C["Free reads, as many as you like"]
+  B --> D{"Raw Google content?"}
+  D -->|"Yes: retention clock runs"| E["Removed when the cap is reached"]
+  D -->|"No: derived measurement"| F["Kept: positions, grid history, scores"]
+  E --> A
+```
+
+**Stored is not the same as permanent, and the limit is Google's, not the tool's.** Google's terms cap how long raw Google content may be kept: Business Profile content at 30 calendar days, and Places content carries no general caching grant at all beyond a short list of exemptions such as place IDs.
+
+So the raw Google material is deleted or stripped on that clock unless a fresh sync re-fetched it, while what the tool *derived* stays:
+
+| Ages out on Google's clock | Survives |
+| --- | --- |
+| Review text, a competitor's name and rating, profile hours and description | Your rank positions, your grid history, profile scores, the trends built from them |
+
+**It is also why a re-sync is charged:** it is a new fetch, not a re-read. The clauses and their sources are in [Storing Google data legally](../05-reference/storing-google-data-legally.md) — LSM-POLICY-06 for Places, LSM-POLICY-27 for Business Profile.
 
 ![The Rankings screen for a tracked keyword: position #1, summary tiles, a list of rivals, a "Checked 2h ago" timestamp and a "Check now" button](../../static/img/screens/rankings-tracked.png)
 
@@ -65,9 +87,11 @@ Every lab names the underlying concept and where the raw data comes from, so not
 | Reviews | The GBP dashboard review tab |
 | AI visibility | Ask ChatGPT, Gemini or Perplexity the question yourself, record the answer |
 
-**The caveat on faking a location.** Chrome's DevTools location override changes what the Geolocation API reports, which Maps uses — but Google web search derives location from several signals and does not always use that API, so the override can change everything on Maps and nothing on the results page. Test it on your own machine before you trust it, and treat the undocumented URL parameter people circulate for the same purpose as what it is: unsupported, and it has broken before.
+**The caveat on faking a location.** Chrome's DevTools location override changes what the Geolocation API reports, which Maps uses — but Google web search derives location from several signals and does not always use that API, so the override can change everything on Maps and nothing on the results page.
 
-It all works. It is simply slow, and it does not keep history — which turns out to matter enormously, because local SEO is judged on movement over weeks, and you cannot see movement you did not record. That is the real argument for tooling, and it is worth understanding rather than taking on faith.
+Test it on your own machine before you trust it, and treat the undocumented URL parameter people circulate for the same purpose as what it is: unsupported, and it has broken before.
+
+**It all works. It is simply slow, and it does not keep history** — which turns out to matter enormously, because local SEO is judged on movement over weeks, and you cannot see movement you did not record. That is the real argument for tooling, and it is worth understanding rather than taking on faith.
 
 ## Conventions used throughout
 

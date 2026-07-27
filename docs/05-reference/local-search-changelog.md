@@ -8,13 +8,40 @@ description: Dated local-search changes since 2020, each with the API or endpoin
 
 Every local-SEO news feed tells you *that* something changed. Almost none tell you **which endpoint it touched and what stopped working** — which is the only part that matters if you have code, a report template, or a client expectation resting on it.
 
-This chapter is that column. Entries are reverse-chronological by the date of the change, not the date we noticed. Each carries the API or endpoint affected, a probe you can re-run, and a `Last verified` stamp that is the date the probe last ran — not the date the prose was edited. The ID scheme, the five verdicts and the re-probe cadence are defined in [How to read this reference](./how-to-read-this-reference.md).
+**This chapter is that column.** Entries are reverse-chronological by the date of the change, not the date we noticed.
 
-Because a changelog entry cuts across every area, this chapter's IDs are allocated from a reserved block — `-61` and upwards in each area — so that a dated change never competes for a number with the chapter that owns the underlying fact. `LSM-PLACES-67` here is a dated event; the standing facts about Places live under the low numbers in [What the Places API will and will not give you](./what-places-returns.md) and [Storing Google data legally](./storing-google-data-legally.md). Cite the ID printed in the heading and nothing else.
+Each carries the API or endpoint affected, a probe you can re-run, and a `Last verified` stamp that is the date the probe last ran — not the date the prose was edited. The ID scheme, the five verdicts and the re-probe cadence are defined in [How to read this reference](./how-to-read-this-reference.md).
 
-One thing to know about dates before you cite one. Where Google announced a change, this chapter uses the announcement's date. Where it did not — and for policy text, it usually did not — the only date available is the document's own "Last updated" stamp, which records when the page was edited and **not** when the requirement changed. Entries resting on a stamp say so in the entry, and one of them ([LSM-POLICY-61](#lsm-policy-61--date-of-change-unknown--powered-by-google-no-longer-exists-attribution-is-google-maps)) carries no date at all as a result. A stamp-derived date is the weakest thing on this page; treat it as "no later than", never as "on".
+**IDs here come from a reserved block.** Because a changelog entry cuts across every area, this chapter's IDs are allocated from `-61` and upwards in each area — so that a dated change never competes for a number with the chapter that owns the underlying fact.
 
-Two things are deliberately absent. There are no entries for changes we could not source to a Google document or a call we made ourselves, which means several widely-reported 2025 "updates" are not here. And there are no ranking-algorithm entries — Google names local updates only occasionally and confirms mechanism never, so a dated list of them would be folklore with timestamps.
+`LSM-PLACES-67` here is a dated event; the standing facts about Places live under the low numbers in [What the Places API will and will not give you](./what-places-returns.md) and [Storing Google data legally](./storing-google-data-legally.md). Cite the ID printed in the heading and nothing else.
+
+## How the dates were established
+
+Know this before you cite one.
+
+**Where Google announced a change, this chapter uses the announcement's date.**
+
+**Where it did not — and for policy text, it usually did not** — the only date available is the document's own "Last updated" stamp, which records when the page was edited and **not** when the requirement changed.
+
+Entries resting on a stamp say so in the entry, and one of them ([LSM-POLICY-61](#lsm-policy-61--date-of-change-unknown--powered-by-google-no-longer-exists-attribution-is-google-maps)) carries no date at all as a result.
+
+> A stamp-derived date is the weakest thing on this page; treat it as "no later than", never as "on".
+
+```mermaid
+flowchart TD
+  A["A change that needs a date"] --> B{"Did Google announce it?"}
+  B -->|"Yes"| C["Use the announcement date"]
+  B -->|"No"| D{"Does the document carry a Last updated stamp?"}
+  D -->|"Yes"| E["Use the stamp, and read it as no later than"]
+  D -->|"No"| F["No date at all — say so in the entry"]
+```
+
+## What is deliberately absent
+
+**No unsourced changes.** There are no entries for changes we could not source to a Google document or a call we made ourselves, which means several widely-reported 2025 "updates" are not here.
+
+**No ranking-algorithm entries.** Google names local updates only occasionally and confirms mechanism never, so a dated list of them would be folklore with timestamps.
 
 ## Index
 
@@ -122,7 +149,11 @@ Quota approval is not the same as service enablement, and Google does not publis
 **API touched:** Places API display requirements (policy, not endpoint)  
 **Probe:** Search the full text of the Places API policies page (`developers.google.com/maps/documentation/places/web-service/policies`, stamped 2026-07-20 UTC when fetched 2026-07-27). The string "Powered by Google" does not appear. The page instead requires the Google Maps logo, and states that "In cases where space is limited, the text **Google Maps** is acceptable."
 
-**On the date.** This entry was previously headed 2026-07-10, taken from the policies page's "Last updated" stamp at the time. That was wrong in kind, not just in value: a page stamp records when the document was last edited, not when a requirement changed, and the stamp has since moved to 2026-07-20 without the attribution text changing. Google published no dated announcement retiring "Powered by Google" that we can find, so **the date this changed is not established** — only that the string is absent today and was present in older revisions. If you need the date, the thing that would settle it is a diff across the archived revisions of the policies page; we have not run it.
+**On the date.** This entry was previously headed 2026-07-10, taken from the policies page's "Last updated" stamp at the time. That was wrong in kind, not just in value: a page stamp records when the document was last edited, not when a requirement changed, and the stamp has since moved to 2026-07-20 without the attribution text changing.
+
+Google published no dated announcement retiring "Powered by Google" that we can find, so **the date this changed is not established** — only that the string is absent today and was present in older revisions.
+
+If you need the date, the thing that would settle it is a diff across the archived revisions of the policies page; we have not run it.
 
 Attribution is the Google Maps logo, or where space is constrained the exact text **"Google Maps"** — untranslated, unwrapped, not re-capitalised.
 
@@ -150,7 +181,9 @@ A `PolicyViolation` field was added, giving visibility into why a submitted repl
 
 Places bills a request at the **highest SKU touched by any field in its mask**, at the volume tier reached — so the same query can sit in very different tiers depending only on what it asks for. Google publishes the current tier membership and rates; read them at source rather than from any reproduction.
 
-Two cautions on the numbers. The dollar figures move, and the tier boundaries have moved with them, so **the mechanism is the durable fact here and the prices are not** — current per-SKU figures belong in [What the Places API will and will not give you](./what-places-returns.md) and should be read from Google's pricing page before you quote one to a client. And the date on this entry is the pricing table's own "Last updated" stamp rather than an announced change: the field-mask billing model long predates it, and what happened on this date was a restatement, not a new rule.
+**Two cautions on the numbers.** The dollar figures move, and the tier boundaries have moved with them, so **the mechanism is the durable fact here and the prices are not** — current per-SKU figures belong in [What the Places API will and will not give you](./what-places-returns.md) and should be read from Google's pricing page before you quote one to a client.
+
+**The date is a stamp, not an announcement.** It is the pricing table's own "Last updated" stamp rather than an announced change: the field-mask billing model long predates it, and what happened on this date was a restatement, not a new rule.
 
 **Consequence:** Budget by field mask, not by endpoint — the same query can sit in very different tiers depending only on what it asks for, so a per-endpoint estimate will be wrong in both directions. Google's current tier membership and rates are on its own pricing pages; see [what the Places API will and will not give you](./what-places-returns.md) for how the rule works.
 
@@ -161,9 +194,18 @@ Two cautions on the numbers. The dollar figures move, and the tier boundaries ha
 **API touched:** Places API storage rights — Maps Platform Service Specific Terms §14.3 ("Caching"), plus the Places API policies page  
 **Probe:** Read §14.3 of the Service Specific Terms at `cloud.google.com/maps-platform/terms/maps-service-terms`, then diff it against an archived earlier revision (the archive lives under `cloud.google.com/archive/maps-platform/terms/`). §14.3 grants that "Customer may temporarily cache latitude and longitude values from the Places API for up to 30 consecutive calendar days, after which Customer must delete the cached latitude and longitude values." The Places API policies page separately states that the place ID "is exempt from the caching restrictions. You can therefore store place ID values indefinitely."
 
-The only express permissions remain place IDs, storable indefinitely, and latitude/longitude for up to 30 consecutive calendar days with mandatory deletion after. Names, addresses, ratings, review counts, review text, hours and photo metadata are not covered by any storage grant. The March 2025 SKU restructuring ([LSM-PLACES-66](#lsm-places-66--2025-03-01--maps-platform-pricing-was-restructured-and-legacy-places-was-frozen)) changed pricing only. The widely-repeated "30-day Places caching allowance" — as a general licence to cache Places *content* — is not in the terms; the 30 days attaches to coordinates specifically.
+**The express permissions remain two, and only two:**
 
-Cite §14.3 and nothing else from memory. Earlier versions of this entry also cited a Terms of Service §3.2.3 and an SST §A.3 for the same grant; those section numbers are not ones we have re-verified, and a wrong section number in a compliance argument is worse than no citation. The clause-by-clause reading, with each quote carrying its own section number and document date, is in [Storing Google data legally](./storing-google-data-legally.md).
+- **Place IDs** — storable indefinitely.
+- **Latitude/longitude** — up to 30 consecutive calendar days, with mandatory deletion after.
+
+Names, addresses, ratings, review counts, review text, hours and photo metadata are not covered by any storage grant. The March 2025 SKU restructuring ([LSM-PLACES-66](#lsm-places-66--2025-03-01--maps-platform-pricing-was-restructured-and-legacy-places-was-frozen)) changed pricing only.
+
+The widely-repeated "30-day Places caching allowance" — as a general licence to cache Places *content* — is not in the terms; the 30 days attaches to coordinates specifically.
+
+**Cite §14.3 and nothing else from memory.** Earlier versions of this entry also cited a Terms of Service §3.2.3 and an SST §A.3 for the same grant; those section numbers are not ones we have re-verified, and a wrong section number in a compliance argument is worse than no citation.
+
+The clause-by-clause reading, with each quote carrying its own section number and document date, is in [Storing Google data legally](./storing-google-data-legally.md).
 
 > This is our reading of published terms, not legal advice.
 
@@ -244,7 +286,9 @@ Submitted replies now expose their moderation status. Before this, a reply that 
 **API touched:** Consumer profile surface (Search and Maps), not an endpoint  
 **Probe:** Open any business profile in Search or Maps and look for a questions-and-answers section. Compare with an archived copy of the same profile from before December 2025.
 
-Public Q&A threads began being removed from profiles on 2025-12-03, replaced by a Gemini-powered conversational "Ask" experience, with removal rolling out over a period of months. Previously posted questions and answers stop being visible to customers. The date and the replacement come from Google's own communications as reported across the trade press in December 2025 and January 2026; we did not fetch a primary Google document stating the consumer-side date, and the API side is separately documented in [LSM-GBP-64](#lsm-gbp-64--2025-11-03--the-qa-api-was-discontinued).
+Public Q&A threads began being removed from profiles on 2025-12-03, replaced by a Gemini-powered conversational "Ask" experience, with removal rolling out over a period of months. Previously posted questions and answers stop being visible to customers.
+
+**On the sourcing.** The date and the replacement come from Google's own communications as reported across the trade press in December 2025 and January 2026; we did not fetch a primary Google document stating the consumer-side date, and the API side is separately documented in [LSM-GBP-64](#lsm-gbp-64--2025-11-03--the-qa-api-was-discontinued).
 
 **Consequence:** Any information a business had seeded into Q&A needs to move into the description, the services list or the website. Delete the Q&A row from your audit template — scoring a surface that no longer exists makes every other row look less credible.
 
@@ -257,7 +301,11 @@ Public Q&A threads began being removed from profiles on 2025-12-03, replaced by 
 
 Notice was 49 days — seven weeks exactly: the shutdown was announced on 2025-09-15. The four Q&A notification types were deprecated at the same time.
 
-Two details are worth separating. The **date and the announcement** come from Google's page, quoted above; note that the page was last touched on 2025-11-06 and still describes the shutdown in the future tense, so it is a notice that was never rewritten as a record. The **HTTP 501** is ours: calling the endpoints on a quota-approved project returned 501, repeatedly, after the shutdown date. Google does not publish the post-shutdown status code, so treat 501 as an observation on one project rather than a documented contract — a different project or a later date could return something else.
+Two details are worth separating.
+
+**The date and the announcement** come from Google's page, quoted above; note that the page was last touched on 2025-11-06 and still describes the shutdown in the future tense, so it is a notice that was never rewritten as a record.
+
+**The HTTP 501 is ours.** Calling the endpoints on a quota-approved project returned 501, repeatedly, after the shutdown date. Google does not publish the post-shutdown status code, so treat 501 as an observation on one project rather than a documented contract — a different project or a later date could return something else.
 
 **Consequence:** Never build on Q&A. If you subscribe to Business Profile notifications, drop the four Q&A types from your handler — a 501 on a scheduled job is the kind of error that gets muted and then forgotten. Note the pattern for planning purposes: seven weeks' notice, on a sub-page, and the central deprecation schedule never listed it at all ([LSM-POLICY-63](#lsm-policy-63--2025-08-28--gbp-api-content-may-be-stored-for-30-calendar-days-and-not-aggregated)).
 

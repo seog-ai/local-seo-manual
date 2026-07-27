@@ -12,11 +12,25 @@ This chapter gets you an honest competitive set, teaches you to read it, and sho
 
 ## There is no leaderboard
 
-The instinct is to ask "who are my top five competitors?" and expect a list. There isn't one, for the same reason there is no single rank: [rank is a surface, not a number](../01-foundations/rank-is-a-map-not-a-number.md). The set is a function of the keyword and the searcher's position. Two miles east, a different three businesses hold the pack; change `emergency plumber` to `boiler repair` and half the set changes again.
+**The instinct is to ask "who are my top five competitors?" and expect a list.** There isn't one, for the same reason there is no single rank: [rank is a surface, not a number](../01-foundations/rank-is-a-map-not-a-number.md).
 
-The useful question is **"who is above me, for which query, from where"** — and you have already paid for the answer. Every ranked search returns an ordered list, and the order *is* the measurement; reading who sits above your row costs nothing extra. Position is the cheap part of local data ([what the Places API will and will not give you](../05-reference/what-places-returns.md) explains why the rich profile fields are not).
+**The set is a function of the keyword and the searcher's position.** Two miles east, a different three businesses hold the pack; change `emergency plumber` to `boiler repair` and half the set changes again.
 
-There are also three sets, and conflating them is the most common analytical error here. **Map-pack rivals** are the businesses above you for a keyword from a point; **organic rivals** are the pages ranking for the same query, usually directories; **AI-answer rivals** are the businesses an assistant names when asked. The overlap is smaller than people expect, because [proximity barely constrains an AI answer](../01-foundations/how-ai-answers-a-local-question.md) and organic rewards pages rather than places. Track the pack set formally, read the AI set as a cross-check, and treat directory rivals as a [citations](./citations-and-nap.md) problem.
+**The useful question is "who is above me, for which query, from where"** — and you have already paid for the answer. Every ranked search returns an ordered list, and the order *is* the measurement; reading who sits above your row costs nothing extra.
+
+Position is the cheap part of local data ([what the Places API will and will not give you](../05-reference/what-places-returns.md) explains why the rich profile fields are not).
+
+### Three sets, not one
+
+Conflating them is the most common analytical error here.
+
+| Set | Who is in it | What you do with it |
+| --- | --- | --- |
+| **Map-pack rivals** | The businesses above you for a keyword from a point | Track formally |
+| **Organic rivals** | The pages ranking for the same query, usually directories | Treat as a [citations](./citations-and-nap.md) problem |
+| **AI-answer rivals** | The businesses an assistant names when asked | Read as a cross-check |
+
+The overlap is smaller than people expect, because [proximity barely constrains an AI answer](../01-foundations/how-ai-answers-a-local-question.md) and organic rewards pages rather than places.
 
 ## What a public listing tells you
 

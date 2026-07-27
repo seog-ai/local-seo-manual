@@ -14,9 +14,13 @@ The individual tasks are all in Part II and none of them is hard. What decides w
 
 Ninety days is the shortest window that contains a real measurement.
 
-A trend needs three readings, not two — two points always draw a line, and half of those lines are noise. Readings must be far enough apart to be independent: a fortnight is the floor, because *(inference)* profile and review changes tend to show over weeks rather than days ([Did it work?](../02-core-practice/did-it-work.md)). A baseline plus three fortnightly readings is seven weeks, and that assumes the change landed on day one. It never does. Add access, publication latency and one buffer, and you are at twelve weeks.
+**A trend needs three readings, not two** — two points always draw a line, and half of those lines are noise. Readings must be far enough apart to be independent: a fortnight is the floor, because *(inference)* profile and review changes tend to show over weeks rather than days ([Did it work?](../02-core-practice/did-it-work.md)).
 
-So the calendar is set by the slowest signal you promised to move. Promise something that needs six months and ninety days is a fraud however hard you work; promise only things that land in a fortnight and you have sold a week of work on a quarterly retainer. Pricing that honestly is [What the work costs](./what-the-work-costs.md); scheduling it is this chapter.
+**Then do the arithmetic.** A baseline plus three fortnightly readings is seven weeks, and that assumes the change landed on day one. It never does. Add access, publication latency and one buffer, and you are at twelve weeks.
+
+So the calendar is set by the slowest signal you promised to move. Promise something that needs six months and ninety days is a fraud however hard you work; promise only things that land in a fortnight and you have sold a week of work on a quarterly retainer.
+
+Pricing that honestly is [What the work costs](./what-the-work-costs.md); scheduling it is this chapter.
 
 ## The four clocks
 
@@ -29,15 +33,32 @@ Every task in local SEO sits on one of four clocks. Sorting the work by clock, b
 | **Aggregate** | Review count, rating, reply rate, citation consistency | A quarter, by construction | Everyone, slowly |
 | **Instrument** | Trend lines, comparable re-scans, the change log | As long as you have been measuring | You, on a schedule |
 
-The write clock is fast but not free of risk. Most ordinary field edits go through Google's review before they become public — usually minutes, sometimes days ([LSM-GBP-07](../05-reference/write-limits-and-failure-modes.md)). Name, category and address are a different class: they can put a listing into re-verification and out of Search and Maps for hours to days ([Suspensions and reinstatement](../03-advanced/suspensions-and-reinstatement.md)). An edit can also be silently rejected — the field reads its old value after the next refresh, and that is the answer, not a bug ([write limits and failure modes](../05-reference/write-limits-and-failure-modes.md)).
+**The write clock is fast but not free of risk.** Most ordinary field edits go through Google's review before they become public — usually minutes, sometimes days ([LSM-GBP-07](../05-reference/write-limits-and-failure-modes.md)).
 
-The aggregate clock dictates the calendar, because you cannot compress it. Getting a business from 12 reviews to 20 is not an afternoon's work at any price — it is a rate problem. The profile audit passes review volume at 20 and rating at 4.0; the AI-readiness rubric wants 25, 4.2, a review inside the last 60 days, and replies on at least half. Every one is a counter moving at the speed customers arrive: month-3 outcomes of month-1 decisions.
+**Name, category and address are a different class.** They can put a listing into re-verification and out of Search and Maps for hours to days ([Suspensions and reinstatement](../03-advanced/suspensions-and-reinstatement.md)).
+
+**An edit can also be silently rejected** — the field reads its old value after the next refresh, and that is the answer, not a bug ([write limits and failure modes](../05-reference/write-limits-and-failure-modes.md)).
+
+**The aggregate clock dictates the calendar**, because you cannot compress it. Getting a business from 12 reviews to 20 is not an afternoon's work at any price — it is a rate problem.
+
+**The thresholds are counters, not tasks.** Two different gates want two different numbers, and neither can be bought:
+
+| Gate | What it wants |
+| --- | --- |
+| Profile audit | Review volume at 20, rating at 4.0 |
+| AI-readiness rubric | 25 reviews, 4.2 rating, a review inside the last 60 days, replies on at least half |
+
+Every one is a counter moving at the speed customers arrive: month-3 outcomes of month-1 decisions.
 
 Which produces the inversion, worth saying flatly because it feels wrong:
 
 > **Start the slow work first and do the fast work while it runs.** Quick wins are called quick because they can be done at any time. That is precisely why they should not be done first.
 
-The instrument clock is the one people forget. Nothing re-measures on its own — every reading is a deliberate, usually priced action, and there are no recurring background jobs. The snapshot feeding **Profile score over time** lands at most once per business per calendar day, and only on days you actually refreshed something (any of the profile, rankings, competitor or review refreshes writes it; a day nobody touched the business writes nothing). Refresh twice in a quarter and the chart has two points on it, with no way to fill the gap retroactively.
+**The instrument clock is the one people forget.** Nothing re-measures on its own — every reading is a deliberate, usually priced action, and there are no recurring background jobs.
+
+**The trend chart is opportunistic, not scheduled.** The snapshot feeding **Profile score over time** lands at most once per business per calendar day, and only on days you actually refreshed something — any of the profile, rankings, competitor or review refreshes writes it; a day nobody touched the business writes nothing.
+
+Refresh twice in a quarter and the chart has two points on it, with no way to fill the gap retroactively.
 
 ## The generated plan is a first draft
 
@@ -47,23 +68,65 @@ Open the overview and **Action plan — your next steps** is already sitting the
 
 *A real plan on a real profile, and a good illustration of the argument. Seven rows, each with a point value and a tier. **Add a phone number** and **Get more reviews** both read "+10 pts, High impact" — one takes ninety seconds and the other takes a quarter. The list is arithmetic on completeness weights; the sequencing is your job, and it is the job you are paid for.*
 
-It merges three sources into one deduplicated list: the failing checks from the weighted profile audit, the AI-readiness factors the audit does *not* already cover, and any stored website and listing fixes. Only two AI factors survive that deduplication — *Get a fresh review* and *Reply to your reviews* — because everything else in the readiness rubric is already an audit check. And when the audit's own review-volume check has also failed, *Get a fresh review* is folded into it rather than listed twice, so you often see just the one row.
+### How the list is built
 
-The sort is impact tier first, then recoverable profile-score points, then alphabetical by title. For a profile-audit row the impact tier is a pure function of that check's weight — 9 or more is **High impact**, 6 to 8 is **Medium**, below 6 is **Low**. The other two sources are tiered on their own scales rather than on audit weight: the AI-visibility rows from the readiness factor's weight, the website and listing rows from the stored fix's priority. So a tier compares rows within a source, and comparing tiers *across* sources means less than the shared label suggests.
+**It merges three sources into one deduplicated list:**
 
-A tier is arithmetic on a weight, then — never a judgement about your business. Which is why you never work this list top-down. Three consequences:
+- the failing checks from the weighted profile audit;
+- the AI-readiness factors the audit does *not* already cover;
+- any stored website and listing fixes.
+
+**Only two AI factors survive that deduplication** — *Get a fresh review* and *Reply to your reviews* — because everything else in the readiness rubric is already an audit check. And when the audit's own review-volume check has also failed, *Get a fresh review* is folded into it rather than listed twice, so you often see just the one row.
+
+**The sort is impact tier first**, then recoverable profile-score points, then alphabetical by title.
+
+**For a profile-audit row the impact tier is a pure function of that check's weight:** 9 or more is **High impact**, 6 to 8 is **Medium**, below 6 is **Low**.
+
+**The other two sources are tiered on their own scales** rather than on audit weight: the AI-visibility rows from the readiness factor's weight, the website and listing rows from the stored fix's priority. So a tier compares rows within a source, and comparing tiers *across* sources means less than the shared label suggests.
+
+### What the list cannot see
+
+> **A tier is arithmetic on a weight — never a judgement about your business.**
+
+Which is why you never work this list top-down. Three consequences:
 
 **It cannot see effort.** "Add your opening hours" and "Get more reviews" both carry 10 points and both land in the High tier. One is ninety seconds. The other is a quarter of somebody's life.
 
 **It cannot see risk.** Nothing in the ordering knows that editing a category can pull the listing out of Search for two days, or that doing so in week eleven destroys your final measurement.
 
-**It cannot see catastrophe.** "Fix your business status" — the check that fails when a profile is marked closed or temporarily closed — weighs 4, so it is tagged **Low impact**. A business marked temporarily closed is close to invisible. If you see that row it is the only thing you do that day, and the label says the opposite. A weight is a share of a completeness score, not a measure of consequence.
+**It cannot see catastrophe.** "Fix your business status" — the check that fails when a profile is marked closed or temporarily closed — weighs 4, so it is tagged **Low impact**. A business marked temporarily closed is close to invisible.
+
+If you see that row it is the only thing you do that day, and the label says the opposite. A weight is a share of a completeness score, not a measure of consequence.
 
 One whole category of finding is structurally absent. The plan is computed from stored profile, review, website and listing data without looking at a single search result, so it will never tell you the market is hard or that the constraint is [proximity](../01-foundations/relevance-distance-prominence.md) rather than completeness. That comes from a rank map, and it is often the most important sentence in the engagement.
 
+## The quarter at a glance
+
+The rest of the chapter is this shape, in words:
+
+```mermaid
+flowchart LR
+  A["Day 0 - access"] --> B["Week 1 - baseline, then start the slow clocks"]
+  B --> C["Weeks 1-2 - write clock, risky edits first"]
+  C --> D["Weeks 3-4 - the website half"]
+  D --> E["End of month 1 - reading 1"]
+  E --> F["Month 2 - cadence, reading 2 mid-month"]
+  F --> G["Weeks 11-12 - freeze, then reading 3"]
+  G --> H{"What was the constraint?"}
+  H -->|"Completeness, and we fixed it"| I["Renew on cadence work"]
+  H -->|"Reputation"| J["Renew, aggregate clock in numbers"]
+  H -->|"Structural"| K["Say so, and lose the retainer"]
+```
+
 ## Month 1 — write everything, and start what is slow
 
-**Day 0 is access, and it is not day 1.** Owner connection to the Google Business Profile, website access or a named developer, one human who can approve copy. Without the owner connection you cannot see the owner-written description or the performance numbers, and cannot apply a fix directly. Chasing access in week three costs a third of the quarter ([What you inherit with a client](./what-you-inherit-with-a-client.md)).
+**Day 0 is access, and it is not day 1.** Three things have to be in hand:
+
+- owner connection to the Google Business Profile;
+- website access, or a named developer;
+- one human who can approve copy.
+
+Without the owner connection you cannot see the owner-written description or the performance numbers, and cannot apply a fix directly. Chasing access in week three costs a third of the quarter ([What you inherit with a client](./what-you-inherit-with-a-client.md)).
 
 **Week 1 — diagnose, freeze, and start the aggregate clock the same day.** The baseline comes before any edit, for the reason given in [Diagnosing a business in thirty minutes](../02-core-practice/analyzing-business-visibility.md): an unmeasured change is an unprovable change. Then, before any quick wins, start the three things that pay out in month 3:
 
@@ -95,7 +158,13 @@ Month 2 is where the engagement becomes a system or becomes a to-do list you kee
 
 **Take reading #3, then diff against the frozen baseline** on the discipline in [Did it work?](../02-core-practice/did-it-work.md). Sort every movement into verified, plausible or unattributable, out loud, in the report — the unattributable bucket is what makes the other two believable. Assembling that document is [Reporting to a client](./reporting-to-a-client.md).
 
-**Then answer the actual question: what would the next ninety days buy?** Three honest endings exist. *The constraint was completeness and we fixed it* — renew on cadence work. *The constraint is reputation, moving at the rate customers arrive* — renew, with the aggregate clock explained in numbers rather than promises. *The constraint is structural: the market is hard, or the location is wrong for the queries that matter* — say so. You lose that retainer, keep the referral, and do not spend a year being paid to fail slowly. The third ending is the one that builds a practice.
+**Then answer the actual question: what would the next ninety days buy?** Three honest endings exist.
+
+1. *The constraint was completeness and we fixed it* — renew on cadence work.
+2. *The constraint is reputation, moving at the rate customers arrive* — renew, with the aggregate clock explained in numbers rather than promises.
+3. *The constraint is structural: the market is hard, or the location is wrong for the queries that matter* — say so. You lose that retainer, keep the referral, and do not spend a year being paid to fail slowly.
+
+The third ending is the one that builds a practice.
 
 ## What breaks a plan
 

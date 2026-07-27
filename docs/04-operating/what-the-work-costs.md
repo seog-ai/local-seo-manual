@@ -8,7 +8,9 @@ description: Why the data bill is a rounding error, what the labour actually cos
 
 You can do the work now. Whether it is a business depends on three numbers: what the data costs, what your time costs, and what someone will pay.
 
-Most people entering this trade get the order of those wrong. They assume the data is the expensive part, because it is the part that arrives as an invoice from a technology company. It is not. Getting the order right protects you from two mistakes at once: building an operation optimised against the smallest line on your P&L, and quoting a price anchored to a bill that is a rounding error.
+**Most people entering this trade get the order of those wrong.** They assume the data is the expensive part, because it is the part that arrives as an invoice from a technology company. It is not.
+
+Getting the order right protects you from two mistakes at once: building an operation optimised against the smallest line on your P&L, and quoting a price anchored to a bill that is a rounding error.
 
 ## Three cost lines, and only one is large
 
@@ -20,11 +22,15 @@ Most people entering this trade get the order of those wrong. They assume the da
 
 **The API bill is not the cost of delivery; it is a rounding error on it** — which is why pricing off it is a trap. People who lose money doing local SEO lose it on unpriced hours, on clients who leave before onboarding is repaid, and on producing a monthly report nobody reads.
 
-This is the single most important thing in the chapter, and it has a consequence people miss: **optimising your data costs is optimising the wrong line.** Halving a rounding error changes nothing. Halving the hours it takes to produce a monthly deliverable changes the business.
+This is the single most important thing in the chapter, and it has a consequence people miss.
+
+> **Optimising your data costs is optimising the wrong line.** Halving a rounding error changes nothing. Halving the hours it takes to produce a monthly deliverable changes the business.
 
 ## What the data costs, in shape rather than in dollars
 
-Google publishes current per-request prices for the place data underneath every local SEO tool, and those prices move — the platform was restructured in March 2025 and the rate card has been revised since. Any table printed here would be stale before it was useful, so this manual does not print one. Read it at source: [Google Maps Platform pricing](https://developers.google.com/maps/billing-and-pricing/pricing).
+**The rate card moves, so this manual does not reprint it.** Google publishes current per-request prices for the place data underneath every local SEO tool, and those prices move — the platform was restructured in March 2025 and the rate card has been revised since.
+
+Any table printed here would be stale before it was useful. Read it at source: [Google Maps Platform pricing](https://developers.google.com/maps/billing-and-pricing/pricing).
 
 What is stable is the *shape*, and the shape is what you need in order to reason:
 

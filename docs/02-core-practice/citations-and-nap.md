@@ -12,15 +12,26 @@ When those answers disagree, something has to decide which is right. That decisi
 
 ## What a citation is
 
-A **citation** is any published record of your business's identity on a site that is not yours. Two kinds: **structured** — a directory listing with fields (Yelp, Apple Maps, Foursquare, Facebook, TripAdvisor, a trade body's member list) — and **unstructured**, a mention in prose. A local newspaper writes "Kaffa Roastery on Pursimiehenkatu" and that sentence is a citation, with no fields and no link.
+A **citation** is any published record of your business's identity on a site that is not yours. There are two kinds:
+
+- **Structured** — a directory listing with fields: Yelp, Apple Maps, Foursquare, Facebook, TripAdvisor, a trade body's member list.
+- **Unstructured** — a mention in prose. A local newspaper writes "Kaffa Roastery on Pursimiehenkatu" and that sentence is a citation, with no fields and no link.
 
 **NAP** is the three identifying fields: name, address, phone. The shorthand is slightly wrong — a website and a category identify too — but it names the fields that break most often. A citation is not a backlink; most do not link to you.
 
 ## Consistency is an entity-resolution problem
 
-Google does not award tidiness points. What Google — and Apple, and any assistant grounded in web search — has to do is **entity resolution**: take many records from many sources and decide which describe the same real-world thing. Every record has three outcomes and only one is good. **Matched**: its evidence attaches to your entity. **Discarded**: the system cannot tell it is you, so the evidence is lost. **Mis-matched**: it attaches to something else, usually a duplicate of your own business, splitting your reputation between two listings.
+**Google does not award tidiness points.** What Google — and Apple, and any assistant grounded in web search — has to do is **entity resolution**: take many records from many sources and decide which describe the same real-world thing.
 
-A record that cannot be resolved is not neutral — it is either wasted or actively harmful. That is a much better reason to care than "Google likes it", and it is the work queue implied by [the entity model](../01-foundations/the-business-entity.md).
+Every record has three outcomes and only one is good.
+
+| Outcome | What happens to the record |
+| --- | --- |
+| **Matched** | Its evidence attaches to your entity. |
+| **Discarded** | The system cannot tell it is you, so the evidence is lost. |
+| **Mis-matched** | It attaches to something else, usually a duplicate of your own business, splitting your reputation between two listings. |
+
+**A record that cannot be resolved is not neutral** — it is either wasted or actively harmful. That is a much better reason to care than "Google likes it", and it is the work queue implied by [the entity model](../01-foundations/the-business-entity.md).
 
 ### What a resolver actually tolerates
 
@@ -38,7 +49,9 @@ The values on one side of every comparison come from your own profile record:
 
 *This is what a listing gets compared against — the stored profile, not your letterhead. Google renders the phone as "050 3065499"; a directory holding "+358 50 3065499" is the same line and folds to a match, because the comparison runs on the national tail. A directory holding a different number does not, and that is the row worth your afternoon.*
 
-Read that table twice, because it inverts what most people are told. "Ave" versus "Avenue" does not break resolution. Neither does a missing suite number, a dropped "Ltd", or a phone written with brackets. What breaks resolution is a **different fact**: a different house number, a different phone line. Those two are worth hunting; a fifty-row consistency report that does not separate them from cosmetic variance is noise wearing a suit.
+**Read that table twice**, because it inverts what most people are told. "Ave" versus "Avenue" does not break resolution. Neither does a missing suite number, a dropped "Ltd", or a phone written with brackets.
+
+What breaks resolution is a **different fact**: a different house number, a different phone line. Those two are worth hunting; a fifty-row consistency report that does not separate them from cosmetic variance is noise wearing a suit.
 
 > **A note on certainty.** We can describe the matcher we can read; Google's is not published and nobody outside Google knows its tolerances. But every resolver faces the same problem, and one distinction survives any sane implementation: *a different value is a break, a different rendering is not* *(inference)*.
 
@@ -51,7 +64,23 @@ Read that table twice, because it inverts what most people are told. "Ave" versu
 
 ## How much does this actually weigh?
 
-For the map pack, less than the industry sells. The field's long-running annual practitioner survey — [Whitespark's Local Search Ranking Factors](https://whitespark.ca/local-search-ranking-factors/), 2026 edition, published November 2025 — puts **citation signals at roughly 7% of local-pack weight**, behind profile signals (~32%), reviews (~20%), on-page signals (~19%) and links (~15%) *(the percentage table sits inside the report rather than on its landing page; these figures were cross-checked against two independent summaries of it)*. Two caveats matter more than the number. It is an **opinion survey** — 47 local search experts scoring 187 factors, which is expert consensus about a system none of the respondents can see inside — so treat it as the best available prior, not a finding. And **a small average weight is not a small effect**: citation influence looks threshold-shaped *(inference)*, invisible for most businesses and then expensive the moment there is a real contradiction.
+**For the map pack, less than the industry sells.** The field's long-running annual practitioner survey — [Whitespark's Local Search Ranking Factors](https://whitespark.ca/local-search-ranking-factors/), 2026 edition, published November 2025 — puts **citation signals at roughly 7% of local-pack weight**, behind everything else that is usually measured:
+
+| Factor group | Share of local-pack weight |
+| --- | --- |
+| Profile signals | ~32% |
+| Reviews | ~20% |
+| On-page signals | ~19% |
+| Links | ~15% |
+| **Citation signals** | **~7%** |
+
+*(The percentage table sits inside the report rather than on its landing page; these figures were cross-checked against two independent summaries of it.)*
+
+Two caveats matter more than the number.
+
+**It is an opinion survey** — 47 local search experts scoring 187 factors, which is expert consensus about a system none of the respondents can see inside — so treat it as the best available prior, not a finding.
+
+**And a small average weight is not a small effect**: citation influence looks threshold-shaped *(inference)*, invisible for most businesses and then expensive the moment there is a real contradiction.
 
 So if citations are not how you win the map pack, why is this chapter in Part II? Because the weight moved somewhere else.
 
@@ -62,7 +91,9 @@ There is a naming collision in this field, and separating the halves is the most
 - **A local-SEO citation** — a directory listing carrying your NAP. Everything above.
 - **An AI-answer citation** — a source an assistant cites when it answers a question.
 
-They used to be unrelated. They are now connected, because the second is increasingly *made of* the first. When an assistant answers "best coffee near here" it does not consult a ranking table; it searches, retrieves pages, and writes an answer grounded in what it retrieved — and for local questions the retrieved pages are overwhelmingly directory and review pages, because that is what the web holds about small businesses.
+**They used to be unrelated.** They are now connected, because the second is increasingly *made of* the first.
+
+When an assistant answers "best coffee near here" it does not consult a ranking table; it searches, retrieves pages, and writes an answer grounded in what it retrieved — and for local questions the retrieved pages are overwhelmingly directory and review pages, because that is what the web holds about small businesses.
 
 So a directory listing is no longer only consistency evidence. It is **retrievable text about your business inside the corpus the answer is drawn from**, which reframes absence:
 
@@ -72,13 +103,32 @@ How those engines *weight* what they retrieve is not knowable from outside. What
 
 ### Work the gap, not the list
 
-Generic advice says "build citations" and hands you a directory list. The list is the same for every business in every market, which should be the tell. The upgrade is a join between two things you can measure on your own business: **the domains AI actually cited for *your* keywords**, aggregated over recent live answer checks, and **the listings verified to exist for you**, the output of Lab 12.1. Work only the gap.
+**Generic advice says "build citations"** and hands you a directory list. The list is the same for every business in every market, which should be the tell.
 
-On the **AI Visibility** page (`/b/{businessId}/ai-visibility`) those are the **Sources cited by AI** and **Listings consistency** cards, with a strip above them showing the overlap: each platform AI cited, how many answers cited it, and your listing's status there. The **Authority** card scores the same join as *Presence on the sources AI cites* — "Listed on N of M directories/platforms AI cites for your keywords" — weighting it 25 out of 100, with listings consistency a further 15. Those weights are a design choice derived from correlation evidence, not a Google fact; [Changing the answer](../03-advanced/changing-the-ai-answer.md) sets out what the evidence is and how strong it is not.
+The upgrade is a join between two things you can measure on your own business: **the domains AI actually cited for *your* keywords**, aggregated over recent live answer checks, and **the listings verified to exist for you**, the output of Lab 12.1. Work only the gap.
+
+```mermaid
+flowchart LR
+  A["Domains AI cited for your keywords"] --> C{"On both lists?"}
+  B["Listings verified to exist for you"] --> C
+  C -->|"Cited, and wrong or missing"| D["This month's worklist"]
+  C -->|"Cited, and consistent"| E["Maintain; stop spending"]
+  C -->|"Not cited by anything"| F["Not this month"]
+```
+
+**Where this lives in the app.** On the **AI Visibility** page (`/b/{businessId}/ai-visibility`) those are the **Sources cited by AI** and **Listings consistency** cards, with a strip above them showing the overlap: each platform AI cited, how many answers cited it, and your listing's status there.
+
+The **Authority** card scores the same join as *Presence on the sources AI cites* — "Listed on N of M directories/platforms AI cites for your keywords" — weighting it 25 out of 100, with listings consistency a further 15. Those weights are a design choice derived from correlation evidence, not a Google fact; [Changing the answer](../03-advanced/changing-the-ai-answer.md) sets out what the evidence is and how strong it is not.
 
 ### Why the citation package fails
 
-The 300-directory blast fails three ways: most of the 300 are scraped aggregator sites no assistant cites; they carry data you handed a vendor, wrong the day you move; and you now own 300 records you will never maintain, each a future inconsistency. Verify first, fix what contradicts, and add a listing only where an assistant demonstrably looks for businesses like yours and you will keep it current.
+The 300-directory blast fails three ways:
+
+- Most of the 300 are scraped aggregator sites no assistant cites.
+- They carry data you handed a vendor, wrong the day you move.
+- You now own 300 records you will never maintain, each a future inconsistency.
+
+**Verify first, fix what contradicts**, and add a listing only where an assistant demonstrably looks for businesses like yours and you will keep it current.
 
 > **What this tool does not do.** SEOG verifies citations; it does not create them. There is no button that gets you listed on Yelp. Building a citation means going to the platform, claiming or creating the listing, and passing that platform's own review — by hand, in their dashboard.
 
@@ -93,7 +143,9 @@ A listing check can honestly return four things, and collapsing them is how tool
 | **Not found** | No listing was located at all. |
 | **Can't verify** | A listing exists — its address on the platform is known — but its details could not be read. |
 
-The last two must never be merged. "Can't verify" reported as "not found" tells you to create a listing that already exists; follow it and you have made a duplicate. The same discipline forbids fabrication: a checker that cannot read a listing should say so, not fill the row with your own profile's values and report all-green about listings it never saw.
+**The last two must never be merged.** "Can't verify" reported as "not found" tells you to create a listing that already exists; follow it and you have made a duplicate.
+
+The same discipline forbids fabrication: a checker that cannot read a listing should say so, not fill the row with your own profile's values and report all-green about listings it never saw.
 
 ### Why automated checkers report false negatives
 
@@ -101,7 +153,16 @@ Two mechanisms, worth knowing before you trust any tool's citation tab.
 
 **Directory pages resist plain fetching.** Many block automated readers, or render content a simple fetch never sees, so a checker built only on fetching reports empty for listings plainly visible in a browser.
 
-**The AI checker trap.** The modern approach asks a search-capable language model to find the listing and report its fields, demanding the answer as JSON so it can be parsed. That combination silently breaks: instructing a model to *reply with only JSON* suppresses its web search. It answers from memory, reports nothing found, and your report says "not listed on Yelp" about a business with a Yelp page and 200 reviews. The output looks like data; it is a configuration bug. The fix is two steps — ask in natural language with search enabled, then convert that answer to structured form in a **separate** call that does no searching. [AI engine probe recipes](../05-reference/ai-engine-probe-recipes.md) covers this and its relatives.
+**The AI checker trap.** The modern approach asks a search-capable language model to find the listing and report its fields, demanding the answer as JSON so it can be parsed.
+
+That combination silently breaks: instructing a model to *reply with only JSON* suppresses its web search. It answers from memory, reports nothing found, and your report says "not listed on Yelp" about a business with a Yelp page and 200 reviews. The output looks like data; it is a configuration bug.
+
+The fix is two steps:
+
+1. Ask in natural language with search enabled.
+2. Convert that answer to structured form in a **separate** call that does no searching.
+
+[AI engine probe recipes](../05-reference/ai-engine-probe-recipes.md) covers this and its relatives.
 
 ## Labs
 

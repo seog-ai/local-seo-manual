@@ -18,7 +18,9 @@ Google documents almost nothing about local ranking. Reviews get an explicit sen
 
 No weight, no threshold, no mechanism. Reviews sit inside **prominence**, the third of the [three forces](../01-foundations/relevance-distance-prominence.md), which orders businesses that already qualify. Distance you cannot change; relevance you fix once and it stays fixed. Reviews are the one lever you keep pulling.
 
-The second reason is newer. An assistant answering "who should I call near me" runs no distance sort; it assembles an answer from entity and reputation signals ([how that works](../01-foundations/how-ai-answers-a-local-question.md)). The AI-readiness rubric used in this manual's labs scores nine factors out of 100 — the full table and its calibration are in [Diagnosing a business in thirty minutes](./analyzing-business-visibility.md). Four of the nine are reviews:
+**The second reason is newer.** An assistant answering "who should I call near me" runs no distance sort; it assembles an answer from entity and reputation signals ([how that works](../01-foundations/how-ai-answers-a-local-question.md)).
+
+The AI-readiness rubric used in this manual's labs scores nine factors out of 100 — the full table and its calibration are in [Diagnosing a business in thirty minutes](./analyzing-business-visibility.md). Four of the nine are reviews:
 
 | Factor | Weight | Passes at |
 | --- | --- | --- |
@@ -31,11 +33,17 @@ Fifty-seven points of a hundred. Volume plus rating alone total exactly 40 — w
 
 > **Read that honestly.** Those weights are our model, built from published correlation research — not Google's, not any assistant's. A prioritisation rubric, not a measurement of an engine's internals. [Does the AI recommend this business?](../03-advanced/ai-visibility.md) has the evidence.
 
-Four separate dimensions: a business can be excellent at one and failing the other three. Two more calibrations are worth stealing as client targets — these come from a *different* model, the review sub-score inside the AI-visibility authority pillar, not from the table above: **50 reviews saturates volume**, and a review inside **30 days counts double one at 90 days**.
+Four separate dimensions: a business can be excellent at one and failing the other three.
+
+**Two more calibrations are worth stealing as client targets.** These come from a *different* model, the review sub-score inside the AI-visibility authority pillar, not from the table above: **50 reviews saturates volume**, and a review inside **30 days counts double one at 90 days**.
 
 ## What you can actually see
 
-**Without owner access**, the public place data every non-owner tool reads returns **at most five reviews per business**, ranked by relevance rather than by date. Neither half of that is folklore: Google's Places API reference states that a maximum of five reviews can be returned, and that they are sorted by relevance (read 2026-07-27). That is the ceiling for any tool at any price. **With owner access** — the Business Profile connection from [Lab 0.4](../00-start-here/set-up-your-workbench.md) — you get the full history plus Google's authoritative total count and average rating.
+**Without owner access**, the public place data every non-owner tool reads returns **at most five reviews per business**, ranked by relevance rather than by date.
+
+Neither half of that is folklore: Google's Places API reference states that a maximum of five reviews can be returned, and that they are sorted by relevance (read 2026-07-27). That is the ceiling for any tool at any price.
+
+**With owner access** — the Business Profile connection from [Lab 0.4](../00-start-here/set-up-your-workbench.md) — you get the full history plus Google's authoritative total count and average rating.
 
 ![The Reviews page for a business with no Business Profile connection: a Connect Google panel, five stat cards all reading zero, and a dashed strip of example review cards](../../static/img/screens/reviews.png)
 
@@ -46,6 +54,8 @@ So **competitor review analysis is structurally shallow**: anyone selling "full 
 ## Getting reviews without getting your ratings stripped
 
 The rules changed recently, invalidating advice still in wide circulation. This section is our reading of published policy, not legal advice.
+
+### The rules, in Google's words
 
 Google's *Prohibited & restricted content* page, in the Maps user-generated content policy help (`support.google.com/contributionpolicy/answer/7400114`, read 2026-07-27), prohibits, under **Fake engagement** and **Rating manipulation**:
 
@@ -67,7 +77,9 @@ The permission, from the same document:
 
 > "solicit or encourage the posting of content that does represent a genuine experience, without offering incentives"
 
-The interpretation, kept separate from the text:
+### The interpretation
+
+Kept separate from the text:
 
 | Practice | Verdict | Clause |
 | --- | --- | --- |

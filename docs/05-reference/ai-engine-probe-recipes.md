@@ -8,9 +8,29 @@ description: Reproducible recipes for testing whether an AI engine recommends a 
 
 Entries for constructing, running and recording a probe that asks an AI engine a local question and records whether a business is named. Each entry stands alone.
 
-Scope: assistant-style engines reached through a vendor API (Google's Gemini with search grounding, OpenAI's Responses API with the `web_search` tool, Anthropic's Messages API with the server-side web-search tool). Out of scope: capturing a Google SERP AI Overview, which is a different surface measured a different way — see [LSM-AI-33](#lsm-ai-33--an-assistant-probe-cannot-tell-you-whether-google-rendered-an-ai-overview).
+**Scope:** assistant-style engines reached through a vendor API.
 
-Where an entry cites a working implementation, that is SEOG's; every probe below runs against the vendor APIs directly and needs no tooling from anyone. The record format these recipes produce is specified in [the AI visibility record schema](../99-appendix/ai-visibility-record-schema.md). Verdict vocabulary is defined in [how to read this reference](./how-to-read-this-reference.md).
+- Google's Gemini with search grounding
+- OpenAI's Responses API with the `web_search` tool
+- Anthropic's Messages API with the server-side web-search tool
+
+**Out of scope:** capturing a Google SERP AI Overview, which is a different surface measured a different way — see [LSM-AI-33](#lsm-ai-33--an-assistant-probe-cannot-tell-you-whether-google-rendered-an-ai-overview).
+
+Where an entry cites a working implementation, that is SEOG's; every probe below runs against the vendor APIs directly and needs no tooling from anyone.
+
+The record format these recipes produce is specified in [the AI visibility record schema](../99-appendix/ai-visibility-record-schema.md). Verdict vocabulary is defined in [how to read this reference](./how-to-read-this-reference.md).
+
+The pipeline these entries describe, end to end:
+
+```mermaid
+flowchart LR
+  A["Build an unbranded, geo-anchored prompt"] --> B["Run it N times per keyword and engine"]
+  B --> C{"Did the run recommend businesses?"}
+  C -->|"Refusal or aggregator punt"| D["Leaves the recommendation denominator"]
+  C -->|"Answer names businesses"| E["Store the verbatim text and cited sources"]
+  E --> F["Judge pass classifies stance"]
+  F --> G["Report rates over the window, with N attached"]
+```
 
 | ID | Claim | Verdict |
 | --- | --- | --- |
@@ -51,7 +71,9 @@ Where an entry cites a working implementation, that is SEOG's; every probe below
 **Last verified:** 2026-07-27
 **Probe:** Read the request bodies for Vertex `generateContent` with `tools: [{ googleSearch: {} }]`, OpenAI `POST /v1/responses` with `tools: [{ type: "web_search" }]`, and Anthropic `messages.create` with the server-side `web_search` tool. None accepts a latitude/longitude, a place ID, or a locale-as-geography field for the local question itself.
 
-Places-style APIs take a location bias as a first-class parameter. Assistant APIs do not. The only anchor available is prose inside the user turn, which means the coordinate is a *hint the model may honour, ignore, or reinterpret* — not a constraint on retrieval.
+**No first-class location parameter.** Places-style APIs take a location bias as a field on the request. Assistant APIs do not.
+
+The only anchor available is prose inside the user turn, which means the coordinate is a *hint the model may honour, ignore, or reinterpret* — not a constraint on retrieval.
 
 The template SEOG uses, reproduced verbatim so you can run the same probe by hand:
 
@@ -70,7 +92,7 @@ The Google-engine variant differs by one clause — `asks Google's AI assistant:
 **Last verified:** 2026-07-27
 **Probe:** Add a tracked keyword without setting a search location, then read the stored keyword row: its search latitude and longitude are null and the check falls back to the business's own latitude and longitude.
 
-Every rank-tracking tool has to default the search point to something, and the business's own coordinates are the obvious choice. They are also the single point in the market where the business looks best, for the same reason that checking your own rank standing in your own shop looks good.
+**The obvious default is also the most flattering one.** Every rank-tracking tool has to default the search point to something, and the business's own coordinates are the obvious choice. They are also the single point in the market where the business looks best, for the same reason that checking your own rank standing in your own shop looks good.
 
 For the map pack this is a well-understood distortion. For an assistant probe the distortion is unproven but the asymmetry is the same: you chose the point, and you chose the one with your name on it.
 
@@ -82,7 +104,9 @@ For the map pack this is a well-understood distortion. For an assistant probe th
 **Last verified:** 2026-07-27
 **Probe:** Run the same question twice against one engine — once unbranded (`who's the best emergency plumber near {area}?`) and once branded (`is {business} a good emergency plumber near {area}?`) — and compare how often the business is named.
 
-The mechanism is structural rather than empirical: a branded prompt puts the business name in the context window, and the model's answer is then a comment on a name you supplied. You have measured recall of your own input. No published A/B is cited here because none is needed to see the problem, and the probe above settles it on your own data in ten minutes.
+**The defect is structural, not empirical.** A branded prompt puts the business name in the context window, and the model's answer is then a comment on a name you supplied. You have measured recall of your own input.
+
+No published A/B is cited here because none is needed to see the problem, and the probe above settles it on your own data in ten minutes.
 
 The same defect appears in a subtler form when the prompt names the *category* the way the business describes itself rather than the way a customer would ask. `artisanal third-wave espresso bar` is a branded prompt wearing a disguise.
 

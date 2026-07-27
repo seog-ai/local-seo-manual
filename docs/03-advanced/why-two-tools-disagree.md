@@ -8,7 +8,9 @@ description: Two rank trackers, one business, two numbers. The seven conditions 
 
 Two rank trackers, the same business, the same keyword, the same afternoon. One says #3. One says #11. A client is in the room and somebody is about to be called wrong.
 
-Almost always, nobody is. The two tools measured different things and printed the results in the same font. This chapter is the list of things they could have measured differently, in the order they bite, plus a procedure for settling the argument — including the uncomfortable case where your own tool disagrees with itself and is right both times.
+Almost always, nobody is. The two tools measured different things and printed the results in the same font.
+
+This chapter is the list of things they could have measured differently, in the order they bite, plus a procedure for settling the argument — including the uncomfortable case where your own tool disagrees with itself and is right both times.
 
 ## A rank is a reading, and a reading has conditions
 
@@ -24,13 +26,23 @@ Almost always, nobody is. The two tools measured different things and printed th
 | **Moment** | When was the reading taken? | The "Checked …" stamp on every fetched card. |
 | **Identity** | How did the tool decide a result was *you*? | Ask. Name matching is common and quietly wrong. |
 
-A number with seven unstated arguments is not a measurement. It is a rumour with a decimal point.
+> **A number with seven unstated arguments is not a measurement. It is a rumour with a decimal point.**
 
 ## The instrument is never the surface
 
-Start with the one nobody says out loud: **no rank tracker observes the map pack.** The pack is rendered to a human, in a browser session, in a place, with a history. A tool observes a proxy — a result page fetched with a location parameter attached, a ranked place search against Google's places data, or a third-party search API resold under another name. Different corpora, different orderings, no two agreeing about a marginal business.
+Start with the one nobody says out loud: **no rank tracker observes the map pack.** The pack is rendered to a human, in a browser session, in a place, with a history.
 
-SEOG's rank check and geo-grid are the second kind: a ranked place search run from an explicit coordinate. A deliberate trade — reproducible, and it takes a coordinate as a real argument rather than a hint ([what the Places API will and will not give you](../05-reference/what-places-returns.md)). It is not what a human sees, and two of its properties bite immediately.
+A tool observes a proxy instead. Three are common:
+
+- a result page fetched with a location parameter attached;
+- a ranked place search against Google's places data;
+- a third-party search API resold under another name.
+
+Different corpora, different orderings, no two agreeing about a marginal business.
+
+**SEOG's rank check and geo-grid are the second kind:** a ranked place search run from an explicit coordinate. A deliberate trade — reproducible, and it takes a coordinate as a real argument rather than a hint ([what the Places API will and will not give you](../05-reference/what-places-returns.md)).
+
+It is not what a human sees, and two of its properties bite immediately.
 
 **It returns Google's relevance ordering for the query, and drops businesses Google's own search box still finds.** A new or thin listing can be missing from a ranked place search while remaining findable by someone typing its name into Maps, which resolves names through a different mechanism. So "the tool cannot find us but Maps can" is the expected result for a low-prominence business, not a defect.
 
@@ -40,11 +52,25 @@ So the first question when a tool disagrees with your own eyes is not "is it bro
 
 ## The origin, and the origin you did not set
 
-The heaviest condition by far. A local rank is largely a distance calculation, so moving the origin a mile moves the number more than most of the work you will do all quarter.
+**The heaviest condition by far.** A local rank is largely a distance calculation, so moving the origin a mile moves the number more than most of the work you will do all quarter.
 
-An origin gets set three ways: explicit coordinates, a place name the tool geocodes, or nothing at all. The third is where tools silently diverge, because **"nothing" is not "no location".** Google documents the fallback plainly: omit both the bias circle and the restriction circle and a ranked place search *"uses IP biasing by default"* — the network address of whoever made the call stands in for a location. On a laptop at home that is roughly your city; on a hosted tool the caller is a datacenter server, whose network location is somewhere you have never been or nowhere identifiable at all. Same query, same code, different machine, different answer. Any product offering "national" rank tracking for a local query is reporting from a coordinate neither of you chose.
+An origin gets set three ways:
 
-Here the origin is never left to that fallback: it is the keyword's own search point when you set one, the business coordinates otherwise. But note the trap. **A keyword with no location chip is not a keyword with no location.** It is measured from the business's front door — the most flattering point on the map, the one coordinate where your distance term is zero and every rival's is not. An unstated default is still a condition; write it down as if it were a setting, because it is one.
+1. **Explicit coordinates.**
+2. **A place name** the tool geocodes.
+3. **Nothing at all** — and the third is where tools silently diverge.
+
+**"Nothing" is not "no location".** Google documents the fallback plainly: omit both the bias circle and the restriction circle and a ranked place search *"uses IP biasing by default"* — the network address of whoever made the call stands in for a location.
+
+On a laptop at home that is roughly your city; on a hosted tool the caller is a datacenter server, whose network location is somewhere you have never been or nowhere identifiable at all. Same query, same code, different machine, different answer.
+
+Any product offering "national" rank tracking for a local query is reporting from a coordinate neither of you chose.
+
+**Here the origin is never left to that fallback.** It is the keyword's own search point when you set one, the business coordinates otherwise. But note the trap.
+
+**A keyword with no location chip is not a keyword with no location.** It is measured from the business's front door — the most flattering point on the map, the one coordinate where your distance term is zero and every rival's is not.
+
+An unstated default is still a condition; write it down as if it were a setting, because it is one.
 
 ![The Rankings add-keyword form with Search from, Language and Radius all left at their defaults](../../static/img/screens/rankings-tracked.png)
 
@@ -54,9 +80,14 @@ Here the origin is never left to that fallback: it is the keyword's own search p
 
 Two tools both say "5 km radius" and mean opposite things.
 
-A **bias** radius weights the search toward a circle; results outside it still appear, ranked lower. A **restriction** radius is a hard filter: nothing outside the circle exists.
+| | A **bias** radius | A **restriction** radius |
+| --- | --- | --- |
+| What the circle does | Weights the search toward it | Filters hard on it |
+| A result outside it | Still appears, ranked lower | Does not exist |
 
-The distinction is invisible in a settings panel and enormous in the output. Under a restriction, a business two miles out is deleted, promoting everyone inside the circle by one — so the same business, on the same day, from the same point, reads better under a restriction than under a bias. Both are legitimate; only one models what a searcher sees. Both appear in this app doing different jobs: rank checks and grid points use a bias circle, competitor discovery a restriction circle, so that "nearby rivals" means nearby.
+**The distinction is invisible in a settings panel and enormous in the output.** Under a restriction, a business two miles out is deleted, promoting everyone inside the circle by one — so the same business, on the same day, from the same point, reads better under a restriction than under a bias.
+
+Both are legitimate; only one models what a searcher sees. Both appear in this app doing different jobs: rank checks and grid points use a bias circle, competitor discovery a restriction circle, so that "nearby rivals" means nearby.
 
 And a bias radius is an input to the *ordering*, not a viewport — change only the radius and the position can move with nothing happening in the world.
 

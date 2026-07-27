@@ -20,9 +20,13 @@ Almost everyone applies one method — reading the news — to all three. It wor
 | **Capability** | Q&A API discontinued 3 November 2025, public panel phased out from that December; per-post metrics gone since February 2023 | Rarely, and late | Re-probe; treat any unexpected failure as a signal |
 | **Behaviour** | "The pack got more local this month" | Never | Your own stored series, over months |
 
-Policy changes are *findable* but nobody pushes them to you. The two new review-solicitation clauses appeared on Google's prohibited-content page on 17 April 2026 with no announcement; they were spotted the same day by Amy Toman, a volunteer Google Diamond Product Expert reading the page, and reached the industry through her post rather than through Google. Standing agency advice was in breach for weeks. Capability changes are worse, because the failure is silent and lands on your side — something errors inside a job nobody watches, and you find out when a client asks why the posts stopped.
+**Policy changes are *findable*, but nobody pushes them to you.** The two new review-solicitation clauses appeared on Google's prohibited-content page on 17 April 2026 with no announcement; they were spotted the same day by Amy Toman, a volunteer Google Diamond Product Expert reading the page, and reached the industry through her post rather than through Google. Standing agency advice was in breach for weeks.
 
-Behaviour changes are what everybody writes about and nobody can establish. Positions move constantly, because rank is a sort over near-tied scores and a sort is discontinuous ([reading a geo-grid without fooling yourself](../03-advanced/reading-a-geo-grid.md)). One account's movement is never evidence of a system change, and almost every "I've noticed Google is now…" post was built from exactly that.
+**Capability changes are worse**, because the failure is silent and lands on your side — something errors inside a job nobody watches, and you find out when a client asks why the posts stopped.
+
+**Behaviour changes are what everybody writes about and nobody can establish.** Positions move constantly, because rank is a sort over near-tied scores and a sort is discontinuous ([reading a geo-grid without fooling yourself](../03-advanced/reading-a-geo-grid.md)).
+
+One account's movement is never evidence of a system change, and almost every "I've noticed Google is now…" post was built from exactly that.
 
 ```mermaid
 flowchart LR
@@ -43,7 +47,9 @@ Dated entries for the first two kinds — what changed, when, and what it broke 
 
 ## Documentation is a lagging indicator
 
-Google's deprecation schedule for the Business Profile surface carries a recent stamp and a stale record: read on **2026-07-27**, its most recent discontinuation entry was dated **July 2024**, and it still did not list the Q&A API that Google itself discontinued on 3 November 2025 — sixteen months later, and eight months before we looked. The retirement was announced, but on the Q&A API's own change log, not on the page whose job is to list retirements. That is not sloppiness. It is a property of all vendor documentation: **it records intent at some past moment, not current state.**
+**The retirement list does not list the retirements.** Google's deprecation schedule for the Business Profile surface carries a recent stamp and a stale record: read on **2026-07-27**, its most recent discontinuation entry was dated **July 2024**, and it still did not list the Q&A API that Google itself discontinued on 3 November 2025 — sixteen months later, and eight months before we looked.
+
+The retirement was announced, but on the Q&A API's own change log, not on the page whose job is to list retirements. That is not sloppiness. It is a property of all vendor documentation: **it records intent at some past moment, not current state.**
 
 > Documentation establishes what was intended. Only a call establishes what is.
 
@@ -60,7 +66,9 @@ A flat re-check schedule wastes time on durable things and misses volatile ones.
 | Published rates | AI Overview incidence, ranking-factor weights | Annually, when an edition lands — vendor surveys either way |
 | AI engine behaviour | How an assistant gets the user's location | Months. The fastest-rotting material in this manual |
 
-The last row deserves a warning. ChatGPT shipped opt-in device-location sharing on iOS and web on **26 March 2026** — off by default, and Android still listed as coming *(as read 2026-07-27; re-check before citing)*. Every AI-visibility series crossing that date holds a discontinuity that has nothing to do with the business being measured. Dating engine changes is what separates that chart from a random walk with a story attached.
+**The last row deserves a warning.** ChatGPT shipped opt-in device-location sharing on iOS and web on **26 March 2026** — off by default, and Android still listed as coming *(as read 2026-07-27; re-check before citing)*.
+
+Every AI-visibility series crossing that date holds a discontinuity that has nothing to do with the business being measured. Dating engine changes is what separates that chart from a random walk with a story attached.
 
 ## The watchlist, in tiers
 
@@ -78,19 +86,33 @@ Nothing in Tier 3 or 4 is ever the basis for an action. It is the basis for a *c
 
 ## The diff habit
 
-Tier 1 documents have no version history, so the highest-value twenty minutes of your month is making one yourself. Keep a dated local copy of every page you cite; once a month take a fresh copy and diff it. When a clause moves you see the exact words that changed, on a date you can name — which is what you need when a client asks why the deliverable you sent in March says something different from what they read last night.
+**Be your own version control.** Tier 1 documents have no version history, so the highest-value twenty minutes of your month is making one yourself. Keep a dated local copy of every page you cite; once a month take a fresh copy and diff it.
 
-Two constraints. This is a handful of pages read as a human would, saved for your own records: do not build a crawler over Google properties, and do not accumulate anything redistributable ([storing Google data legally](../05-reference/storing-google-data-legally.md)). And help-centre pages are heavily scripted and archive badly, so public archives are a partial fallback at best *(inference — observed while trying to recover prior wording)*.
+When a clause moves you see the exact words that changed, on a date you can name — which is what you need when a client asks why the deliverable you sent in March says something different from what they read last night.
 
-You have watched the app do this to something else: the **Activity** panel on `/b/{businessId}/competitors` compares each refreshed competitor snapshot against the stored one and raises a line when the difference crosses a threshold — a rating drop, a burst of reviews, a batch of new photos — and only for the rivals you have left on the watch list. Two states, a comparison, and a rule about what counts as news. Apply that by hand to four policy pages and you have change detection for the part of your business nobody will notify you about.
+Two constraints:
+
+1. **Read like a human, keep the copy for yourself.** This is a handful of pages read as a human would, saved for your own records: do not build a crawler over Google properties, and do not accumulate anything redistributable ([storing Google data legally](../05-reference/storing-google-data-legally.md)).
+2. **Do not rely on the public archives.** Help-centre pages are heavily scripted and archive badly, so public archives are a partial fallback at best *(inference — observed while trying to recover prior wording)*.
+
+**You have watched the app do this to something else.** The **Activity** panel on `/b/{businessId}/competitors` compares each refreshed competitor snapshot against the stored one and raises a line when the difference crosses a threshold — a rating drop, a burst of reviews, a batch of new photos — and only for the rivals you have left on the watch list.
+
+Two states, a comparison, and a rule about what counts as news. Apply that by hand to four policy pages and you have change detection for the part of your business nobody will notify you about.
 
 ## Re-probing, and probe hygiene
 
 For capability questions the only instrument is a call. A **probe** is one request whose response reads as a verdict, stated precisely enough that a stranger can repeat it. Part V of this manual is a probe log rather than a documentation summary, and this section is why ([how to read this reference](../05-reference/how-to-read-this-reference.md)).
 
-Four verdicts are possible. **Works.** **Gone** — it used to and now refuses. **Never worked** — the interface offers it and the programmatic path never did. **Undocumented but working** — liable to vanish; never promise it without a fallback.
+Four verdicts are possible:
 
-The third turns on one distinction, and the *shape* of the failure gives it to you. A *validation* error means the system understood you and declined; a *server* error on well-formed input usually means the path was never built. That is how video-on-a-post was settled: Google's interface publishes video to a post, and the API fails with a server error on identical content *(probe-verified 2026-07-22)*. Interface parity is not API parity ([the capability matrix](../05-reference/gbp-capability-matrix.md), [write limits and failure modes](../05-reference/write-limits-and-failure-modes.md)).
+- **Works.**
+- **Gone** — it used to and now refuses.
+- **Never worked** — the interface offers it and the programmatic path never did.
+- **Undocumented but working** — liable to vanish; never promise it without a fallback.
+
+The third turns on one distinction, and the *shape* of the failure gives it to you. A *validation* error means the system understood you and declined; a *server* error on well-formed input usually means the path was never built.
+
+That is how video-on-a-post was settled: Google's interface publishes video to a post, and the API fails with a server error on identical content *(probe-verified 2026-07-22)*. Interface parity is not API parity ([the capability matrix](../05-reference/gbp-capability-matrix.md), [write limits and failure modes](../05-reference/write-limits-and-failure-modes.md)).
 
 Hygiene, because this is where people damage listings they do not own:
 
@@ -112,15 +134,26 @@ Run any claim through these in order. Most die on the first two.
 4. **Did the instrument change instead?** A tool default, a grid preset, an engine's location handling — each produces a step that looks exactly like a change in the world ([why two tools disagree](../03-advanced/why-two-tools-disagree.md)). Rule out your own equipment before you accuse Google.
 5. **Does it cash out into a different action?** If your response is what you would have done anyway, the claim is untestable. The ones worth an afternoon would make you **stop** doing something.
 
-Then choose one response, out loud. **Log it** — no action, correct for most changes and the option the industry almost never takes. **Verify it** — a diff or a probe, converting a rumour into a dated fact you own. **Act on it** — only on verified changes.
+Then choose one response, out loud:
+
+- **Log it** — no action, correct for most changes and the option the industry almost never takes.
+- **Verify it** — a diff or a probe, converting a rumour into a dated fact you own.
+- **Act on it** — only on verified changes.
 
 ## Your own change log
 
-Two columns, dated, per engagement. **Column A: what you changed** — edits, replies, posts, citations, site work. **Column B: what changed underneath you** — Google policy and capability changes, engine changes, and changes to your own instruments: a new tool, a different grid preset, a keyword's search point moved.
+Two columns, dated, per engagement.
+
+| Column | What goes in it |
+| --- | --- |
+| **A: what you changed** | Edits, replies, posts, citations, site work |
+| **B: what changed underneath you** | Google policy and capability changes, engine changes, and changes to your own instruments: a new tool, a different grid preset, a keyword's search point moved |
 
 Column A you get for free: fetched cards are stamped with their fetch time, profile-score snapshots are written at most once per business per day and draw **Profile score over time**, keywords keep their position history, and grid scans are dated ([did it work?](../02-core-practice/did-it-work.md)).
 
-Column B you keep by hand. No tool has it, including this one — the app records what *it* did, not what Google did, and a chart that steps for external reasons looks identical to one that steps because you were good. Without column B, every step gets attributed to column A by whoever tells the story first. Sometimes that helps you. Eventually it will not.
+**Column B you keep by hand.** No tool has it, including this one — the app records what *it* did, not what Google did, and a chart that steps for external reasons looks identical to one that steps because you were good.
+
+Without column B, every step gets attributed to column A by whoever tells the story first. Sometimes that helps you. Eventually it will not.
 
 ## The routine, and what it costs
 
@@ -132,9 +165,13 @@ Column B you keep by hand. No tool has it, including this one — the app record
 
 **On trigger.** A write that used to work fails; a client forwards an article; a series steps.
 
-That sums to about two and a half hours a month — the whole maintenance cost of remaining the person who is right, and the most defensible line on an invoice. Your client can read the same posts you can; what they cannot do is tell which apply to them.
+That sums to about two and a half hours a month — the whole maintenance cost of remaining the person who is right, and the most defensible line on an invoice.
 
-Which is also how to communicate a change: **before they read about it**, in three sentences. What changed and when. Whether it affects them. What you are doing. When the honest answer is "this does not affect you", send that too — manufacturing urgency out of a routine update spends credibility you will want the day something real happens ([reporting to someone who is paying for it](./reporting-to-a-client.md)).
+> Your client can read the same posts you can; what they cannot do is tell which apply to them.
+
+Which is also how to communicate a change: **before they read about it**, in three sentences. What changed and when. Whether it affects them. What you are doing.
+
+When the honest answer is "this does not affect you", send that too — manufacturing urgency out of a routine update spends credibility you will want the day something real happens ([reporting to someone who is paying for it](./reporting-to-a-client.md)).
 
 > **Without SEOG** · Nothing here needs a platform. The diff habit is a folder and a text comparison; the change log is a spreadsheet; probes are calls you make yourself. A tool buys you column A kept automatically, stamped with dates you did not have to remember — [doing all of this without SEOG](../99-appendix/doing-it-without-seog.md).
 
@@ -166,7 +203,9 @@ Which is also how to communicate a change: **before they read about it**, in thr
 1. Open **Posts** and begin composing a **What's New** post. Do not publish.
 2. Paste a very long body — a few thousand characters of any filler. The live issue list appears as you type. Read it: it names a limit. Write the number down.
 3. Switch the type to **Event** and give it an over-long title. Note the second, much smaller limit, and the requirement for a complete start **and** end date and time.
-4. Now answer the question this lab exists for: **where did those numbers come from, and when were they last true?** Neither appears in Google's current documentation; both were established by sending an over-long value and reading the field-level error that came back ([publishing without getting rejected](../02-core-practice/publishing-without-getting-rejected.md), verified 2026-07-22). Note what it would cost to re-establish them today — not nothing, since the only way to test a write limit is to attempt a write. Close the composer without publishing.
+4. Now answer the question this lab exists for: **where did those numbers come from, and when were they last true?** Neither appears in Google's current documentation; both were established by sending an over-long value and reading the field-level error that came back ([publishing without getting rejected](../02-core-practice/publishing-without-getting-rejected.md), verified 2026-07-22).
+
+   Note what it would cost to re-establish them today — not nothing, since the only way to test a write limit is to attempt a write. Close the composer without publishing.
 
 **What good looks like.** Two numbers, a date, and a clear statement that the validator is a *cached probe result* — second-hand knowledge with an expiry, exactly like documentation.
 
@@ -214,6 +253,8 @@ Answer against your actual files and clients, not in the abstract.
 
 ---
 
-That closes Part IV, and the teaching half of this manual. What follows does not teach — it settles questions, one dated fact per heading, with the probe that established each. It is also what goes stale fastest, which is why every entry carries the date it was last checked, and why a correction with a probe attached is the most useful thing anyone sends us ([contributing](../99-appendix/contributing.md)).
+That closes Part IV, and the teaching half of this manual. What follows does not teach — it settles questions, one dated fact per heading, with the probe that established each.
+
+It is also what goes stale fastest, which is why every entry carries the date it was last checked, and why a correction with a probe attached is the most useful thing anyone sends us ([contributing](../99-appendix/contributing.md)).
 
 **Next:** [How to read this reference →](../05-reference/how-to-read-this-reference.md)

@@ -6,7 +6,9 @@ description: What every Google Business Profile API actually does in 2026 — al
 
 # The GBP capability matrix
 
-Google's Business Profile machinery is eight separate v1 APIs plus a legacy v4 remnant that still holds the most valuable capabilities. Parts of it were retired without appearing on Google's own deprecation schedule. Parts of it are documented as retired and answer HTTP 200. This chapter records what each surface does, what it refuses, the call that establishes it, and the date that call last ran.
+Google's Business Profile machinery is eight separate v1 APIs plus a legacy v4 remnant that still holds the most valuable capabilities. Parts of it were retired without appearing on Google's own deprecation schedule. Parts of it are documented as retired and answer HTTP 200.
+
+This chapter records what each surface does, what it refuses, the call that establishes it, and the date that call last ran.
 
 Every entry stands alone. Cite it by ID and carry the date.
 

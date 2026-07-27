@@ -14,7 +14,9 @@ This page is the reference for that rule: what spends on every screen, what neve
 
 **No prices appear here.** Labs are marked **free** or **paid**, never with a number. Prices change, tools change, and a manual that hard-codes a figure lies to you six months later. What matters — and what does not change — is *which class of action* a click belongs to.
 
-**This is about the labs, not about the work.** What Google charges for the data underneath any local SEO tool is published to the cent and is in [What the Places API will and will not give you](../05-reference/what-places-returns.md). What a client engagement costs to deliver, in data and in hours, is in [What the work costs](../04-operating/what-the-work-costs.md). Those are the two pages to read before quoting anybody. This one is about working through the curriculum without wasting money.
+**This is about the labs, not about the work.** What Google charges for the data underneath any local SEO tool is published to the cent and is in [What the Places API will and will not give you](../05-reference/what-places-returns.md). What a client engagement costs to deliver, in data and in hours, is in [What the work costs](../04-operating/what-the-work-costs.md).
+
+Those are the two pages to read before quoting anybody. This one is about working through the curriculum without wasting money.
 
 **Counts are dated.** The lab tallies below were taken from the repository on **2026-07-27**. Chapters get added; re-count rather than trusting the number if the manual has moved on.
 
@@ -26,15 +28,36 @@ This page is the reference for that rule: what spends on every screen, what neve
 
 That is not a quirk of one tool. It is a description of where money actually goes. A tool spends when a request leaves for Google or for a model vendor, and it spends nothing when it hands you something it already holds. Every serious instrument in this space has the same shape, whatever it calls its units.
 
-Two corollaries do most of the work:
+### Two corollaries
 
 **A click that produces something from outside is paid. A click that rearranges what you already have is not.** Opening a page, filtering a review list, switching a chart between periods, sorting competitors, re-reading a grid you scanned in March — none of these leave the building. Checking a rank, syncing reviews, drafting with a model, publishing to Google — all of these do.
 
 **Paid data is bought once and re-read for free.** A fetch you paid for is stored and re-served at no charge, however many times you open it. This is why the most expensive habit in local SEO tooling is re-fetching to answer a question that last week's fetch already answered — and why the second habit worth forming, after "measure before you change", is "read the timestamp before you press".
 
-But it is re-read for free *for a while*, not for ever, and the reason is not commercial. Google's Business Profile API terms cap how long its content may be held — *"It must be stored temporarily for no more than 30 calendar days"* ([`LSM-POLICY-27`](../05-reference/storing-google-data-legally.md)) — and Places content is stricter still. Any tool that obeys those terms therefore ages raw Google content out on a rolling window and falls back to the paid button. What survives the window is the part that is not Google's content: identifiers, and the measurements the tool computed — rank positions, profile scores, grid coverage. What does not survive is the raw material — synced review text, competitor field values, cached performance series, generated report PDFs.
+```mermaid
+flowchart TD
+  A["You are about to press a button"] --> B{"Does it send a request to Google or a model vendor?"}
+  B -->|"No: it rearranges what you already hold"| C["Free: open, filter, sort, re-read"]
+  B -->|"Yes: it brings something in or writes something out"| D{"Did a fetch you already paid for answer this?"}
+  D -->|"Yes: read the timestamp"| C
+  D -->|"No"| E["Paid: check, sync, draft, publish"]
+```
 
-The practical consequence is the opposite of what "buy it once" suggests: **anything you will need as evidence in three months has to leave the tool.** Export it, file it, and cite your own copy. This is the same rule the compliance chapter arrives at from the legal end — [Storing Google data legally](../05-reference/storing-google-data-legally.md) — and it is the single most important sentence on this page for anyone running client work.
+### Bought once, but not kept for ever
+
+But it is re-read for free *for a while*, not for ever, and the reason is not commercial. Google's Business Profile API terms cap how long its content may be held — *"It must be stored temporarily for no more than 30 calendar days"* ([`LSM-POLICY-27`](../05-reference/storing-google-data-legally.md)) — and Places content is stricter still.
+
+**Any tool that obeys those terms therefore ages raw Google content out on a rolling window** and falls back to the paid button.
+
+| Survives the window | Does not survive it |
+| --- | --- |
+| The part that is not Google's content: identifiers, and the measurements the tool computed — rank positions, profile scores, grid coverage | The raw material — synced review text, competitor field values, cached performance series, generated report PDFs |
+
+The practical consequence is the opposite of what "buy it once" suggests:
+
+> **Anything you will need as evidence in three months has to leave the tool.**
+
+Export it, file it, and cite your own copy. This is the same rule the compliance chapter arrives at from the legal end — [Storing Google data legally](../05-reference/storing-google-data-legally.md) — and it is the single most important sentence on this page for anyone running client work.
 
 Everything else on this page is that rule applied.
 
@@ -59,7 +82,9 @@ The right-hand column is not a summary — it is the rest of the screen. If an a
 
 Three entries in that table surprise people:
 
-**Undo is paid, and it expires.** Undoing a profile fix replays a write against Google, so it costs what the write cost. It also depends on the stored copy of the field's previous value, which is Google content and ages out on the retention window described above — so undo is a short-term safety net, not an archive. The durable undo is the one you write down yourself before you edit (step 1 of [the five-step safe edit](./checklists-and-templates.md)). Practise it once on something you do not mind changing ([Lab 9.3](../02-core-practice/the-profile-is-the-product.md)) rather than discovering the mechanics during a real mistake.
+**Undo is paid, and it expires.** Undoing a profile fix replays a write against Google, so it costs what the write cost. It also depends on the stored copy of the field's previous value, which is Google content and ages out on the retention window described above — so undo is a short-term safety net, not an archive.
+
+The durable undo is the one you write down yourself before you edit (step 1 of [the five-step safe edit](./checklists-and-templates.md)). Practise it once on something you do not mind changing ([Lab 9.3](../02-core-practice/the-profile-is-the-product.md)) rather than discovering the mechanics during a real mistake.
 
 **Deleting is paid.** Removing a photo or a post is a write to Google like publishing one. There is no cheap way out of a bad publish.
 
@@ -97,7 +122,9 @@ A geo-grid is one live search per grid point ([Rank is a map, not a number](../0
 | **Standard** | 5×5 | 25 | roughly 4 miles across |
 | **Detailed** | 7×7 | 49 | roughly 6 miles across |
 
-Detailed costs about five times Quick and is priced as exactly what it is. It is not five times more true — it is a wider net at the same resolution. Pick by the question: a shop whose customers walk in from three streets away learns nothing from a six-mile square, and a service-area business covering two counties learns nothing from a two-mile one. [Reading a geo-grid](../03-advanced/reading-a-geo-grid.md) is the chapter that makes that choice properly.
+Detailed costs about five times Quick and is priced as exactly what it is. It is not five times more true — it is a wider net at the same resolution.
+
+**Pick by the question.** A shop whose customers walk in from three streets away learns nothing from a six-mile square, and a service-area business covering two counties learns nothing from a two-mile one. [Reading a geo-grid](../03-advanced/reading-a-geo-grid.md) is the chapter that makes that choice properly.
 
 ### 2. Matrix breadth on AI visibility
 

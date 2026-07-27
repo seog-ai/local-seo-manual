@@ -6,7 +6,9 @@ description: What profile photos do, what Google's media policy requires, and th
 
 # Photos, and what you cannot do with them
 
-The photo strip is the part of a listing a customer judges fastest and the part an owner controls least. You can add images. You can remove the ones you added. You cannot order them, cannot swap one out in place, cannot delete the blurry shot a customer took of your bins, and cannot find out how any single image performed.
+The photo strip is the part of a listing a customer judges fastest and the part an owner controls least.
+
+You can add images. You can remove the ones you added. You cannot order them, cannot swap one out in place, cannot delete the blurry shot a customer took of your bins, and cannot find out how any single image performed.
 
 That gap between what people assume they control and what is actually controllable is where most photo advice in this industry goes wrong. This chapter is mostly about the limits, because the limits are the part nobody tells you.
 

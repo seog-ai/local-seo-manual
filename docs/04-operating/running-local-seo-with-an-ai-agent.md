@@ -6,7 +6,9 @@ description: Connect an agent to your local-SEO stack over MCP — what it may r
 
 # Running local SEO with an AI agent
 
-Most of the work in Parts I–III is reading. Pull the numbers, compare them to last month, decide which difference is real, write it up. An agent is good at that. A small remainder is *writing* — a reply that appears in public under a review, a field on a live listing that Google may re-verify — and an agent must not do that unsupervised.
+Most of the work in Parts I–III is reading. Pull the numbers, compare them to last month, decide which difference is real, write it up. An agent is good at that.
+
+A small remainder is *writing* — a reply that appears in public under a review, a field on a live listing that Google may re-verify — and an agent must not do that unsupervised.
 
 This chapter is about where the line sits, and about making it something a schema enforces rather than something you asked for politely in a prompt.
 
@@ -18,9 +20,15 @@ Run a portfolio for a month and log your hours. The distribution is lopsided in 
 - **Deciding** — is that a real change or scan noise, is this keyword worth tracking, does this edit invite a suspension. Few hours, all of the judgement.
 - **Writing** — a handful of actions per client per month that land on a public surface. Least time, all of the risk.
 
-Automation pays best where volume is high and risk is low, which is the first bucket exactly, and worst in the third. An agent that assembles Monday's digest across twenty businesses saves a day a week; one that publishes review replies overnight saves twenty minutes and puts a merchant's account in play — and is [against Google's API policy anyway](#the-one-thing-an-agent-must-never-do-alone).
+**Automation pays best where volume is high and risk is low** — which is the first bucket exactly, and worst in the third.
 
-So the useful model is not "an agent that does local SEO". It is **an agent that does the reading and hands you a queue of decisions.** Everything below is engineering to keep it in that shape.
+An agent that assembles Monday's digest across twenty businesses saves a day a week; one that publishes review replies overnight saves twenty minutes and puts a merchant's account in play — and is [against Google's API policy anyway](#the-one-thing-an-agent-must-never-do-alone).
+
+So the useful model is not "an agent that does local SEO":
+
+> **An agent that does the reading and hands you a queue of decisions.**
+
+Everything below is engineering to keep it in that shape.
 
 ## Connecting one
 
@@ -30,7 +38,9 @@ Two facts about the credential matter more than the setup steps.
 
 **It is an account token, not an OAuth grant.** Every call runs as your account and reaches only your account's businesses. The server assembles the tool set from your own permissions, so a token can never grant a capability your login does not already have.
 
-**It is shown once, revocable, and attributable.** The plaintext appears at creation and never again — treat it like an SSH key, never in a repo, never in a pasted transcript. Each token carries a name and a last-used stamp, revoking takes effect immediately, and every agent action lands in the same usage record as a click in the app. That last part is what makes an agent-run practice auditable at all.
+**It is shown once, revocable, and attributable.** The plaintext appears at creation and never again — treat it like an SSH key, never in a repo, never in a pasted transcript.
+
+Each token carries a name and a last-used stamp, revoking takes effect immediately, and every agent action lands in the same usage record as a click in the app. That last part is what makes an agent-run practice auditable at all.
 
 Mint one at **Settings → Agents & MCP** (`/settings/agents`), then register the server.
 
@@ -65,7 +75,17 @@ List the tools before asking the agent to do anything. A connected server with z
 
 ## What it can read, and what it can write
 
-Five classes, and the boundaries between them are the design. Costs follow one rule: **anything that calls an external API — Google or a model — is paid; reading data you already hold is free.** That rule settles undo and delete too, and it settles them differently: undoing a profile edit is paid because it replays the write against Google, and deleting a post or a photo is paid because it removes something from the live listing — but deleting a business, a keyword or a competitor only drops what SEOG stores, touches Google not at all, and is free. Which is worth knowing precisely, since the free ones are the irreversible ones.
+Five classes, and the boundaries between them are the design.
+
+**Costs follow one rule:** anything that calls an external API — Google or a model — is paid; reading data you already hold is free.
+
+That rule settles undo and delete too, and it settles them differently:
+
+- **Undoing a profile edit is paid** — it replays the write against Google.
+- **Deleting a post or a photo is paid** — it removes something from the live listing.
+- **Deleting a business, a keyword or a competitor is free** — it only drops what SEOG stores, and touches Google not at all.
+
+Which is worth knowing precisely, since the free ones are the irreversible ones.
 
 | Class | What it touches | Cost | Examples |
 | --- | --- | --- | --- |
@@ -75,9 +95,11 @@ Five classes, and the boundaries between them are the design. Costs follow one r
 | Public writes | The live Google listing | paid | `apply_profile_fix`, `apply_business_description`, `publish_review_reply`, `publish_post` |
 | Irreversible | Deletes stored history or public content | either | `delete_business`, `delete_post`, `delete_profile_photo`, `remove_keyword`, `remove_competitor` |
 
-Three consequences to internalise before you let one loose.
+### Three consequences to internalise before you let one loose
 
-**The free/paid boundary is a budget boundary.** `list_keywords` returns the positions from the last check; `check_keyword` goes and asks Google again. An agent that does not grasp the difference re-fetches data it already holds — the most expensive beginner mistake in [Diagnosing a business in thirty minutes](../02-core-practice/analyzing-business-visibility.md), now in a loop. Two free tools exist so it can budget: one returns the balance and plan, one the live price of every charged action. Make it call both before any multi-business sweep.
+**The free/paid boundary is a budget boundary.** `list_keywords` returns the positions from the last check; `check_keyword` goes and asks Google again. An agent that does not grasp the difference re-fetches data it already holds — the most expensive beginner mistake in [Diagnosing a business in thirty minutes](../02-core-practice/analyzing-business-visibility.md), now in a loop.
+
+Two free tools exist so it can budget: one returns the balance and plan, one the live price of every charged action. Make it call both before any multi-business sweep.
 
 **Bundles beat loops.** `refresh_rankings` re-checks every active keyword in one charged run; `check_keyword` per keyword costs more for the same answer. Same for `refresh_competitors` and `refresh_website_all`. A model left alone writes the loop.
 
@@ -93,21 +115,49 @@ Tools whose effect cannot be undone take a **required** `confirm` argument that 
 
 > "Must be true. This action is IRREVERSIBLE — confirm with the user, quoting exactly what will be deleted, before setting it."
 
-Omit it and the call fails validation before any code runs. It covers deleting a business and its whole history, deleting a post or photo from the live listing, removing a keyword or competitor with their snapshots, and deleting a stored report.
+Omit it and the call fails validation before any code runs. It covers:
 
-Be clear-eyed about what this is. **The agent supplies the flag itself**, so it is not a permission — it is a speed bump against a tool fired on a vague instruction, and it works because the model must construct an explicit acknowledgement rather than pattern-match a plausible call. It exists because MCP has no confirmation channel: an in-app assistant can stop and ask, an agent calling a tool directly cannot.
+- deleting a business and its whole history
+- deleting a post or photo from the live listing
+- removing a keyword or competitor with their snapshots
+- deleting a stored report
+
+Be clear-eyed about what this is. **The agent supplies the flag itself**, so it is not a permission — it is a speed bump against a tool fired on a vague instruction, and it works because the model must construct an explicit acknowledgement rather than pattern-match a plausible call.
+
+It exists because MCP has no confirmation channel: an in-app assistant can stop and ask, an agent calling a tool directly cannot.
 
 ### Layer 2 — the tool description
 
-Publishing tools carry the warning in their own description. `publish_review_reply` states that the reply is publicly visible under the review and needs the exact wording approved first. `apply_profile_fix` states that editing the business **name** can put the listing into re-verification — that mechanism and the rest of the write-failure surface are in [write limits and failure modes](../05-reference/write-limits-and-failure-modes.md). Tools returning Google content carry the attribution and no-caching obligation in the description too, because the agent is the party that has to honour it ([storing Google data legally](../05-reference/storing-google-data-legally.md)).
+**Publishing tools carry the warning in their own description.** `publish_review_reply` states that the reply is publicly visible under the review and needs the exact wording approved first. `apply_profile_fix` states that editing the business **name** can put the listing into re-verification — that mechanism and the rest of the write-failure surface are in [write limits and failure modes](../05-reference/write-limits-and-failure-modes.md).
+
+Tools returning Google content carry the attribution and no-caching obligation in the description too, because the agent is the party that has to honour it ([storing Google data legally](../05-reference/storing-google-data-legally.md)).
 
 This layer is guidance, and a model can ignore guidance. A floor, not a control.
 
 ### Layer 3 — your client, and this is the real one
 
-The enforceable boundary lives on your side, in the approval policy of the MCP client you run: which tools auto-run, which prompt, which are blocked. Allowlist the stored reads. Prompt on every fetch. Prompt or block every public write. That configuration — not the server, not the prompt — is what stands between "summarise this week" and something appearing on a client's listing.
+**The enforceable boundary lives on your side**, in the approval policy of the MCP client you run: which tools auto-run, which prompt, which are blocked.
 
-If you take one engineering decision from this chapter, take that one. The server's job is to make risky actions *legible*; your client's job is to make them *gated*.
+- **Allowlist** the stored reads.
+- **Prompt** on every fetch.
+- **Prompt or block** every public write.
+
+That configuration — not the server, not the prompt — is what stands between "summarise this week" and something appearing on a client's listing.
+
+```mermaid
+flowchart TD
+  A["Agent decides to call a tool"] --> B{"Does the call touch Google or a model?"}
+  B -->|"No: stored read or local write"| C["Free. Allowlist it"]
+  B -->|"Yes: a fetch"| D["Paid. Your client prompts you"]
+  B -->|"Yes: a public write or a delete"| E["Layer 1: required confirm flag"]
+  E --> F["Layer 2: warning in the tool description"]
+  F --> G["Layer 3: your client prompts or blocks"]
+  G --> H["Human approves the exact text, then it publishes"]
+```
+
+If you take one engineering decision from this chapter, take that one.
+
+> The server's job is to make risky actions *legible*; your client's job is to make them *gated*.
 
 Errors help more than people expect: an exhausted balance comes back with what the action costs, what is left, and where to top up. **Relay and stop.** A retry loop against an empty balance fails identically each time.
 
@@ -123,7 +173,9 @@ And under Third-party policy > Reviews:
 
 > "Business owners have the ability to respond to reviews of their business on Google. If you respond to reviews on behalf of your end-client, you must receive their authorization first."
 
-This is our reading of published terms, not legal advice. Read it slowly all the same: **automating review replies without prior specific and express consent is named as abusive behaviour**, and the merchant's account carries the risk, not your script. The same clause covers automated listing edits, which is why an agent applying profile fixes on a schedule is the same problem in a different hat.
+This is our reading of published terms, not legal advice. Read it slowly all the same: **automating review replies without prior specific and express consent is named as abusive behaviour**, and the merchant's account carries the risk, not your script.
+
+The same clause covers automated listing edits, which is why an agent applying profile fixes on a schedule is the same problem in a different hat.
 
 A human approving each reply is fine, and is the loop every lab below uses. The full argument is in [Reviews](../02-core-practice/reviews.md); the parallel constraint on AI-generated profile imagery is in [Photos and the visual profile](../02-core-practice/photos-and-the-visual-profile.md).
 
@@ -133,7 +185,9 @@ A human approving each reply is fine, and is the loop every lab below uses. The 
 
 **Nothing schedules your agent.** Weekly digests happen because *you* run them from a scheduler you own — a feature, since a schedule you control is one you can stop.
 
-**Breadth is watched, and volume is not the signal.** Bulk extraction of place data is prohibited by Google's terms, so the tools returning raw Google content carry abuse guardrails. The principle is worth knowing even though the values are not published: **the number of distinct places an account touches in a day is the signature of directory-building, not the number of calls.** A twenty-business portfolio refreshed several times daily looks nothing like a scraper; something walking a city block by block does — see [Spam and fake listings](../03-advanced/spam-and-fake-listings.md).
+**Breadth is watched, and volume is not the signal.** Bulk extraction of place data is prohibited by Google's terms, so the tools returning raw Google content carry abuse guardrails.
+
+The principle is worth knowing even though the values are not published: **the number of distinct places an account touches in a day is the signature of directory-building, not the number of calls.** A twenty-business portfolio refreshed several times daily looks nothing like a scraper; something walking a city block by block does — see [Spam and fake listings](../03-advanced/spam-and-fake-listings.md).
 
 **Some accounts get fewer tools by design.** Partner and white-label accounts do not receive the raw-Google tools. A "not found" there is a compliance boundary, not a bug, and reissuing tokens will not produce them.
 

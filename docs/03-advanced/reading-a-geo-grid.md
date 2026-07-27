@@ -6,7 +6,9 @@ description: What average rank and top-3 coverage really measure, how much a gri
 
 # Reading a geo-grid without fooling yourself
 
-A grid gives you nine, twenty-five or forty-nine numbers where you had one, and draws them on a map. That is a real upgrade with a real hazard: twenty-five numbers and a coloured picture feel like *data* in a way one number never did, so nobody audits them. Two summary figures get quoted, a month later two more get quoted beside them, and the difference gets called a result.
+A grid gives you nine, twenty-five or forty-nine numbers where you had one, and draws them on a map. That is a real upgrade with a real hazard: twenty-five numbers and a coloured picture feel like *data* in a way one number never did, so nobody audits them.
+
+Two summary figures get quoted, a month later two more get quoted beside them, and the difference gets called a result.
 
 This chapter is the audit — what the two figures hide, how much a grid disagrees with *itself* when nothing has changed, and how large a movement must be before you may call it one. You should finish able to say to a client: *"That change is inside our measurement noise, so we are not counting it."*
 
@@ -21,7 +23,11 @@ The app prints two numbers under the map. They are not two views of one thing.
 
 One excludes the missing data, the other counts it as failure, so the two can move in opposite directions on the same scan and both be correct.
 
-The consequence is the mechanism by which grids flatter people, and it deserves to be a rule: **average rank improves when you disappear from your worst points.** Vanish from three pins where you sat at #18 and the average climbs. Nothing improved — the instrument stopped looking at your bad neighbourhoods.
+The consequence is the mechanism by which grids flatter people, and it deserves to be a rule.
+
+> **Average rank improves when you disappear from your worst points.**
+
+Vanish from three pins where you sat at #18 and the average climbs. Nothing improved — the instrument stopped looking at your bad neighbourhoods.
 
 A third figure makes the other two safe. The plain-language paragraph above the map states it: *"You appear in the top 20 at 9 of 25 points."* That is the **found rate**, the denominator information the average threw away. Quote it every time, first.
 
@@ -43,13 +49,25 @@ A third figure makes the other two safe. The plain-language paragraph above the 
 
 Position is a rank label: only the order is real, the gaps are not. Arithmetic does not know that. To a mean, #1 → #2 and #11 → #12 are the same one-position event; in the world the first moves you inside the only box most people see and the second moves you from invisible to invisible.
 
-You may average ordinals — everyone does, and this app does — but not believe the answer without saying what you did to get it. Three summaries survive scrutiny better: the **found rate** (appeared at R of N points), the **top-3 count** (ranked 1–3 at T of N, the only threshold that pays), and **the distribution** — pins per band, four counts summing to N, carrying everything the mean carries plus the shape it destroyed. The map already colours those bands.
+You may average ordinals — everyone does, and this app does — but not believe the answer without saying what you did to get it.
+
+**Three summaries survive scrutiny better:**
+
+- the **found rate** — appeared at R of N points;
+- the **top-3 count** — ranked 1–3 at T of N, the only threshold that pays;
+- **the distribution** — pins per band, four counts summing to N, carrying everything the mean carries plus the shape it destroyed.
+
+The map already colours those bands.
 
 ## A grey pin is censored, not bad
 
-A grey pin does not mean rank 21. It means the scan reads twenty deep and you were not in it, so your true position is *somewhere worse than 20* — 22, or 400, or not eligible for that query at that point at all. The instrument cannot tell those apart. (The legend of a finished scan carries a red **20+** band, but the scan asks for twenty results and stops, so nothing can come back holding a position past twenty and that band never fills; the grey pins themselves print `20+` as a label, which reads like a position and is not one. Only the *example* panel fills the red band, because it draws its one unranked point there instead of grey.)
+A grey pin does not mean rank 21. It means the scan reads twenty deep and you were not in it, so your true position is *somewhere worse than 20* — 22, or 400, or not eligible for that query at that point at all. The instrument cannot tell those apart.
 
-Statisticians call this right-censoring, and there is no clever fix. Every summary must do *something* with those pins, and each choice produces a different number from the same measurements. Watch one worked example travel — illustrative figures, not a real business. Twenty-five points; you appear at nine, at positions 1, 2, 2, 3, 5, 7, 11, 14, 19; sixteen grey.
+**The red band is a red herring.** The legend of a finished scan carries a red **20+** band, but the scan asks for twenty results and stops, so nothing can come back holding a position past twenty and that band never fills. The grey pins themselves print `20+` as a label, which reads like a position and is not one. Only the *example* panel fills the red band, because it draws its one unranked point there instead of grey.
+
+Statisticians call this right-censoring, and there is no clever fix. Every summary must do *something* with those pins, and each choice produces a different number from the same measurements.
+
+Watch one worked example travel — illustrative figures, not a real business. Twenty-five points; you appear at nine, at positions 1, 2, 2, 3, 5, 7, 11, 14, 19; sixteen grey.
 
 | Scoring choice | Arithmetic | "Average rank" |
 | --- | --- | --- |
@@ -58,7 +76,9 @@ Statisticians call this right-censoring, and there is no clever fix. Every summa
 | **Impute 50** — a guess at how far outside they really are | (64 + 16×50) ÷ 25 | **34.6** |
 | **Do not average** | — | Found at 9 of 25; top 3 at 4 of 25 |
 
-Same scan, same twenty-five searches, and an "average rank" of 7.1, 16.0 or 34.6 depending on an assumption nobody in the room knows you made. The first row is what every grid dashboard shows, and the most flattering by a factor of five. The fourth row is the answer: it assumes nothing about the censored pins, which is correct, because you know nothing about them.
+Same scan, same twenty-five searches, and an "average rank" of 7.1, 16.0 or 34.6 depending on an assumption nobody in the room knows you made.
+
+**The first row is what every grid dashboard shows**, and the most flattering by a factor of five. The fourth row is the answer: it assumes nothing about the censored pins, which is correct, because you know nothing about them.
 
 The app itself makes the "impute 21" choice in one place: the compass sentence averages by direction and counts a missing pin as 21, and claims a direction only when best and worst are at least two positions apart. So *no direction claimed* means "not a big enough gap", not "no gradient".
 
@@ -70,15 +90,21 @@ The panel shows you all of this before you have run anything, using stand-in num
 
 ## The centre is not a neutral place to stand
 
-A grid centres on the keyword's search point when one is set, otherwise on the business coordinates — sensible, and a structural bias. The business address is where your distance term is zero and every competitor's is not: the most flattering coordinate on the map ([Rank is a map, not a number](../01-foundations/rank-is-a-map-not-a-number.md)). A symmetric lattice around it over-samples your best neighbourhood, so **an area average from a business-centred grid is biased upward** against the same area sampled from a centre chosen without reference to you.
+A grid centres on the keyword's search point when one is set, otherwise on the business coordinates — sensible, and a structural bias. The business address is where your distance term is zero and every competitor's is not: the most flattering coordinate on the map ([Rank is a map, not a number](../01-foundations/rank-is-a-map-not-a-number.md)).
 
-One reading hazard follows from that, and it is in the picture rather than the arithmetic: the map drops a blue dot at the middle of the lattice and labels it *Your business*. When you set a **Search from** location the lattice moves and the dot moves with it, so the dot marks the centre of the scan, not necessarily the address. Check which of the two you are looking at before you narrate a gradient "away from the shop".
+A symmetric lattice around it over-samples your best neighbourhood, so **an area average from a business-centred grid is biased upward** against the same area sampled from a centre chosen without reference to you.
+
+One reading hazard follows from that, and it is in the picture rather than the arithmetic: the map drops a blue dot at the middle of the lattice and labels it *Your business*.
+
+**The dot marks the scan, not the shop.** When you set a **Search from** location the lattice moves and the dot moves with it, so the dot marks the centre of the scan, not necessarily the address. Check which of the two you are looking at before you narrate a gradient "away from the shop".
 
 That makes the grid a *self-centred* estimator rather than a useless one: fine while every comparison uses the same centre, lethal the moment two centres differ.
 
 ## The grid is not a sample of your customers
 
-A lattice weights every point equally: a pin over a reservoir, a motorway junction and a housing estate of four thousand people each contribute 1/N. So coverage is a share of **ground**, not of **demand** — which makes "we are visible to 40% of the city" wrong twice, since ground is not people and appearing in the pack is not being seen. Nor is coverage comparable between businesses on different terrain: fifteen pins over farmland and fifteen over tenements are not the same measurement in different clothes.
+A lattice weights every point equally: a pin over a reservoir, a motorway junction and a housing estate of four thousand people each contribute 1/N.
+
+So coverage is a share of **ground**, not of **demand** — which makes "we are visible to 40% of the city" wrong twice, since ground is not people and appearing in the pack is not being seen. Nor is coverage comparable between businesses on different terrain: fifteen pins over farmland and fifteen over tenements are not the same measurement in different clothes.
 
 The repair is editorial, not statistical: decide which pins matter before you read them. Where do this client's customers come from — bookings, delivery addresses, catchment? Name those four or five pins, read those, report the rest as context. *(Inference — no tool the manual is aware of, this one included, weights grid points by demand.)*
 
@@ -86,9 +112,15 @@ The repair is editorial, not statistical: decide which pins matter before you re
 
 Here is the question nobody selling grid scans answers: **run the same grid twice, an hour apart, having changed nothing — how different is the second result?**
 
-If the answer is four pins, a report claiming a four-pin improvement is reporting nothing — and you cannot know which side of that line you are on until you measure it. Expect it to be non-zero *(inference, from the mechanism rather than a published study)*: rank is a sort order over frequently near-tied scores, so a small recomputation reorders businesses, and Google's index changes continuously.
+If the answer is four pins, a report claiming a four-pin improvement is reporting nothing — and you cannot know which side of that line you are on until you measure it.
 
-Two properties of a grid scan narrow the field, though. It runs server-side with no logged-in user, no history and no device, so **the personalisation you get on your own phone — your account, your search history, your handset — is not in play here**. And every point is an explicit coordinate rather than an inferred location, so the searcher's position is exactly reproducible. What varies is Google's answer, not the question. *(Open question: Google publishes nothing about whether its place results vary between otherwise identical server-side callers. "No personalisation" is what the absence of a user session implies, not a documented guarantee — which is another reason to measure the variation rather than assume it away.)*
+**Expect it to be non-zero** *(inference, from the mechanism rather than a published study)*: rank is a sort order over frequently near-tied scores, so a small recomputation reorders businesses, and Google's index changes continuously.
+
+Two properties of a grid scan narrow the field, though. It runs server-side with no logged-in user, no history and no device, so **the personalisation you get on your own phone — your account, your search history, your handset — is not in play here**.
+
+And every point is an explicit coordinate rather than an inferred location, so the searcher's position is exactly reproducible. What varies is Google's answer, not the question.
+
+*(Open question: Google publishes nothing about whether its place results vary between otherwise identical server-side callers. "No personalisation" is what the absence of a user session implies, not a documented guarantee — which is another reason to measure the variation rather than assume it away.)*
 
 Nobody outside Google can tell you how large that variation is on your market, this month; a general reliability figure for local grids is a figure nobody measured on your data. Lab 18.2 measures yours, and its output — your **noise floor** — goes into every report you write afterwards.
 
