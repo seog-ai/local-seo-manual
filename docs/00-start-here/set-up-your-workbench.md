@@ -55,6 +55,10 @@ A small dentist, restaurant, gym, salon, plumber, law office or auto shop in a m
 
 4. Finishing drops you on **Add a business** (`/businesses/new`).
 
+![Onboarding step 1 of 3, "Welcome — tell us about you", offering business owner, marketing agency, freelancer / consultant and in-house marketer](../../static/img/screens/onboarding-step1.png)
+
+*Step 1 of 3. The wizard is mandatory, but every step carries a "Skip for now" — the answers only tune what the app puts in front of you, and nothing here gates a feature later.*
+
 **What good looks like.** You are signed in, onboarding is complete, and you are looking at the add-business screen.
 
 **If the email never arrives.** Check spam first. The sign-in screen has a resend option. Verification is required before a session will open, so there is no way around it.
@@ -74,7 +78,15 @@ A small dentist, restaurant, gym, salon, plumber, law office or auto shop in a m
 3. SEOG imports it, pulling in the real profile: name, address, category, rating, review count.
 4. You land on the business overview at `/b/{businessId}/overview`.
 
+![Add a business, with the query "Kaffa Roastery Helsinki" and one Google Places result showing the business name and its street address](../../static/img/screens/add-business-results.png)
+
+*Results come back as Google holds them — name plus full street address. Match the address, not the name; that is how you avoid importing the wrong branch of a chain. The "Import from your Google account" panel underneath is the other path — see **If search cannot find it**, below.*
+
 **What good looks like.** The overview shows the business's actual name, address, star rating and review count — the same values you see on Google Maps. If a field is empty, that is because Google does not expose it, not because something failed. SEOG shows fields empty rather than inventing plausible-looking values, which matters more than it sounds: a tool that fabricates one field will fabricate a ranking.
+
+![Business overview for Kaffa Roastery: a "Connect to unlock your owner data" panel, profile score 91%, rating 4.7 from 572 reviews, 10 photos, and an action plan](../../static/img/screens/overview.png)
+
+*Everything on this screen came from Google, not from you: the address, the 4.7 rating over 572 reviews, the photo count. The panel at the top is the boundary the next section is about — without an owner connection, this is the whole of what a searcher can see.*
 
 **If search cannot find it.** Service-area businesses — mobile and at-home services that hide their street address — are deliberately kept out of public search results by Google, so no search tool can find them. Use **Import from your Google account** on the same page instead: connect the Google Business Profile that owns the listing and pick the location. This path only works for profiles you have access to. [Service-area businesses](../03-advanced/service-area-businesses.md) covers why this whole category behaves differently.
 
@@ -109,6 +121,10 @@ That bottom half is the data local SEO is actually judged on, and Google gives i
 3. Confirm the connection is live — owner-only panels (performance, full review history, the profile description) become available once it is.
 
 **What good looks like.** The overview shows owner data it could not show before: real performance numbers and complete review history.
+
+![Overview of an owner-connected business: profile score 36% in red, and an action plan of seven steps, each labelled with the points it is worth](../../static/img/screens/owner-overview.png)
+
+*A different business, this one connected. The quickest tell is what is missing: no "Connect to unlock your owner data" panel at the top. The score is also honest about the state of the profile — 36%, in red, with each recommended fix carrying the points it is worth. That list is the raw material for Part II.*
 
 **What you just learned.** Most of what people call "local SEO data" splits cleanly into public and owner-only. When you evaluate any tool in this industry, the first question is which half it can see — and any tool claiming owner-grade metrics without an owner connection is guessing.
 

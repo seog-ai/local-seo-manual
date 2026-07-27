@@ -20,6 +20,10 @@ A query is local when the answer depends on where the person is standing. That h
 
 The consequence is the single most important structural fact in this discipline: **the same words produce different results at different coordinates**. There is no such thing as "our rank for plumber" — only "our rank for plumber, measured from this point, on this surface, on this date". [Rank is a map, not a number](./rank-is-a-map-not-a-number.md) makes that rigorous. For now, just stop trusting any sentence of the form "we rank #3".
 
+![A 3x3 grid scan over Helsinki for one keyword, with a rank number on the pin at each of the nine measurement points](../../static/img/screens/geo-grid.png)
+
+*One keyword, nine live searches run from nine coordinates around Helsinki — a real scan, not a mock-up. The pins read #1 near the shop and #2 or #3 a couple of kilometres out, which is exactly what a single "we rank #1" hides. Ignore the search-volume figure further up that page: it carries a **Test data** badge, because no volume provider was configured on the machine that took the capture.*
+
 Local intent is also a spectrum rather than a switch. `emergency plumber` is almost pure local intent. `how do I stop a dripping tap` is almost none. `best plumber in Bristol for a boiler swap` is both, which is exactly why it gets answered by a different machine than the first one does.
 
 ## The six answer surfaces
@@ -114,6 +118,10 @@ What does **not** follow is "do good local SEO and the AI surfaces come along". 
 4. Read **Action plan — your next steps** below it. Do not act on anything yet.
 5. Scroll through **Rankings at a glance**, **Local visibility**, **Vs local market**, **Review momentum** and **Website support**. On a new business several of these show a clearly-labelled *Example* preview instead of your data. Write down which ones — that list is your to-do list, not a fault.
 6. Write six lines in a note you will keep: today's date, profile score, rating, review count, photo count, number of tracked keywords (zero is a perfectly good answer).
+
+![The whole Overview page for a business with nothing tracked yet: real score, rating and photo cards at the top, and five lower panels each labelled Example](../../static/img/screens/overview-full.png)
+
+*This is step 5 on one screen. The three cards at the top are real data imported from Google — 91%, 4.7 from 572 reviews, 10 photos. Everything from "Rankings at a glance" downwards is prefixed **Example**: those keyword positions, grid squares and competitor bars are placeholders showing what the panel will look like once you run it, not measurements of this business. Learning to spot that label is the point of the lab.*
 
 **What good looks like.** A dated six-line note, and the ability to say which cards were showing your data and which were showing an example.
 

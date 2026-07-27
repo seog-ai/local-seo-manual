@@ -88,6 +88,10 @@ Three things this tool does not do, said plainly:
 - **No bulk edit.** Every profile write is one location at a time. Use Google's bulk upload for real bulk changes.
 - **No portfolio report.** Reports are per location; a chain-level deliverable is assembled by you — [reporting to a client](../04-operating/reporting-to-a-client.md).
 
+![My Businesses page: a location counter reading 1 of 10 businesses beside the Add business button, above a single flat card](../../static/img/screens/businesses.png)
+
+*The portfolio in this capture holds one location, and two of the constraints are already on the screen: the plan's location counter sits beside **Add business**, and the estate is a flat list of cards — there is no grouping control anywhere on the page.*
+
 ## Triage instead of monitoring
 
 You cannot look at forty locations weekly. Trying is how the two branches that needed attention get the same fifteen seconds as the thirty-eight that were fine.

@@ -39,6 +39,10 @@ This is the single most useful economic fact in local SEO tooling, and it is not
 
 **Fetching new data costs.** A rank check is a live search against Google. A geo-grid scan is one live search *per grid point* — a 7×7 scan is 49 of them. An AI draft is a call to a language model. Publishing a reply writes to Google's API. These cost real money to run, so they are metered.
 
+![The Rankings screen for a tracked keyword: position #1, summary tiles, a list of rivals, a "Checked 2h ago" timestamp and a "Check now" button](../../static/img/screens/rankings-tracked.png)
+
+*Both halves of the rule on one screen. The position, the summary tiles and the rivals list are stored results — open this page fifty times today and it costs nothing. "Checked 2h ago" tells you when the data was last fetched, and only the buttons that go back to Google — **Track**, **Check now** — spend anything.*
+
 Two habits follow from this, and they are worth forming early:
 
 1. **Look at what you already have before fetching more.** Most questions a beginner tries to answer with a fresh scan are answerable from last week's scan. This is the biggest difference between someone who spends a little on tooling and someone who spends ten times as much for the same insight.

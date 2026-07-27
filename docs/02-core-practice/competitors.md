@@ -105,6 +105,10 @@ Platform rows are not rivals. Yelp surfacing in an answer is a citations signal:
 >
 > You need: Lab 0.3 — a business added. Ideally Lab 3.1 too, so the keyword-evidence line has something to read.
 
+![The Competitors page before anything is tracked: an Add a competitor card with radius chips and a Discover nearby button, a filter row, and two greyed-out example rival rows](../../static/img/screens/competitors.png)
+
+*Competitors before anything is tracked. Discovery is the top card — radius chips, **Big players (50+)**, and the optional **Area** box for a business with no map point — and the filter row above the list is where **Beat us** and **Catching up** live. The two coffee shops underneath are the interface illustrating what a tracked rival looks like: placeholder rows labelled "Example", not real rivals and not real numbers.*
+
 1. Open **Competitors**. In the **Add a competitor** card, find the *or find nearby* row: radius chips **1 mi / 3 mi / 5 mi**, a **Big players (50+)** checkbox, an optional **Area** box. Leave the radius at 3 mi. If your business has no map point (a service-area business), type a town into **Area** — otherwise the search has no centre.
 2. Press **Discover nearby**: a live ranked search, priced on the button.
 3. Read the summary line above the results *first*: either `You rank #N in this search — anything above that line already beats you`, or that you did not appear in the top 20, meaning everything listed outranks you. That sentence is the finding.
@@ -169,6 +173,10 @@ Platform rows are not rivals. Yelp surfacing in an answer is a citations signal:
 2. Cross off every name you already track. What remains is a competitive set you did not choose.
 3. Move the Platform rows to your citations worklist; they are sources, not rivals.
 4. Track the one or two most frequent Local names (paid), then ask whether they appear in your map-pack set at all.
+
+![AI Visibility before any check has run: presence, recommendations and mention-rate tiles all carry an EXAMPLE badge, and the recommendation section reports no answers judged yet](../../static/img/screens/ai-visibility.png)
+
+*This is the page before a single live check has run, and it says so: every headline figure carries an **EXAMPLE** badge, and **How AI recommends you** reads "No recommending answers judged yet". Nothing here is a measurement of this business — the co-mention list this lab is after only exists once you have paid for real answers.*
 
 **What good looks like.** At least one name here that never appears in your map pack. If the two sets are identical, that is also a finding: the engine is reading the pack, so your pack work covers both surfaces.
 

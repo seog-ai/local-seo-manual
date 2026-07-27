@@ -36,6 +36,10 @@ Two things make that surface less tidy than the word "decay" suggests.
 
 A geo-grid measures rank the way you would measure temperature across a room: sample it at many points and look at the field. Pick a centre, lay out an n×n lattice of points at a fixed spacing, run the *same* search from each point as though a person were standing there, and record where the business appears. What you get back is n² positions with coordinates attached. Drawn on a map with colour, that is a heatmap.
 
+![A real 3x3 geo-grid scan over Helsinki: nine pins carrying positions between 1 and 3, with avg rank 2.4 and top-3 coverage 100% below the map](../../static/img/screens/geo-grid.png)
+
+*A real scan, not an illustration: nine live searches for one keyword, one from each point. The centre reads #1 and the outer points read #2 or #3 — same keyword, same minute, three different answers. The two figures under the map compress all nine into `Avg rank 2.4` and `Top-3 coverage 100%`, which is where the trouble in the rest of this chapter starts.*
+
 Doing it by hand is possible and instructive — an incognito window plus a location override in your browser's dev tools produces one grid point at a time, and twenty-five of them is an afternoon. See [Doing all of this without SEOG](../99-appendix/doing-it-without-seog.md).
 
 ### Two knobs, not one
@@ -126,6 +130,10 @@ Statisticians call this right-censoring. It matters because every average over a
 4. Read the price on the **Check now** button *before* you press it. Then press it.
 5. When the map appears, find the blue dot — that is your business. Each pin carries your position at that point.
 6. Write down two things: your position at the **centre** pin, and your position at each of the **four corner** pins.
+
+![The keyword detail panel before any scan: a 5x5 map of coloured pins under a banner reading Example scan, and a search-volume box carrying a Test data badge](../../static/img/screens/keyword-detail.png)
+
+*Step 2, and the thing to be suspicious of. The banner says **Example scan** and the twenty-five pins below it are an illustration drawn on your real map — not your positions. The search-volume box higher up carries a **Test data** badge for the same reason. On this screen only the position, the rival names and their ratings and review counts are measured.*
 
 **What good looks like.** Nine pins, the centre usually your best result. You now have nine measurements where you had one — and can see that the one you had was the friendliest of the nine.
 

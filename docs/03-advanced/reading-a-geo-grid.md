@@ -25,6 +25,10 @@ The consequence is the mechanism by which grids flatter people, and it deserves 
 
 A third figure makes the other two safe. The plain-language paragraph above the map states it: *"You appear in the top 20 at 9 of 25 points."* That is the **found rate**, the denominator information the average threw away. Quote it every time, first.
 
+![A finished 3x3 geo-grid scan over Helsinki: nine green rank pins on the map, the summary line above it, and Avg rank 2.4 with Top-3 coverage 100% below](../../static/img/screens/geo-grid.png)
+
+*The whole argument on one screen. This scan is real — **Check now** at the Quick preset ran nine live searches, one per point, and each pin carries the position that point returned. Read the plain-language line first (top 20 at **9 of 9** points), then **Avg rank 2.4**, computed over found pins only, then **Top-3 coverage 100%**, computed over all nine. Here the two agree, because nothing is missing; the legend's grey **Not found** band is what pulls them apart. (The search-volume card higher up the page carries a **Test data** badge — those figures are placeholders, not market data.)*
+
 ## Rank is ordinal, and an average of ordinals is not a distance
 
 Position is a rank label: only the order is real, the gaps are not. Arithmetic does not know that. To a mean, #1 → #2 and #11 → #12 are the same one-position event; in the world the first moves you inside the only box most people see and the second moves you from invisible to invisible.
@@ -47,6 +51,12 @@ Statisticians call this right-censoring, and there is no clever fix. Every summa
 Same scan, same twenty-five searches, and an "average rank" of 7.1, 16.0 or 34.6 depending on an assumption nobody in the room knows you made. The first row is what every grid dashboard shows, and the most flattering by a factor of five. The fourth row is the answer: it assumes nothing about the censored pins, which is correct, because you know nothing about them.
 
 The app itself makes the "impute 21" choice in one place: the compass sentence averages by direction and counts a missing pin as 21, and claims a direction only when best and worst are at least two positions apart. So *no direction claimed* means "not a big enough gap", not "no gradient".
+
+The panel shows you all of this before you have run anything, using stand-in numbers:
+
+![The Geographic visibility panel in its example state, showing a 5x5 grid of mixed green, yellow and orange pins over Helsinki under a banner reading Example scan](../../static/img/screens/keyword-detail.png)
+
+*Placeholders, and the app says so: the banner reads **Example scan — pick a detail level above and press Check now to map your real positions**. Do not read 32% or #7 as a measurement of anything. What is real here is the furniture, and it is the furniture this chapter is about — the two figures on different denominators (top 3 in **32% of the area**, over all 25 points; **avg rank 7**, over the 24 where the business appeared), the four colour bands the pins are drawn from, and the compass sentence, "strongest to the west and weakest to the south-east", which is the one place a missing point silently becomes a 21.*
 
 ## The centre is not a neutral place to stand
 

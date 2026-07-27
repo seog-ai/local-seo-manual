@@ -114,6 +114,10 @@ The labs below run that loop three times.
 4. Expand **Business name**. Note the **Re-verification risk** badge, the red panel and the checkbox you must tick before the editor appears. Do not tick it. Then expand **Phone number** and compare: one line of warning, no gate. That is the sensitivity taxonomy, in the interface.
 5. Expand **Service options** and press **Choose options** — this fetches the live attribute catalog Google publishes *for your category*. Do the same for **Accessibility** and **Payment methods**.
 
+![The Profile page of a connected business: profile score 36% in red, a Needs work list with points per item, and the Make changes field list where Business name carries a Re-verification risk badge](../../static/img/screens/owner-profile-full.png)
+
+*The whole lab on one page, on a profile scoring 36%. Two things to notice: each Needs work row carries the points it is worth, so the list is already sorted by leverage; and in Make changes, Business name is the only field wearing a Re-verification risk badge while Phone number wears none. Category, address and services are not in the list at all.*
+
 **What good looks like.** Three checklists whose contents differ and which you did not choose — Google's category catalog, not a SEOG list. Write down how many options each group offers.
 
 **If it went wrong.** "Google offers no options of this kind for your business category" is a real answer, not a failure: the check is marked not applicable and stops counting against your score. If **Make changes** shows a connect card instead of fields, the profile is not connected as owner — do Lab 0.4 first.

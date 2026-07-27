@@ -37,6 +37,10 @@ Four separate dimensions: a business can be excellent at one and failing the oth
 
 **Without owner access**, the public place data every non-owner tool reads returns **at most about five reviews per business**, ranked by Google's own relevance rather than by date *(observed against live responses, 2026-07; Google does not document the ordering)*. That is the ceiling for any tool at any price. **With owner access** — the Business Profile connection from [Lab 0.4](../00-start-here/set-up-your-workbench.md) — you get the full history plus Google's authoritative total count and average rating.
 
+![The Reviews page for a business with no Business Profile connection: a Connect Google panel, five stat cards all reading zero, and a dashed strip of example review cards](../../static/img/screens/reviews.png)
+
+*No owner connection, nothing synced: every stat card reads zero, and the cards under the dashed strip are labelled "Example reviews" — placeholders showing the layout, not this business's reviews. The panel on the right is the honest list of what connecting adds, and "Full review history" is the line that changes every number on this page.*
+
 So **competitor review analysis is structurally shallow**: anyone selling "full sentiment analysis of a competitor's reviews" is either scraping, which Google's terms prohibit ([Storing Google data legally](../05-reference/storing-google-data-legally.md)), or reading five reviews and rounding up ([competitors](./competitors.md)).
 
 ## Getting reviews without getting your ratings stripped
@@ -137,6 +141,10 @@ Evaluating someone else's tooling? Ask one question: *how do you know the reply 
 4. Every filter is in the URL, so the view is shareable. On an unanswered review, read the credibility badge — **Credible**, **Questionable** or **Suspicious**, reason on hover. A triage aid, not a verdict.
 
 **What good looks like.** Three counts, a clear answer to "which review do I answer first", and a one-sentence diagnosis: volume, rating, recency or engagement.
+
+![The Reviews page for an owner-connected business: a Full review history pill, five stat cards, a review breakdown and reputation insights showing a 100% response rate](../../static/img/screens/owner-reviews.png)
+
+*The same page with owner access. The pill above the stat cards marks the sync as full history rather than the five-review sample, so Total 3 is Google's own count — a real number, and a small one. Read it as the four dimensions: rating 5.0 and engagement 100% are fine, volume is the problem, and the amber banner says the whole picture is 13 days stale.*
 
 **If it went wrong.** Nothing synced: no Google place linked, or no reviews exist. Expected hundreds, got five: you are on the public sample.
 

@@ -44,6 +44,10 @@ The **Profile score** on the overview is a *completeness* audit of the profile a
 
 The eleven weights total **86**. The action plan labels each step with its raw weight, so a fix tagged `+10 pts` recovers 10 of 86 — about 11.6 percentage points, slightly more than the label suggests. The colour follows one band everywhere in the app: green from 80, amber from 50, red below.
 
+![Overview for AIEmployees: profile score 36% in red, and an action plan of seven steps carrying +10, +10 and +9 point labels](../../static/img/screens/owner-overview.png)
+
+*A 36% profile taken apart into the rows that produced it. Each step names the failing check, its category and its raw weight — the first three, phone and reviews and photos, are 29 of the 86 points on offer. This is the table above rendered as a to-do list, which is the only form in which a score is useful.*
+
 Two choices there are worth stealing whatever tool you use. The photo bar is modest at five because the publicly observable photo list caps out at around ten images *(observed; Google does not document the limit)* — a stricter bar would be one the instrument cannot see over. And the attribute checks pass automatically when Google's catalogue offers no options of that kind for the category; an audit that demands the impossible trains people to ignore red rows.
 
 ### The AI-readiness rubric
@@ -64,6 +68,10 @@ The **AI readiness** score on the AI Visibility screen asks a different question
 
 Tiers: **70+ is strong, 40–69 is building, below 40 is low.**
 
+![AI Visibility screen: an AI readiness card scoring 53 of 100, tiered "Building", with each of the nine factors marked pass or fail and its weight beside it](../../static/img/screens/owner-ai-visibility-full.png)
+
+*The same business on the AI Visibility screen — 53 of 100, in the building tier, with every factor shown as passed or failed against its weight. Review volume scores 0 of 22 on three reviews, and it is the heaviest single factor on the sheet. The Presence, Recommendations and AI-mention-rate tiles at the top carry **EXAMPLE** badges: those are placeholders until a live check is run, and nothing in them fed the 53.*
+
 Now read the two tables together. The audit passes reviews at 20 and rating at 4.0; readiness wants 25 and 4.2. Not an inconsistency to be tidied away: the audit asks *is this profile complete enough to compete in the pack*, readiness asks *is this reputation strong enough that a language model would name this business to a stranger*. The second bar is higher because the AI surfaces recommend far fewer businesses than the pack lists — the subject of [how an AI assistant answers a local question](../01-foundations/how-ai-answers-a-local-question.md).
 
 And one line is a thesis written as arithmetic: **22 + 18 = 40**, exactly the *building* threshold. A business passing review volume and rating and *nothing else* lands precisely on the boundary; everything else is upside. That calibration was held deliberately when the rubric was rebalanced, and it encodes a claim you should accept or argue with: reputation is the gateway to AI answers, and no amount of structured data compensates for a thin one.
@@ -79,6 +87,10 @@ A score is a *diagnostic input*, never a finding. "Your profile score is 62%" is
 This is where most first-pass audits quietly lie, and it is what separates a diagnostic from a checklist. Every field has **three** possible states, not two: present, absent, or *not observable from where you are standing*. The public record Google exposes to search is a subset of what the owner sees, so on an unconnected business several checks report on data that was never visible to you. Three mislead constantly.
 
 **The description.** The public place record does not carry the *owner-written* description; it is readable only through the owner connection. On an unconnected business a failing description check means *unknown*, not *missing* — and telling a prospect they have no description when they wrote one last year is an expensive way to lose the room. There is a second trap in the same field, covered where it belongs in [The profile is the product](./the-profile-is-the-product.md).
+
+![Overview for Kaffa Roastery without an owner connection: profile score 91%, rating 4.7 from 572 reviews, and an action plan whose first step is "Add a business description"](../../static/img/screens/overview.png)
+
+*A healthy profile, observed from outside. Step 1 of the plan is "Add a business description" — but this business is not connected, and the public record never carries the owner-written one. That row is the trap: read it as **unknown**, and note that the connect panel above it is precisely the list of things you cannot currently see.*
 
 **Review engagement.** The readiness rubric divides the replies it has stored by Google's authoritative total review count. Without owner access you hold only a small recent sample of reviews, so that ratio is near zero by construction and measures nothing. The response-rate ring on the overview's **Review momentum** card uses a different denominator — replies over reviews *stored* — so the two can disagree sharply on the same business. [Why two tools disagree](../03-advanced/why-two-tools-disagree.md) generalises the point.
 

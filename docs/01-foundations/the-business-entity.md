@@ -71,6 +71,14 @@ The practical consequences are large:
 
 You met this split in [Lab 0.4](../00-start-here/set-up-your-workbench.md). It pays off here, because the two views are not "more data" and "less data" — they are two different readings of the same record.
 
+![Overview of a business with no owner connection: a Connect to unlock your owner data panel listing what is missing, above the score, rating and photo cards](../../static/img/screens/overview.png)
+
+*The public read of a real coffee roastery. The panel across the top is an inventory of what public place data cannot reach — performance history, the full review history, the search terms, the right to edit anything. What sits below it is genuinely public and genuinely this business: a 91% completeness score, 4.7 stars from 572 reviews.*
+
+![Overview of a different business with Google Business Profile connected: profile score 36% in red and a seven-step action plan with per-step point values](../../static/img/screens/owner-overview.png)
+
+*A different business — deliberately, because a healthy profile and a broken one teach different things — with the Google connection live. The connect panel is gone, and the action plan is real diagnosis: seven steps, each with the points it is worth and an impact rating. The 36% belongs to this profile's own thin record, not to the act of connecting; what connecting changed is how much of the record can be read and written.*
+
 | | Public view | Owner view |
 | --- | --- | --- |
 | Name, address, category, hours, attributes | Yes | Yes |
@@ -120,6 +128,10 @@ The rest of the manual follows from the model:
 1. Open **Overview**. Working top to bottom, write down every distinct fact on the page: the **Profile score**, **Rating** and **Photos** cards, then **Action plan — your next steps**, **Rankings at a glance**, **Local visibility**, **Vs local market**, **Review momentum**, **Website support** and **Performance**.
 2. Open **Profile**. The **Business profile** card holds the raw fields: status, category, price level, photo count, gallery, phone, website, the Google Maps link, the description, **Opening hours** and **Attributes on Google**.
 3. Mark each entry with one of three letters: **P** if it came from the public import, **O** if it appeared only after connecting Google, **S** if it is SEOG's own measurement rather than a field of the entity at all.
+
+![The Profile page for a business with no owner connection, showing status, category, price level, photo gallery, phone, website, Maps link, opening hours and attributes](../../static/img/screens/profile.png)
+
+*Step 2 on one card: status, category, price level, the photo gallery, phone, website, the Maps link, opening hours, attributes — the raw fields of the record, all of them **P**. Now notice what is absent. There is no description anywhere on this card, because the owner-written blurb does not come through the public read at all; on a connected business it appears here, and it is marked **O**.*
 
 **What good looks like.** Most identity and contents fields are **P**. The description, the **Performance** panel, the search-terms card and the whole **Make changes** editor are **O** — without the Google connection the page shows the connect card in place of the editor. The profile score, rankings, grid and competitor comparison are **S**: nothing in Google's record contains them.
 

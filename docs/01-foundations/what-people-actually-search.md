@@ -119,6 +119,10 @@ Where the words themselves come from is a separate problem, and there is a bette
 4. Tag each suggestion with exactly one intent: discovery, comparison, trust, logistics. Force a single choice; ties go to the intent the searcher is *closest to acting on*.
 5. Count each bucket.
 
+![The Rankings page for a business with nothing tracked: an empty keyword input, and a panel headed "Track your local keyword rankings — Example of how tracked keywords appear" listing three greyed rows with a Suggest keywords button beside it](../../static/img/screens/rankings-empty.png)
+
+*Rankings before anything is tracked. The three rows are the interface's own placeholder — it says so: "Example of how tracked keywords appear". They are not positions, and not this business's keywords. What is real is the button: on an empty board, **Suggest keywords** sits on that panel rather than in its usual card above the list.*
+
 **What good looks like.** Almost every suggestion lands in discovery, with a couple of branded rows that are really just your name. Comparison, trust and logistics are close to empty. That is the expected result, not a malfunction.
 
 **If it went wrong.** No suggestions card usually means the business has neither tracked keywords nor a loaded list — add one keyword first. A very short list means a sparse category on your profile, since the whole expansion is seeded from it; fix the category before blaming the suggestions.
@@ -136,6 +140,10 @@ Where the words themselves come from is a separate problem, and there is a bette
 3. In the app, type each one into the tracker and press **Track**. Where a suggestion chip from Lab 6.1 matches a row on your paper, clicking the chip does the same job.
 4. Leave **Search from**, **Language** and **Radius** alone for now. A keyword's identity includes its location and language, so changing **Search from** creates a second independent row rather than editing the first — which is a legitimate thing to do, for a reason covered in [rank is a map, not a number](./rank-is-a-map-not-a-number.md).
 5. Use the filter tabs above the list (**All**, **Winning**, **Slipping**, **Not ranked**) to read the first positions. Expect your branded rows to sit at the top and tell you nothing.
+
+![The Rankings keyword input with "specialty coffee helsinki" typed and the Track button enabled, a keyword-slot counter beneath it, and Search from, Language and Radius fields on the row below](../../static/img/screens/rankings-typed.png)
+
+*One keyword typed, **Track** enabled. The counter under the input is the constraint this lab is built around: it shows how many of your plan's keyword slots are gone, which is why step 2 asks you to cut a near-duplicate rather than buy another. And **Search from** is the one field that earns a second row — set it and you get an independent measurement of the same phrase from another point, which is the only duplicate worth paying for.*
 
 **What good looks like.** Six to ten rows, at least one in each of the four intents, and no two rows you would struggle to distinguish out loud. Your discovery rows probably show a real position; your trust and logistics rows probably show `#1` and are there for a different reason.
 

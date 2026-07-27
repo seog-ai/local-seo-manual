@@ -111,6 +111,10 @@ And reinstatement is not recovery. Position does not snap back when the listing 
 4. In the app, open **Overview** and press nothing. Read the **Synced** stamp in the header, the rating and review count on the stat row, and the **Marked operational** row in the audit.
 5. Write the four checkpoints into a one-page template with blank fields — what you fill in at 8am on the day it matters, when you will not be thinking clearly.
 
+![Overview of a connected business: "Not synced yet" beside the Refresh all button, a stat row reading profile score 36%, rating 5.0 from 3 reviews, 1 photo, and a seven-step action plan below it](../../static/img/screens/owner-overview.png)
+
+*Checkpoint 4, on a connected profile. The score, the rating and the review count are all read from the stored copy, and the stamp beside **Refresh all** is the only thing on the page that says how old that copy is — nothing here goes out to Google and looks for the listing, which is why nothing here can see a suspension.*
+
 **What good looks like.** Four filled checkpoints for a healthy listing, so you know what "fine" reads like at each one. Most people have never looked at checkpoint 3 on a working profile, and so cannot recognise a changed one.
 
 **If it went wrong.** You searched a service term instead of the name: that measures ranking, not existence. No dashboard access means checkpoint 3 is closed to you — write that in the client file, because it is a real gap in what you can diagnose ([Set up your workbench](../00-start-here/set-up-your-workbench.md) has the public-versus-owner split).
@@ -130,6 +134,10 @@ And reinstatement is not recovery. Position does not snap back when the listing 
 3. Add what the app cannot hold: photograph the exterior yourself with permanent signage and the street both visible, and the interior; collect the lease or a utility bill, the business registration, a trade licence if the category is regulated, and vehicle signage for a service-area business.
 4. Check every document against the profile character for character. `Ltd` versus `Limited`, `St` versus `Street`, a suite number in one and missing from the other — each is a weakness in a future appeal.
 5. Diff the pack against the website's contact page and the main directories from Lab 12.1, then save the folder as `businessname-identity-pack-YYYY-MM-DD` alongside the baseline from Lab 7.3.
+
+![Profile page showing open status, category, price band, photo count, phone, website, opening hours and the attributes Google carries](../../static/img/screens/profile.png)
+
+*Step 2 is a transcription job off this screen: open status, category, photo count, phone, website, hours, attributes. Copy them character for character — `St` against `Street` between the profile and your lease is exactly the mismatch an appeal turns on.*
 
 **What good looks like.** A dated folder in which every profile field is a verbatim copy of what Google had that day, with no mismatch between the profile, the documents, the site and the main citations.
 

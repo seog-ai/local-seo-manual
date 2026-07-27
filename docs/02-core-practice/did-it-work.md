@@ -34,7 +34,7 @@ Name, category and address are a different class of field — they can put a lis
 
 **Tier 2 — did the scored state move?** The profile score and the AI-readiness score are computed from data *already stored*, so they move when the stored copy updates — after a refresh, not after your edit. If a rewritten description does not move the score, either the edit has not published, the field already passed that check, or the check is not weighted the way you assumed. All three are informative; none are about ranking.
 
-![Owner overview: profile score 36% in red, "Not synced yet" beside a Refresh all button, and a seven-step action plan with per-step point values](../../static/img/screens/owner-overview.png)
+![Owner overview: profile score 36% in red, a Not synced yet label beside the Refresh all button, and a seven-step action plan with per-step point values](../../static/img/screens/owner-overview.png)
 
 *Tier 2 in one screen. The score is computed from the stored copy of the profile — note **Not synced yet** beside **Refresh all**: an edit you made ten minutes ago cannot be in this number until you re-pull. Each action-plan step carries the points it is worth, so you know in advance what the score should do if that fix lands.*
 
@@ -162,7 +162,7 @@ And never assemble the before-picture *after* the change: the baseline you froze
 
 **Treating one re-scan as a result.** A line fits any two points. Three readings are the minimum at which a trend exists, and the reproducibility of a single scan is itself an open question — [Part III has you measure it](../03-advanced/reading-a-geo-grid.md).
 
-![Keyword detail after a single check: position #1 labelled "First check", the message "Run a few checks to see the trend", and a grid below banner-labelled "Example scan"](../../static/img/screens/keyword-detail.png)
+![Keyword detail after a single check: position #1 labelled First check, the message Run a few checks to see the trend, and below it a grid still banner-labelled Example scan](../../static/img/screens/keyword-detail.png)
 
 *The app declines to draw a trend from one reading too: **— First check** under the position, and **Run a few checks to see the trend** where the line would be. Two panels here are illustrative, not measured — the grid still carries its **Example scan** banner ("pick a detail level above and press Check now to map your real positions"), and the volume card carries a **Test data** badge.*
 

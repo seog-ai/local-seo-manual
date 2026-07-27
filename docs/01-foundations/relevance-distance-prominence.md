@@ -58,6 +58,10 @@ Prominence is slow. A profile does not become well known in a fortnight, which i
 
 It also has the best proxies. You cannot see prominence, but review count, rating and photo count are public for every business in your market. That is Lab 3.2: rank the market on the proxies before looking at a single position.
 
+![Business overview for Kaffa Roastery with no owner connection: profile score 91%, rating 4.7 from 572 reviews, 10 photos](../../static/img/screens/overview.png)
+
+*Nobody here has owner access — this is a coffee roastery someone else runs. Rating, review count and photo count are public for every business on Maps, which is why prominence is the one force you can size up for a competitor as easily as for yourself.*
+
 ## The three are not three dials
 
 The triad reads like a formula with three inputs. The behaviour looks more like a pipeline *(inference, from the shape of grid scans — see [Reading a geo-grid without fooling yourself](../03-advanced/reading-a-geo-grid.md) for the evidence and its limits)*:
@@ -126,6 +130,10 @@ Two of the three are yours. The one that is not is where most people spend their
 3. Press **Track**. This adds the keyword *and* runs the first rank check immediately — two metered actions, each priced on the button before you commit.
 4. Read the result: a position (`#4`) or `Not ranked`, a movement line, and a one-sentence outcome under the button. Then read the **Who ranks above you** card — Lab 3.2 uses it.
 
+![The Rankings screen with a keyword typed, the Search from, Language and Radius controls beneath it, and the tracked result showing position #1](../../static/img/screens/rankings-typed.png)
+
+*The whole lab on one screen. Notice the row under the keyword — **Search from**, **Language**, **Radius** — and the price sitting on **Track** before you commit. The `#1` below belongs to those three settings and to no others.*
+
 **What good looks like.** Either a position, or `Not ranked` with a line naming who holds #1. Both are successful checks. The check is capped at the top 20, so "not ranked" means "not in the top 20 from that point", not "nowhere".
 
 **If it went wrong.** Three realistic causes. The keyword was too broad or too branded. Or the origin defaults to the business address, so a business at the edge of the city it serves looks worse than it is — re-add it with a **Search from** label naming a district. Or it is a pure service-area business with a hidden address, which rank checks structurally cannot find, in any tool ([Service-area businesses](../03-advanced/service-area-businesses.md)).
@@ -165,6 +173,10 @@ Two of the three are yours. The one that is not is where most people spend their
 2. In Google Maps, look up each business from your **Who ranks above you** list and read the category line under its name.
 3. Tabulate: business, position, category.
 4. Answer in writing: do the top three share a primary category, and is it yours?
+
+![The Profile screen showing the status pill, the primary category chip, price band, photo count, opening hours and Google attributes](../../static/img/screens/profile.png)
+
+*Step 1 on screen: the pill row under the heading — **Open**, then the primary category, **Coffee Shop**. That chip is picked from Google's fixed list rather than typed, which is what makes it legible to a machine in a way a free-text description never is.*
 
 **What good looks like.** A four-row table whose category column is nearly uniform. That uniformity is the point: Google telling you, free, what kind of entity it believes answers this query.
 

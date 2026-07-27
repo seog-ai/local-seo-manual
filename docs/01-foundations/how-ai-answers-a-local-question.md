@@ -64,6 +64,10 @@ A Google AI Overview genuinely does or does not appear on a results page. Whethe
 
 The AI-visibility panel you are about to open still carries a presence flag left over from an earlier design that read real AI Overviews off a results page. For the chat engines it is always true, and it should not be read as "an AI Overview appeared". We name this about our own instrument because the same artefact sits inside every competing dashboard reporting a chat-engine "presence rate", and nobody else labels it.
 
+![The AI Visibility page on a business where no check has been run: Presence 64%, Recommendations 52% and AI mention rate 67%, each tagged with a small Example pill, with ChatGPT and Claude marked Not connected](../../static/img/screens/ai-visibility.png)
+
+*The panel cold, before any check. Presence, Recommendations and AI mention rate each carry an **Example** pill — those percentages are the interface's own placeholders, not this business. Two of the three engine tiles read **Not connected**. Authority is the only number here without a pill, because it is computed from the profile's real review data.*
+
 For chat engines, the axes that carry information are **named** and **cited**. Everything else is decoration.
 
 ## One run is not a measurement
@@ -118,6 +122,10 @@ Nobody outside these vendors knows how retrieval is weighted, and anyone quoting
 3. Open **What goes into this score** and read all nine rows. Each shows either `+weight` (passed) or `0 / weight` (failed).
 4. Write down every failing factor with its weight, in descending weight order. That list is your work order, and you will use it again in [the ninety-day plan](../04-operating/the-ninety-day-plan.md).
 5. Note which two factors, passed together, would already put you at the *Building* threshold.
+
+![The AI readiness card on an owner-connected profile, scoring 53 out of 100 and tiered Building, above a list of nine weighted factors: review volume 0/22, rating +18, website to cite +12, AI-agent-ready website 0/8, fresh reviews +10, rich description 0/9, structured attributes 0/8, review engagement +7, opening hours +6](../../static/img/screens/owner-ai-visibility-full.png)
+
+*The readiness card on an owner-connected profile, at the foot of the same page. The nine rows are the entire rubric: each shows the weight it earned or the weight it lost. Review volume is the heaviest factor and this business is scoring zero on it, with the threshold stated on the row. Note the card reads **Not checked yet** while still showing a score — the estimate is built from stored profile signals, so the check re-pulls the data behind it rather than asking any assistant anything.*
 
 **What good looks like.** A ranked list of gaps with a number beside each, not a vague sense that the profile "needs work". You should also notice that the two heaviest factors by a wide margin are review volume and rating — reputation is the gateway to AI answers, and the rubric is built to say so.
 

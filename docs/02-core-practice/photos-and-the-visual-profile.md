@@ -55,11 +55,19 @@ Two of these deserve more than a table row.
 
 Here is the fact that quietly breaks a lot of reporting. The public data Google exposes about a place includes a list of photos, and that list is capped — around ten entries, in every read we have taken *(verified 2026-07-13)*. Any tool without owner access counts that list and calls the result "photos". So does SEOG, and so does every competitor comparison you will ever see.
 
+![Business profile card for a coffee shop, with a pill reading 10 photos above a strip of gallery images](../../static/img/screens/profile.png)
+
+*The pill reads exactly 10, and the strip stops there. That is the cap on the public feed, not a count of the gallery — a business with 11 photos and a business with 400 both produce this card.*
+
 Three consequences:
 
 1. **A count of 10 is not a count.** It means "at least ten". A business with 11 photos and a business with 400 read identically.
 2. **Competitor photo averages saturate.** "You: 8. Competitors average 10." reads like a small gap. It could be a gap of hundreds.
 3. **Below the cap, the number is real and useful.** A business showing 2 is genuinely showing 2, and that is a finding.
+
+![The same card on a different business: a pill reading 1 photo above a single image](../../static/img/screens/owner-profile.png)
+
+*The same card on a profile with one photo. One is far below the ceiling, so this number is real — and a single image on a live listing is a finding you can act on this afternoon.*
 
 This is why the profile audit's photo check passes at five rather than at some impressive-sounding number: five sits below the ceiling, so it can actually be verified from public data. A tool that demanded "at least 25 photos" from public data would be scoring you against a number it cannot see.
 
@@ -146,6 +154,10 @@ Add over time rather than dumping forty at once. A steady trickle keeps the prof
 3. Open **Profile**. If the audit card lists **Add more photos** under *Needs work*, use its **Fix below** link — it jumps straight to the right field. Otherwise open the **Photos** field yourself.
 4. Under **Add photos**, choose your files (up to ten per upload) and press **Upload to Google**. The price is shown on the button before you confirm.
 5. Watch the count on the **Business profile** card. Then re-read the audit: the **At least 5 photos** check flips to passed once the profile crosses five.
+
+![Overview action plan for a connected business: a Photos tile reading 1, and a step reading "Add more photos — you have 1 photo, we recommend at least 5", marked +9 pts and High impact](../../static/img/screens/owner-overview.png)
+
+*The photo check before the upload — one photo, and the fix is scored as the third-largest item on the plan. Those points are the completeness audit's own weighting, not a ranking claim: the score tracks whether the profile is filled in, and nothing else.*
 
 **What good looks like.** The photo count increases by exactly the number of images that succeeded, and the profile score moves if the photo check just passed. On Google's side the images appear after review — usually minutes.
 

@@ -29,9 +29,13 @@ const config: Config = {
   // relative link never blocks a deploy of 30+ pages.
   onBrokenLinks: 'warn',
   onBrokenAnchors: 'warn',
-  onBrokenMarkdownLinks: 'warn',
 
-  markdown: { mermaid: true },
+  markdown: {
+    mermaid: true,
+    // v4 moves the broken-markdown-link handler under markdown.hooks; setting it
+    // at the top level still works but logs a deprecation on every build.
+    hooks: { onBrokenMarkdownLinks: 'warn' },
+  },
   themes: ['@docusaurus/theme-mermaid'],
 
   i18n: { defaultLocale: 'en', locales: ['en'] },

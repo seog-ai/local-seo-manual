@@ -94,6 +94,12 @@ A presence matrix is the method on one screen: **rows are probes, columns are en
 
 One warning specific to this instrument: a cell shows the **latest** check's verdict while the tile above shows a **rate over the window**, so they will disagree — a business at 3/5 reads "Not mentioned" whenever the most recent run missed. Tile for the rate, cell for the last observation, never one as the other.
 
+Before any of it has been run, the page gives you the shape of the instrument and none of its readings.
+
+![The whole AI Visibility page on a business with no live checks: Presence, Recommendations and AI mention rate tiles each carrying an Example pill, a sample matrix below them, an empty Sources cited by AI card, and Authority and AI readiness scores at the foot](../../static/img/screens/ai-visibility-full.png)
+
+*The method's cards in page order, cold. The rates at the top are the interface's own placeholders, the matrix under them is a fixture rather than this business's keywords, **Sources cited by AI** is empty because a source list only exists after a paid check, and **How AI recommends you** has judged nothing. The two scores at the foot are not measurements of AI answers at all — the page's own footnote calls the readiness figure an estimate from profile signals.*
+
 ## Calibrating the instrument
 
 Every automated verdict is an approximation, and defensible measurement means knowing which way each errs. These three are properties of the SEOG implementation, verified against the code on **2026-07-27**; your own tooling has equivalents, so go and find them.
@@ -142,6 +148,10 @@ Without SEOG this is a spreadsheet, the geo-anchored prompt from [chapter 5](../
 > **Lab** · Where: **AI Visibility** (`/b/{businessId}/ai-visibility`) · Cost: **paid** · Time: ~20 min
 >
 > You need: Lab 20.1. Note which engines show **Not connected** — those produce clearly-labelled sample rows, and samples never count toward any rate.
+
+![The top of the AI Visibility page with nothing tracked: a card headed "See if AI recommends you" listing Google AI Overview, ChatGPT and Claude with mention marks, above three engine tiles of which two read Not connected](../../static/img/screens/ai-visibility.png)
+
+*What the page shows when no keyword is tracked yet: the card reads **See if AI recommends you**, its rows are engines rather than your probes, and every figure on it carries an **Example** pill. It is a fixture — the real **Where AI mentions you** matrix from step 1 replaces it the moment one keyword is tracked. Two of the three engine tiles read **Not connected**: unmeasured columns, not zeros.*
 
 1. Scroll to **Where AI mentions you**. Every tracked keyword is a row, every engine a column.
 2. Select your Lab 20.1 probes with the row checkboxes. The bar reads `N keywords × M engines = K checks` — your cell count for one pass — and the projected price is on the button.

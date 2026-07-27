@@ -63,6 +63,10 @@ Three rows deserve more than a table cell.
 
 **Our own instrument excludes two popular levers by construction.** The Authority pillar weights own-citation share 25, coverage of the cited domains 25, reviews 25, listings consistency 15 and local top-10 rankings 10. `llms.txt` and domain-authority metrics are deliberately absent — not unmeasured, *excluded*, because no published work supports them as AI retrieval signals. A rubric's exclusions are a claim, and a claim you can argue with beats a score you cannot take apart. If evidence lands, the rubric should change and this paragraph should be dated as wrong.
 
+![The Authority card on an owner-connected profile: five weighted rows, of which only Review authority carries data, scoring 72 at weight 25 from 3 reviews rated 5.0 with 100% answered](../../static/img/screens/owner-ai-visibility-full.png)
+
+*The Authority pillar with its weights showing. Only **Review authority** scores — 72, at weight 25, off three reviews rated 5.0★ with every one answered — while **Your site cited by AI**, **Presence on the sources AI cites**, **Listings consistency** and **Local top-10 rankings** all read "no data yet" until the checks that feed them have been run. Note also what has no row at all: no `llms.txt`, no domain authority. Lower down the same page, the readiness breakdown gives this three-review profile full marks for recency and reply share while volume costs it 0 of 22.*
+
 ## The same fix does not reach every engine
 
 Three engines, three grounding stacks, and the same work transmits differently down each. Google's grounded answer reads Google Search and Google's own place data, so profile fields and reviews reach it most directly. The other assistants call a general web-search tool; your profile reaches them only insofar as pages *about* you exist and get retrieved. *(Inference from each vendor's published product behaviour — none publishes its retrieval weighting, and none should be assumed stable.)*

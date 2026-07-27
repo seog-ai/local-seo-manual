@@ -16,6 +16,10 @@ Most sets in the wild are not samples. They are wish lists with a bias baked in 
 
 The first correction: a tracked row is not a phrase. It is a phrase measured from a point, in a language. Confirm it in the app rather than take it on faith — adding the same phrase with a different **Search from** location produces a second, independent row with its own history, not an edit of the first. Identity is the combination: business, phrase, location, language.
 
+![The Rankings screen with one tracked keyword: the add form showing Search from, Language and Radius, a red "Already tracking this keyword here" message, and a Local visibility card reading 1/1 in top 3](../../static/img/screens/rankings-tracked.png)
+
+*The add form is the identity rule made visible: the phrase, plus **Search from**, **Language** and **Radius**. Re-enter the same phrase for the same point and it is refused — "Already tracking this keyword here" — while the same phrase from another origin is accepted as its own row. Note the **Local visibility** card below: with one keyword tracked, every figure reads 1/1 and `#1`. That is a property of the sample, not of the business.*
+
 Distance is one of the three forces ([relevance, distance, prominence](../01-foundations/relevance-distance-prominence.md)), so "where you rank for `plumber`" is not a fact about your business. It is a fact about your business *at a coordinate*. Two rows for one phrase from two neighbourhoods are two observations. `plumber` and `plumbers` from the same door are one observation billed twice.
 
 The second correction is depth, and it is the censoring rule from [rank is a map, not a number](../01-foundations/rank-is-a-map-not-a-number.md) applied to a keyword list rather than a grid. A rank check reads the top of the local results — here, the top twenty — so **Not ranked** means *not found in the window we looked at*, and the truth could be 22, or 400, or nowhere. It matters the moment anyone averages your positions. Never write a number where the tool wrote nothing.
@@ -116,6 +120,10 @@ The exception to a fixed interval is not a faster clock but an event: you change
 3. Remove what fails. Select the keyword, use the delete control on its detail panel, confirm **Stop tracking**. Read the dialog first: removing a keyword deletes its rank history, and that cannot be undone. Screenshot the position chart of anything you may want later.
 4. Add the terms worth tracking from Lab 8.1 with **Track**. Each add runs a first live check, so this part is paid.
 5. Before and after, write down the four figures on the **Local visibility** card.
+
+![A tracked keyword's detail panel: position #1 marked "First check", a search-volume row carrying a Test data badge, an example geo-grid over Helsinki, and a "Who ranks above you" list](../../static/img/screens/keyword-detail.png)
+
+*The detail panel from step 3 — the delete control is the small bin beside **Check now**, and **Who ranks above you** answers the third pruning question for you. Read the rest sceptically: the position and its "Checked 2h ago" stamp came from a live check, but the search-volume row carries a **Test data** badge (no volume provider was configured on this instance) and the map is the card's labelled example scan, shown until you run a real one.*
 
 **What good looks like.** Fewer rows than you started with, every survivor naming a distinct question or place — and your headline numbers *worse* while the set got more honest. That contrast is the lesson.
 

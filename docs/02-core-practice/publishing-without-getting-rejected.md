@@ -102,6 +102,10 @@ One more constraint before any bulk edit: Google caps how many edits a profile a
 >
 > You need: Lab 0.3 (a practice business). A connected profile is *not* required — validation runs before anything touches Google, so observe-only readers can do all of it.
 
+![The Posts composer: three type tabs, the post-text counter, a single button selector, an add-photo control and a schedule toggle](../../static/img/screens/owner-posts.png)
+
+*Almost every rule in this chapter is enforced on this one screen: the three type tabs, the character counter above **Post text**, one **Button** selector, one photo — with the rule spelled out in the small print, "your own photos (AI/stock images get rejected)" — and the **Schedule this post** toggle that hands the timing to Google.*
+
 1. Open **Posts**. The composer sits at the top with three type tabs — **What's New**, **Event**, **Offer** — and your posts below.
 2. In **Post text**, paste a block longer than 1,500 characters. The counter turns red, an error says the text must be at most 1,500 characters, and **Publish to Google** goes disabled. Trim back under the cap and watch it clear.
 3. Switch to **Event**. In **Title**, keep typing past 58 characters: the field stops accepting them and the counter parks at 58/58. Same Google limit as the post text, enforced at a different moment.
@@ -120,6 +124,10 @@ One more constraint before any bulk edit: Google caps how many edits a profile a
 > **Lab** · Where: **Posts** (`/b/{businessId}/posts`) · Cost: **paid** (the AI draft and the publish are each metered) · Time: ~10 min
 >
 > You need: Lab 0.4 — a connected profile with owner access. Without one the page shows a connect card; do Lab 15.1 instead and return when you have owner access.
+
+![The Posts page without owner access: a Connect Google card sits above the composer](../../static/img/screens/posts.png)
+
+*The same page without owner access. The connect card comes first, and the composer still renders below it — publishing is the part that needs the connection, composing and validating are not.*
 
 1. On **What's New**, pick a template under **Start from a template**. *Helpful tip* is the safest first post: no offer, no dates.
 2. Press **Draft with AI**. The draft is written from the business's own details plus the template you chose, and fills the post text.

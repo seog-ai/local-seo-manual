@@ -130,6 +130,10 @@ One temptation to kill now: **do not add a street address to make the business t
 4. Classify, and write the verdict at the top of your notes for this account: *storefront* (address, no service area), *hybrid* (address **and** areas served), *pure service-area* (areas served, no address).
 5. If it is pure service-area, add one line: **"map-pack rank is not measurable for this business"** — and from here on treat every rank figure you meet for it as an artefact.
 
+![The overview header for Kaffa Roastery, with the street address Pursimiehenkatu 29, 00150 Helsinki, Finland printed directly under the business name](../../static/img/screens/overview.png)
+
+*Step 1, on a storefront: the street address printed under the business name is the whole classification, and Part II applies to this business unchanged. A pure service-area business shows a place name on that line instead — often with a `+N more` — and no street address anywhere on the page. Which of the two you are reading decides which measurements exist for the account.*
+
 **What good looks like.** A one-word classification you could defend by pointing at the owner's own Google listing, in a note that survives to the moment somebody asks for a ranking report.
 
 **If it went wrong.** The overview header shows only a city: the business came in through the owner connection and Google has no public record matched to it — itself strong evidence of the pure case. There is a street address on Maps but the owner insists they are mobile: they are a hybrid. Believe Google, not the self-description.

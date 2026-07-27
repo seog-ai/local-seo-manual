@@ -32,6 +32,12 @@ Because the same shop is legitimately written a dozen ways, a resolver has to be
 | **Phone** | All formatting. Country code against the domestic trunk zero — `+358 9 …` and `09 …` are the same line, because the comparison runs on the national tail. | A **different line**: a call-tracking number, a superseded number, a mobile where the listing carries the landline. |
 | **Address** | Street/St, Avenue/Ave, North/N. Suite, unit and floor designators, which carry no location identity. Extra detail on one side — postcode, country. | A **different house number**, an immediate no-match. Or too little overlap in the remaining tokens. |
 
+The values on one side of every comparison come from your own profile record:
+
+![The Profile page for Kaffa Roastery, showing category, price band, photos, phone number, website, opening hours and Google attributes](../../static/img/screens/profile.png)
+
+*This is what a listing gets compared against — the stored profile, not your letterhead. Google renders the phone as "050 3065499"; a directory holding "+358 50 3065499" is the same line and folds to a match, because the comparison runs on the national tail. A directory holding a different number does not, and that is the row worth your afternoon.*
+
 Read that table twice, because it inverts what most people are told. "Ave" versus "Avenue" does not break resolution. Neither does a missing suite number, a dropped "Ltd", or a phone written with brackets. What breaks resolution is a **different fact**: a different house number, a different phone line. Those two are worth hunting; a fifty-row consistency report that does not separate them from cosmetic variance is noise wearing a suit.
 
 > **A note on certainty.** We can describe the matcher we can read; Google's is not published and nobody outside Google knows its tolerances. But every resolver faces the same problem, and one distinction survives any sane implementation: *a different value is a break, a different rendering is not* *(inference)*.
@@ -104,6 +110,10 @@ Two mechanisms, worth knowing before you trust any tool's citation tab.
 > **Lab** · Where: **AI Visibility** → **Listings consistency** → **Check now** (`/b/{businessId}/ai-visibility`) · Cost: **paid** · Time: ~3 min
 >
 > You need: a business added (Lab 0.3). Owner access is **not** required — this reads public listings and compares them against the profile data already stored.
+
+![The AI Visibility page, with the Authority and Sources cited by AI cards and, at the foot of the page, a Listings consistency card that has not been checked yet](../../static/img/screens/ai-visibility-full.png)
+
+*Where the lab starts, on a business with no owner connection because it needs none. Listings consistency sits at the very foot of the AI Visibility page, names the six platforms it will check, and reads "Not checked yet" — while the Authority card above still reports "0 of 0 listings consistent" and Sources cited by AI is empty. The percentage tiles at the top of the page carry an **EXAMPLE** badge: they are illustrations of the layout, not measurements of this business.*
 
 1. Press **Check now** on the Listings consistency card. It checks six platforms: Apple Maps, TripAdvisor, Facebook, LinkedIn, Yelp and Foursquare.
 2. Read the summary line — *N of 6 listings consistent* — then, for every **Mismatch** row, the field lines beneath it, each showing the platform's value against Google's.
