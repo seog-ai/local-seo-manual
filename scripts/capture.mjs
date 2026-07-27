@@ -40,10 +40,17 @@ const HIDE_CSS = `
   *, *::before, *::after { animation-play-state: paused !important; }
 `;
 
+/**
+ * MANUAL_PREFIX namespaces a capture run, so the two example businesses the manual
+ * uses do not overwrite each other: the public-view example (a healthy profile) and
+ * the owner-connected example (a profile with real, fixable problems).
+ */
+const PREFIX = process.env.MANUAL_PREFIX ?? '';
+
 async function shot(page, name, { full = false } = {}) {
   await page.addStyleTag({ content: HIDE_CSS }).catch(() => {});
   await page.waitForTimeout(600);
-  const path = join(OUT, `${name}.png`);
+  const path = join(OUT, `${PREFIX}${name}.png`);
   await page.screenshot({ path, fullPage: full });
   console.log(`  ✓ ${name}.png${full ? ' (full page)' : ''}`);
   return path;
@@ -151,6 +158,55 @@ const steps = {
     await settle(page, 2500);
     await shot(page, 'rankings-empty');
     await shot(page, 'rankings-full', { full: true });
+  },
+  /**
+   * Tracks a real keyword and runs a real grid scan.
+   *
+   * The empty Rankings page ships SAMPLE rows ("Example of how tracked keywords
+   * appear") — publishing those as if they were measurements would break the
+   * manual's own honesty rule, so the teaching screenshots must come from a real
+   * tracked keyword. Costs credits: a keyword add, a rank check and a grid scan.
+   */
+  async keyword(page, id) {
+    await page.goto(`${APP}/b/${id}/rankings`, { waitUntil: 'domcontentloaded' });
+    await settle(page, 2000);
+    const main = page.locator('main');
+
+    const kw = process.env.MANUAL_KEYWORD ?? 'specialty coffee helsinki';
+    const box = main.getByPlaceholder(/Track a keyword/i).first();
+    await box.click();
+    await box.fill(kw);
+    await page.waitForTimeout(400);
+    await shot(page, 'rankings-typed');
+
+    await main.getByRole('button', { name: /^Track/ }).first().click();
+    // The add runs a first rank check inline against live Google — give it room.
+    await page.waitForTimeout(20000);
+    await settle(page, 3000);
+    await shot(page, 'rankings-tracked');
+    await shot(page, 'rankings-tracked-full', { full: true });
+
+    // Select the keyword to open its detail panel (grid + history live there).
+    const row = main.getByText(kw, { exact: false }).first();
+    if (await row.isVisible().catch(() => false)) {
+      await row.click().catch(() => {});
+      await settle(page, 6000);
+      await shot(page, 'keyword-detail', { full: true });
+    }
+
+    // The grid that renders on first view is an EXAMPLE ("Example scan — press
+    // Check now to map your real positions"), and the search-volume panel carries
+    // a "Test data" badge. Neither may be published as a measurement, so run a
+    // real scan and only capture after it returns.
+    const gridCard = main.locator('div').filter({ hasText: /Geographic visibility/ }).last();
+    const checkNow = gridCard.getByRole('button', { name: /Check now/ }).first();
+    if (await checkNow.isVisible().catch(() => false)) {
+      await checkNow.click();
+      // 9 live Google searches, one per grid point.
+      await page.waitForTimeout(45000);
+      await settle(page, 5000);
+    }
+    await shot(page, 'geo-grid', { full: true });
   },
   async reviews(page, id) {
     await page.goto(`${APP}/b/${id}/reviews`, { waitUntil: 'domcontentloaded' });
