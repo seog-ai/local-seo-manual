@@ -47,7 +47,7 @@ So the most common photo request an agency receives — "get rid of that one" �
 
 Two of these deserve more than a table row.
 
-**No atomic replace** means "swap the old logo for the new one" is two operations with a gap between them, and if the second fails you are down a photo. Every profile edit also draws on one shared allowance — Google caps edits at roughly ten a minute per profile, and posts, hours changes, description edits and photo uploads all drain the same budget, so a bulk photo run can starve a scheduled post. [Write limits and failure modes](../05-reference/write-limits-and-failure-modes.md) has the mechanism.
+**No atomic replace** means "swap the old logo for the new one" is two operations with a gap between them, and if the second fails you are down a photo. Every upload also draws on the shared per-profile edit budget described in [the profile is the product](./the-profile-is-the-product.md) — ten edits a minute, spent by posts, hours changes and description edits alike — so a bulk photo run can starve a scheduled post. [Write limits and failure modes](../05-reference/write-limits-and-failure-modes.md) has the mechanism.
 
 **No ordering control** means any tool offering a "set cover photo" button is either driving the Google dashboard on your behalf or overstating what it does. Worth asking before you buy one.
 

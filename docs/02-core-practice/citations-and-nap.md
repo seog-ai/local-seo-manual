@@ -124,7 +124,7 @@ Two mechanisms, worth knowing before you trust any tool's citation tab.
 > You need: a business with a website on its profile.
 
 1. Run **Check now** on the website-support block (the lower one — the page-top button also refreshes Search Console and costs more).
-2. Read three rows: **Phone matches profile**, **Address on the site**, **Business name matches**. Note anything marked **Partial** or **Could not verify**.
+2. Read three rows: **Phone matches profile**, **Address on the site**, **Business name matches**. Note anything marked **Partial** or **Could not verify**. The rest of that checklist, and how it is weighted, belongs to [the website half](./the-website-half.md); the result you buy here is stored, so re-reading it there costs nothing.
 3. On a failing phone row, note which of two very different problems it is: no phone on the homepage, or the site showing a *different* number from the profile.
 
 **What good looks like.** Three verdicts with a specific cause on each, and a fix on the failing ones.

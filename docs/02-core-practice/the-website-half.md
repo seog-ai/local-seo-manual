@@ -101,7 +101,7 @@ Search Console's interface shows *fresh* data, including the last two or three d
 > You need: a business added (Lab 0.3) with a website on its profile. This audit needs **no** Google Business Profile connection — it runs on the public site plus the profile facts already stored, so it works on a business you do not own.
 
 1. Open **Website**. Before any analysis you see an **Example** card with five sample rows — an illustration, not your site.
-2. There are two **Check now** buttons and they are not the same action. The one in the page header refreshes everything, including Search Console; the one inside the **Website support** card runs the site audit alone. Use the card's, and read the price on it before pressing. Search Console gets its own lab further down.
+2. There are two **Check now** buttons and they are not the same action. The one in the page header refreshes everything, including Search Console; the one inside the **Website support** card runs the site audit alone. Use the card's, and read the price on it before pressing. Search Console gets its own lab further down. If you already ran this audit in [Lab 12.2](./citations-and-nap.md), its result is stored — read the checklist for free and press **Check now** only when you want a fresh run.
 3. Wait. The checklist appears first; the **Site health** panel takes longer, because a real Lighthouse run does.
 4. Read the **Website support** ring and its tier — **Weak**, **Fair** or **Strong**. Hover the ring: it gives points earned out of points *verifiable*.
 5. Count three numbers: green rows, red rows, and rows saying **Could not verify**. That third one is what people skip.

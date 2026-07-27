@@ -56,7 +56,7 @@ The manual is written to be read in order — later chapters assume the vocabula
 | [Start here](./how-the-labs-work.md) | The lab format, the free account, picking a practice business |
 | [Part I — Foundations](../01-foundations/what-is-local-seo.md) | The map pack, the ranking forces, what a business *is* to Google |
 | [Part II — Core practice](../02-core-practice/analyzing-business-visibility.md) | The working loop: measure, diagnose, fix, re-measure |
-| [Part III — Advanced](../03-advanced/ai-visibility.md) | AI answers, spam, suspensions, multi-location, structured data |
+| [Part III — Advanced](../03-advanced/reading-a-geo-grid.md) | AI answers, spam, suspensions, multi-location, structured data |
 | [Part IV — Operating](../04-operating/reporting-to-a-client.md) | Reporting, 90-day plans, automation, selling the service |
 | [Appendix](../99-appendix/what-things-cost.md) | Lab costs, glossary, checklists, contributing |
 

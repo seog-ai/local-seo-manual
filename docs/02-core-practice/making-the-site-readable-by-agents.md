@@ -133,13 +133,13 @@ The website audit needs no Google connection — it runs against your public sit
 
 ### Lab 14.1 — Score it
 
-> **Lab** · Where: **Website** (`/b/{businessId}/website`) · Cost: **paid** · Time: ~5 min
+> **Lab** · Where: **Website** (`/b/{businessId}/website`) · Cost: **paid**, or **free** if the audit from Lab 13.1 is already stored · Time: ~5 min
 >
 > You need: a business added (Lab 0.3) with a website on its Google profile. No owner access required.
 
 1. Open `/b/{businessId}/website`.
-2. Press **Check now**. The top-right button refreshes the whole page (site audit plus Search Console performance); the **Check now** on the **Website support** card lower down re-runs the site audit only. Either produces the agent-readiness data, and both show their price before you confirm.
-3. Wait for the run to finish, then scroll to the **AI agent readiness** card, directly below the PageSpeed card.
+2. Press **Check now**. The top-right button refreshes the whole page (site audit plus Search Console performance); the **Check now** on the **Website support** card lower down re-runs the site audit only. Either produces the agent-readiness data, and both show their price before you confirm. If you ran [Lab 13.1](./the-website-half.md) recently, skip this step — the stored result already carries the card, and reading it is free.
+3. Scroll to the **AI agent readiness** card, directly below the PageSpeed card.
 4. Write down the score out of 100 **and** the status of all six checks — tick, cross, or dash.
 
 **What good looks like.** A card headed **AI agent readiness** with a score and six named rows. On a typical small-business site most rows are dashes and the score is high.
@@ -183,7 +183,7 @@ The website audit needs no Google connection — it runs against your public sit
 **What good looks like.** The `llms.txt` row now shows a tick. The category score may have moved in *either* direction, and you can explain why.
 
 **If it went wrong.**
-- *Still a dash.* The file is not where you think. Common causes: it is one directory down, the host serves a styled 404 page with a success status, or a redirect rewrites the path. Load the exact URL yourself.
+- *Still a dash.* The file is not where you think. Common causes: it is one directory down, the host serves a styled *page not found* screen that still reports success, or a redirect rewrites the path. Load the exact URL yourself.
 - *It now shows a cross.* The file is found but does not follow the recommended shape. The card's hint says what is missing — usually the heading, the summary, or any links at all.
 - *The score fell.* Correct behaviour. You added an applicable check and it failed, so the denominator grew. Fix the file rather than deleting it.
 

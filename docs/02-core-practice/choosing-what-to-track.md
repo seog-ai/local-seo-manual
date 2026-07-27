@@ -50,7 +50,7 @@ Then put every survivor through three questions.
 
 Six to ten rows survive this for a single-location business — an information limit rather than a budget one. Past ten, new rows are almost always synonyms, and synonyms are correlated observations that inflate confidence without adding evidence.
 
-One last thing before you prune, because it is the mechanism by which sets flatter their owners: **portfolio numbers are a function of the sample.** The Rankings page shows a **Local visibility** card — *In top 3*, *In top 10*, *Avg position*, *Not ranked*. Remove four branded rows you sit at `#1` for and every figure gets worse with nothing having changed on Google. Add four synonyms of a term you win and they all improve. This is why branded terms accumulate: they are the cheapest way to make a report look like progress.
+One last thing before you prune, because it is the mechanism by which sets flatter their owners: **portfolio numbers are a function of the sample.** The Rankings page shows a **Local visibility** card — *In top 3*, *In top 10*, *Avg position*, *Not ranked*. (The overview carries a card of the same name showing your latest grid scan; this is the portfolio one.) Remove four branded rows you sit at `#1` for and every figure gets worse with nothing having changed on Google. Add four synonyms of a term you win and they all improve. This is why branded terms accumulate: they are the cheapest way to make a report look like progress.
 
 *Avg position* is computed only over rows where you were found, so a keyword dropping out of the top twenty *leaves* the average — a business can lose its hardest keyword and watch its average improve. Read the *Not ranked* count in the same glance, always.
 
@@ -91,7 +91,7 @@ The exception to a fixed interval is not a faster clock but an event: you change
 > You need: Lab 0.3 (a practice business) and Lab 0.4 (a connected Google Business Profile). This lab needs **owner access** — the search-terms card only exists for a profile you control.
 
 1. Open **Overview** and scroll to the **Performance** panel.
-2. Press **Load performance data**. One paid click buys the full daily history; switching periods afterwards is free, since it slices data you own.
+2. Press **Load performance data**. One paid click buys the full daily history; switching periods afterwards is free, since it slices data you own. That single load also covers the outcome tiles above the chart — views, calls, direction requests — which are read properly in [Did it work?](./did-it-work.md). Ignore them for now.
 3. Below the chart, find **What people searched to find you**. Its subtitle reads *trailing 12 months* — one number per term for the whole year, which is what Google returns.
 4. Copy the top ten terms into a table and mark which were on the set you built in Lab 6.2.
 5. Mark every value displayed as `<` a number. Those are the terms Google withheld; the true count is below what is shown.

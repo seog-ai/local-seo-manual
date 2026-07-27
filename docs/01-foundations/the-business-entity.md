@@ -16,15 +16,17 @@ Google's own account of local ranking names three factors: relevance, distance a
 
 The website has a role, and Google states it plainly: your position in ordinary web search results is one of the inputs to prominence. So the site is evidence about the business. It is not the thing in the ranking.
 
-```mermaid
-flowchart LR
-  W["Your website"] -->|evidence| E
-  D["Directories<br/>and citations"] -->|evidence| E
-  C["Reviews and photos<br/>from customers"] -->|evidence| E
-  O["What you publish<br/>as the owner"] -->|edits| E
-  G["Google's own<br/>corrections"] -->|edits| E
-  E["THE ENTITY<br/>name · place · category · hours · reputation"] --> S["Map pack · Maps ·<br/>AI answers"]
-```
+Five things feed that record, in two different ways:
+
+| Source | How it lands | Who controls it |
+| --- | --- | --- |
+| Your website | Evidence | You |
+| Directories and citations | Evidence | Partly you |
+| Reviews and photos from customers | Evidence | Nobody |
+| What you publish as the owner | Direct edits | You |
+| Google's own corrections | Direct edits | Google |
+
+All of it resolves into one record — name, place, category, hours, reputation — and that record is what the map pack, Maps and the AI answers are reading.
 
 This is why a beautifully built site can sit invisible in the map pack while a competitor with a one-page template outranks it everywhere. They are not competing on the axis you optimised.
 
@@ -173,7 +175,7 @@ The rest of the manual follows from the model:
 
 **Assuming there is only one record.** People diagnose for weeks — bad categories, weak reviews, a slow site — when the real problem is a duplicate listing splitting the signals. Check for duplicates early; it costs nothing and it is a complete explanation when it is the answer.
 
-**Treating name, address and category as ordinary fields.** They sit in the same editor as the phone number and look equally editable. They are not: they are the identity, and changing them can send the listing back through verification. [The profile is the product](../02-core-practice/the-profile-is-the-product.md) covers which fields are safe and which are not, and the app shows the warning before you apply one.
+**Treating name, address and category as ordinary fields.** In Google's own profile editor they sit beside the phone number and look equally editable. They are not: they are the identity, and changing them can send the listing back through verification. [The profile is the product](../02-core-practice/the-profile-is-the-product.md) covers which fields are safe and which are not — and why, of the three, only the name can be edited from SEOG at all, behind an acknowledgement you have to tick.
 
 ## Check yourself
 

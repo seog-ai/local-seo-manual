@@ -32,7 +32,7 @@ In an AI answer, location is a *string*. It arrives one of three ways: you typed
 
 Two things follow.
 
-First, the proximity decay that governs a geo-grid is much weaker inside an AI answer *(inference — our reading of the mechanism, consistent with the observation that a city-level query returns roughly the same businesses regardless of which neighbourhood you ask from; we have not run a controlled test)*. A business that vanishes from the map pack two miles from its door can still be named by an assistant, because the assistant is not measuring the two miles.
+First, the proximity decay that governs a geo-grid is much weaker inside an AI answer. The only published measurement points the same way — Local Falcon's 2025 whitepaper found effectively no correlation between distance and position *inside* a Google AI Overview, quoted with its limits in [the three forces](./relevance-distance-prominence.md). The explanation above is ours *(inference — the mechanism is our reading; we have not run a controlled test)*. Either way the consequence is the same: a business that vanishes from the map pack two miles from its door can still be named by an assistant, because the assistant is not measuring the two miles.
 
 Second, **location handling in these products is young and changes under you.** ChatGPT did not share device location with its search tool by default; an opt-in setting for it shipped in late March 2026. That single change invalidates much of the published "we tested AI local search" writing, because earlier tests were measuring an engine that often had no reliable idea where the user was standing. Check anything you read on this subject against its publication date before acting on it. *(Stated as of 2026-07; re-check before citing.)*
 
@@ -98,7 +98,8 @@ Nobody outside these vendors knows how retrieval is weighted, and anyone quoting
 2. Read the three tiles across the top: **Presence**, **Recommendations**, **Authority**. If any of them carries a small **Example** pill, that number is illustrative and is not about your business — note which ones.
 3. Read the **AI mention rate** block below it, and the three engine tiles beside it (**Gemini**, **ChatGPT**, **Claude**). Note which show a **Not connected** badge.
 4. Scroll to **Where AI mentions you**. This is the keyword × engine matrix. Each cell is one of: *Mentioned*, *Not mentioned*, *Sample*, or a dash for never checked. Write down how many cells are actually live.
-5. Scroll on to **Sources cited by AI**, **Authority**, and finally **AI readiness** at the bottom. Read the readiness score and its tier, but do not press **Check now** yet.
+5. Keep scrolling: **Who AI recommends alongside (or instead of) you**, then **Authority** and **Sources cited by AI**, then the **AI readiness** card. Read the readiness score and its tier, but do not press **Check now** yet.
+6. Two of those sections are instruments for other jobs, so note them and move on: the co-mention list belongs to [reading a competitor off their public data](../02-core-practice/competitors.md), and **Listings consistency**, at the foot of the page, to [citations and NAP consistency](../02-core-practice/citations-and-nap.md).
 
 **What good looks like.** You can say in one sentence how much of that screen is a measurement of your business and how much is a placeholder. On a new business the honest answer is usually "almost none of it" — and the page says so, which is the point.
 
