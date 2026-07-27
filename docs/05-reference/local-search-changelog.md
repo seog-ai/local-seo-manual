@@ -405,7 +405,7 @@ The free allowance stopped pooling across APIs. A workload that fitted comfortab
 
 Businesses with no public address are **excluded** from Text Search unless the parameter is set. The same release added a `pureServiceAreaBusiness` field so you can tell which returned results are of that kind, plus `containingPlaces`, `priceRange`, `nextOpenTime` and `nextCloseTime`, and 104 new place types.
 
-**Consequence:** This is the single most common cause of "the business does not exist in the API" for plumbers, mobile groomers and locksmiths. Set the flag. Note also that such a place carries no coordinates, so anything that needs a map anchor has to get one elsewhere — from the owner's own profile, or from a place inside the declared service area. The practical handling is in [Service-area businesses](../03-advanced/service-area-businesses.md).
+**Consequence:** This is the single most common cause of "the business does not exist in the API" for plumbers, mobile groomers and locksmiths. Set the flag. Note also that such a place carries no coordinates, so anything that needs a map anchor has to get one elsewhere — from the owner's own profile, or from a place inside the declared service area. The practical handling is in [Service-area businesses](../03-advanced/service-area-businesses/index.md).
 
 ### LSM-GBP-65 · 2024-07-31 · Business Profile chat and call history were shut down
 

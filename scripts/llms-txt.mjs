@@ -47,6 +47,55 @@ function partLabel(dir) {
   }
 }
 
+/** Ordering position of a chapter folder within its part. */
+function categoryPosition(dir, sub) {
+  try {
+    return Number(JSON.parse(readFileSync(join(DOCS, dir, sub, '_category_.json'), 'utf8')).position);
+  } catch {
+    return NaN;
+  }
+}
+
+/** One page: frontmatter, prose and the public URL its file maps to. */
+function page(relDir, file, slug) {
+  const { meta, body } = parse(readFileSync(join(DOCS, relDir, file), 'utf8'));
+  return {
+    title: meta.title ?? file,
+    description: meta.description ?? '',
+    position: Number(meta.sidebar_position ?? 999),
+    url: `${SITE}/${meta.slug === '/' ? '' : slug}`,
+    body,
+  };
+}
+
+/**
+ * Every chapter of a part, in reading order. A chapter is either a single .md
+ * file or a folder whose `index.md` opens it and whose siblings continue it —
+ * the continuation pages stay grouped under their chapter and are indented in
+ * the map, so a split chapter still reads as one chapter.
+ */
+function chaptersIn(dir) {
+  const groups = [];
+  for (const entry of readdirSync(join(DOCS, dir))) {
+    const base = `${stripPrefix(dir)}/${entry}`;
+    if (entry.endsWith('.md')) {
+      const p = page(dir, entry, base.replace(/\.md$/, ''));
+      groups.push({ position: p.position, pages: [p] });
+    } else if (statSync(join(DOCS, dir, entry)).isDirectory()) {
+      const inner = readdirSync(join(DOCS, dir, entry)).filter((f) => f.endsWith('.md'));
+      if (!inner.includes('index.md')) continue;
+      const opener = page(join(dir, entry), 'index.md', base);
+      const rest = inner
+        .filter((f) => f !== 'index.md')
+        .map((f) => ({ ...page(join(dir, entry), f, `${base}/${f.replace(/\.md$/, '')}`), depth: 1 }))
+        .sort((a, b) => a.position - b.position);
+      const position = categoryPosition(dir, entry);
+      groups.push({ position: Number.isNaN(position) ? opener.position : position, pages: [opener, ...rest] });
+    }
+  }
+  return groups.sort((a, b) => a.position - b.position).flatMap((g) => g.pages);
+}
+
 const parts = readdirSync(DOCS)
   .filter((d) => statSync(join(DOCS, d)).isDirectory())
   .sort();
@@ -56,24 +105,12 @@ const full = [];
 
 for (const dir of parts) {
   const label = partLabel(dir);
-  const chapters = readdirSync(join(DOCS, dir))
-    .filter((f) => f.endsWith('.md'))
-    .map((file) => {
-      const { meta, body } = parse(readFileSync(join(DOCS, dir, file), 'utf8'));
-      const slug = meta.slug === '/' ? '' : `${stripPrefix(dir)}/${file.replace(/\.md$/, '')}`;
-      return {
-        title: meta.title ?? file,
-        description: meta.description ?? '',
-        position: Number(meta.sidebar_position ?? 999),
-        url: `${SITE}/${slug}`,
-        body,
-      };
-    })
-    .sort((a, b) => a.position - b.position);
+  const chapters = chaptersIn(dir);
 
   index.push(`## ${label}\n`);
   for (const c of chapters) {
-    index.push(`- [${c.title}](${c.url})${c.description ? `: ${c.description}` : ''}`);
+    const bullet = c.depth ? '  - ' : '- ';
+    index.push(`${bullet}[${c.title}](${c.url})${c.description ? `: ${c.description}` : ''}`);
 
     full.push(`\n\n# ${c.title}\n\nSource: ${c.url}\n`);
     full.push(

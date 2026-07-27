@@ -90,7 +90,7 @@ A small dentist, restaurant, gym, salon, plumber, law office or auto shop in a m
 
 **If the import is refused.** Service-area businesses — mobile and at-home trades that hide their street address — are the awkward case. Google leaves hidden-address businesses out of public place search unless the search explicitly asks for them, and even when they are returned they carry no coordinates ([LSM-PLACES-67](../05-reference/local-search-changelog.md)). SEOG does ask for them, so the listing usually appears in the results; the *import* is then refused, with a message telling you to connect Google Business Profile instead — because a business stored without coordinates would have nothing to put on a map. (The panel's own line, "profiles that hide their address don't appear in search", is the short version of that.)
 
-Use **Import from your Google account** on the same page: connect the Google Business Profile that owns the listing and pick the location. This path only works for profiles you have access to. [Service-area businesses](../03-advanced/service-area-businesses.md) covers why this whole category behaves differently.
+Use **Import from your Google account** on the same page: connect the Google Business Profile that owns the listing and pick the location. This path only works for profiles you have access to. [Service-area businesses](../03-advanced/service-area-businesses/index.md) covers why this whole category behaves differently.
 
 ---
 
@@ -138,8 +138,8 @@ Two of those rows have documented limits worth knowing before you build a report
 
 You now have an account, a business, and — if you were able — the owner connection.
 
-Part I explains what you are looking at before you start changing things. If you are impatient to *do* something, [Part II](../02-core-practice/analyzing-business-visibility.md) starts with a full diagnostic of the business you just added, and you can read Part I when something there surprises you.
+Part I explains what you are looking at before you start changing things. If you are impatient to *do* something, [Part II](../02-core-practice/analyzing-business-visibility/index.md) starts with a full diagnostic of the business you just added, and you can read Part I when something there surprises you.
 
 ---
 
-**Next:** [Part I — What local SEO actually is →](../01-foundations/what-is-local-seo.md)
+**Next:** [Part I — What local SEO actually is →](../01-foundations/what-is-local-seo/index.md)

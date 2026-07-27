@@ -381,7 +381,7 @@ Both fields are simply absent. `serviceArea.places.placeInfos` carries the decla
 
 **What to do instead:** never persist `0, 0`. Derive an anchor point from the first declared service area, or ask the operator for a base location.
 
-And note the separate consequence on the public side: hidden-address businesses are excluded from Places text search unless the request explicitly opts them in, which is why they are effectively invisible to conventional rank tracking — see [service-area businesses](../03-advanced/service-area-businesses.md).
+And note the separate consequence on the public side: hidden-address businesses are excluded from Places text search unless the request explicitly opts them in, which is why they are effectively invisible to conventional rank tracking — see [service-area businesses](../03-advanced/service-area-businesses/index.md).
 
 ### LSM-GBP-21 · `Metadata.canOperateLocalPost` tells you in advance whether a location may post
 
@@ -487,7 +487,7 @@ There is no `delete` on a review. There never has been. The only deletion availa
 
 **Consequence:** every product claiming programmatic removal of a review is describing either the consumer flagging flow (a human report, adjudicated by Google, usually rejected) or something that does not exist.
 
-**What to do instead:** flag policy-violating reviews through the Business Profile interface and treat the outcome as uncertain. Removal is not a capability you can promise a client, and the [spam and fake listings](../03-advanced/spam-and-fake-listings.md) chapter covers what the flagging path actually achieves.
+**What to do instead:** flag policy-violating reviews through the Business Profile interface and treat the outcome as uncertain. Removal is not a capability you can promise a client, and the [spam and fake listings](../03-advanced/spam-and-fake-listings/index.md) chapter covers what the flagging path actually achieves.
 
 ### LSM-REVIEWS-04 · Owner replies are moderated and can be REJECTED
 

@@ -95,7 +95,7 @@ Google web search is a murkier case: it derives location from several signals an
 
 Twenty-five points is an afternoon done properly — the discipline is that every point must be run under the *same* conditions, which means one sitting, one browser profile, one language, one signed-out session.
 
-Record one row per point: coordinate, position, timestamp. Reading the result is arithmetic you do yourself, and [Reading a geo-grid](../03-advanced/reading-a-geo-grid.md) is the arithmetic.
+Record one row per point: coordinate, position, timestamp. Reading the result is arithmetic you do yourself, and [Reading a geo-grid](../03-advanced/reading-a-geo-grid/index.md) is the arithmetic.
 
 **What you lose.** Not accuracy — a careful hand reading is as good as any API reading, and better than a careless one. You lose the ability to run the *same* grid again in six weeks under matched conditions, which is the only form in which a grid means anything.
 
@@ -109,7 +109,7 @@ Request only the fields you actually need — [what the Places API will and will
 
 **The reading.** Two passes. First from outside: open the business on Google Maps in a private window and record every field a searcher can see — name, category, address, hours, phone, website, photo count, rating, review count, attributes. Then from inside, if you have access: open the Business Profile dashboard and record the fields the public record does not carry, the owner-written description first among them.
 
-**The rubric.** Do not look for a score; write the checks. Twenty rows in a spreadsheet, each a yes/no with a weight you chose and can defend. The two rubrics in [Diagnosing a business in thirty minutes](../02-core-practice/analyzing-business-visibility.md) are published with every check, threshold and weight precisely so you can copy them into a sheet and disagree with them. A rubric you wrote is more useful than a score you were handed, because you know what it does not measure.
+**The rubric.** Do not look for a score; write the checks. Twenty rows in a spreadsheet, each a yes/no with a weight you chose and can defend. The two rubrics in [Diagnosing a business in thirty minutes](../02-core-practice/analyzing-business-visibility/index.md) are published with every check, threshold and weight precisely so you can copy them into a sheet and disagree with them. A rubric you wrote is more useful than a score you were handed, because you know what it does not measure.
 
 **The one discipline that matters.** Three states, not two: present, absent, and *not observable from here*. Without owner access the description, the full review history and every performance number are **unknown**, not missing. Writing "unknown" in a client-facing audit is the single clearest signal that the audit was done rather than generated.
 
@@ -204,7 +204,7 @@ This is the easiest section to do without any tool, and one where paying for too
 
 **What they look like** comes from opening each rival on Maps: category, rating, review count, photo count, attributes, hours, whether the name contains keywords that are not on their storefront. One row per rival, one column per field, one sheet per date.
 
-**The spam scan** needs eyes rather than software. The families and the tests are in [Spam and fake listings](../03-advanced/spam-and-fake-listings.md); the reporting paths — *Suggest an edit* in Maps for the light cases, the Business Redressal Complaint Form for documented or networked ones — are free and are the only paths that exist. Time-box it. The form's own text says you will not be told what happened.
+**The spam scan** needs eyes rather than software. The families and the tests are in [Spam and fake listings](../03-advanced/spam-and-fake-listings/index.md); the reporting paths — *Suggest an edit* in Maps for the light cases, the Business Redressal Complaint Form for documented or networked ones — are free and are the only paths that exist. Time-box it. The form's own text says you will not be told what happened.
 
 **The slope is the finding**, and the slope needs the same sheet on two dates. A rival gaining forty reviews a quarter while you gain four is a strategic fact; either quarter alone is a photograph.
 
@@ -247,7 +247,7 @@ An impression is one unique user per day per metric. The most recent days can be
 
 **The report** is a document you write, and the layer that persuades was always prose. Evidence layers under it: your dated sheet, your screenshots, the dashboard's own numbers. Nothing here needs software.
 
-**Staying current** is a folder and a habit: snapshot the pages whose rules you depend on, diff them quarterly, and date every entry in your own change log. A tool buys you the snapshot taken automatically with a date you did not have to remember. [Staying current](../04-operating/staying-current.md) is the method.
+**Staying current** is a folder and a habit: snapshot the pages whose rules you depend on, diff them quarterly, and date every entry in your own change log. A tool buys you the snapshot taken automatically with a date you did not have to remember. [Staying current](../04-operating/staying-current/index.md) is the method.
 
 ### Suspensions, service-area businesses, inheritance — Labs 19.1–19.3, 24.1–24.3, 29.1–29.3
 
@@ -311,7 +311,7 @@ Recording is trivial per reading and unforgiving in aggregate — miss the March
 
 Reproducing seven conditions by hand, six weeks later, from notes you wrote quickly, is harder than it sounds — and the failure is silent. You get two numbers that look comparable and are not, and the difference between them gets reported as a result.
 
-[Why two tools disagree](../03-advanced/why-two-tools-disagree.md) is the anatomy of this, and it applies to *you* disagreeing with *yourself* just as much as to two vendors.
+[Why two tools disagree](../03-advanced/why-two-tools-disagree/index.md) is the anatomy of this, and it applies to *you* disagreeing with *yourself* just as much as to two vendors.
 
 **3. Read-back.** Google accepts writes it has not published. A profile edit, a review reply, a post — each can return success in the interface and never appear publicly, or appear and later vanish.
 

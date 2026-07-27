@@ -59,7 +59,7 @@ Four things make the difference between the two:
 - **Date it.** An undated contradiction cannot be resolved against a dated entry, because there is no way to tell which of you is describing the past.
 - **For anything involving an AI engine, send a rate, not an answer.** One run is a sample. The prompt set, the number of runs and the date are the measurement; the transcript is an illustration. [AI engine probe recipes](../05-reference/ai-engine-probe-recipes.md) has the method.
 
-Probe on a listing you own, never a client's, and prefer probes where the *failure* is the answer — [probe hygiene](../04-operating/staying-current.md) covers why, and what happens to people who ignore it.
+Probe on a listing you own, never a client's, and prefer probes where the *failure* is the answer — [probe hygiene](../04-operating/staying-current/index.md) covers why, and what happens to people who ignore it.
 
 ## Three things that feel like corrections and are not
 

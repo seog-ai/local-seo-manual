@@ -57,7 +57,7 @@ The five are Google's selection, not the five most recent and not a random sampl
 
 **The owner-side path is different in kind:** the Business Profile reviews endpoint pages the full history 50 reviews at a time. Complete history is an owner-connection capability, not something the public record will ever give you.
 
-**What to do instead:** Never compute a rate from Places reviews. Response rate, sentiment mix, review velocity and "reviews mentioning X" are all statistics over a 5-item sample of a population that may number thousands. Compute them from owner data or state the sample size next to every figure. [Why two tools disagree](../03-advanced/why-two-tools-disagree.md) is mostly this problem wearing different hats.
+**What to do instead:** Never compute a rate from Places reviews. Response rate, sentiment mix, review velocity and "reviews mentioning X" are all statistics over a 5-item sample of a population that may number thousands. Compute them from owner data or state the sample size next to every figure. [Why two tools disagree](../03-advanced/why-two-tools-disagree/index.md) is mostly this problem wearing different hats.
 
 ### LSM-PLACES-09 · The owner-written business description is not in the public place record
 
@@ -77,7 +77,7 @@ The public record carries Google's own editorial summary and model-generated sum
 
 A business that hides its street address is invisible to a default Text Search. When the flag is set it becomes visible, but the response carries no address and no coordinates — so anything that geocodes results, measures distance, or plots a grid centre from the search response cannot use it.
 
-**What to do instead:** Route service-area businesses through the owner connection, where the location record exists, and treat their absence from any Text-Search-based tool as an instrument limitation rather than a ranking finding. [Service-area businesses](../03-advanced/service-area-businesses.md) covers the workflow.
+**What to do instead:** Route service-area businesses through the owner connection, where the location record exists, and treat their absence from any Text-Search-based tool as an instrument limitation rather than a ranking finding. [Service-area businesses](../03-advanced/service-area-businesses/index.md) covers the workflow.
 
 ### LSM-PLACES-11 · Text Search drops low-prominence businesses that Autocomplete still returns
 

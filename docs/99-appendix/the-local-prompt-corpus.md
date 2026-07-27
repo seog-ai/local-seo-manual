@@ -20,7 +20,7 @@ An AI-visibility number is a rate over runs of a *question*. Change the question
 - **Two dates are only comparable if the question did not move.** A prompt edit resets the series ([LSM-AI-14](../05-reference/ai-engine-probe-recipes.md#lsm-ai-14--the-prompt-must-demand-named-businesses-and-sources-or-neither-axis-is-measurable)). If you cannot say which version of the question produced last quarter's number, you do not have a trend.
 - **A published method can be attacked, which is the point.** A corpus with IDs is falsifiable. Somebody can tell you row C-09 is badly worded, and you can fix C-09 in v1.1 and say so.
 
-The four intents below — discovery, comparison, trust, logistics — are the manual's taxonomy, not Google's; Google publishes no local query-intent classification. They earn their place because each is answered by a different surface and moved by a different lever. The long argument is in [what people actually search](../01-foundations/what-people-actually-search.md).
+The four intents below — discovery, comparison, trust, logistics — are the manual's taxonomy, not Google's; Google publishes no local query-intent classification. They earn their place because each is answered by a different surface and moved by a different lever. The long argument is in [what people actually search](../01-foundations/what-people-actually-search/index.md).
 
 ## The shape of a row
 
@@ -175,7 +175,7 @@ Branded and objective. Answered straight out of your profile's structured fields
 
 **An accuracy audit records something different from a visibility probe:** not *were you named* but *was the fact correct*. Run the eight L rows once per engine, mark each answer right, wrong or absent, and you have a defensible finding — "one engine had our Sunday hours wrong on 2026-07-27" — that costs almost nothing and is immediately fixable.
 
-SOCi's 2026 Local Visibility Index (~350,000 locations) reported profile accuracy of 68.3% on ChatGPT and 68.0% on Perplexity against roughly 100% on Gemini — around two-thirds on the web-grounded assistants against near-total accuracy on the Maps-grounded one. It is vendor-published and its methodology is only partly disclosed, so treat the figures as soft and the mechanism as sound ([chapter 1](../01-foundations/what-is-local-seo.md) carries the full citation and its caveats).
+SOCi's 2026 Local Visibility Index (~350,000 locations) reported profile accuracy of 68.3% on ChatGPT and 68.0% on Perplexity against roughly 100% on Gemini — around two-thirds on the web-grounded assistants against near-total accuracy on the Maps-grounded one. It is vendor-published and its methodology is only partly disclosed, so treat the figures as soft and the mechanism as sound ([chapter 1](../01-foundations/what-is-local-seo/index.md) carries the full citation and its caveats).
 
 ## Filling the slots: four worked packs
 
@@ -291,13 +291,13 @@ Stated so that anyone citing it can weigh them, and so v1.1 has somewhere to sta
 - **English, and British-leaning.** The phrasings, and the assumption that `{city}` and `{area}` are the natural geographic units, come from English-language local search. Other languages carry local intent differently and this corpus has not been tested in any of them.
 - **Weighted to services over retail.** Discovery and comparison rows assume a business someone hires or visits deliberately. Impulse and footfall retail are under-represented.
 - **No price rows.** `how much does {service} cost in {city}` is a real and growing query shape, and it is absent because we have not decided whether an engine naming price ranges without naming businesses is a punt or a distinct outcome.
-- **No multi-location rows.** A chain asking "which of *our* branches gets named" needs a different design; see [multi-location and franchise](../03-advanced/multi-location-and-franchise.md).
-- **Service-area businesses are poorly served.** `{area}` assumes a place the business is *in*. A trade covering forty postcodes from a hidden address needs rows anchored to the customer's location rather than the business's, and this version does not distinguish them ([service-area businesses](../03-advanced/service-area-businesses.md)).
+- **No multi-location rows.** A chain asking "which of *our* branches gets named" needs a different design; see [multi-location and franchise](../03-advanced/multi-location-and-franchise/index.md).
+- **Service-area businesses are poorly served.** `{area}` assumes a place the business is *in*. A trade covering forty postcodes from a hidden address needs rows anchored to the customer's location rather than the business's, and this version does not distinguish them ([service-area businesses](../03-advanced/service-area-businesses/index.md)).
 - **The register ladder is untested.** Three registers are offered because assistants are asked longer questions than search boxes are. Whether register changes *which businesses are named*, holding everything else constant, is unmeasured.
 
 Two open questions this corpus was built to make answerable, and which nobody has published answers to:
 
-**Does register change the answer?** Take one market, one engine, one coordinate. Run D-03 and D-13 — the same underlying need at two registers — twenty times each. Compare mention rates against the run-to-run noise floor, not against each other ([LSM-AI-16](../05-reference/ai-engine-probe-recipes.md#lsm-ai-16--one-run-is-a-sample-not-a-measurement)). Twenty runs still leaves a worst-case standard error of roughly 11 points — `0.5 / √n`, the arithmetic and its table are in [measuring AI visibility](../03-advanced/ai-visibility.md) — so only a large difference is readable.
+**Does register change the answer?** Take one market, one engine, one coordinate. Run D-03 and D-13 — the same underlying need at two registers — twenty times each. Compare mention rates against the run-to-run noise floor, not against each other ([LSM-AI-16](../05-reference/ai-engine-probe-recipes.md#lsm-ai-16--one-run-is-a-sample-not-a-measurement)). Twenty runs still leaves a worst-case standard error of roughly 11 points — `0.5 / √n`, the arithmetic and its table are in [measuring AI visibility](../03-advanced/ai-visibility/index.md) — so only a large difference is readable.
 
 **Do comparison rows really out-perform discovery rows as probes?** The claim in this manual is a mechanism argument: comparison queries ask the engine to choose, so they produce more named businesses and more readable stance. Nobody has published the rate at which each intent produces a *recommending* answer at all. Run the six discovery and six comparison rows twenty times each on one engine, count how many answers named any business, and you have it.
 
@@ -322,4 +322,4 @@ Corrections are the most valuable contribution here — particularly a row that 
 
 ---
 
-**Pairs with:** [What people actually search](../01-foundations/what-people-actually-search.md) · [How an AI assistant answers a local question](../01-foundations/how-ai-answers-a-local-question.md) · [Building a tracked set that tells the truth](../02-core-practice/choosing-what-to-track.md) · [Measuring AI visibility](../03-advanced/ai-visibility.md) · [AI engine probe recipes](../05-reference/ai-engine-probe-recipes.md) · [The AI visibility record schema](./ai-visibility-record-schema.md)
+**Pairs with:** [What people actually search](../01-foundations/what-people-actually-search/index.md) · [How an AI assistant answers a local question](../01-foundations/how-ai-answers-a-local-question/index.md) · [Building a tracked set that tells the truth](../02-core-practice/choosing-what-to-track/index.md) · [Measuring AI visibility](../03-advanced/ai-visibility/index.md) · [AI engine probe recipes](../05-reference/ai-engine-probe-recipes.md) · [The AI visibility record schema](./ai-visibility-record-schema.md)

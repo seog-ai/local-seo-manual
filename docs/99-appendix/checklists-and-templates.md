@@ -22,7 +22,7 @@ Nothing here replaces the chapter that explains it. A checklist tells you *what*
 
 ## 1. New-business audit
 
-Thirty to sixty minutes, run once, before you change anything. The reasoning is [Diagnosing a business in thirty minutes](../02-core-practice/analyzing-business-visibility.md).
+Thirty to sixty minutes, run once, before you change anything. The reasoning is [Diagnosing a business in thirty minutes](../02-core-practice/analyzing-business-visibility/index.md).
 
 ```
 Business:
@@ -73,13 +73,13 @@ For each failing check, exactly one of three words. Guessing is not an option.
 - [ ] **An ordered work list.** Not everything wrong — the things worth doing, in the order you will do them, each tagged with its clock: *write* (minutes), *behaviour* (weeks), *aggregate* (a quarter).
 - [ ] **A frozen baseline.** The dated PDF plus your notes, filed as `business-baseline-YYYY-MM-DD`, in a place you will not overwrite.
 
-> **The finding this list cannot produce.** Everything above is computed from profile and review data without looking at a single search result. It will never tell you the market is hard or that the constraint is proximity rather than completeness. That comes from a rank map, and it is often the most important sentence in the engagement — [Rank is a map, not a number](../01-foundations/rank-is-a-map-not-a-number.md).
+> **The finding this list cannot produce.** Everything above is computed from profile and review data without looking at a single search result. It will never tell you the market is hard or that the constraint is proximity rather than completeness. That comes from a rank map, and it is often the most important sentence in the engagement — [Rank is a map, not a number](../01-foundations/rank-is-a-map-not-a-number/index.md).
 
 ---
 
 ## 2. Profile completeness
 
-The scored version of "is this profile filled in". Weights are the ones used in the manual's labs and published so you can reproduce the audit by hand or argue with it; they are a prioritisation rubric, not Google's ranking weights. Full discussion: [Diagnosing a business in thirty minutes](../02-core-practice/analyzing-business-visibility.md).
+The scored version of "is this profile filled in". Weights are the ones used in the manual's labs and published so you can reproduce the audit by hand or argue with it; they are a prioritisation rubric, not Google's ranking weights. Full discussion: [Diagnosing a business in thirty minutes](../02-core-practice/analyzing-business-visibility/index.md).
 
 **The eleven completeness checks — 86 points total**
 
@@ -126,7 +126,7 @@ Tiers: **70+ strong, 40–69 building, below 40 low.** Volume plus rating alone 
 - [ ] 4. Re-read the field **from Google**, not from your tool's cached copy.
 - [ ] 5. If it reverted, it was rejected. That is information. Do not re-apply it harder — rewrite it plainly.
 
-**Photo constraints** ([Photos, and what you cannot do with them](../02-core-practice/photos-and-the-visual-profile.md))
+**Photo constraints** ([Photos, and what you cannot do with them](../02-core-practice/photos-and-the-visual-profile/index.md))
 
 - [ ] JPEG or PNG. Not WebP, not HEIC — convert if your phone shoots HEIC.
 - [ ] Under 5 MB, and not tiny.
@@ -138,7 +138,7 @@ Tiers: **70+ strong, 40–69 building, below 40 low.** Volume plus rating alone 
 
 ## 3. Monthly maintenance
 
-The recurring list, once an engagement exists. Sequencing logic is in [The ninety-day plan](../04-operating/the-ninety-day-plan.md); cadence logic is in [Building a tracked set that tells the truth](../02-core-practice/choosing-what-to-track.md).
+The recurring list, once an engagement exists. Sequencing logic is in [The ninety-day plan](../04-operating/the-ninety-day-plan/index.md); cadence logic is in [Building a tracked set that tells the truth](../02-core-practice/choosing-what-to-track/index.md).
 
 **Weekly — mostly free**
 
@@ -173,7 +173,7 @@ The recurring list, once an engagement exists. Sequencing logic is in [The ninet
 
 **Before the report leaves the building**
 
-Six checks, no partial credit, about fifteen minutes ([Writing a report a client can check](../04-operating/reporting-to-a-client.md)).
+Six checks, no partial credit, about fifteen minutes ([Writing a report a client can check](../04-operating/reporting-to-a-client/index.md)).
 
 - [ ] **Conditions.** Every number carries surface, query, coordinate and date — or its window, or its preset.
 - [ ] **Frozen set.** The tracked keywords and locations are listed, and any change to them is a dated line.
@@ -188,7 +188,7 @@ Six checks, no partial credit, about fifteen minutes ([Writing a report a client
 
 ## 4. Client onboarding
 
-What arrives with the access, and what you owe from the moment it does. Long form: [What you inherit with a client](../04-operating/what-you-inherit-with-a-client.md).
+What arrives with the access, and what you owe from the moment it does. Long form: [What you inherit with a client](../04-operating/what-you-inherit-with-a-client/index.md).
 
 > **Our reading of published terms, not legal advice.** Clauses below are quoted verbatim from Google's Business Profile APIs policies (page stamped **last updated 2025-08-28 UTC**, re-read 2026-07-27) and Google Business Profile Help (retrieved 2026-07-27). The interpretation after each is ours. If money or a licence depends on the answer, ask a lawyer.
 
@@ -237,7 +237,7 @@ What arrives with the access, and what you owe from the moment it does. Long for
 
 ## 5. Review-response templates
 
-> **These are not macros, and they must not be automated.** Google's Business Profile APIs policies state: *"you must not automate or trigger review replies, Q&As, listing creations, listing edits, or other actions without the user's prior specific and express consent."* An unattended responder that watches for new reviews and posts a generated reply is named there as abusive behaviour, and the merchant's account carries the consequence. A model drafting and a human publishing is fine. That is the shape every template below assumes. Our reading of published policy, not legal advice; [Reviews](../02-core-practice/reviews.md) has the full quotes.
+> **These are not macros, and they must not be automated.** Google's Business Profile APIs policies state: *"you must not automate or trigger review replies, Q&As, listing creations, listing edits, or other actions without the user's prior specific and express consent."* An unattended responder that watches for new reviews and posts a generated reply is named there as abusive behaviour, and the merchant's account carries the consequence. A model drafting and a human publishing is fine. That is the shape every template below assumes. Our reading of published policy, not legal advice; [Reviews](../02-core-practice/reviews/index.md) has the full quotes.
 
 A reply is not for the reviewer, who has moved on. It is for the next person reading reviews while deciding whether to call — and that person can tell the difference between a sentence written about this business and a sentence that would fit under any review of any business.
 
@@ -360,7 +360,7 @@ The clauses quoted in this block come from Google's **prohibited and restricted 
 
 ## 6. Pre-publish check for a Google post
 
-Run before you spend anything. A rejected post is not explained — you get the state and nothing else. Full chapter: [Publishing without getting rejected](../02-core-practice/publishing-without-getting-rejected.md).
+Run before you spend anything. A rejected post is not explained — you get the state and nothing else. Full chapter: [Publishing without getting rejected](../02-core-practice/publishing-without-getting-rejected/index.md).
 
 - [ ] **No phone number in the text.** Google's post content policy: *"we do not allow your post content to include a phone number"*. This is the number one rejection cause and the most natural thing an owner writes. Use the **Call** button, which takes the verified number from the profile.
 - [ ] Post text under **1,500 characters**; event or offer title under **58**. Neither figure is in Google's current documentation; both are enforced, and both were established by sending a longer value and reading the error *(verified 2026-07-22)*.
@@ -380,15 +380,15 @@ Run before you spend anything. A rejected post is not explained — you get the 
 
 **An automated reply macro set.** Templates that can be sent unedited are templates that read like it, and the automation itself is a policy problem rather than a productivity gain. Everything above is written to be edited by the person whose name goes on it.
 
-**A directory submission list.** The list is the same for every business in every market, which should be the tell. The upgrade is a join you can only compute on your own business: the domains AI actually cited for your keywords, intersected with the listings verified to exist for you. Work the gap, not the list — [Citations and NAP consistency](../02-core-practice/citations-and-nap.md).
+**A directory submission list.** The list is the same for every business in every market, which should be the tell. The upgrade is a join you can only compute on your own business: the domains AI actually cited for your keywords, intersected with the listings verified to exist for you. Work the gap, not the list — [Citations and NAP consistency](../02-core-practice/citations-and-nap/index.md).
 
 **A ranking guarantee template.** There is no honest version.
 
-**Anything about AI-generated profile or post imagery.** Google's media policy asks for imagery you captured and excludes imagery created by other parties. It is a constraint, documented in [Photos, and what you cannot do with them](../02-core-practice/photos-and-the-visual-profile.md); it is not a technique.
+**Anything about AI-generated profile or post imagery.** Google's media policy asks for imagery you captured and excludes imagery created by other parties. It is a constraint, documented in [Photos, and what you cannot do with them](../02-core-practice/photos-and-the-visual-profile/index.md); it is not a technique.
 
 ---
 
-These lists are current as of **2026-07-27**. The policy quotes carry their own source dates because those move independently — the April 2026 review-solicitation additions invalidated a decade of standard agency advice with no announcement, and the next one will arrive the same way. [Staying current](../04-operating/staying-current.md) is how you find out before a client does.
+These lists are current as of **2026-07-27**. The policy quotes carry their own source dates because those move independently — the April 2026 review-solicitation additions invalidated a decade of standard agency advice with no announcement, and the next one will arrive the same way. [Staying current](../04-operating/staying-current/index.md) is how you find out before a client does.
 
 ---
 

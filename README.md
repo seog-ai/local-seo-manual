@@ -50,45 +50,45 @@ Labs are marked **free** (reads stored data) or **paid** (fetches new data from 
 
 ### Part I — Foundations
 How local search actually works, before you change anything.
-- [What local SEO actually is](docs/01-foundations/what-is-local-seo.md)
-- [Google is not ranking your website](docs/01-foundations/the-business-entity.md)
-- [The three forces: relevance, distance, prominence](docs/01-foundations/relevance-distance-prominence.md)
-- [Rank is a map, not a number](docs/01-foundations/rank-is-a-map-not-a-number.md)
-- [How an AI assistant answers a local question](docs/01-foundations/how-ai-answers-a-local-question.md)
-- [What people actually search, and how to model it](docs/01-foundations/what-people-actually-search.md)
+- [What local SEO actually is](docs/01-foundations/what-is-local-seo/index.md)
+- [Google is not ranking your website](docs/01-foundations/the-business-entity/index.md)
+- [The three forces: relevance, distance, prominence](docs/01-foundations/relevance-distance-prominence/index.md)
+- [Rank is a map, not a number](docs/01-foundations/rank-is-a-map-not-a-number/index.md)
+- [How an AI assistant answers a local question](docs/01-foundations/how-ai-answers-a-local-question/index.md)
+- [What people actually search, and how to model it](docs/01-foundations/what-people-actually-search/index.md)
 
 ### Part II — Core practice
 The working loop: measure, diagnose, fix, re-measure.
-- [Diagnosing a business in thirty minutes](docs/02-core-practice/analyzing-business-visibility.md)
-- [Building a tracked set that tells the truth](docs/02-core-practice/choosing-what-to-track.md)
-- [The profile is the product](docs/02-core-practice/the-profile-is-the-product.md)
-- [Photos, and what you cannot do with them](docs/02-core-practice/photos-and-the-visual-profile.md)
-- [Reviews: getting them, and answering them](docs/02-core-practice/reviews.md)
-- [Citations and NAP consistency](docs/02-core-practice/citations-and-nap.md)
-- [The website half: pages, schema and Search Console](docs/02-core-practice/the-website-half.md)
-- [Making the site readable by an AI agent](docs/02-core-practice/making-the-site-readable-by-agents.md)
-- [Publishing to a Google Business Profile without getting rejected](docs/02-core-practice/publishing-without-getting-rejected.md) ⭐
-- [Reading a competitor off their public data](docs/02-core-practice/competitors.md)
-- [Did it work? Closing the loop](docs/02-core-practice/did-it-work.md)
+- [Diagnosing a business in thirty minutes](docs/02-core-practice/analyzing-business-visibility/index.md)
+- [Building a tracked set that tells the truth](docs/02-core-practice/choosing-what-to-track/index.md)
+- [The profile is the product](docs/02-core-practice/the-profile-is-the-product/index.md)
+- [Photos, and what you cannot do with them](docs/02-core-practice/photos-and-the-visual-profile/index.md)
+- [Reviews: getting them, and answering them](docs/02-core-practice/reviews/index.md)
+- [Citations and NAP consistency](docs/02-core-practice/citations-and-nap/index.md)
+- [The website half: pages, schema and Search Console](docs/02-core-practice/the-website-half/index.md)
+- [Making the site readable by an AI agent](docs/02-core-practice/making-the-site-readable-by-agents/index.md)
+- [Publishing to a Google Business Profile without getting rejected](docs/02-core-practice/publishing-without-getting-rejected/index.md) ⭐
+- [Reading a competitor off their public data](docs/02-core-practice/competitors/index.md)
+- [Did it work? Closing the loop](docs/02-core-practice/did-it-work/index.md)
 
 ### Part III — Measurement you can defend
-- [Reading a geo-grid without fooling yourself](docs/03-advanced/reading-a-geo-grid.md) ⭐
-- [Why map-pack rank tracking cannot work for service-area businesses](docs/03-advanced/service-area-businesses.md) ⭐
-- [Does the AI recommend this business? A measurement method](docs/03-advanced/ai-visibility.md) ⭐
-- [Changing the answer: what actually moves AI visibility](docs/03-advanced/changing-the-ai-answer.md)
-- [Why two tools disagree, and which one is wrong](docs/03-advanced/why-two-tools-disagree.md)
-- [Spam, fake listings and the competitive underworld](docs/03-advanced/spam-and-fake-listings.md)
-- [Suspensions, restrictions and getting back](docs/03-advanced/suspensions-and-reinstatement.md)
-- [Multi-location, franchise and scale](docs/03-advanced/multi-location-and-franchise.md)
+- [Reading a geo-grid without fooling yourself](docs/03-advanced/reading-a-geo-grid/index.md) ⭐
+- [Why map-pack rank tracking cannot work for service-area businesses](docs/03-advanced/service-area-businesses/index.md) ⭐
+- [Does the AI recommend this business? A measurement method](docs/03-advanced/ai-visibility/index.md) ⭐
+- [Changing the answer: what actually moves AI visibility](docs/03-advanced/changing-the-ai-answer/index.md)
+- [Why two tools disagree, and which one is wrong](docs/03-advanced/why-two-tools-disagree/index.md)
+- [Spam, fake listings and the competitive underworld](docs/03-advanced/spam-and-fake-listings/index.md)
+- [Suspensions, restrictions and getting back](docs/03-advanced/suspensions-and-reinstatement/index.md)
+- [Multi-location, franchise and scale](docs/03-advanced/multi-location-and-franchise/index.md)
 
 ### Part IV — Operating
 Turning the skill into work someone pays for.
-- [Reporting to someone who is paying for it](docs/04-operating/reporting-to-a-client.md)
-- [The first ninety days](docs/04-operating/the-ninety-day-plan.md)
-- [Running local SEO with an AI agent](docs/04-operating/running-local-seo-with-an-ai-agent.md) ⭐
-- [What you inherit the moment you connect a client's profile](docs/04-operating/what-you-inherit-with-a-client.md)
-- [What the work costs, and what the market charges](docs/04-operating/what-the-work-costs.md)
-- [Staying current when the ground moves](docs/04-operating/staying-current.md)
+- [Reporting to someone who is paying for it](docs/04-operating/reporting-to-a-client/index.md)
+- [The first ninety days](docs/04-operating/the-ninety-day-plan/index.md)
+- [Running local SEO with an AI agent](docs/04-operating/running-local-seo-with-an-ai-agent/index.md) ⭐
+- [What you inherit the moment you connect a client's profile](docs/04-operating/what-you-inherit-with-a-client/index.md)
+- [What the work costs, and what the market charges](docs/04-operating/what-the-work-costs/index.md)
+- [Staying current when the ground moves](docs/04-operating/staying-current/index.md)
 
 ### Part V — The field reference
 One fact per heading, each with a verdict, the date it was last verified, and the probe that established it.

@@ -1,0 +1,9 @@
+{
+  "label": "Making the site readable by an AI agent",
+  "position": 8,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "index"
+  }
+}

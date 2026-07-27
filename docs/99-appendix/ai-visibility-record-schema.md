@@ -312,4 +312,4 @@ Add fields; never repurpose one. `schemaVersion` exists so a reader can tell an 
 
 ---
 
-**Pairs with:** [The AI visibility method](../03-advanced/ai-visibility.md) · [AI engine probe recipes](../05-reference/ai-engine-probe-recipes.md) · [How an AI assistant answers a local question](../01-foundations/how-ai-answers-a-local-question.md) · [The local prompt corpus](./the-local-prompt-corpus.md) · [Glossary](./glossary.md)
+**Pairs with:** [The AI visibility method](../03-advanced/ai-visibility/index.md) · [AI engine probe recipes](../05-reference/ai-engine-probe-recipes.md) · [How an AI assistant answers a local question](../01-foundations/how-ai-answers-a-local-question/index.md) · [The local prompt corpus](./the-local-prompt-corpus.md) · [Glossary](./glossary.md)

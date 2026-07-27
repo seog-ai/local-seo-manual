@@ -520,4 +520,4 @@ Reading an old probe costs nothing; that asymmetry should shape how often you re
 
 ---
 
-**Pairs with:** [AI visibility record schema](../99-appendix/ai-visibility-record-schema.md) · [How AI answers a local question](../01-foundations/how-ai-answers-a-local-question.md) · [The AI visibility method](../03-advanced/ai-visibility.md) · [Changing the AI answer](../03-advanced/changing-the-ai-answer.md) · [The local prompt corpus](../99-appendix/the-local-prompt-corpus.md)
+**Pairs with:** [AI visibility record schema](../99-appendix/ai-visibility-record-schema.md) · [How AI answers a local question](../01-foundations/how-ai-answers-a-local-question/index.md) · [The AI visibility method](../03-advanced/ai-visibility/index.md) · [Changing the AI answer](../03-advanced/changing-the-ai-answer/index.md) · [The local prompt corpus](../99-appendix/the-local-prompt-corpus.md)

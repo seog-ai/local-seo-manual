@@ -57,7 +57,7 @@ The enum holds twelve values, read in full on 2026-07-27: four impression metric
 
 We know of no Google API that serves the history of those four either, and we have looked *(inference — an absence across the surfaces we have probed, not a statement Google makes)*.
 
-**Consequence:** a "rating over time" or "rank over time" chart is a series of snapshots somebody chose to take, with all the properties that implies — it starts when tracking started, it has a point only where a capture happened, and a gap is missing data rather than a flat line. Ask any vendor which API returned the history; for these four, the honest answer is none. Rendering method matters more than the chart: see [Did it work?](../02-core-practice/did-it-work.md) and [Reporting to a client](../04-operating/reporting-to-a-client.md).
+**Consequence:** a "rating over time" or "rank over time" chart is a series of snapshots somebody chose to take, with all the properties that implies — it starts when tracking started, it has a point only where a capture happened, and a gap is missing data rather than a flat line. Ask any vendor which API returned the history; for these four, the honest answer is none. Rendering method matters more than the chart: see [Did it work?](../02-core-practice/did-it-work/index.md) and [Reporting to a client](../04-operating/reporting-to-a-client/index.md).
 
 ### LSM-MEASURE-04 · The 18-month range cap is documented only on the deprecated v4 request object
 
@@ -208,7 +208,7 @@ Google publishes no percentage, and neither do we. The share is not knowable fro
 
 Where a query returns two of your pages, the better position is reported and the worse one is invisible. Positions are then averaged across impressions, so high-volume queries dominate the figure and a mean position of 8.4 may describe no query you actually hold.
 
-**Consequence:** a Search Console average position is a property-level summary of organic web results. It is not a rank you held, it is not per-page unless you dimension by page, and it is not comparable to a map-pack position — those are different result sets measured differently, which is the whole subject of [Rank is a map, not a number](../01-foundations/rank-is-a-map-not-a-number.md) and [Why two tools disagree](../03-advanced/why-two-tools-disagree.md).
+**Consequence:** a Search Console average position is a property-level summary of organic web results. It is not a rank you held, it is not per-page unless you dimension by page, and it is not comparable to a map-pack position — those are different result sets measured differently, which is the whole subject of [Rank is a map, not a number](../01-foundations/rank-is-a-map-not-a-number/index.md) and [Why two tools disagree](../03-advanced/why-two-tools-disagree/index.md).
 
 ### LSM-MEASURE-16 · A window CTR is not the average of daily CTRs
 
@@ -237,7 +237,7 @@ In our runs the `reviews` array came back with at most five entries regardless o
 
 **Correction, 2026-07-27:** this entry previously asserted that Google's documentation "states neither a maximum count nor the rule by which those entries are selected", and dated that page to 2026-07-20. Both claims were wrong. The `Place.reviews` field documents the maximum (5) and names the selection rule ("sorted by relevance"), and we could not confirm the 2026-07-20 date on re-reading. What remains genuinely undocumented is what *relevance* means here — Google defines the ordering by name only, so the sample is small, capped, and selected by an undisclosed rule rather than by an undisclosed count.
 
-**Consequence:** every ratio computed over that array has a denominator of at most five, and those five are a relevance-ranked selection rather than a random or recent sample — so the array is not a valid basis for any estimate about the population. A "response rate" of 40% may mean two replies on the five reviews visible, on a business with 300 reviews — a number that is arithmetically correct and completely uninformative. Any reply-rate, sentiment or recency figure needs the owner-side review API to mean anything; which access path can see what is tabulated in [the GBP capability matrix](./gbp-capability-matrix.md), and the same trap in diagnostic form is in [Diagnosing a business in thirty minutes](../02-core-practice/analyzing-business-visibility.md).
+**Consequence:** every ratio computed over that array has a denominator of at most five, and those five are a relevance-ranked selection rather than a random or recent sample — so the array is not a valid basis for any estimate about the population. A "response rate" of 40% may mean two replies on the five reviews visible, on a business with 300 reviews — a number that is arithmetically correct and completely uninformative. Any reply-rate, sentiment or recency figure needs the owner-side review API to mean anything; which access path can see what is tabulated in [the GBP capability matrix](./gbp-capability-matrix.md), and the same trap in diagnostic form is in [Diagnosing a business in thirty minutes](../02-core-practice/analyzing-business-visibility/index.md).
 
 ### LSM-MEASURE-18 · Rating-only reviews count toward the total and carry no text
 

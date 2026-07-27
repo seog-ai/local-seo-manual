@@ -14,7 +14,7 @@ This page is the reference for that rule: what spends on every screen, what neve
 
 **No prices appear here.** Labs are marked **free** or **paid**, never with a number. Prices change, tools change, and a manual that hard-codes a figure lies to you six months later. What matters — and what does not change — is *which class of action* a click belongs to.
 
-**This is about the labs, not about the work.** What Google charges for the data underneath any local SEO tool is published to the cent and is in [What the Places API will and will not give you](../05-reference/what-places-returns.md). What a client engagement costs to deliver, in data and in hours, is in [What the work costs](../04-operating/what-the-work-costs.md).
+**This is about the labs, not about the work.** What Google charges for the data underneath any local SEO tool is published to the cent and is in [What the Places API will and will not give you](../05-reference/what-places-returns.md). What a client engagement costs to deliver, in data and in hours, is in [What the work costs](../04-operating/what-the-work-costs/index.md).
 
 Those are the two pages to read before quoting anybody. This one is about working through the curriculum without wasting money.
 
@@ -84,7 +84,7 @@ Three entries in that table surprise people:
 
 **Undo is paid, and it expires.** Undoing a profile fix replays a write against Google, so it costs what the write cost. It also depends on the stored copy of the field's previous value, which is Google content and ages out on the retention window described above — so undo is a short-term safety net, not an archive.
 
-The durable undo is the one you write down yourself before you edit (step 1 of [the five-step safe edit](./checklists-and-templates.md)). Practise it once on something you do not mind changing ([Lab 9.3](../02-core-practice/the-profile-is-the-product.md)) rather than discovering the mechanics during a real mistake.
+The durable undo is the one you write down yourself before you edit (step 1 of [the five-step safe edit](./checklists-and-templates.md)). Practise it once on something you do not mind changing ([Lab 9.3](../02-core-practice/the-profile-is-the-product/index.md)) rather than discovering the mechanics during a real mistake.
 
 **Deleting is paid.** Removing a photo or a post is a write to Google like publishing one. There is no cheap way out of a bad publish.
 
@@ -114,7 +114,7 @@ Almost all cost variance between two people working the same curriculum comes fr
 
 ### 1. Grid detail
 
-A geo-grid is one live search per grid point ([Rank is a map, not a number](../01-foundations/rank-is-a-map-not-a-number.md)). Three presets, fixed one-mile spacing:
+A geo-grid is one live search per grid point ([Rank is a map, not a number](../01-foundations/rank-is-a-map-not-a-number/index.md)). Three presets, fixed one-mile spacing:
 
 | Preset | Grid | Live searches | Area reached |
 | --- | --- | --- | --- |
@@ -124,7 +124,7 @@ A geo-grid is one live search per grid point ([Rank is a map, not a number](../0
 
 Detailed costs about five times Quick and is priced as exactly what it is. It is not five times more true — it is a wider net at the same resolution.
 
-**Pick by the question.** A shop whose customers walk in from three streets away learns nothing from a six-mile square, and a service-area business covering two counties learns nothing from a two-mile one. [Reading a geo-grid](../03-advanced/reading-a-geo-grid.md) is the chapter that makes that choice properly.
+**Pick by the question.** A shop whose customers walk in from three streets away learns nothing from a six-mile square, and a service-area business covering two counties learns nothing from a two-mile one. [Reading a geo-grid](../03-advanced/reading-a-geo-grid/index.md) is the chapter that makes that choice properly.
 
 ### 2. Matrix breadth on AI visibility
 
@@ -132,7 +132,7 @@ An AI answer check is one keyword against one engine. Three engines sit on that 
 
 **An engine marked Not connected** produces a clearly-labelled sample row instead — free, and it must never count toward a rate.
 
-**The trap is that AI visibility is a rate, not an answer** — one run is a sample ([Does the AI recommend this business?](../03-advanced/ai-visibility.md)). So the real unit is prompts × engines × repeats.
+**The trap is that AI visibility is a rate, not an answer** — one run is a sample ([Does the AI recommend this business?](../03-advanced/ai-visibility/index.md)). So the real unit is prompts × engines × repeats.
 
 Ten prompts across three engines run weekly is thirty times the spend of three prompts on one engine run monthly, for a picture whose error bar you should be computing either way. Decide the matrix deliberately: a small set run enough times beats a large set run once, every time.
 
@@ -140,12 +140,12 @@ Ten prompts across three engines run weekly is thirty times the spend of three p
 
 Two lists set the price of every "refresh everything" button you press afterwards.
 
-- **Tracked keywords.** Refreshing rankings runs one live check per active keyword. A set built by adding every phrase anybody suggested makes each refresh permanently more expensive, and buys you near-duplicate rows that move together and tell you one thing. [Choosing what to track](../02-core-practice/choosing-what-to-track.md) is a cost chapter as much as a method one.
+- **Tracked keywords.** Refreshing rankings runs one live check per active keyword. A set built by adding every phrase anybody suggested makes each refresh permanently more expensive, and buys you near-duplicate rows that move together and tell you one thing. [Choosing what to track](../02-core-practice/choosing-what-to-track/index.md) is a cost chapter as much as a method one.
 - **Tracked competitors.** Refreshing competitors reads one record per tracked rival. Both lists carry a per-business cap, and the counters in the app show how many slots you have used — treat the cap as a budget rather than a target.
 
 ### 4. Cadence
 
-The cheapest lever and the one nobody pulls. Map-pack positions drift over weeks. Scanning daily costs seven times what scanning weekly costs and mostly measures your own noise floor, which is exactly what [Lab 18.2](../03-advanced/reading-a-geo-grid.md) exists to quantify. Set the cadence from how fast the thing actually moves, write down the justification, and re-read it when you feel the urge to check.
+The cheapest lever and the one nobody pulls. Map-pack positions drift over weeks. Scanning daily costs seven times what scanning weekly costs and mostly measures your own noise floor, which is exactly what [Lab 18.2](../03-advanced/reading-a-geo-grid/index.md) exists to quantify. Set the cadence from how fast the thing actually moves, write down the justification, and re-read it when you feel the urge to check.
 
 ### They multiply
 
@@ -213,13 +213,13 @@ Download the PDF into your own storage immediately; that copy, and not the one i
 
 Three ordering rules fall out of that table.
 
-**Do the free lab in a pair first.** [Lab 7.1](../02-core-practice/analyzing-business-visibility.md) reads the audit for nothing; Lab 7.2 refreshes it. Doing 7.2 first buys a fetch to answer a question 7.1 would have answered.
+**Do the free lab in a pair first.** [Lab 7.1](../02-core-practice/analyzing-business-visibility/index.md) reads the audit for nothing; Lab 7.2 refreshes it. Doing 7.2 first buys a fetch to answer a question 7.1 would have answered.
 
 **Do the reading labs before re-fetching.** Labs 4.2, 4.3 and 18.1 all read the *same* stored scan. Run them in one sitting and one scan covers three labs.
 
-**Two labs deserve a warning.** [Lab 18.2](../03-advanced/reading-a-geo-grid.md) runs two grid scans deliberately and is charged twice — use the **Quick** preset, run it once, and keep the result, because a noise floor stays valid for months.
+**Two labs deserve a warning.** [Lab 18.2](../03-advanced/reading-a-geo-grid/index.md) runs two grid scans deliberately and is charged twice — use the **Quick** preset, run it once, and keep the result, because a noise floor stays valid for months.
 
-[Lab 22.1](../03-advanced/why-two-tools-disagree.md) adds two keyword rows to make an instrument disagree with itself; check your remaining slots before starting so you are not forced to delete a row with history.
+[Lab 22.1](../03-advanced/why-two-tools-disagree/index.md) adds two keyword rows to make an instrument disagree with itself; check your remaining slots before starting so you are not forced to delete a row with history.
 
 **If you are on the observe-only path** — working on a business you do not manage — skip the write labs in chapters 9, 10, 11 and 15 entirely.
 
@@ -239,7 +239,7 @@ Four, in descending order of how much they cost.
 
 Worth knowing what each composite covers: **Refresh all** on the overview re-pulls profile fields and reviews (and owner performance on a connected profile) — it does **not** re-check keyword positions, re-run a grid, or re-fetch competitors. The whole-page **Check now** on Website is the site audit *and* Search Console together.
 
-**Daily anything.** Nothing in local search moves fast enough to justify it, and daily sampling makes normal drift look like results, which is worse than expensive — it is misleading ([Did it work?](../02-core-practice/did-it-work.md)).
+**Daily anything.** Nothing in local search moves fast enough to justify it, and daily sampling makes normal drift look like results, which is worse than expensive — it is misleading ([Did it work?](../02-core-practice/did-it-work/index.md)).
 
 ---
 
@@ -249,7 +249,7 @@ Worth knowing what each composite covers: **Refresh all** on the overview re-pul
 
 **What Google charges.** Published to the cent, and the more useful number for anyone building or buying: [What the Places API will and will not give you](../05-reference/what-places-returns.md).
 
-**What an engagement costs to deliver.** Data is a small fraction of it; labour is the business. [What the work costs](../04-operating/what-the-work-costs.md).
+**What an engagement costs to deliver.** Data is a small fraction of it; labour is the business. [What the work costs](../04-operating/what-the-work-costs/index.md).
 
 **Whether you may keep the data you paid for.** A separate question from what it cost, governed by terms rather than by price, and it changes the economics more than any rate does: [Storing Google data legally](../05-reference/storing-google-data-legally.md).
 
