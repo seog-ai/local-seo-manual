@@ -68,4 +68,4 @@ The fix is one switch — ask for all data rather than final; the parameter is n
 
 ---
 
-**Next:** [Labs: audit the site, ship schema and reconcile Search Console →](./site-audit-labs.md)
+**Next:** [Labs: audit the site, ship schema, reconcile Search Console →](./site-audit-labs.md)

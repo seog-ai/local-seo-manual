@@ -75,4 +75,4 @@ It also weights *staleness* alongside *health*, so a location you have not refre
 
 ---
 
-**Next:** [Labs: the triage ordering, branch overlap, and your own branch as a competitor →](./multi-location-labs.md)
+**Next:** [Labs: triage ordering, branch overlap, and self-competition →](./multi-location-labs.md)

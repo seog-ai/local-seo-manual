@@ -1,10 +1,10 @@
 ---
-title: Publishing to a Google Business Profile without getting rejected
+title: Posting to a Google Business Profile without rejection
 sidebar_position: 1
 description: Google post types, the undocumented character caps, the media and button rules, native scheduling, and the complete rejection checklist.
 ---
 
-# Publishing to a Google Business Profile without getting rejected
+# Posting to a Google Business Profile without rejection
 
 A post is the only part of a Google Business Profile you write fresh, whenever you like, in your own words. Everything else is either a structured field you fill in once or content other people wrote about you.
 

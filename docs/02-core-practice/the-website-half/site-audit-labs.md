@@ -1,10 +1,10 @@
 ---
-title: 'Labs: audit the site, ship schema and reconcile Search Console'
+title: 'Labs: audit the site, ship schema, reconcile Search Console'
 sidebar_position: 3
 description: Three labs that run the website audit, publish LocalBusiness JSON-LD, and reconcile Search Console totals against Google's own interface.
 ---
 
-# Labs: audit the site, ship schema and reconcile Search Console
+# Labs: audit the site, ship schema, reconcile Search Console
 
 Three labs, in the order the layers run: audit the site, ship the markup, then reconcile the numbers.
 

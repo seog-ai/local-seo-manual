@@ -1,10 +1,10 @@
 ---
-title: Why map-pack rank tracking cannot work for service-area businesses
+title: Why rank tracking cannot work for service-area businesses
 sidebar_position: 1
 description: A hidden-address business has no public coordinate, so a rank map cannot be measured for it — in this tool or any other. What to measure instead.
 ---
 
-# Why map-pack rank tracking cannot work for service-area businesses
+# Why rank tracking cannot work for service-area businesses
 
 > **This chapter indicts the tool it is written in.** On a hidden-address business, SEOG will let you run a geo-grid scan, return an all-grey map, and then advise growing reviews — advice that cannot help, because the absence is structural rather than competitive. At the time of writing the product does not say so on screen.
 >

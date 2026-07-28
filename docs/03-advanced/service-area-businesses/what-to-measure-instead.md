@@ -102,4 +102,4 @@ What that costs in practice is the part to be careful about: the profile comes o
 
 ---
 
-**Next:** [Labs: classify the business and build a scoreboard without rank →](./service-area-labs.md)
+**Next:** [Labs: classify the business, build a rank-free scoreboard →](./service-area-labs.md)

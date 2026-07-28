@@ -1,10 +1,10 @@
 ---
-title: "Labs: score a grid, measure your noise floor, set the effect size"
+title: "Labs: score a grid, measure noise, set the effect size"
 sidebar_position: 3
 description: Three labs — score one scan four ways, measure how far two identical scans differ, and fix your effect size before you look at the result.
 ---
 
-# Labs: score a grid, measure your noise floor, set the effect size
+# Labs: score a grid, measure noise, set the effect size
 
 The three labs below turn the preceding argument into numbers you own: one stored scan scored four ways, your own noise floor, and your own effect size written down before the evidence exists.
 
@@ -93,4 +93,4 @@ Answer against your own scan, with your Lab 18.1 counts in front of you.
 
 ---
 
-**Next:** [Why map-pack rank tracking cannot work for service-area businesses →](../service-area-businesses/index.md)
+**Next:** [Why rank tracking cannot work for service-area businesses →](../service-area-businesses/index.md)

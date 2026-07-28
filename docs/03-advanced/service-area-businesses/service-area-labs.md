@@ -1,10 +1,10 @@
 ---
-title: "Labs: classify the business and build a scoreboard without rank"
+title: "Labs: classify the business, build a rank-free scoreboard"
 sidebar_position: 3
 description: Three labs — classify a business by what Google publishes, buy the all-grey grid proof once, and build a dated baseline with no position in it.
 ---
 
-# Labs: classify the business and build a scoreboard without rank
+# Labs: classify the business, build a rank-free scoreboard
 
 The three labs below run the argument on a real account: classify the business by what Google shows, buy the all-grey proof once, then build the scoreboard that replaces rank.
 

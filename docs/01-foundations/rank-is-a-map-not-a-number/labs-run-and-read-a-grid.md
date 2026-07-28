@@ -30,7 +30,7 @@ One paid scan, then two free readings of it: the arithmetic of what a preset buy
 **What good looks like.** Nine pins, the centre usually your best result. You now have nine measurements where you had one — and can see that the one you had was the friendliest of the nine.
 
 **If it went wrong.**
-- *Every pin is grey.* Three realistic causes: you genuinely do not reach the top twenty anywhere yet; the keyword is too broad for a 2-mile grid; or the business has a hidden address, in which case grid tracking cannot work at all — see [Why map-pack rank tracking cannot work for service-area businesses](../../03-advanced/service-area-businesses/index.md).
+- *Every pin is grey.* Three realistic causes: you genuinely do not reach the top twenty anywhere yet; the keyword is too broad for a 2-mile grid; or the business has a hidden address, in which case grid tracking cannot work at all — see [Why rank tracking cannot work for service-area businesses](../../03-advanced/service-area-businesses/index.md).
 - *No map renders.* The business has no stored coordinates. Check the address on the business record.
 - *The pins still look like the example.* Confirm a **Checked …** timestamp appeared next to the button.
 

@@ -106,4 +106,4 @@ The mirror image of this chapter — pointing an agent at a live business listin
 
 ---
 
-**Next:** [Publishing to a Google Business Profile without getting rejected →](../publishing-without-getting-rejected/index.md)
+**Next:** [Posting to a Google Business Profile without rejection →](../publishing-without-getting-rejected/index.md)

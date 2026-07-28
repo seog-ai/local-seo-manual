@@ -24,7 +24,7 @@ Four conditions. If any is false, no amount of optimisation compensates.
 - **The profile is not suspended, and its status is not "temporarily closed".** A closed status is close to invisibility, and it is the single most under-weighted failure in most audits — [suspensions and reinstatement](../03-advanced/suspensions-and-reinstatement/index.md).
 - **The primary category is right.** A wrong primary category is not a small loss of relevance; you are not a candidate for the query at all. [The profile is the product](../02-core-practice/the-profile-is-the-product/index.md).
 
-One category of business fails a requirement it cannot fix: a **pure service-area business**, which hides its address, has no public coordinate. Map-pack rank tracking is structurally impossible for it — in any tool. [Why map-pack rank tracking cannot work for service-area businesses](../03-advanced/service-area-businesses/index.md).
+One category of business fails a requirement it cannot fix: a **pure service-area business**, which hides its address, has no public coordinate. Map-pack rank tracking is structurally impossible for it — in any tool. [Why rank tracking cannot work for service-area businesses](../03-advanced/service-area-businesses/index.md).
 
 ## Policies
 

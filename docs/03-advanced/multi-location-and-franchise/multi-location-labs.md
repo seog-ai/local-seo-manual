@@ -1,10 +1,10 @@
 ---
-title: "Labs: the triage ordering, branch overlap, and your own branch as a competitor"
+title: "Labs: triage ordering, branch overlap, and self-competition"
 sidebar_position: 3
 description: Three labs — reproduce the triage ordering by hand, measure the overlap between two branches with a geo-grid, and act when one turns up as a competitor.
 ---
 
-# Labs: the triage ordering, branch overlap, and your own branch as a competitor
+# Labs: triage ordering, branch overlap, and self-competition
 
 Three sittings against a real portfolio: rebuild the ordering the board gave you, measure where two of your branches claim the same ground, and decide deliberately what to do when one of them appears in the other's competitor list.
 

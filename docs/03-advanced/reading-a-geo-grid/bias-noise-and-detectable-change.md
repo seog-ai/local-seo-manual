@@ -91,4 +91,4 @@ A Detailed scan is therefore a same-density reading of roughly nine times the gr
 
 ---
 
-**Next:** [Labs: score a grid, measure your noise floor, set the effect size →](./grid-audit-labs.md)
+**Next:** [Labs: score a grid, measure noise, set the effect size →](./grid-audit-labs.md)
