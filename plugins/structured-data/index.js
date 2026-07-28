@@ -127,6 +127,39 @@ function headTagsFor({ canonical, title, description }) {
   ].join('');
 }
 
+/**
+ * Google renders roughly 60 characters of title. " | The Local SEO Manual" is
+ * 23 of them, which pushed 47 of 117 pages into truncation while only 6 chapter
+ * titles are too long on their own.
+ *
+ * So the suffix is kept when it fits and dropped when it would cost words the
+ * reader needs — the brand still travels in og:site_name and in the domain. The
+ * rule is applied to the raw HTML rather than to `titleDelimiter` because
+ * Docusaurus has no per-page switch for it.
+ */
+const TITLE_BUDGET = 60;
+
+function trimTitleSuffix(html, siteTitle) {
+  const suffix = ` | ${siteTitle}`;
+  const titleTag = html.match(/<title[^>]*>([\s\S]*?)<\/title>/);
+  if (!titleTag) return html;
+
+  const full = titleTag[1];
+  if (!full.endsWith(suffix)) return html; // homepage: site title alone
+  // Entities cost one character in a SERP, not six.
+  if (decode(full).length <= TITLE_BUDGET) return html;
+
+  const bare = full.slice(0, -suffix.length);
+  return html
+    .replace(titleTag[0], titleTag[0].replace(full, bare))
+    .replace(
+      new RegExp(`(<meta[^>]*property="og:title"[^>]*content=")${escapeRe(full)}(")`),
+      `$1${bare}$2`,
+    );
+}
+
+const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
 async function* htmlFiles(dir) {
   for (const entry of await fs.readdir(dir, { withFileTypes: true })) {
     const full = path.join(dir, entry.name);
@@ -144,6 +177,7 @@ module.exports = function structuredDataPlugin(context) {
     async postBuild({ outDir }) {
       let articles = 0;
       let noindexed = 0;
+      let trimmed = 0;
 
       for await (const file of htmlFiles(outDir)) {
         const html = await fs.readFile(file, 'utf8');
@@ -166,15 +200,16 @@ module.exports = function structuredDataPlugin(context) {
           continue;
         }
 
-        await fs.writeFile(
-          file,
-          html.replace('</head>', `${headTagsFor(head)}</head>`),
-        );
+        const withTags = html.replace('</head>', `${headTagsFor(head)}</head>`);
+        const final = trimTitleSuffix(withTags, siteTitle);
+        if (final !== withTags) trimmed += 1;
+        await fs.writeFile(file, final);
         articles += 1;
       }
 
       console.log(
-        `[seog-structured-data] og:type + JSON-LD on ${articles} pages, noindex on ${noindexed}`,
+        `[seog-structured-data] og:type + JSON-LD on ${articles} pages, ` +
+          `title suffix dropped on ${trimmed}, noindex on ${noindexed}`,
       );
     },
   };
