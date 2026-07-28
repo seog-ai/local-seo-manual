@@ -51,6 +51,15 @@ No dashboard I know of prints it beside the mention rate, this one included; rea
 
 **Recommendation rate** — you are among the businesses put forward, over only the answers that **recommended specific businesses at all**. Refusals, generic advice and aggregator punts leave this denominator, because the question is different: "when this engine names names, does it name mine?"
 
+```mermaid
+flowchart TD
+  A["One live answer"] --> B{"Did it put forward<br/>specific businesses at all?"}
+  B -->|"No — refusal, generic advice,<br/>'check Yelp'"| N["Stays in the mention and citation<br/>denominators, counting against you.<br/>LEAVES the recommendation denominator"]
+  B -->|"Yes"| Y["In all three denominators"]
+```
+
+*One answer, three rates, and the refusals are what separate them. An engine that declined to name anyone did not name you — so it counts against your mention rate — but asking "when it names names, does it name mine?" is a different question, and that answer never belonged in its denominator.*
+
 > **If a tool reports one number called "AI visibility", ask which denominator it used.** If it cannot say, it is a single-axis string match wearing a suit.
 
 Stance survives no string match at all, so it is read by a person or a classifier model — in the app, the **Framing** row on **How AI recommends you**. Mechanism: [AI engine probe recipes](../../05-reference/ai-engine-probe-recipes.md).

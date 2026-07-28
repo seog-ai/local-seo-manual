@@ -28,6 +28,17 @@ Sites with good schema do tend to appear in AI answers, but those sites also ten
 
 Drop them from the denominator: points earned over points *verifiable*, so a JavaScript-rendered site with sound fundamentals is not scored 30 for being modern. A tool that counts "could not verify" as a failure is reporting its own blind spot as your problem. Watch for it in every audit tool you use, including this one.
 
+```mermaid
+flowchart TD
+  A["One check"] --> B{"Could the tool<br/>observe the answer?"}
+  B -->|"No — content rendered<br/>after the fetch"| D["Out of the denominator.<br/>Reported as unverifiable"]
+  B -->|"Yes"| C{"Did it pass?"}
+  C -->|"Yes"| P["Point earned"]
+  C -->|"No"| F["Point lost — a finding<br/>you can act on"]
+```
+
+*Three outcomes, not two. Collapsing the left branch into the right is the single most common way an audit tool produces a number that says more about the crawler than about the site.*
+
 **There is no lab measurement for INP.** Of the three Core Web Vitals, Interaction to Next Paint can only come from real visitors — Chrome's field data, reported by PageSpeed Insights as the 75th percentile over the preceding 28 days.
 
 A lab test simulates a page load; it cannot simulate a human clicking things, and INP needs many interactions before it means anything.

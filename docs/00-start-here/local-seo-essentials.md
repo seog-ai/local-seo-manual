@@ -15,6 +15,16 @@ Meeting the requirements does not guarantee you appear in the map pack — no on
 
 This page is the short version. Every line links to the chapter that explains it.
 
+```mermaid
+flowchart TD
+  R{"All four requirements true?"} -->|"No"| X["Not eligible.<br/>No amount of practice compensates"]
+  R -->|"Yes"| P{"Policies held?"}
+  P -->|"No"| S["The listing itself is at risk —<br/>not a few positions"]
+  P -->|"Yes"| W["Practices move visibility,<br/>heaviest first"]
+```
+
+*The order is the argument. Work spent on practices while a requirement is false buys nothing, and a policy breach does not cost you positions — it costs you the listing that the positions were on.*
+
 ## Requirements
 
 Four conditions. If any is false, no amount of optimisation compensates.

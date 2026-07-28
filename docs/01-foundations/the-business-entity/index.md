@@ -40,6 +40,10 @@ Five things feed that record, in two different ways:
 
 All of it resolves into one record — name, place, category, hours, reputation — and that record is what the map pack, Maps and the AI answers are reading.
 
+![A central rectangle with five shapes around it: three joined by thin plain lines, two joined by heavy arrows pointing into the rectangle](../../../static/img/art/entity-record.png)
+
+*The ranked object and its five inputs. The two heavy arrows are direct edits — yours and Google's own corrections — and they are the only ones that write to the record. The three thin lines are evidence: your website, your citations, and what customers leave behind. Evidence is read; edits are applied. Almost every wasted month in local SEO is spent pushing harder on a thin line.*
+
 This is why a beautifully built site can sit invisible in the map pack while a competitor with a one-page template outranks it everywhere. They are not competing on the axis you optimised.
 
 ## The fields of the entity

@@ -37,6 +37,10 @@ Read the first row again: barely more than half ranked first *at their own front
 
 That pulls the tail toward the centre, so the curve is biased optimistic exactly where decay is steepest. The real drop-off past the first mile is worse than λ ≈ 2.3 says, by an unknown amount.
 
+![A curve falling steeply then flattening into a horizontal line, with a dotted line branching from the flattening point and continuing to fall](../../../static/img/art/decay-censored-tail.png)
+
+*The shape of a censored measurement. The solid line is what a top-20 tracker can see: rank falls with distance until every business past the ceiling is recorded at the same value, and the curve goes flat because the instrument stopped, not because the decay did. The dotted branch is where those businesses actually are. Every fitted constant in the table above was fitted to the solid line.*
+
 **The other limits are ordinary but disqualifying** if you quote the study as a law:
 
 - One keyword ("car accident lawyer"), one vertical.

@@ -35,6 +35,19 @@ The practical constraints that go with the policy:
 - **At least 250 × 250 px; 720 × 720 recommended.** Those are Google's published numbers, and note that they are *square* — Google publishes no aspect-ratio requirement at all, so anyone quoting you a mandatory 4:3 is quoting something else. Shoot landscape anyway *(inference — thumbnails are centre-cropped on the surfaces we have compared, so a portrait shot loses its subject)*.
 - **Photos are reviewed like any other edit.** Usually minutes. Sometimes longer. "I uploaded it and nothing changed" is normally this.
 
+Provenance and file constraints are two separate gates, and an image has to clear both:
+
+```mermaid
+flowchart TD
+  A["An image you want to upload"] --> B{"Did you capture it,<br/>with a camera, at this place?"}
+  B -->|"No"| X["Out — stock, collages, screenshots,<br/>other parties' imagery, model output"]
+  B -->|"Yes"| C{"JPG or PNG,<br/>10 KB to 5 MB,<br/>at least 250 × 250?"}
+  C -->|"No"| F["Convert or reshoot —<br/>refused at both ends of the size range"]
+  C -->|"Yes"| U["Upload, then wait for review<br/>like any other edit"]
+```
+
+*The left branch is about where the file came from, not how good it is — which is why a phone snapshot passes where a beautiful photograph you did not take does not.*
+
 The same policy governs images attached to posts, with tighter rules again — see [Publishing without getting rejected](../publishing-without-getting-rejected/index.md).
 
 ## What to shoot

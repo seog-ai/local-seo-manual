@@ -36,6 +36,19 @@ So: **only signals that go out to Google and look for the listing detect a suspe
 
 What follows is our reading of a process Google documents thinly and changes without notice. Not legal advice, and the entry points move. *(Last reviewed 2026-07-27.)*
 
+```mermaid
+flowchart TD
+  A["Listing gone"] --> B["Stop editing —<br/>every write is noise now"]
+  B --> C{"Which state?"}
+  C -->|"Soft — listing unverified"| V["Re-verify.<br/>An appeal here wastes the clock"]
+  C -->|"Hard — listing removed"| D{"Have you found<br/>the violation?"}
+  D -->|"No"| E["Keep looking.<br/>Appealing now spends your best shot"]
+  D -->|"Yes"| F["Fix it, assemble the pack,<br/>file ONE appeal from the owning account"]
+  F --> G["Wait. Re-file only<br/>with new evidence"]
+```
+
+*Two branches decide everything, and both are commonly skipped: which suspension you are in, and whether the thing that caused it is fixed before anyone at Google looks again.*
+
 **1. Stop editing.** Every further edit is noise in the record, spends the write budget, and can extend a pending state.
 
 **2. Establish which state you are in.** The three checkpoints above. A soft suspension needs re-verification, not an appeal, and filing the wrong one wastes the clock.

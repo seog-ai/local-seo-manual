@@ -8,6 +8,17 @@ description: Authorization, notice within 48 hours, a seven-day exit and a 30-da
 
 Access is granted, at the right level, and the seven-day clock is running. What arrives with it is a set of obligations — written down, dated and enforceable — and a history somebody else made.
 
+Three of the four come with a clock on them, and the clocks start the moment access is granted rather than the moment you first use it:
+
+```mermaid
+flowchart LR
+  A["Access granted"] --> B["Within 48 hours —<br/>tell the client about any<br/>change you or your tool made"]
+  A --> C["Within 7 days —<br/>remove your access when asked"]
+  A --> D["30 days —<br/>the cap on holding<br/>Google-sourced content"]
+```
+
+*The fourth duty has no clock because it precedes all of them: authorization to speak in the client's voice, in writing, before the first reply is published.*
+
 ## The four duties that arrive with the connection
 
 ### 1. Authorization before you speak for them

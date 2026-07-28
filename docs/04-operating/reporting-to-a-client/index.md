@@ -44,6 +44,15 @@ Here is what goes in instead, and why each is tempting.
 
 **Input counts presented as outcomes.** *"12 posts published, 40 citations submitted, 8 keywords optimised."* The tell: not one of those numbers describes anything a customer could experience. Be fair about it — input counts are the correct answer to question 1. The dishonesty is filing them under question 2.
 
+```mermaid
+flowchart LR
+  A["'12 posts published'"] --> B{"Filed under<br/>which question?"}
+  B -->|"1. What did you do?"| C["Correct — an input,<br/>dated and verifiable"]
+  B -->|"2. What happened?"| D["Dishonest — nothing here is<br/>something a customer experienced"]
+```
+
+*The same sentence, honest in one section and misleading in the next. Almost no padding in this taxonomy is a lie about a fact; it is a fact filed under the wrong heading, and the reader takes the heading at its word.*
+
 **The unsegmented rank.** *"Average position 4.2."* No surface, no coordinate, no date, no found rate beside it — and average rank counts only the points where you appear, so disappearing from your worst locations *improves* it ([Rank is a map, not a number](../../01-foundations/rank-is-a-map-not-a-number/index.md)). A rising average with a falling found rate is a decline in a good mood.
 
 **The tracked set that quietly changed.** Easy keywords added, hard ones dropped, the aggregate reported as movement. The most effective way to show improvement while producing none, it needs no skill, and it is invisible unless the set is written where the client can compare. It works on any axis — a new grid preset, a longer window, a different denominator — so freeze all of them and make every change a dated line.

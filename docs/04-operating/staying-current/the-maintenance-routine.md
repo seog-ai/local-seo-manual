@@ -58,6 +58,21 @@ Run any claim through these in order. Most die on the first two.
 4. **Did the instrument change instead?** A tool default, a grid preset, an engine's location handling — each produces a step that looks exactly like a change in the world ([why two tools disagree](../../03-advanced/why-two-tools-disagree/index.md)). Rule out your own equipment before you accuse Google.
 5. **Does it cash out into a different action?** If your response is what you would have done anyway, the claim is untestable. The ones worth an afternoon would make you **stop** doing something.
 
+```mermaid
+flowchart TD
+  A["A change claim"] --> Q1{"Dated and sourced?"}
+  Q1 -->|"No"| D["Log it. Nothing more"]
+  Q1 -->|"Yes"| Q2{"Does anyone hold a dated<br/>observation of the OLD state?"}
+  Q2 -->|"No"| D
+  Q2 -->|"Yes"| Q3{"Survives normal churn?<br/>Instrument ruled out?"}
+  Q3 -->|"No"| D
+  Q3 -->|"Yes"| Q4{"Would it make you<br/>STOP doing something?"}
+  Q4 -->|"No"| D
+  Q4 -->|"Yes"| V["Verify it — diff or probe —<br/>then act"]
+```
+
+*Notice how many roads lead to "log it". That is the routine working, not failing: the expensive habit is not missing a real change, it is re-planning a quarter around one that nobody can date.*
+
 Then choose one response, out loud:
 
 - **Log it** — no action, correct for most changes and the option the industry almost never takes.

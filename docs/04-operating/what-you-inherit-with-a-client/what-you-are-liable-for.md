@@ -18,6 +18,18 @@ The duties are what you owe. This is what you are exposed to from the moment you
 - **Your client's behaviour becomes your operational problem.** If they gate reviews or stuff keywords into the business name while you hold manager access, you are the one managing the profile when it is suspended.
 - **You still cannot promise a ranking**, and inheriting a client is where the pressure to promise one is highest, because the previous provider probably did. [What the work costs](../what-the-work-costs/index.md) is the honest version of that conversation.
 
+The first two bullets compound, and that is the part worth holding in your head before you touch an inherited profile:
+
+```mermaid
+flowchart TD
+  A["You make one edit"] --> B["Google reviews it —<br/>usually 10 minutes,<br/>sometimes up to 30 days"]
+  B --> C{"Was it a detail that<br/>triggers re-verification?"}
+  C -->|"No"| D["Applied, rejected,<br/>or silently reverted"]
+  C -->|"Yes — name, address or category<br/>(practitioner reports, not published)"| E["Listing can stop appearing<br/>in Search and Maps while it waits"]
+```
+
+*Which details trigger the right-hand branch is not published — the list everyone quotes is second-hand. That uncertainty is the reason the inventory below comes before any fix: on a client you met last week, you cannot yet tell which edits are cheap.*
+
 ## Labs
 
 ### Lab 29.1 — Build the inheritance inventory

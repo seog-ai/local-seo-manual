@@ -26,6 +26,14 @@ That is why the discipline in this chapter is to read the *checks*, never the nu
 
 Publish a malformed `llms.txt` and you convert a dash into a failure — the audit now applies, so it enters the denominator, and it fails. You go from 2/2 to 2/3 because you did something. This is not a bug; it is what "not applicable" means.
 
+```mermaid
+flowchart LR
+  A["No llms.txt at all"] --> B["Not applicable —<br/>outside the denominator"] --> C["2 of 2 · green"]
+  D["A malformed llms.txt"] --> E["Now applicable —<br/>and failing"] --> F["2 of 3 · worse than before you started"]
+```
+
+*Two states of the same site, and the one where you did some work scores lower. Which is the whole argument for reading the checks rather than the fraction: the fraction moves for reasons that have nothing to do with whether the site got better.*
+
 ## Where this shows up elsewhere in the work
 
 The stored agent-readiness score feeds one factor of the AI-readiness rubric on the **AI visibility** page — "AI-agent-ready website", worth 8 of 100 points, passing at 90 or above. The full rubric and its weights are in [diagnosing a business in thirty minutes](../analyzing-business-visibility/index.md).

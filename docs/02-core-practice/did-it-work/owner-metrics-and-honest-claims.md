@@ -27,6 +27,10 @@ Any single "views" figure is therefore a construction whoever showed it to you p
 
 So a customer who saw you on mobile Search and again on mobile Maps the same day plausibly counts once in each and twice in the sum *(inference from the per-metric definition; we have not probed a controlled single-user case)*.
 
+![Four separate horizontal bars above a single combined bar, which carries two darker segments inside it](../../../static/img/art/four-impression-counts.png)
+
+*The four counts Google publishes, and the one number nobody publishes. Each of the four is deduplicated inside itself — one person, one day, one impression. The combined bar is your construction, and the darker segments are the person who saw you twice that day, on Search and again on Maps, counted once in each. Nothing here is wrong; it just means the total is an upper bound, not a headcount.*
+
 A month of "3,000 views" is at most 3,000 people-days, and fewer people. The mechanism is [What Google's reporting hides](../../05-reference/what-googles-reporting-hides.md).
 
 ### Zeros at the right-hand edge are usually reporting lag, not a collapse

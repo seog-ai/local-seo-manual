@@ -34,7 +34,22 @@ In rough order of how often they bite *(inference — our ordering, from observe
 4. **Low-quality signals.** All-capitals reads as shouting; heavy emoji use — more than about half a dozen in a short post — reads as gimmicky. Neither is a documented threshold; both correlate with rejection *(inference — from observed rejections and Google's low-quality content guidance)*, so treat them as warnings and rewrite.
 5. **Chain-detected locations, refused wholesale.** Some locations are refused from posting entirely, with a specific error saying posting is disabled there. The repeated "more than ten locations" threshold is community lore, not contract — detection is Google-internal, with no way to test before trying. Never sell a posting retainer to a multi-location client before publishing one test post on one of their locations ([multi-location and franchise](../../03-advanced/multi-location-and-franchise/index.md)).
 
-A rejected post is not explained. You get the state and nothing else — which is why the checklist runs before publishing.
+A rejected post is not explained. You get the state and nothing else — which is why the checklist runs before publishing:
+
+```mermaid
+flowchart TD
+  A["Draft post"] --> B{"A phone number<br/>in the text?"}
+  B -->|"Yes"| B1["Remove it.<br/>Attach the Call button instead"]
+  B -->|"No"| C{"Regulated goods,<br/>wrapped in an offer or a button?"}
+  C -->|"Yes"| C1["Drop the promotion,<br/>keep the mention"]
+  C -->|"No"| D{"A hotel, promoting<br/>anything at all?"}
+  D -->|"Yes"| D1["Barred — including a What's New<br/>post that mentions a discount"]
+  D -->|"No"| E{"All caps, or a handful<br/>of emoji or more?"}
+  E -->|"Yes"| E1["Rewrite. Not a documented<br/>threshold, but it correlates"]
+  E -->|"No"| F["Publish — and on a multi-location<br/>client, test one location first"]
+```
+
+*Run it in that order: the top branch is the one that bites most often, and it is the only rejection cause with a documented remedy sitting right beside it.*
 
 ## Scheduling is Google's job
 

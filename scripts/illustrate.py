@@ -104,6 +104,25 @@ IMAGES = {
         "one is visible as a narrow band, and a small circle sits on each visible band. "
         "Suggests a series of dated copies of the same document. 16:9."
     ),
+    "decay-censored-tail": (
+        "Strictly flat, seen straight on, no perspective. A single curve falling steeply from "
+        "the upper left and levelling out into a flat horizontal run across the right half of "
+        "the frame, drawn as a solid line. A second line branches from where it levels out and "
+        "continues falling to the lower right, drawn as a row of small separated dots. Nothing "
+        "else in the frame. 16:9."
+    ),
+    "entity-record": (
+        "Strictly flat, seen straight on. One large rectangle in the centre of an open field. "
+        "Five small simple shapes arranged evenly around it, each joined to the central "
+        "rectangle by a single straight line: three joined by thin plain lines, two joined by "
+        "thick lines ending in an arrowhead at the rectangle. No crossing lines. 16:9."
+    ),
+    "four-impression-counts": (
+        "Strictly flat, seen straight on, no perspective. Four separate horizontal bars of "
+        "different lengths stacked in the upper half of the frame. Below them a single longer "
+        "bar equal to their combined length, with two small darker segments marked inside it. "
+        "Nothing else. 16:9."
+    ),
     "mistake-hole-in-the-baseline": (
         "Strictly flat two-dimensional composition, seen straight on, no perspective, no "
         "shadows, no 3D. A single upright rectangle representing a sheet of record, containing "
