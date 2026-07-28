@@ -8,6 +8,10 @@ description: Three labs that turn a prioritised action plan into a dated calenda
 
 Three labs turn the plan into something dated: rebuild the generated action plan as a calendar, start the slowest clock in week one, and book the measurement dates before you book the work.
 
+![Twelve evenly spaced tick marks along the bottom; above them one long bar starting at the first tick and running nearly the full width, and two short bars starting later](../../../static/img/art/lab-ninety-day-calendar.png)
+
+*Why a priority list is not a plan. The long bar is the review work — the aggregate clock, slow whatever you spend on it, so it has to start at tick one. The short bars are the profile fixes that dominate any impact-ordered list and take an afternoon. Sorted by impact, the short bars go first and the long one starts in week six, which is how a quarter ends with the work done and nothing measurable to show for it.*
+
 ## Labs
 
 ### Lab 27.1 — Rebuild the action plan as a calendar

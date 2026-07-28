@@ -60,7 +60,7 @@ Both were captured and nearly published as real before anyone noticed. See `stat
 
 ## `illustrate.py` — generated art
 
-Nano Banana 2 (`gemini-3-pro-image`) via Vertex AI, for the hero, the OG background and one opener per part.
+Nano Banana 2 (`gemini-3-pro-image`) via Vertex AI, for the hero, the OG background, one opener per part, and the `lab-*` / `mistake-*` chapter figures.
 
 ```bash
 export GOOGLE_APPLICATION_CREDENTIALS=/path/to/vertex-sa.json
@@ -72,9 +72,13 @@ python3 scripts/illustrate.py hero       # one
 
 Deliberately narrow in scope. Everything explanatory is a screenshot or a Mermaid diagram; generated art is used only where a real capture is impossible. For a technical audience, decorative AI illustration is the fastest way to look low-effort, and it would undercut exactly the credibility the probe-verified reference is buying.
 
+**On chapter figures.** The narrow rule was applied for a while as *no visual at all*, which left the lab pages as unbroken walls of text. The order to reach for is: a real screenshot of the screen the lab runs on, then a Mermaid diagram if the page teaches a decision, and only then a `lab-*` figure here — for the shapes no capture can show, like two branch grids overlapping or a schedule where the slowest task starts first. Every figure still carries a caption doing real work; a picture with a decorative caption should have been left out.
+
 Every prompt forbids text. Models render lettering unreliably, and a cover with a misspelt word costs more trust than a good picture earns.
 
 Rate limits are real — a full run may 429 partway. Re-running a single name is cheap.
+
+`flatten()` runs on every image before it is written: the raw output is ~1 MB of film grain over what is visually a dozen flat colours, and a 3px median pass plus an octree palette takes it to ~20 KB with no visible change. It needs Pillow, and is skipped silently without it. The seven pre-`flatten` files (`hero`, `og-background`, `part-*`) are still 0.7–1.4 MB — re-running them picks the reduction up.
 
 ---
 

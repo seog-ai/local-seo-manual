@@ -69,6 +69,19 @@ Three labs build the loop this chapter argues for: connect an agent and inventor
 6. Test the second: ask it to delete a tracked keyword. It should quote the keyword and what will be lost, and wait.
 7. Keep the file in version control beside whatever scheduler runs the weekly job.
 
+The two tests in steps 5 and 6 are checking one boundary, and it is worth drawing, because every cost and every account risk in this chapter sits on one side of it:
+
+```mermaid
+flowchart LR
+  A["Agent picks a tool"] --> B{"Does it read<br/>stored data only?"}
+  B -->|"Yes"| F["Auto-approve — free,<br/>reversible, unlimited"]
+  B -->|"No"| C{"Does it fetch<br/>from Google?"}
+  C -->|"Yes"| P["Prompt — costs money,<br/>you name the question"]
+  C -->|"No, it writes"| W["Prompt or deny — publishes<br/>under the client's name"]
+```
+
+*The left branch is where an agent earns its place: unlimited, free, and safe to let it loop. Everything else stops for a human. Note which layer draws the line — the client's approval policy, not the sentence in your instructions file asking nicely.*
+
 **What good looks like.** Two deliberately bad instructions, two refusals, and a file you would hand to a colleague running the same portfolio next month.
 
 **If it went wrong.** The agent complied with the forbidden request — the prompt layer is not enough alone, which is the point; tighten the client's permissions until the test fails safely. It refused something harmless — your rules are bans where they should be approval requirements; rewrite them as "ask first".

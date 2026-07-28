@@ -17,6 +17,10 @@ Three labs put the rest of this chapter into practice: write the page before you
 > You need: your frozen baseline (Lab 7.3), a re-measurement (Lab 17.1 or 17.2), and the change log from Lab 17.4.
 
 1. Open a blank file. From your change log and your memory, write the four answers in plain language, one page maximum. **Write no numbers yet** — put `[?]` where a number belongs.
+
+![A page of ruled lines, three of them interrupted by an empty square gap, with three solid squares waiting in a column beside the page](../../../static/img/art/lab-report-blanks.png)
+
+*The state your page is in at the end of step 1, and the reason the order works. The gaps are fixed before you know what will fill them, so a number cannot choose the sentence it sits in. Steps 2 and 4 then do the honest half of the job: a gap you cannot fill from stored data is a claim you cannot support, and it is deleted rather than softened.*
 2. Fill each `[?]` from **stored** data only: the keyword position chart, the grid trend line, **Profile score over time**, **Review momentum**. Write each number's conditions beside it. Any `[?]` you cannot fill this way is a claim you cannot currently support — leave it marked.
 3. Open **Reports** in the overview page header and press **Generate**. The price is on the button. The row moves through **Queued** and **Generating**; download it when it reads **Ready**.
 4. For every claim on your page, find its support in the annexe or a stored screen you can screenshot. **Anything unsupported gets deleted, not softened.**

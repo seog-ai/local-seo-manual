@@ -79,6 +79,31 @@ IMAGES = {
         "clasp. One thin horizontal line running left to right through all three. Suggests "
         "read, re-measure, then freeze the result. 16:9."
     ),
+    "lab-branch-overlap": (
+        "Two identical square lattices of small circles, side by side, overlapping in the "
+        "middle so the shared region forms a narrow lens shape. The circles inside the shared "
+        "region are drawn solid, the rest hollow. Strictly flat, seen straight on, no "
+        "perspective. Suggests two claims on one piece of ground. 16:9."
+    ),
+    "lab-report-blanks": (
+        "Strictly flat, seen straight on, no perspective. An upright rectangle representing a "
+        "page, containing five evenly spaced horizontal lines; three of those lines are "
+        "interrupted by a small empty square gap in the middle. Three small solid squares sit "
+        "in a vertical column to the right of the page, waiting to be placed. 16:9."
+    ),
+    "lab-ninety-day-calendar": (
+        "Strictly flat, seen straight on. A row of twelve narrow vertical tick marks along the "
+        "bottom of the frame, evenly spaced. Above them, three horizontal bars of different "
+        "lengths: the longest starts at the leftmost tick and runs nearly the full width, the "
+        "other two are short and start further right. Suggests a schedule in which the slowest "
+        "task starts first. 16:9."
+    ),
+    "lab-dated-snapshots": (
+        "Strictly flat, seen straight on, no perspective and no shadows. Four identical upright "
+        "rectangles overlapping in a neat stack, each offset downward so the top edge of every "
+        "one is visible as a narrow band, and a small circle sits on each visible band. "
+        "Suggests a series of dated copies of the same document. 16:9."
+    ),
     "mistake-hole-in-the-baseline": (
         "Strictly flat two-dimensional composition, seen straight on, no perspective, no "
         "shadows, no 3D. A single upright rectangle representing a sheet of record, containing "

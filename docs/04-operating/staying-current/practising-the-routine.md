@@ -8,6 +8,10 @@ description: "Three labs that make the maintenance routine yours: a dated source
 
 The routine only becomes yours once you have run it. These three labs build the source file, expose a cached rule inside your own tooling, and referee a claim against your own record.
 
+![Four identical sheets stacked with a small offset, each showing a marked band along its top edge](../../../static/img/art/lab-dated-snapshots.png)
+
+*What Lab 31.1 is actually building: the same four documents, saved again on a date you record, month after month. Nothing here is clever. It is the entire difference between "I think the policy used to say something else" and a diff you can put in front of a client.*
+
 ## Labs
 
 ### Lab 31.1 — Build the source file and take the first snapshot

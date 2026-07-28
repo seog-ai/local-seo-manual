@@ -12,6 +12,10 @@ The ladder gives you a lever. The labs below turn pulling it into an experiment 
 
 These three form one experiment, run in order over three to six weeks. Doing 21.3 a day after 21.2 measures nothing.
 
+![The AI Visibility page before any live check has run: presence, recommendations and mention-rate figures each carrying an Example badge, and two of three engines marked Not connected](../../../static/img/screens/owner-ai-visibility.png)
+
+*The page as it looks before you have paid for anything — and every headline figure on it carries an **Example** badge, because no live check has run on this business. Read it as the shape of the instrument, not as a reading: the tiles tell you which engines are connected at all (here, one of three), and "no recommending answers judged yet" is the empty denominator Lab 21.2 exists to fill.*
+
 ### Lab 21.1 — Write the experiment card before you spend anything
 
 > **Lab** · Where: **AI Visibility** (`/b/{businessId}/ai-visibility`) · Cost: **free** · Time: ~20 min
@@ -60,6 +64,19 @@ These three form one experiment, run in order over three to six weeks. Doing 21.
 4. Build the four-way comparison — test before/after, control before/after — then answer in writing: did the test set move *more than* the control, and is the difference bigger than your window's granularity?
 5. Check the source list again. Did the domain you worked on appear more often, appear at all, or move up? That is the mechanism check, separate from the outcome.
 6. Classify the result **verified**, **plausible** or **unattributable** using the buckets from [Did it work?](../../02-core-practice/did-it-work/index.md). Most honest results are *plausible*.
+
+```mermaid
+flowchart TD
+  A["The test set moved"] --> B{"Did the control<br/>move as much?"}
+  B -->|"Yes"| U["Unattributable —<br/>the engines moved, not you"]
+  B -->|"No"| C{"Is the difference bigger<br/>than the window's granularity?"}
+  C -->|"No"| U2["Unattributable —<br/>too few observations to tell"]
+  C -->|"Yes"| D{"Does the source list show<br/>the domain you worked on?"}
+  D -->|"No"| P["Plausible — outcome moved,<br/>mechanism unconfirmed"]
+  D -->|"Yes"| V["Verified — outcome and<br/>mechanism agree"]
+```
+
+*Two of the five endings are **unattributable**, and one of those is only reachable because you paid for a control set. That is the cost of being able to tell the difference — and the reason a report full of confident wins is a report that never ran this branch.*
 
 **What good looks like.** A short paragraph a sceptic cannot dismantle: what moved, by how much, against a control, over how many observations, with the mechanism check supporting it or not. "Unattributable" beats a confident *plausible* you cannot defend.
 

@@ -72,6 +72,21 @@ The three labs below turn the preceding argument into numbers you own: one store
 
 **What you just learned.** Deciding what counts as success *before* seeing the data is the whole difference between measurement and storytelling, and it costs one paragraph.
 
+Put together, the three labs leave you with one rule you can apply to any scan that lands from now on:
+
+```mermaid
+flowchart TD
+  A["A number moved between two scans"] --> B{"Bigger than your<br/>measured noise floor?"}
+  B -->|"No"| N["Report no change<br/>(and say what the floor is)"]
+  B -->|"Yes"| C{"Did pins cross a band —<br/>into or out of the top 3,<br/>or into or out of found?"}
+  C -->|"No"| M["Report it as movement<br/>inside a band, not as a gain"]
+  C -->|"Yes"| D{"Is it the outcome you<br/>named before the scan?"}
+  D -->|"Yes"| P["Primary result"]
+  D -->|"No"| S["Secondary — label it so"]
+```
+
+*Every branch that leads away from "primary result" still produces a sentence for the client. That is the point: the rule is not a filter that hides work, it is what stops one pin of drift being sold as a quarter's progress.*
+
 ## Common mistakes
 
 **Quoting the average without the found rate.** Carried forward from Part I because it will not die. A business found at two of twenty-five points can print a better average than one found at twenty — arithmetic on your best neighbourhood, labelled as your market.

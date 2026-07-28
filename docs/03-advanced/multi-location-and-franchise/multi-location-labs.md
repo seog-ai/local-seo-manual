@@ -43,6 +43,10 @@ A card shows a website chip *and* **All quiet**: the quiet label is computed fro
 5. Put the heatmaps side by side. In the region where both grids have points, count where A is top-3, where B is, and where both are.
 6. Compute the **sum** of the two coverage percentages and the **union** — the share of distinct map area where at least one branch is top-3. Record both with date, keyword and preset.
 
+![Two lattices of small hollow circles overlapping in the middle, where the shared points are drawn solid](../../../static/img/art/lab-branch-overlap.png)
+
+*What step 6 is counting. The solid points are claimed by both branches; in the sum they are counted twice, in the union once. The gap between the two figures is the size of the overlap — and it is the only one of the two that describes ground the estate actually holds.*
+
 **What good looks like.** The union is meaningfully smaller than the sum, and the "both top-3" count is low or zero. You can point at a part of the map and name the branch that owns it.
 
 **If it went wrong.** The grids barely overlap: your branches are further apart than the preset reaches. Write "no measurable cannibalisation at this radius" and stop, rather than escalating to a larger preset to manufacture one. Both branches are grey across the overlap: a prominence problem, not a cannibalisation one.
