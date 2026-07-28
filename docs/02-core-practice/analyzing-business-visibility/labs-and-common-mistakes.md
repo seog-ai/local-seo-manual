@@ -27,9 +27,9 @@ The three labs below run the whole routine once, in order: read the audit and na
 5. Open **AI Visibility** and read the **AI readiness** card at the bottom. Do not press **Check now**. Expand **What goes into this score** and add any failing factor the action plan did not list.
 6. Write the verdict: three sentences, no numbers-as-conclusions.
 
-![The whole business overview page for AIEmployees: a 36% profile score with a five-segment bar, a seven-step action plan carrying +10, +10 and +9 point labels, and cards further down marked Example](../../../static/img/screens/owner-overview-full.png)
+![Business overview for AIEmployees: a 36% profile score with a five-segment bar, and the first action-plan steps carrying +10, +10 and +9 point labels](../../../static/img/screens/owner-overview.png)
 
-*The page the lab runs on, whole, so you can see what belongs to which step. Step 2 reads the segmented bar under **36%**; step 3 reads the seven numbered rows and their `+N pts`; step 5 is further down still. Notice what the header says before you touch anything — **Not synced yet**, beside a **Refresh all** you are not pressing until Lab 7.2. The lower cards captioned "Example — track keywords…" are the to-do list of things not yet run, not measurements of this business.*
+*The screen the lab runs on, with each step's target on it. Step 2 reads the segmented bar under **36%** — of its five category segments only one is filled across, and two carry no fill at all. Step 3 reads the numbered rows and their `+N pts`. And before any of it, read the header: **Not synced yet**, beside the **Refresh all** you are not pressing until Lab 7.2.*
 
 Step 4 is the one that takes practice. Every failing row resolves to exactly one of three causes, and the route to it is mechanical:
 
