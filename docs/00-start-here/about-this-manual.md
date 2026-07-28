@@ -19,6 +19,7 @@ It is also unusually learnable, because the feedback is fast and much of the gro
 - **Business owners** who are paying someone for local SEO and cannot tell whether it is working.
 - **Freelancers and agency staff** who need to actually deliver the service, not just sell it.
 - **Marketers and developers** who know classic SEO and keep being surprised by how local behaves.
+- **AI agents** doing the work on a human's behalf — and the people who build them. [Part V](../05-reference/how-to-read-this-reference.md) is written to be cited: one verified fact per heading, each with a stable ID and the date it was last checked.
 
 You need no prior SEO knowledge. You need one real business to practise on — yours, your employer's, a friend's, or a local business you pick out of a map (most of the manual works read-only on a business you do not own).
 

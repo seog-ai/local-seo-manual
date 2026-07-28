@@ -59,6 +59,14 @@ const config: Config = {
           changefreq: 'weekly',
           priority: 0.5,
           filename: 'sitemap.xml',
+          // Real per-page dates from git (the docs plugin already tracks them for
+          // "Last updated"). Without this every URL looks equally stale and a
+          // re-crawl after an edit is left to chance.
+          lastmod: 'date',
+          // /search is a client-side UI with no content of its own; it is also
+          // Disallowed in robots.txt. Listing it would be asking for a crawl of a
+          // page we then refuse.
+          ignorePatterns: ['/search'],
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -99,6 +107,13 @@ const config: Config = {
         content:
           'local SEO, map pack, Google Business Profile, local search, GBP optimization, local rank tracking, geo grid, local SEO course, local SEO guide',
       },
+      // Docusaurus emits og:title/description/image/url but no og:type or
+      // og:site_name. Both are site-wide defaults here; DocItem overrides
+      // og:type to "article" on every chapter (Helmet dedupes by property, the
+      // deeper tag wins).
+      { property: 'og:type', content: 'website' },
+      { property: 'og:site_name', content: 'The Local SEO Manual' },
+      { name: 'twitter:site', content: '@seog_ai' },
     ],
     mermaid: { theme: { light: 'neutral', dark: 'dark' } },
     docs: {

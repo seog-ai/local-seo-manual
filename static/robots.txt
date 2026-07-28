@@ -5,6 +5,9 @@
 
 User-agent: *
 Allow: /
+# The one exception: /search is a client-side search UI, not a page. It has no
+# content of its own and is excluded from the sitemap for the same reason.
+Disallow: /search
 
 # AI crawlers are welcomed explicitly rather than merely not-blocked.
 #
