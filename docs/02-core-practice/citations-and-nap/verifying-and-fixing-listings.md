@@ -16,7 +16,7 @@ Everything above is the theory of resolution and retrieval. The labs below run i
 >
 > You need: a business added (Lab 0.3). Owner access is **not** required — this reads public listings and compares them against the profile data already stored.
 
-![The AI Visibility page, with the Authority and Sources cited by AI cards and, at the foot of the page, a Listings consistency card that has not been checked yet](../../../static/img/screens/ai-visibility-full.png)
+![The AI Visibility page, with the Authority and Sources cited by AI cards and, at the foot of the page, a Listings consistency card that has not been checked yet](../../../static/img/screens/ai-visibility-full-example.png)
 
 *Where the lab starts, on a business with no owner connection because it needs none. Listings consistency sits at the very foot of the AI Visibility page, names the six platforms it will check, and reads "Not checked yet" — while the Authority card above still reports "0 of 0 listings consistent" and Sources cited by AI is empty. The percentage tiles at the top of the page carry an **EXAMPLE** badge: they are illustrations of the layout, not measurements of this business.*
 

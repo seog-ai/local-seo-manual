@@ -65,6 +65,10 @@ Everything else on this page is that rule applied.
 
 ## What spends, screen by screen
 
+![A business overview header: the business name and address on the left, a "Not synced yet" stamp, then a Refresh all button carrying a price pill, a Reports button, and an overflow menu](../../static/img/screens/reports.png)
+
+*The rule made visible. **Refresh all** carries a price pill and **Generate** inside the Reports panel carries another — a button that spends says so on its face, before you press it, and the two figures are not the same. Everything else on this screen, including the entire action plan below it and the report row already in the list, is stored data you can re-read as often as you like for nothing. (The manual masks the numbers themselves; in the app they are exact.)*
+
 The right-hand column is not a summary — it is the rest of the screen. If an action is not named on the left, it does not spend.
 
 | Screen | Spends when you press | Free on the same screen |

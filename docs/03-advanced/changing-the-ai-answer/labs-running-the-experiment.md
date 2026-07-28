@@ -23,6 +23,10 @@ These three form one experiment, run in order over three to six weeks. Doing 21.
 > You need: at least one round of live checks already run ([Does the AI recommend this business?](../ai-visibility/index.md)), and your tracked keyword set from Lab 8.2.
 
 1. Open **Sources cited by AI**. Write down every **Directory** and **Social** row with its citation count, then every **Web** row — usually listicles and local press, and the rows people ignore.
+
+![The Sources cited by AI card: seven ranked domains, the business's own site tagged You at the top and six others tagged Web, each reading "Cited in 1 answer · Gemini"](../../../static/img/screens/ai-sources-panel.png)
+
+*What step 1 is transcribing, from one live answer. Every row here is tagged **Web** except the business's own site — no directories at all, which for this business is the finding: the lever is editorial, not listings hygiene, and a citation package would be money spent on the wrong corpus. Note the count on each row (**Cited in 1 answer**); it is the denominator you will be comparing against after Lab 21.3, and with one check behind it, it is a starting point rather than a measurement.*
 2. Pick **one** lever from the ladder above. One. Write its grade beside it in your own words.
 3. Split your tracked keywords into a **test set** (the ones this lever plausibly affects) and a **control set** (at least three you will not touch). Write both lists down. This is the freeze.
 4. Write the prediction: which axis moves — *named*, *cited*, *stance* or *position* — by roughly how much, on which engines. Check it against the granularity table. If your predicted effect is smaller than the noise floor for the runs you can afford, the experiment cannot answer its own question. Redesign it, or say so now.

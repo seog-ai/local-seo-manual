@@ -18,7 +18,7 @@ Three labs, in the order the layers run: audit the site, ship the markup, then r
 >
 > You need: a business added (Lab 0.3) with a website on its profile. This audit needs **no** Google Business Profile connection — it runs on the public site plus the profile facts already stored, so it works on a business you do not own.
 
-![The Website page before any audit has run: a Connect Search Console card at the top, and below it the Website support card showing five example rows and a Check now button](../../../static/img/screens/website.png)
+![The Website page before any audit has run: a Connect Search Console card at the top, and below it the Website support card showing five example rows and a Check now button](../../../static/img/screens/website-example.png)
 
 *This is the screen before you press anything. The five ticked and crossed rows under **Website support** are the card's own **Example** — its subtitle says so — and they are placeholders, not a measurement of this site. Note the price on the **Check now** button: you see it before you spend it.*
 

@@ -33,7 +33,7 @@ The method becomes real in three labs, run in order: design the probe set, run e
 >
 > You need: Lab 20.1. Note which engines show **Not connected** — those produce clearly-labelled sample rows, and samples never count toward any rate.
 
-![The top of the AI Visibility page with nothing tracked: three engine tiles of which two read Not connected, above a card headed "See if AI recommends you" listing Google AI Overview, ChatGPT and Claude with mention marks](../../../static/img/screens/ai-visibility.png)
+![The top of the AI Visibility page with nothing tracked: three engine tiles of which two read Not connected, above a card headed "See if AI recommends you" listing Google AI Overview, ChatGPT and Claude with mention marks](../../../static/img/screens/ai-visibility-example.png)
 
 *What the page shows when no keyword is tracked yet. The three engine tiles sit in the **AI mention rate** band; two of them read **Not connected** — unmeasured columns, not zeros — and the fractions beside them are labelled *(example)*. Below the band, the card reads **See if AI recommends you**: its rows are engines rather than your probes, and it says **Example** on its own subtitle. It is a fixture — the real **Where AI mentions you** matrix from step 1 replaces it the moment one keyword is tracked.*
 

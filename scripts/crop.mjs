@@ -37,6 +37,24 @@ const CROPS = {
     box: [490, 1730, 950, 720],
     shows: 'compare mode: the "vs scan from …" strip, movement-coloured pins, and the Improved / Dropped legend',
   },
+  // The citations chapters argue from this list; whole-page it is unreadable.
+  'ai-sources-panel': {
+    from: 'ai-visibility-full.png',
+    box: [730, 1046, 690, 700],
+    shows: 'Sources cited by AI — the domains behind a live answer, each with its citation count and engine',
+  },
+  // The llms.txt chapter argues from this card's dashes; the page around it is 3,400 px.
+  'agent-readiness-panel': {
+    from: 'website-full.png',
+    box: [30, 1634, 1390, 386],
+    shows: 'AI agent readiness: the six Agentic Browsing checks, three passed and three not applicable, over a 100/100 figure',
+  },
+  // The probe record the manual defines — verdict, answer text, sources — one expanded row.
+  'ai-probe-record': {
+    from: 'ai-matrix-expanded-full.png',
+    box: [30, 495, 1390, 800],
+    shows: 'an expanded matrix row: the engine verdict, the raw answer text with its coordinate anchor, and the sources that engine cited',
+  },
 };
 
 const wanted = process.argv.slice(2);

@@ -67,8 +67,12 @@ A healthy profile shows the destination. A broken one shows the work. Most "what
 | `geo-grid.png` | **Real 3×3 grid scan.** "Limited visibility — top 3 in 0% of the area": found at 9 of 9 points, averaging #4.7, on a real Helsinki map with rank-coloured pins. An earlier scan of the SAME nine points hours before read #2.4 and 100% top-3 — do not describe this image from memory, read it |
 | `reviews.png`, `reviews-full.png` | Reviews list, public view (recent sample only) |
 | `competitors.png` | Competitors page |
-| `ai-visibility.png`, `ai-visibility-full.png` | AI visibility page |
-| `website.png` | Website analysis page |
+| `ai-visibility.png`, `ai-visibility-full.png` | AI visibility **after one real live check** (2026-07-28): Presence 100% *"Mentioned in 1 of 1 recent live answers"*, Gemini 1/1, matrix row *Mentioned #1*, and a populated source list. Every figure is one observation — caption the denominator, never the percentage alone |
+| `ai-visibility-example.png`, `ai-visibility-full-example.png` | The same page **cold**, before any check: the headline tiles carry **Example** pills and the source list is empty. Kept deliberately — several chapters teach reading the pill, and that lesson needs the pre-check screen |
+| `ai-sources-panel.png` | **Crop** of `ai-visibility-full.png` — *Sources cited by AI*: the domains behind one live answer, own site tagged **You**, the rest **Web** |
+| `website.png`, `website-full.png` | Website page **after a real audit** (2026-07-28): Lighthouse 83 mobile / 87 desktop on kaffaroastery.fi, the fix list with ready-to-paste snippets, and the AI-agent-readiness card |
+| `website-example.png` | The same page **before** the audit — the *Website support* card showing its labelled Example rows and the **Check now** button |
+| `agent-readiness-panel.png` | **Crop** of `website-full.png` — the six Agentic Browsing checks, three passed and three not applicable, over a 100/100 figure. The illustration for "a fraction is not a verdict" |
 | `posts.png` | Posts page, not owner-connected |
 | `profile.png`, `profile-full.png` | Profile page, public view |
 | `reports.png` | The Reports panel over the overview with one **Ready** row — timestamp, state badge, download, delete. Re-captured 2026-07-28 *after* generating a real report, so the row states the labs describe are visible; the earlier version showed only the empty state |

@@ -23,6 +23,10 @@ In map-pack work the unit is obvious: one keyword, one coordinate, one moment, o
 
 The unit is a **probe**: one question, put to one engine, from one geographic anchor, at one moment. Every probe produces a record with these fields, and a record missing any of them is not evidence.
 
+![The AI Visibility screen after one live check: Presence 100% "Mentioned in 1 of 1 recent live answers", engine tiles with Gemini at 1/1 and ChatGPT and Claude marked Not connected, and a matrix row reading "Mentioned #1"](../../../static/img/screens/ai-visibility.png)
+
+*One probe, rendered. This is a single live check — one keyword, one engine, one moment — and every headline number on the screen is therefore built on **1 of 1**. That is exactly the trap the rest of this chapter is about: **Presence 100%** and **AI mention rate 100%** are true statements about one observation, and the denominator is printed next to each of them for a reason. The row in **Where AI mentions you** carries the two axes separately — *Mentioned* and its position — and the button above it states the arithmetic before you spend anything: 1 keyword × 1 engine = 1 check.*
+
 | Field | Why it is in the record |
 | --- | --- |
 | Question text | Exact string, unbranded. A paraphrase is a different probe. |

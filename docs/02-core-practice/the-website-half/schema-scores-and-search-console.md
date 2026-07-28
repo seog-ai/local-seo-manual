@@ -22,6 +22,10 @@ Sites with good schema do tend to appear in AI answers, but those sites also ten
 
 **Completeness is graded, not binary.** Eight fields are worth having — `name`, `address`, `telephone`, `geo`, `openingHoursSpecification`, `url`, `image`, `sameAs` — and four of them is genuinely half the job. The usual mistake is pasting a snippet with name and address only, then treating the row as done.
 
+![The Website screen after a check: a Check now button in the header, a Search Console connect card, and a Site health card with Lighthouse performance dials reading 83 mobile and 87 desktop](../../../static/img/screens/website.png)
+
+*A real run on a real site, and the first thing to read is the sourcing line: **"Measured by Google PageSpeed Insights — one Lighthouse test of your page, plus real-visitor data from Chrome. Everything below comes from this single source."** Two dials, mobile and desktop, from one test — which is the honest framing of a number that varies between runs. **Search Console is a separate connection** from the Business Profile, and until it is made, the demand half of this chapter is simply unavailable.*
+
 ## Two honesty rules for any site score
 
 **Unverifiable is not failing.** If a site renders its content with JavaScript, a plain fetch sees an empty shell, and checks needing visible text — schema detection, the NAP comparison, the keyword check — cannot be answered.

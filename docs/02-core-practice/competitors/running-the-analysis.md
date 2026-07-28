@@ -85,7 +85,7 @@ You now know what a public listing exposes, how a threat score is built and wher
 3. Move the Platform rows to your citations worklist; they are sources, not rivals.
 4. Track the one or two most frequent Local names (paid), then ask whether they appear in your map-pack set at all.
 
-![AI Visibility before any check has run: presence, recommendations and mention-rate tiles all carry an EXAMPLE badge, and the recommendation section reports no answers judged yet](../../../static/img/screens/ai-visibility.png)
+![AI Visibility before any check has run: presence, recommendations and mention-rate tiles all carry an EXAMPLE badge, and the recommendation section reports no answers judged yet](../../../static/img/screens/ai-visibility-example.png)
 
 *This is the page before a single live check has run, and it says so: every headline figure carries an **EXAMPLE** badge, and **How AI recommends you** reads "No recommending answers judged yet". Nothing here is a measurement of this business — the co-mention list this lab is after only exists once you have paid for real answers.*
 

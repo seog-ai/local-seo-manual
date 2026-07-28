@@ -27,6 +27,10 @@ flowchart TD
 
 **Then cells, by reading the answers.** Every rate here is a count of judgements about text, made by string matching and a classifier that are fallible in ways you only see by reading.
 
+![An expanded matrix row: a verdict reading "Google's AI names you in its answer — source #1", the raw answer text quoting a latitude and longitude, and a numbered list of the sources Gemini cited](../../../static/img/screens/ai-probe-record.png)
+
+*The cell opened up — and this is the only place on the screen where the evidence lives. Three things to notice. The verdict is a **judgement about text**, and the text is right there to check it against. The answer opens by restating a **latitude and longitude**, because the anchor was passed as coordinates, not as a city name — a change to that string is a change to the experiment. And the two engines that were never connected say so plainly rather than scoring zero: **"not checked yet"** with a Check button beside it, not an absence you could mistake for a finding.*
+
 Two warnings specific to this instrument, both of them the chapter's own thesis arriving on one screen.
 
 A cell shows the **latest** check's verdict while the **Presence** tile shows a **rate over the window**, so they will disagree — a business at 3/5 reads "Not mentioned" whenever the most recent run missed. Tile for the rate, cell for the last observation, never one as the other.
@@ -37,7 +41,7 @@ Run five uniform passes and Presence sits on 120 observations while the band bel
 
 Before any of it has been run, the page gives you the shape of the instrument and none of its readings.
 
-![The whole AI Visibility page on a business with no live checks: Presence, Recommendations and Authority tiles, an AI mention rate band below them, a sample See if AI recommends you card, an empty Sources cited by AI card, and Authority and AI readiness breakdowns at the foot](../../../static/img/screens/ai-visibility-full.png)
+![The whole AI Visibility page on a business with no live checks: Presence, Recommendations and Authority tiles, an AI mention rate band below them, a sample See if AI recommends you card, an empty Sources cited by AI card, and Authority and AI readiness breakdowns at the foot](../../../static/img/screens/ai-visibility-full-example.png)
 
 *The method's cards in page order, cold. Read the pills, not the numbers: **Presence** and **Recommendations** carry an **Example** pill and so does the **AI mention rate** band — those three figures are the interface's own placeholders. **Authority** does not, because it is a real score computed from stored data (here, reviews alone). Under them, **See if AI recommends you** is a fixture whose rows are engines rather than this business's keywords. **Sources cited by AI** is empty because a source list only exists after a paid check, and **How AI recommends you** has judged nothing. Neither score at the foot is a measurement of AI answers *in this state*: the page's own footnote calls the readiness figure an estimate from profile signals, and every Authority row that depends on live answers reads "no data yet".*
 

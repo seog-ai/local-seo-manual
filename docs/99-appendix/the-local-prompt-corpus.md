@@ -261,6 +261,10 @@ The series tag is the field people skip and then regret. Without it, a C-12 disp
 1. In **Rankings**, add each filled row with **Track**. The AI check runs on active tracked keywords, so a row that is not tracked cannot be probed.
 2. For the second-area cell, add the same phrase again with a different **Search from** value. It saves as its own row rather than being rejected as a duplicate, because a tracked keyword's identity is the phrase *plus* its location *plus* its language, not the phrase alone. *(Code-verified 2026-07-27.)*
 3. In **AI Visibility**, scroll to **Where AI mentions you**, select exactly your six rows, and read the count on the bar: `N keywords × M engines = K checks`.
+
+![The Where AI mentions you card: a checkbox column, one keyword row with a Gemini result of "Mentioned #1", dashes under ChatGPT and Claude, and a "Check 1 selected" button above the line "1 keyword × 1 engine = 1 checks"](../../static/img/screens/ai-visibility.png)
+
+*The selection bar step 3 is reading, with one row selected instead of six. The arithmetic under the button is the batch you are about to buy — it multiplies the ticked rows by the **connected** engines only, which is why the two unconnected columns cost nothing and also measure nothing. Tick your six rows and that line becomes your run size; it is the number to check before every one of the five passes, because an accidentally-unticked row silently changes the denominator of the pass.*
 4. Press **Check N selected** and let the batch counter finish. Repeat four more times with the identical selection, recording the date of each pass.
 5. Read the rates from the tiles and the **Sources cited by AI** table. Both are free — they read what the paid checks stored.
 

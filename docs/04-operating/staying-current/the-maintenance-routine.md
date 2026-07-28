@@ -21,6 +21,10 @@ Two constraints:
 
 **You have watched the app do this to something else.** The **Activity** panel on `/b/{businessId}/competitors` compares each refreshed competitor snapshot against the stored one and raises a line when the difference crosses a threshold — a rating drop, a burst of reviews, a batch of new photos — and only for the rivals you have left on the watch list.
 
+![The Competitors screen with an Activity panel on the right reading "No competitor activity yet. Refresh a competitor to check for changes."](../../../static/img/screens/competitors.png)
+
+*Change detection, in its resting state. The **Activity** panel on the right is empty and says why — it has nothing to compare against yet, because a difference needs two snapshots and only one exists. That is the whole mechanism you are about to build by hand for Google's policy pages: keep a dated copy, take another later, raise a line when they differ.*
+
 Two states, a comparison, and a rule about what counts as news. Apply that by hand to four policy pages and you have change detection for the part of your business nobody will notify you about.
 
 ## Re-probing, and probe hygiene

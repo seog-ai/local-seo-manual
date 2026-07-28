@@ -18,6 +18,10 @@ What the Lighthouse report shows instead is **a fraction** — how many of the a
 
 Tools that render the fraction as a percentage — SEOG's card among them, which shows the figure out of 100 when the API supplies one — make the illusion worse, because 100 looks like a verdict and 2/2 at least shows its denominator. *(Inference: Google documents the fraction and the not-applicable status, but does not spell out the arithmetic; the excluded-from-the-denominator behaviour is what the reports show.)*
 
+![The AI agent readiness card reading 100/100, with six rows: three ticked — accessibility tree, Cumulative Layout Shift, llms.txt — and three dashed WebMCP rows marked "optional today"](../../../static/img/screens/agent-readiness-panel.png)
+
+*The illusion, on a real site. The card says **100/100**, and three of its six rows were never asked: the WebMCP checks carry a dash and the words *optional today*, so they are outside the denominator. A reader who takes the number at face value concludes this site answered six questions well. It answered three, and the honest reading of the other three is "we do not know yet".*
+
 That is why the discipline in this chapter is to read the *checks*, never the number.
 
 > **A dash is not a pass.** A dash is an unasked question, and the only person who can decide whether it matters is you.

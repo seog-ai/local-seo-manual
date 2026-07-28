@@ -42,6 +42,10 @@ flowchart LR
 
 **Where this lives in the app.** On the **AI Visibility** page (`/b/{businessId}/ai-visibility`) those are the **Sources cited by AI** and **Listings consistency** cards, with a strip above them showing the overlap: each platform AI cited, how many answers cited it, and your listing's status there.
 
+![The Sources cited by AI card listing seven ranked domains — the business's own site tagged You, then six others tagged Web — each showing "Cited in 1 answer · Gemini"](../../../static/img/screens/ai-sources-panel.png)
+
+*A real answer taken apart. Seven domains fed one Gemini answer about a Helsinki coffee roaster: the business's own site at the top (tagged **You**), and below it a travel blog, a coffee-trade publication and four more — every one tagged **Web**, not a directory. Read that list as the work order. Nothing on it is a citation site you can go and correct, so for this business the lever is editorial: being the thing those pages write about. A different business, in a different category, gets a list full of directories and a completely different afternoon.*
+
 The **Authority** card scores the same join as *Presence on the sources AI cites* — "Listed on N of M directories/platforms AI cites for your keywords" — weighting it 25 out of 100, with listings consistency a further 15. Those weights are a design choice derived from correlation evidence, not a Google fact; [Changing the answer](../../03-advanced/changing-the-ai-answer/index.md) sets out what the evidence is and how strong it is not.
 
 ### Why the citation package fails

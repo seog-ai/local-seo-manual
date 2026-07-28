@@ -16,6 +16,10 @@ This page specifies the observation. One question, put to one engine, from one a
 
 It is tool-agnostic. A spreadsheet satisfies it; so does a table in Postgres. Two sections near the end say what one working implementation stores against it, and where that implementation falls short, because the gaps are the instructive part.
 
+![An expanded row of the AI presence matrix showing the engine, the time of the check, a verdict line, the full answer text, and the numbered list of sources that engine cited](../../static/img/screens/ai-probe-record.png)
+
+*One record, as a working implementation renders it. Read it against the field list below: engine, timestamp ("checked 2h ago · via Gemini"), the derived judgements (**named**, and the position within the answer), the sources, and — the field most tooling throws away — **the answer text itself**. Everything above the text is recomputable from it. Nothing above it can be audited without it.*
+
 ## The unit and its key
 
 The **observation** is one run: one prompt, one engine, one response. Not "this business's AI visibility", not "this keyword's score" — one run.

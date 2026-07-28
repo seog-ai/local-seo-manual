@@ -335,11 +335,23 @@ const steps = {
     await settle(page, 2500);
     await shot(page, 'ai-visibility');
     await shot(page, 'ai-visibility-full', { full: true });
+    // Expand the first matrix row: the answer text and its sources are the probe record
+    // the manual defines, and they exist nowhere else on the page.
+    // The row is a <tr aria-expanded>, not a button — click the row itself.
+    const row = page.locator('main tr[aria-expanded]').first();
+    if (await row.isVisible().catch(() => false)) {
+      await row.click().catch(() => {});
+      await settle(page, 1500);
+      await shot(page, 'ai-matrix-expanded-full', { full: true });
+    }
   },
   async website(page, id) {
     await page.goto(`${APP}/b/${id}/website`, { waitUntil: 'domcontentloaded' });
     await settle(page, 2500);
     await shot(page, 'website');
+    // The AI-agent-readiness card sits well below the fold; the full shot is what
+    // scripts/crop.mjs cuts `agent-readiness-panel` out of.
+    await shot(page, 'website-full', { full: true });
   },
   async posts(page, id) {
     await page.goto(`${APP}/b/${id}/posts`, { waitUntil: 'domcontentloaded' });

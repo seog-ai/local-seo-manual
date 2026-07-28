@@ -38,7 +38,7 @@ Two things on the panel you are about to open share the word, and they are not t
 
 Keep them apart, and treat any dashboard reporting a chat-engine "presence rate" as owing you an answer to which of the two it is reporting.
 
-![The AI Visibility page on a business where no check has been run: Presence 64%, Recommendations 52% and AI mention rate 67%, each tagged with a small Example pill, with ChatGPT and Claude marked Not connected](../../../static/img/screens/ai-visibility.png)
+![The AI Visibility page on a business where no check has been run: Presence 64%, Recommendations 52% and AI mention rate 67%, each tagged with a small Example pill, with ChatGPT and Claude marked Not connected](../../../static/img/screens/ai-visibility-example.png)
 
 *The panel cold, before any check. Presence, Recommendations and AI mention rate each carry an **Example** pill — those percentages are the interface's own placeholders, not this business. Two of the three engine tiles read **Not connected**. Authority is the only number here without a pill, because it is computed rather than illustrated — a weighted blend of five signals, from which any factor not yet measurable drops out with the remaining weights renormalised. On a cold profile that leaves the review factor carrying the whole score, so the number is real but narrow.*
 

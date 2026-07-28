@@ -66,6 +66,10 @@ flowchart LR
 > You need: [Lab 17.3](../../02-core-practice/did-it-work/index.md), so you have assembled a report once and know the steps.
 
 1. Start a timer. Everything here reads stored data — press no refresh button. Note elapsed minutes at the end of every step.
+
+![The portfolio dashboard: four rollup tiles — Businesses, Avg profile score 91%, Avg rating 4.7, Total reviews 572 — above a business card carrying a mini rank grid and an "All quiet" line](../../../static/img/screens/dashboard.png)
+
+*Minute zero. Everything on this screen is stored, so the whole lab starts free — and the card is deliberately thin: one score, one grid, one line of status. That is the machine's entire contribution to the cycle you are about to time. The forty minutes come after it, in steps 4 and 5, where somebody has to write sentences.*
 2. **Overview**: read the profile score, the action plan and the review momentum card.
 3. **Rankings**: read current positions and the latest grid snapshot, then write the one-sentence movement verdict you would put in a report.
 4. **Reviews**: read every review since the last cycle and draft — in a text file, not in the app — the replies you would sign. This block will be the largest, and that is the finding.

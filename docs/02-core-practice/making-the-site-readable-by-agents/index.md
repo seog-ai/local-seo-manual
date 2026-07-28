@@ -67,7 +67,11 @@ You know this failure: it is why you have tapped the wrong link on a phone. The 
 
 ## What Lighthouse actually scores
 
-The category is called **Agentic Browsing** and it currently carries six checks. In SEOG they appear on the **Website** page as an **AI agent readiness** card, directly below the **Site health** card. *(Category contents verified 2026-07 against Google's Lighthouse agentic-browsing documentation; Lighthouse 13.3 added it to the default config, 13.4 is current.)*
+The category is called **Agentic Browsing** and it currently carries six checks. In SEOG they appear on the **Website** page as an **AI agent readiness** card, directly below the **Site health** card.
+
+![The AI agent readiness card with six rows: accessibility tree, three WebMCP checks, Cumulative Layout Shift and llms.txt — three ticked, three showing a dash and the note "optional today"](../../../static/img/screens/agent-readiness-panel.png)
+
+*The six checks on a real site, and the table below is this card in prose. The three **WebMCP** rows carry a dash rather than a cross: they were not asked, because the standard is new enough that Google treats it as optional. Which rows applied to your site is the reading — not the figure in the corner.* *(Category contents verified 2026-07 against Google's Lighthouse agentic-browsing documentation; Lighthouse 13.3 added it to the default config, 13.4 is current.)*
 
 | Check | What it asks | Who else benefits |
 | --- | --- | --- |
