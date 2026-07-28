@@ -24,7 +24,7 @@ Now the part that matters. **It is a state document, not a period document.** No
 
 The PDF is therefore your **evidence annexe**, not your report. The narrative is yours to write, and it is the part worth money. If a supplier's monthly deliverable is a generated PDF with a covering email, the client is paying a retainer for a button.
 
-![The Reports panel open on a business overview, showing a PDF reports header with a Generate action and the message "No reports yet. Generate your first one."](../../../static/img/screens/reports.png)
+![The Reports panel open on a business overview: a PDF reports header with a Generate action, and one report row dated 7/28/2026 marked Ready with download and delete icons](../../../static/img/screens/reports.png)
 
 *The button in question. It is one click and it produces a competent artefact — which is exactly why it is dangerous to hand over unaccompanied. Everything the client actually asked ("did it work, what did you do, what next") lives in the narrative you write around this, not inside it.*
 

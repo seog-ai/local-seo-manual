@@ -59,6 +59,10 @@ flowchart TD
 
 1. Press **Sync reviews** in the page header. Connected, this pulls the owner review history; unconnected, only the handful of recent reviews public data exposes. Note which case you are in — it changes what this lab can prove.
 2. In the filter bar, choose the **Answered** tab and leave the sort on **Newest**. These replies are already live under your client's name. (The filters live in the URL, so whatever view you end up with is a link you can send.)
+
+![The Reviews screen on a connected profile: a Sync reviews button in the header, a "Full review history" badge, a banner reading "Your reviews data is 13 days old", and a filter bar with All, Unanswered, Answered and Drafts tabs](../../../static/img/screens/owner-reviews.png)
+
+*Both steps are here. **Sync reviews** is step 1, in the header beside **Request review**; the **Full review history** badge is how you tell you are on the connected path rather than the five-review public sample, which is the thing step 1 asks you to note. Step 2 is the tab strip — **Answered** is the set already published under your client's name, and it is the only tab that matters for this lab. The amber banner is the app telling you the age of what you are reading before you draw conclusions from it.*
 3. Read every one. Flag any that name or describe an individual customer, dispute the facts of a complaint, disclose an order or account number, promise compensation, or read as sarcastic.
 4. For each flagged reply write one line: what it says, why it is a risk, and whether you propose to edit it, leave it, or escalate.
 5. Take that list to the client before changing anything. Editing an old reply is still publishing publicly, which is what the acknowledgement gate on the publish step is for.

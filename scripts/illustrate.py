@@ -73,12 +73,6 @@ IMAGES = {
     ),
     # Chapter art. Same rule as everything else here: only where no screenshot and no
     # diagram can carry the idea, and never doing explanatory work on its own.
-    "lab-diagnostic-arc": (
-        "Three simple objects in a row on an open field, evenly spaced: a small circular lens "
-        "shape, a circular arrow suggesting a repeat, and a rectangular sheet with a small "
-        "clasp. One thin horizontal line running left to right through all three. Suggests "
-        "read, re-measure, then freeze the result. 16:9."
-    ),
     "lab-branch-overlap": (
         "Two identical square lattices of small circles, side by side, overlapping in the "
         "middle so the shared region forms a narrow lens shape. The circles inside the shared "

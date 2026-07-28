@@ -18,6 +18,10 @@ The three labs below turn the preceding argument into numbers you own: one store
 
 1. Open **Rankings**, select the keyword, and let the stored scan load under **Geographic visibility**. Note the **Checked …** stamp so you know which scan you are reading.
 2. Count the pins into four bands by colour: top 3 (green), 4–10 (yellow), 11–20 (orange), not found (grey). The four must sum to your point count. (The legend lists a fifth band, red **20+**; on a finished scan it is always empty, for the reason above.)
+
+![The Geographic visibility card: the three presets with Quick selected, a top-3 coverage trend, a plain-language summary, the map with nine numbered rank pins over Helsinki, and the band legend beneath it](../../../static/img/screens/grid-panel.png)
+
+*The card the whole lab runs on, and everything step 2 needs is in it. Nine pins: six green carrying **2**, three amber carrying **4** — so top 3 = 6, band 4–10 = 3, and the remaining two bands are empty. The legend under the map is the colour key you are counting against, and the line beside it gives the two figures the lab asks you to derive by hand — **Avg rank 2.7** over found pins only, and **Top-3 coverage 67%**. The **Checked 2h ago** stamp is which scan you are reading; nothing here re-fetches.*
 3. Compute the found rate — ranked pins ÷ all pins — and check it against the plain-language paragraph above the map, which states it in words.
 4. Compute "average rank" three ways: over found pins only; with every grey pin imputed at 21; with every grey pin imputed at 50. Write all three side by side, then find which one the app's **Avg rank** matches. It is the first.
 5. The fourth way is to refuse the average. Write the sentence you would actually put in a report: it must carry the found rate and the top-3 count, and must not carry an unqualified mean.
@@ -39,6 +43,10 @@ The three labs below turn the preceding argument into numbers you own: one store
 3. Select **Quick** (`3×3 · ~2 mi`, `9 searches`) and press **Check now**. Record the found rate, top-3 coverage and the four band counts.
 4. Wait about an hour, then press **Check now** again at the **same preset**, so this pair is the newest two and the comparison pairs the scans you intend.
 5. Click **Compare with previous scan** and read the strip: *N improved · N newly ranked · N dropped · N lost*. Every non-zero count there is **noise** — nothing changed in the world between the runs.
+
+![Compare mode on the same nine points: a strip reading "vs scan from 7/27/2026: 1 dropped", eight pins marked = and one red pin marked −1, and a legend of Improved / new, Dropped / lost, No change](../../../static/img/screens/grid-compare-panel.png)
+
+*Exactly what step 5 produces, on a real pair of scans. Eight of the nine points read `=` and one moved a single position — and because nothing was changed between the runs, that one pin **is** the noise floor for this business and this preset. Note that the pins are no longer coloured by rank here: red means *dropped*, not "ranked badly", which is why step 2's band counting has to be done with **Show ranks** on.*
 6. Write down three figures — how many of the nine pins moved at all, the largest single move in positions, the change in top-3 coverage — then your noise floor as a sentence to reuse: *"Two identical scans an hour apart differed at X of 9 points and by Y coverage points. We do not report movements below that."*
 
 **What good looks like.** Three results, all valid.

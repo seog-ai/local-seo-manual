@@ -8,9 +8,7 @@ description: Three labs — read the audit, refresh it, freeze the baseline — 
 
 The three labs below run the whole routine once, in order: read the audit and name a cause for every failing check, refresh the picture and say what could have moved, then freeze the result as a document you cannot edit.
 
-![Three shapes on a single line: a filled disc, a circular repeat arrow, and a clipboard](../../../static/img/art/lab-diagnostic-arc.png)
-
-*The arc of this chapter, and the order matters: read what is already stored (free), re-fetch once and account for what moved (paid), then freeze the result (paid). Diagnose, freeze, then fix — a fix made before the freeze is a fix you can never take credit for.*
+The order matters: read what is already stored (free), re-fetch once and account for what moved (paid), then freeze the result (paid). A fix made before the freeze is a fix you can never take credit for.
 
 ## Labs
 
@@ -74,6 +72,10 @@ flowchart LR
 > You need: Lab 7.2, so the frozen picture is the freshest one.
 
 1. Open **Reports** in the page header and press **Generate**. The price is on the button. When the report appears in the list, download it.
+
+![The overview with the Reports panel open from the page header: a Generate button carrying its price, and one report row dated 7/28/2026 marked Ready beside a download icon](../../../static/img/screens/reports.png)
+
+*Where step 1 happens. **Reports** sits in the page header beside **Refresh all**, not in the left navigation — which is where most people look for it. Once the row reads **Ready** the download icon beside it is your baseline; the state before that is **Queued**, then **Generating**. Every report you generate for this business stays in this list, which is where you come back for the comparison in [Did it work?](../did-it-work/index.md) — up to a limit, so step 3's "somewhere you will still have it in three months" means your own storage, not this panel.*
 2. Read it end to end — it is short. Confirm the generation date and last-synced date, and check every failing row against the causes you wrote in Lab 7.1.
 3. Save it with the date in the filename: `businessname-baseline-YYYY-MM-DD.pdf`, somewhere you will still have it in three months.
 4. Put your verdict and work list in the same folder as a text file. The PDF is the evidence; the verdict is the argument.

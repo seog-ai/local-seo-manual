@@ -23,6 +23,10 @@ Three labs put the rest of this chapter into practice: write the page before you
 *The state your page is in at the end of step 1, and the reason the order works. The gaps are fixed before you know what will fill them, so a number cannot choose the sentence it sits in. Steps 2 and 4 then do the honest half of the job: a gap you cannot fill from stored data is a claim you cannot support, and it is deleted rather than softened.*
 2. Fill each `[?]` from **stored** data only: the keyword position chart, the grid trend line, **Profile score over time**, **Review momentum**. Write each number's conditions beside it. Any `[?]` you cannot fill this way is a claim you cannot currently support — leave it marked.
 3. Open **Reports** in the overview page header and press **Generate**. The price is on the button. The row moves through **Queued** and **Generating**; download it when it reads **Ready**.
+
+![The Reports panel open from the overview page header: a Generate button carrying its price, and one report row dated 7/28/2026 tagged Ready with a download icon and a delete icon](../../../static/img/screens/reports.png)
+
+*Step 3, finished. **Reports** is in the page header beside **Refresh all** — not in the left navigation, which is where people look for it — and it opens as a panel over the overview. The row is the report: a generation timestamp, the state (**Ready** here; **Queued** and **Generating** come first, and a run that fails says so and is refunded), then download and delete. That timestamp is the date you put in the filename at step 5, and the delete icon is worth noticing before step 4 of Lab 26.3 — ten reports are kept per business, so this list is not an archive.*
 4. For every claim on your page, find its support in the annexe or a stored screen you can screenshot. **Anything unsupported gets deleted, not softened.**
 5. Mark every surviving movement V, P or U, writing each P's caveat in the words you would say out loud. Save the page and the dated PDF into one dated folder.
 

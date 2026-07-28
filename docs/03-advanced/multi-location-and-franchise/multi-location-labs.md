@@ -18,6 +18,10 @@ Three sittings against a real portfolio: rebuild the ordering the board gave you
 
 1. Open the dashboard. Write down the four rollups, and mark each as a *fact* or a *triage signal* using the table above. Two of the four are facts.
 2. Read the cards in order. For each, copy the chips it shows — fixes, to answer, slipping, profile weak, website score — or **All quiet**.
+
+![The portfolio dashboard: four rollup tiles reading Businesses 1, Avg profile score 91%, Avg rating 4.7, Total reviews 572, and one business card with a mini rank grid and an "All quiet" line](../../../static/img/screens/dashboard.png)
+
+*The board steps 1 and 2 read, here with a single location so the parts are visible. The four tiles across the top are the rollups — two of them facts, two of them triage signals, and the table above says which is which. The card carries what step 2 asks you to copy: the mini grid with its keyword and coverage, and in this case **All quiet** rather than a chip. With a real portfolio these cards stack, and their order is the thing you are about to reproduce by hand.*
 3. Using the weights table, compute each location's score in a spreadsheet and sort by it.
 4. Compare your ordering with the page's. They should match; if not, find out why. The usual answer is a staleness contribution you forgot.
 5. Now the part the score cannot do: for the top two, write one sentence saying whether it points at a *problem* or at *neglect*. A location high only because nothing has been synced for a month is neglect.
@@ -60,6 +64,10 @@ A card shows a website chip *and* **All quiet**: the quiet label is computed fro
 > You need: Lab 25.2, and the two branches from it.
 
 1. Open Competitors on branch A. In the **Add a competitor** panel, press **Discover nearby**.
+
+![The Competitors screen: an Add a competitor panel with a name search, radius chips for 1, 3 and 5 miles, a "Big players (50+)" checkbox, an optional Area field, and a Discover nearby button](../../../static/img/screens/competitors.png)
+
+*The panel step 1 uses. **Discover nearby** searches around the business at the selected radius — 3 mi here — and the optional **Area** field is the one the "if it went wrong" note sends you back to when discovery returns almost nothing. The two rows below are the screen's labelled **Example**, not rivals of this business; on a real run they are replaced by what Google actually returns near branch A, which is where you look for branch B.*
 2. Read the candidates and look for branch B. If the branches are close and share a category, it is usually there.
 3. Do not track it yet. Write the decision first: are you tracking it to *measure the overlap*, or would it only produce a row a client misreads?
 4. If you track it, write the report sentence now — "Riverside branch is listed to measure catchment overlap, not as a third-party competitor."

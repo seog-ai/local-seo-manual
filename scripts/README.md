@@ -58,6 +58,19 @@ Both were captured and nearly published as real before anyone noticed. See `stat
 
 ---
 
+## `crop.mjs` — panel crops from the stored screenshots
+
+Some labs run on one card of a screen that is 2,700 px tall. Inlined at the manual's content width, a full-page capture renders as a strip of unreadable UI — so the lab that most needs the evidence is the one that cannot show it.
+
+```bash
+node scripts/crop.mjs              # all
+node scripts/crop.mjs grid-panel   # one
+```
+
+The inputs are files already in this repo, so it needs no app and no network and can be re-run any time. Boxes are pixels, not selectors: after `capture.mjs` re-shoots a source, re-run this and **look at every output** — a box does not know that a card grew a row. It fails loudly if a box no longer fits its source.
+
+---
+
 ## `illustrate.py` — generated art
 
 Nano Banana 2 (`gemini-3-pro-image`) via Vertex AI, for the hero, the OG background, one opener per part, and the `lab-*` / `mistake-*` chapter figures.
@@ -72,7 +85,13 @@ python3 scripts/illustrate.py hero       # one
 
 Deliberately narrow in scope. Everything explanatory is a screenshot or a Mermaid diagram; generated art is used only where a real capture is impossible. For a technical audience, decorative AI illustration is the fastest way to look low-effort, and it would undercut exactly the credibility the probe-verified reference is buying.
 
-**On chapter figures.** The narrow rule was applied for a while as *no visual at all*, which left the lab pages as unbroken walls of text. The order to reach for is: a real screenshot of the screen the lab runs on, then a Mermaid diagram if the page teaches a decision, and only then a `lab-*` figure here — for the shapes no capture can show, like two branch grids overlapping or a schedule where the slowest task starts first. Every figure still carries a caption doing real work; a picture with a decorative caption should have been left out.
+**On chapter figures.** The narrow rule was applied for a while as *no visual at all*, which left the lab pages as unbroken walls of text. The order to reach for is strict:
+
+1. **A real screenshot of the screen the step happens on** — including a panel crop via `crop.mjs` if the screen is too tall to inline. If a capture could exist, nothing else is acceptable in its place.
+2. **A Mermaid diagram**, where the page teaches a decision rather than a screen.
+3. **A generated figure here**, only for what neither can show: two branch grids overlapping, a censored decay curve from someone else's study, a schedule where the slowest task starts first.
+
+Every figure carries a caption doing real work. A picture whose caption is decorative should have been left out.
 
 Every prompt forbids text. Models render lettering unreliably, and a cover with a misspelt word costs more trust than a good picture earns.
 

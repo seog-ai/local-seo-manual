@@ -4,6 +4,7 @@
   "type": "module",
   "description": "Capture/build tooling for the manual. Deliberately a SEPARATE dependency root: the site's Dockerfile runs `npm ci --include=dev` at the repo root, and Playwright has no business being installed during a docs deploy. Node resolves `playwright` from scripts/node_modules because ESM resolution walks up from the importing file.",
   "dependencies": {
-    "playwright": "^1.62.0"
+    "playwright": "^1.62.0",
+    "sharp": "^0.35.3"
   }
 }

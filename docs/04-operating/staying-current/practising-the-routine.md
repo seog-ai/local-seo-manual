@@ -39,6 +39,10 @@ The routine only becomes yours once you have run it. These three labs build the 
 
 1. Open **Posts** and begin composing a **What's New** post. Do not publish.
 2. Paste a very long body — a few thousand characters of any filler. The live issue list appears as you type. Read it: it names a limit. Write the number down.
+
+![The Posts composer: type tabs for What's New, Event and Offer, four starting templates, and a Post text field with a 0/1500 counter above its top-right corner](../../../static/img/screens/posts.png)
+
+*Where the lab runs, before you type anything. The counter above the field — **0/1500** — is the first of the two numbers you are after, and switching the tab to **Event** is what surfaces the second, much smaller one on the title. Both are hard-coded limits this composer enforces on Google's behalf, which is the point of the lab: neither number is in Google's documentation.*
 3. Switch the type to **Event** and give it an over-long title. Note the second, much smaller limit, and the requirement for a complete start **and** end date and time.
 4. Now answer the question this lab exists for: **where did those numbers come from, and when were they last true?** Neither appears in Google's current documentation; both were established by sending an over-long value and reading the field-level error that came back ([publishing without getting rejected](../../02-core-practice/publishing-without-getting-rejected/index.md), verified 2026-07-22).
 

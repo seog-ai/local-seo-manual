@@ -18,6 +18,10 @@ Three labs build the loop this chapter argues for: connect an agent and inventor
 
 1. Open **Settings → Agents & MCP**. In the **MCP access** card, copy the **Connection endpoint**.
 2. Name a token for the machine it will live on — `laptop agent` — and press **Generate token**. The banner says *Copy this now — it won't be shown again*, and it means it. Put it in your shell environment or a password manager, never in a repo.
+
+![Settings on the Agents & MCP tab: an MCP access card with the connection endpoint and a Copy button, "No tokens yet", a token-name field with Generate token, and a Set up your agent card offering a Claude Code plugin or any MCP client](../../../static/img/screens/settings-agents.png)
+
+*Steps 1 to 3 are all on this one screen. The endpoint is the address your client connects to; the token field below it is step 2, and the card underneath carries the exact commands for whichever client you run. Note what is not here: no per-tool switches. Which calls the agent may make is decided in your client's own permission settings — the distinction Lab 28.3 is built around.*
 3. Register the server with your client. The **Set up your agent** card below has both paths — **Claude Code plugin** and **Any MCP client** — with copyable commands.
 4. List the tools and count them. That count is the same set your own login can reach.
 5. Ask for a free inventory in one message: *"Using the SEOG tools, list my businesses, then for the first one give me its action plan, its tracked keywords with current positions, and its review stats. Do not call anything that costs credits."*

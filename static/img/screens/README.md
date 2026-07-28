@@ -34,6 +34,10 @@ A healthy profile shows the destination. A broken one shows the work. Most "what
 
 4. **Caption what the reader should look at.** A screenshot with no caption is decoration. Say what to notice.
 
+5. **Prefer a real screen over a drawing, always.** If a lab step happens on a screen that exists here, show that screen — generated art (`static/img/art/`) is for the pages where no screen can carry the idea, and it must never stand in for a capture that could have been taken.
+
+6. **A `-full.png` is not an inline image.** The whole-page variants run to 3,000 px and render at the manual's content width as an unreadable strip. Use the 900 px capture, or a panel crop from `scripts/crop.mjs` — which is how a lab about one card gets one card instead of a whole page.
+
 ## Inventory
 
 ### Signup and setup
@@ -58,6 +62,8 @@ A healthy profile shows the destination. A broken one shows the work. Most "what
 | `rankings-tracked-full.png` | Same, whole page |
 | `keyword-detail.png` | Keyword detail panel — position, competitors beating you, history |
 | `geo-grid-compare.png` | The per-pin diff between the last two scans — `=` unchanged, a signed number where the position moved, with an Improved / Dropped / No-change legend. The manual's own evidence about re-measurement |
+| `grid-panel.png` | **Crop** of `keyword-detail.png` — the Geographic visibility card alone: presets, coverage trend, the map with rank pins, and the band legend |
+| `grid-compare-panel.png` | **Crop** of `geo-grid-compare.png` — the compare strip, the movement-coloured pins and their legend |
 | `geo-grid.png` | **Real 3×3 grid scan.** "Limited visibility — top 3 in 0% of the area": found at 9 of 9 points, averaging #4.7, on a real Helsinki map with rank-coloured pins. An earlier scan of the SAME nine points hours before read #2.4 and 100% top-3 — do not describe this image from memory, read it |
 | `reviews.png`, `reviews-full.png` | Reviews list, public view (recent sample only) |
 | `competitors.png` | Competitors page |
@@ -65,6 +71,7 @@ A healthy profile shows the destination. A broken one shows the work. Most "what
 | `website.png` | Website analysis page |
 | `posts.png` | Posts page, not owner-connected |
 | `profile.png`, `profile-full.png` | Profile page, public view |
+| `reports.png` | The Reports panel over the overview with one **Ready** row — timestamp, state badge, download, delete. Re-captured 2026-07-28 *after* generating a real report, so the row states the labs describe are visible; the earlier version showed only the empty state |
 
 ### Owner view — AIEmployees (Google Business Profile connected)
 | File | Shows |

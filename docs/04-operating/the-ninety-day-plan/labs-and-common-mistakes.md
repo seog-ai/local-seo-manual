@@ -22,6 +22,10 @@ Three labs turn the plan into something dated: rebuild the generated action plan
 
 1. Open the overview and read **Action plan — your next steps**. Press nothing else — this list is computed from stored data and costs nothing to read.
 2. Copy every item into a table, in the order shown, with its impact label and its `+N pts` value where it has one.
+
+![The action plan on a business overview: seven numbered steps, the first three carrying +10, +10 and +9 points with High impact labels, each with an Edit on profile or Get reviews action](../../../static/img/screens/owner-overview.png)
+
+*The list step 2 copies, in the order the app gives it. Notice what that order is doing: **Get more reviews** sits at number 2 on `+10` — correctly, by recoverable weight — beside **Add a phone number**, which is also `+10` and takes about ninety seconds. Nothing on this screen knows that one of them finishes today and the other takes a quarter. That is the whole job of the next three steps.*
 3. Add four columns and fill them in yourself: **clock** (write / behaviour / aggregate), **owner** (you / client / developer), **risk** (safe / re-verification), **earliest useful start**.
 4. Re-sort by *earliest useful start*, ascending, breaking ties with impact.
 5. Assign each row to a week number, 1 to 12. Every aggregate-clock row lands in week 1 or 2.
