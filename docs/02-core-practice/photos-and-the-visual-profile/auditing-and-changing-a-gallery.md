@@ -1,7 +1,7 @@
 ---
 title: Auditing and changing a gallery
 sidebar_position: 3
-description: Three labs on a live photo gallery — audit what you can actually remove, upload photos you captured, and discover which images are permanent — plus the common mistakes.
+description: Three labs on a live photo gallery — audit what you can actually remove, upload photos you captured, and discover which images are permanent.
 ---
 
 # Auditing and changing a gallery

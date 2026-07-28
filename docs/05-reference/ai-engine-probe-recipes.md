@@ -1,7 +1,7 @@
 ---
 title: AI engine probe recipes
 sidebar_position: 7
-description: Reproducible recipes for testing whether an AI engine recommends a business — prompt construction, geo-anchoring, run counts, how to record a result, and the failure modes that fake one.
+description: Recipes for testing whether an AI engine recommends a business — prompt construction, geo-anchoring, run counts, recording a result, and the failure modes.
 ---
 
 # AI engine probe recipes

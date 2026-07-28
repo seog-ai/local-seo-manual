@@ -1,7 +1,7 @@
 ---
 title: The local search changelog
 sidebar_position: 8
-description: Dated local-search changes since 2020, each with the API or endpoint it touched and what it broke — sourced from Google's own change logs and from live probes.
+description: Dated local-search changes since 2020, each with the API or endpoint it touched and what it broke — from Google's own change logs and live probes.
 ---
 
 # The local search changelog

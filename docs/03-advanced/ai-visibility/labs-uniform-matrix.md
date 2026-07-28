@@ -1,7 +1,7 @@
 ---
 title: "Labs: running a uniform matrix"
 sidebar_position: 3
-description: Three labs that design a probe set, run a uniform matrix across engines and put error bars on the rates — plus the mistakes that make an AI visibility number meaningless.
+description: Three labs that design a probe set, run a uniform matrix across engines and put error bars on the rates — plus what makes an AI visibility number meaningless.
 ---
 
 # Labs: running a uniform matrix

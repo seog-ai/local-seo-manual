@@ -1,7 +1,7 @@
 ---
 title: "Agent labs: connect, run and constrain one"
 sidebar_position: 3
-description: Three labs — connect an agent and inventory its reach, run one supervised weekly cycle, and write the guardrail file plus the client permissions that enforce it.
+description: Three labs — connect an agent and inventory its reach, run one supervised weekly cycle, and write the guardrail file plus the permissions that enforce it.
 ---
 
 # Agent labs: connect, run and constrain one

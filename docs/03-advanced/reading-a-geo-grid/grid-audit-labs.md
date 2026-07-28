@@ -1,7 +1,7 @@
 ---
 title: "Labs: score a grid, measure your noise floor, set the effect size"
 sidebar_position: 3
-description: Three labs — score one scan four ways, measure how far two identical scans differ, and fix your effect size before you look — plus the mistakes that survive good statistics.
+description: Three labs — score one scan four ways, measure how far two identical scans differ, and fix your effect size before you look at the result.
 ---
 
 # Labs: score a grid, measure your noise floor, set the effect size

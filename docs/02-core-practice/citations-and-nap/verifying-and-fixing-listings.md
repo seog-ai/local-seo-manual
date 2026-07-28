@@ -1,7 +1,7 @@
 ---
 title: Verifying and fixing listings
 sidebar_position: 3
-description: Four labs — verify six platforms, cross-check your own site, work the gap AI actually cites, and fix one listing at source — plus the mistakes citation packages cause.
+description: Four labs — verify six platforms, cross-check your own site, work the gap AI actually cites, and fix one listing at source — plus the usual mistakes.
 ---
 
 # Verifying and fixing listings

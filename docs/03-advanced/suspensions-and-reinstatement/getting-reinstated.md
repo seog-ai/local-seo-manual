@@ -1,7 +1,7 @@
 ---
 title: What an outage costs, and how to come back
 sidebar_position: 2
-description: The ten-edits-a-minute cap that bites hardest during a scramble, why stored data keeps insisting the business is fine, and the six-step reinstatement procedure.
+description: The ten-edits-a-minute cap that bites hardest during a scramble, why stored data keeps insisting the business is fine, and the reinstatement procedure.
 ---
 
 # What an outage costs, and how to come back

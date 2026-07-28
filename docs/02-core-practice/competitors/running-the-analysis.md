@@ -1,7 +1,7 @@
 ---
 title: Running the competitor analysis
 sidebar_position: 2
-description: Four labs that build an honest competitive set — nearby discovery, snapshots and the comparison card, the spam scan, and the co-mention list an AI picked — plus the mistakes that spoil them.
+description: Four labs that build an honest competitive set — nearby discovery, snapshots and the comparison card, the spam scan, and the co-mention list an AI picked.
 ---
 
 # Running the competitor analysis

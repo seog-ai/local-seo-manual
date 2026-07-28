@@ -1,7 +1,7 @@
 ---
 title: Write limits and failure modes
 sidebar_position: 5
-description: The write-side catalogue — character caps, media rules, the video-in-posts 500, native scheduling, the shared edit budget, and why an HTTP 200 is not a publication.
+description: The write-side catalogue — character caps, media rules, the video-in-posts 500, native scheduling, the edit budget, and why HTTP 200 is not publication.
 ---
 
 # Write limits and failure modes

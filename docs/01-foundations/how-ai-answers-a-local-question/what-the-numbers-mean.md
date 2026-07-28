@@ -1,7 +1,7 @@
 ---
 title: What an AI visibility number actually measures
 sidebar_position: 2
-description: Named, cited and stance are three different axes, a chat engine always answers so "presence" is 100% by construction, and the claims in circulation are worth grading before you repeat them.
+description: Named, cited and stance are three different axes, a chat engine always answers so presence is 100% by construction — and which claims survive grading.
 ---
 
 # What an AI visibility number actually measures

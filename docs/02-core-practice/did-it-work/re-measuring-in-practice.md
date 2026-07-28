@@ -1,7 +1,7 @@
 ---
 title: Re-measuring in practice
 sidebar_position: 3
-description: Four labs — re-scan and diff against the baseline, read the owner metrics without misreading them, assemble a defensible report, build a change log — and the mistakes that make a comparison lie.
+description: Four labs — diff a re-scan against the baseline, read owner metrics honestly, assemble a defensible report, and build a change log — plus what makes one lie.
 ---
 
 # Re-measuring in practice

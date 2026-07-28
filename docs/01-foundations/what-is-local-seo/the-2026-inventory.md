@@ -1,7 +1,7 @@
 ---
 title: The 2026 inventory and who decides each surface
 sidebar_position: 2
-description: What has actually been measured about AI local packs, AI Overviews and assistant recommendations — and why six surfaces with five different selectors disagree.
+description: What has actually been measured about AI local packs, AI Overviews and assistant recommendations — and why six surfaces with five selectors disagree.
 ---
 
 # The 2026 inventory and who decides each surface

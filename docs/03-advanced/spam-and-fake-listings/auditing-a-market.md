@@ -1,7 +1,7 @@
 ---
 title: Auditing a market, from signal to filed report
 sidebar_position: 2
-description: Four labs that audit the set you are measured in, turn one suspect listing into a dated case, recompute your targets without the fakes, and log a single report.
+description: Four labs that audit the set you are measured in, turn one suspect listing into a dated case, and recompute your targets without the fakes.
 ---
 
 # Auditing a market, from signal to filed report

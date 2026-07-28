@@ -1,7 +1,7 @@
 ---
 title: Guardrails, policy and honest limits
 sidebar_position: 2
-description: The three layers that gate an agent's irreversible actions, the automated review reply Google's policy names as abusive, and what an agent still cannot do for you.
+description: The three layers that gate an agent's irreversible actions, the automated review reply Google's policy calls abusive, and what an agent still cannot do.
 ---
 
 # Guardrails, policy and honest limits

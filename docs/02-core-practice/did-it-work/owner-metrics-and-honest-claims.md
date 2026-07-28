@@ -1,7 +1,7 @@
 ---
 title: Owner metrics and what you may honestly claim
 sidebar_position: 2
-description: Google splits impressions four ways, reports the last few days late and counts clicks rather than outcomes — how to read the owner numbers, and the three buckets every claim belongs in.
+description: Google splits impressions four ways, reports the last few days late and counts clicks rather than outcomes — how to read it, and where every claim belongs.
 ---
 
 # Owner metrics and what you may honestly claim

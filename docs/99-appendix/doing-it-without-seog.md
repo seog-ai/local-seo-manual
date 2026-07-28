@@ -1,7 +1,7 @@
 ---
 title: Doing all of this without SEOG
 sidebar_position: 6
-description: Every lab in this manual done by hand — the free tool for each job, what each one costs you in time, and the three things that are genuinely hard without software.
+description: Every lab in this manual done by hand — the free tool for each job, what each costs in time, and the three things that are genuinely hard without software.
 ---
 
 # Doing all of this without SEOG

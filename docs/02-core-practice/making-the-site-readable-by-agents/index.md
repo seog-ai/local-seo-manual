@@ -1,7 +1,7 @@
 ---
 title: Making the site readable by an AI agent
 sidebar_position: 1
-description: Whether an AI agent can read, understand and operate your website — llms.txt, the accessibility tree, layout stability, and how to score it instead of arguing about it.
+description: Whether an AI agent can read, understand and operate your website — llms.txt, the accessibility tree, layout stability, and how to score it.
 ---
 
 # Making the site readable by an AI agent

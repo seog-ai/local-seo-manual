@@ -1,12 +1,16 @@
 ---
 title: Diagnostic labs and common mistakes
 sidebar_position: 3
-description: Three labs — read the audit, refresh it, freeze the baseline — plus the mistakes that turn a first-pass diagnostic into a template with a business name pasted in.
+description: Three labs — read the audit, refresh it, freeze the baseline — plus the mistakes that turn a diagnostic into a template with a business name pasted in.
 ---
 
 # Diagnostic labs and common mistakes
 
 The three labs below run the whole routine once, in order: read the audit and name a cause for every failing check, refresh the picture and say what could have moved, then freeze the result as a document you cannot edit.
+
+![Three shapes on a single line: a filled disc, a circular repeat arrow, and a clipboard](../../../static/img/art/lab-diagnostic-arc.png)
+
+*The arc of this chapter, and the order matters: read what is already stored (free), re-fetch once and account for what moved (paid), then freeze the result (paid). Diagnose, freeze, then fix — a fix made before the freeze is a fix you can never take credit for.*
 
 ## Labs
 
@@ -22,6 +26,23 @@ The three labs below run the whole routine once, in order: read the audit and na
 4. For each, write **one line naming the cause**, from exactly three: *absent* (the field is empty), *below threshold* (present but under the bar — 12 reviews against 20), or *unknown* (you cannot observe it from here). Guessing is not an option.
 5. Open **AI Visibility** and read the **AI readiness** card at the bottom. Do not press **Check now**. Expand **What goes into this score** and add any failing factor the action plan did not list.
 6. Write the verdict: three sentences, no numbers-as-conclusions.
+
+![The whole business overview page for AIEmployees: a 36% profile score with a five-segment bar, a seven-step action plan carrying +10, +10 and +9 point labels, and cards further down marked Example](../../../static/img/screens/owner-overview-full.png)
+
+*The page the lab runs on, whole, so you can see what belongs to which step. Step 2 reads the segmented bar under **36%**; step 3 reads the seven numbered rows and their `+N pts`; step 5 is further down still. Notice what the header says before you touch anything — **Not synced yet**, beside a **Refresh all** you are not pressing until Lab 7.2. The lower cards captioned "Example — track keywords…" are the to-do list of things not yet run, not measurements of this business.*
+
+Step 4 is the one that takes practice. Every failing row resolves to exactly one of three causes, and the route to it is mechanical:
+
+```mermaid
+flowchart LR
+  A["A failing check"] --> B{"Can you observe<br/>the field at all?"}
+  B -->|"No - needs owner access"| U["unknown"]
+  B -->|"Yes"| C{"Is it empty?"}
+  C -->|"Yes"| M["absent"]
+  C -->|"No, but under the bar"| T["below threshold"]
+```
+
+*Only **absent** and **below threshold** are findings. **unknown** is a statement about your access, not about the business — and writing it down is what stops an observed gap from being reported as a fault.*
 
 **What good looks like.** Every failing item has a cause beside it, at least one is marked *unknown* if you are not connected to the profile, and the verdict is something a non-specialist could read aloud.
 
@@ -66,6 +87,10 @@ The three labs below run the whole routine once, in order: read the audit and na
 ## Common mistakes
 
 **Fixing during the diagnostic.** You spot a missing phone number in minute four and fix it in minute five, and your baseline now has a hole in it. It feels efficient; it costs you the ability to attribute anything. Diagnose, freeze, then fix.
+
+![A sheet of ruled record with one clean circular hole missing from the middle, and the removed disc lying beside it](../../../static/img/art/mistake-hole-in-the-baseline.png)
+
+*The fix is not lost — it is out of the record. In six weeks you will be able to say the phone number is there and not that you put it there, because the only document from before it existed already has it.*
 
 **Reporting a score as a finding.** "Profile score 62%" gives a client nothing to act on and invites them to treat the number as the goal. People then optimise the score — ticking low-weight attribute boxes — instead of the business.
 

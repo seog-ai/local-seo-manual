@@ -1,7 +1,7 @@
 ---
 title: The local prompt corpus
 sidebar_position: 4
-description: A versioned, citable set of unbranded geo-anchored local queries for AI-visibility testing — 46 templates across four intents, with the rules for filling, running and reporting them.
+description: A versioned, citable set of unbranded geo-anchored local queries for AI-visibility testing — 46 templates across four intents, with rules for running them.
 ---
 
 # The local prompt corpus

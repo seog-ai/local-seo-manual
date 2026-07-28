@@ -1,7 +1,7 @@
 ---
 title: Spam, fake listings, and the market you are measured against
 sidebar_position: 1
-description: Local spam is a measurement problem before it is a fairness problem — how to detect it to an evidence standard, report it, and stop it distorting your numbers.
+description: Local spam is a measurement problem before a fairness problem — how to detect it to an evidence standard, report it, and stop it distorting your numbers.
 ---
 
 # Spam, fake listings, and the market you are measured against

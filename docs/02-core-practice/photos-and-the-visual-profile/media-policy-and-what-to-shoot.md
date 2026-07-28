@@ -1,7 +1,7 @@
 ---
 title: The media policy, and what to shoot
 sidebar_position: 2
-description: Google's media policy asks for imagery you captured — what that means for AI-generated images, the published format and size limits, and the five shots worth taking.
+description: Google's media policy asks for imagery you captured — what that means for AI-generated images, the published size limits, and the five shots worth taking.
 ---
 
 # The media policy, and what to shoot

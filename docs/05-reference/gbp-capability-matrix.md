@@ -1,7 +1,7 @@
 ---
 title: The GBP capability matrix
 sidebar_position: 3
-description: What every Google Business Profile API actually does in 2026 — alive, dead, or never worked — with the probe, the date, and how to tell an empty endpoint from a retired one.
+description: What every Google Business Profile API actually does in 2026 — alive, dead, or never worked — with the probe, the date, and what an empty endpoint means.
 ---
 
 # The GBP capability matrix

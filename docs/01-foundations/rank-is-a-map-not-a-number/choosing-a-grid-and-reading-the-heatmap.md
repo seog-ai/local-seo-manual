@@ -1,7 +1,7 @@
 ---
 title: Choosing a grid size and reading the heatmap
 sidebar_position: 2
-description: Why grid size is a statistical choice rather than a budget one, how to read a heatmap's shape, legend and two summary figures, and the two properties of rank to carry forward.
+description: Why grid size is a statistical choice rather than a budget one, how to read a heatmap's shape and legend, and the two properties of rank to carry forward.
 ---
 
 # Choosing a grid size and reading the heatmap

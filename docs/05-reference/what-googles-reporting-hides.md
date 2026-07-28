@@ -1,7 +1,7 @@
 ---
 title: What Google's own reporting hides
 sidebar_position: 6
-description: Nineteen verified facts about the shape of Google's performance and keyword data — thresholding, aggregation windows, omitted rows, missing days — and what each one breaks in a report.
+description: Nineteen verified facts about Google's performance and keyword data — thresholding, aggregation, omitted rows, missing days — and what each one breaks.
 ---
 
 # What Google's own reporting hides

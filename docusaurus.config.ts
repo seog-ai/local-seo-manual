@@ -76,6 +76,10 @@ const config: Config = {
   ],
 
   plugins: [
+    // og:type + TechArticle/Organization/WebSite JSON-LD, injected into the
+    // built HTML. See plugins/structured-data/index.js for why it is a
+    // postBuild pass and not a swizzled theme component.
+    './plugins/structured-data',
     // Offline/local search — a manual without search is a PDF. No Algolia
     // dependency, index is built at build time.
     [
@@ -107,11 +111,9 @@ const config: Config = {
         content:
           'local SEO, map pack, Google Business Profile, local search, GBP optimization, local rank tracking, geo grid, local SEO course, local SEO guide',
       },
-      // Docusaurus emits og:title/description/image/url but no og:type or
-      // og:site_name. Both are site-wide defaults here; DocItem overrides
-      // og:type to "article" on every chapter (Helmet dedupes by property, the
-      // deeper tag wins).
-      { property: 'og:type', content: 'website' },
+      // Docusaurus emits og:title/description/image/url but no og:site_name and
+      // no og:type. og:type is per-page (article vs website) and is injected by
+      // the structured-data plugin at build time.
       { property: 'og:site_name', content: 'The Local SEO Manual' },
       { name: 'twitter:site', content: '@seog_ai' },
     ],

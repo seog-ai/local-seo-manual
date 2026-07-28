@@ -1,7 +1,7 @@
 ---
 title: Checklists and templates
 sidebar_position: 3
-description: Copy-pasteable checklists for a new-business audit, profile completeness, monthly maintenance and client onboarding, plus review-response templates written to be edited.
+description: Copy-pasteable checklists for a new-business audit, profile completeness, monthly maintenance and client onboarding, plus review-response templates.
 ---
 
 # Checklists and templates

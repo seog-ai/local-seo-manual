@@ -1,7 +1,7 @@
 ---
 title: Citations for AI answers, and the four verdicts
 sidebar_position: 2
-description: Why a directory listing is now retrieval material for an AI answer, how to work the gap instead of the list, and the four verdicts a listing check can honestly return.
+description: Why a directory listing is now retrieval material for an AI answer, how to work the gap instead of the list, and the four verdicts a listing check can return.
 ---
 
 # Citations for AI answers, and the four verdicts

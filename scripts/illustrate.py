@@ -71,7 +71,40 @@ IMAGES = {
         "An orderly array of small identical rectangles in neat rows, like index cards in a "
         "catalogue, one card lifted slightly out of the array. 16:9."
     ),
+    # Chapter art. Same rule as everything else here: only where no screenshot and no
+    # diagram can carry the idea, and never doing explanatory work on its own.
+    "lab-diagnostic-arc": (
+        "Three simple objects in a row on an open field, evenly spaced: a small circular lens "
+        "shape, a circular arrow suggesting a repeat, and a rectangular sheet with a small "
+        "clasp. One thin horizontal line running left to right through all three. Suggests "
+        "read, re-measure, then freeze the result. 16:9."
+    ),
+    "mistake-hole-in-the-baseline": (
+        "Strictly flat two-dimensional composition, seen straight on, no perspective, no "
+        "shadows, no 3D. A single upright rectangle representing a sheet of record, containing "
+        "a few evenly spaced horizontal lines, with one clean circular hole missing from its "
+        "middle. A separate small circle sits to the right of the sheet. Nothing else. 16:9."
+    ),
 }
+
+
+def flatten(dest: Path) -> None:
+    """Strip the model's film grain and index the palette.
+
+    The raw output is a ~1 MB PNG of what is visually a dozen flat colours — the grain
+    defeats PNG's compression entirely. A 3px median pass removes it without touching the
+    edges, and an octree palette then takes the file to ~20 KB. Skipped silently if Pillow
+    is not installed; a heavy image is worse than a missing one, not fatal.
+    """
+    try:
+        from PIL import Image, ImageFilter
+    except ImportError:
+        return
+    im = Image.open(dest).convert("RGB").filter(ImageFilter.MedianFilter(3))
+    im = im.resize((1200, round(1200 * im.height / im.width)), Image.LANCZOS)
+    im.quantize(colors=32, method=Image.FASTOCTREE, dither=Image.Dither.NONE).save(
+        dest, optimize=True
+    )
 
 
 def main() -> int:
@@ -106,6 +139,7 @@ def main() -> int:
                 blob = getattr(part, "inline_data", None)
                 if blob and blob.data:
                     dest.write_bytes(blob.data)
+                    flatten(dest)
                     wrote += 1
                     break
         print(f"  {'v' if wrote else 'x'} {name}.png")

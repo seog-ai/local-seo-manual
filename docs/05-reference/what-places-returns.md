@@ -1,7 +1,7 @@
 ---
 title: What the Places API will and will not give you
 sidebar_position: 2
-description: The hard limits of Google's public place data — how deep a search reads, how many reviews you get, what is missing from the public record, and what the owner-only endpoints return.
+description: The hard limits of Google's public place data — how deep a search reads, how many reviews you get, what is missing, and what owner-only endpoints return.
 ---
 
 # What the Places API will and will not give you

@@ -1,7 +1,7 @@
 ---
 title: "Labs: running the experiment"
 sidebar_position: 3
-description: Three labs that turn one lever into an attributable experiment — the experiment card, a baseline window on a test and a control set, and the re-measure that tries to rule you out.
+description: Three labs that turn one lever into an attributable experiment — the experiment card, test and control baselines, and a re-measure that can rule you out.
 ---
 
 # Labs: running the experiment

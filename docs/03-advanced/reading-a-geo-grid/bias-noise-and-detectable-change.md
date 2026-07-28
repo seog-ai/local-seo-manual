@@ -1,7 +1,7 @@
 ---
 title: Bias, noise, and the smallest change worth reporting
 sidebar_position: 2
-description: Why a business-centred lattice flatters you, why coverage is a share of ground rather than demand, and how to set a minimum detectable effect from a measured noise floor.
+description: Why a business-centred lattice flatters you, why coverage is a share of ground rather than demand, and how to set a minimum detectable effect.
 ---
 
 # Bias, noise, and the smallest change worth reporting

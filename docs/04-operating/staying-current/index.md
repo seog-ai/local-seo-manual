@@ -1,7 +1,7 @@
 ---
 title: Staying current when the ground moves
 sidebar_position: 1
-description: Google changes local search without announcing most of it. A maintenance routine — what to watch, how to re-probe, and how to tell a real change from folklore.
+description: Google changes local search without announcing most of it. A maintenance routine — what to watch, how to re-probe, and how to spot folklore.
 ---
 
 # Staying current when the ground moves

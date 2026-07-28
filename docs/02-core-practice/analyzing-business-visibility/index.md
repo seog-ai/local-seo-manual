@@ -1,7 +1,7 @@
 ---
 title: Diagnosing a business in thirty minutes
 sidebar_position: 1
-description: A repeatable first-pass diagnostic — read the audit, tell missing from invisible, order the work by weight, and freeze a dated baseline before you change anything.
+description: A repeatable first-pass diagnostic — read the audit, tell missing from invisible, order the work by weight, and freeze a dated baseline.
 ---
 
 # Diagnosing a business in thirty minutes

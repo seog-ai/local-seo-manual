@@ -1,7 +1,7 @@
 ---
 title: What to measure instead of a rank
 sidebar_position: 2
-description: Where SEOG itself gets this wrong, what other rank tools do about it, and the owner-side measurements that work for a hidden-address business without any coordinate.
+description: Where SEOG itself gets this wrong, what other rank tools do about it, and the owner-side measurements that work for a hidden-address business.
 ---
 
 # What to measure instead of a rank

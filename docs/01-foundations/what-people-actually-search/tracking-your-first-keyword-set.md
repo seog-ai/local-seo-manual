@@ -1,7 +1,7 @@
 ---
 title: Tracking your first keyword set
 sidebar_position: 3
-description: Three labs — classify every suggestion by intent, build a set that spans all four, and predict the surface before you search — plus the mistakes that inflate a keyword list.
+description: Three labs — classify suggestions by intent, build a set that spans all four, and predict the surface before you search — plus what inflates a keyword list.
 ---
 
 # Tracking your first keyword set

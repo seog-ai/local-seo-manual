@@ -1,7 +1,7 @@
 ---
 title: The quarter month by month
 sidebar_position: 2
-description: What happens in each month of a ninety-day engagement — day-0 access, the write clock, two mid-quarter readings, the final freeze — and the three things that break the plan.
+description: Each month of a ninety-day engagement — day-0 access, the write clock, two mid-quarter readings, the final freeze — and the three things that break the plan.
 ---
 
 # The quarter month by month

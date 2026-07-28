@@ -1,7 +1,7 @@
 ---
 title: Assembling the report package
 sidebar_position: 2
-description: What the app's generated PDF contains and what it leaves out, the three-layer package it belongs in, the cadence to agree in advance, and how far assembly can be automated.
+description: What the app's generated PDF contains and leaves out, the three-layer package it belongs in, the cadence to agree in advance, and what can be automated.
 ---
 
 # Assembling the report package

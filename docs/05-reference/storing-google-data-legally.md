@@ -1,7 +1,7 @@
 ---
 title: Storing Google data legally
 sidebar_position: 4
-description: What Google's published terms permit you to store from the Places and Business Profile APIs — every clause quoted verbatim with its section number and revision date, plus the questions the documents do not answer.
+description: What Google's terms permit you to store from the Places and Business Profile APIs — every clause quoted with its section number and revision date.
 ---
 
 > **Not legal advice, and not reviewed by a lawyer.** This chapter is written by engineers who

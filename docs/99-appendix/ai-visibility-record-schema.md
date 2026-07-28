@@ -1,7 +1,7 @@
 ---
 title: AI visibility record schema
 sidebar_position: 5
-description: The fields one AI-visibility observation must carry to stay comparable — types, why each exists, a JSON example, and the derivations that belong at read time rather than write time.
+description: The fields one AI-visibility observation must carry to stay comparable — types, why each exists, a JSON example, and the derivations that belong at read time.
 ---
 
 # AI visibility record schema

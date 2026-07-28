@@ -1,7 +1,7 @@
 ---
 title: Measuring AI visibility
 sidebar_position: 1
-description: A defensible method for "does the AI recommend this business" — probe design, geo-anchoring, run counts, variance, the presence matrix, and the limits you must state.
+description: A defensible method for does the AI recommend this business — probe design, geo-anchoring, run counts, variance, the presence matrix, and the limits.
 ---
 
 # Measuring AI visibility

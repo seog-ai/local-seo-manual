@@ -1,7 +1,7 @@
 ---
 title: "Report labs: write it, grade it, schedule it"
 sidebar_position: 3
-description: Three labs — write the narrative before generating the evidence, grade a report against the six-point rubric, and fix the cadence — plus the reporting mistakes that recur.
+description: Three labs — write the narrative before generating the evidence, grade a report against the six-point rubric, and fix the cadence — plus recurring mistakes.
 ---
 
 # Report labs: write it, grade it, schedule it
