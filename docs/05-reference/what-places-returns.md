@@ -33,6 +33,19 @@ The current tier membership of each field is published by Google and moves; read
 
 ## What Places will not give you at any price
 
+These are ceilings, not settings. No field mask, plan or budget moves them, which is why they shape what any product built on public place data can honestly claim:
+
+```mermaid
+flowchart LR
+  A["Public place data"] --> B["At most 20 places<br/>per Text Search request"]
+  A --> C["At most five reviews per place,<br/>chosen by Google"]
+  A --> D["No owner-written<br/>business description"]
+  A --> E["Pure service-area businesses<br/>excluded unless asked for —<br/>and then carrying no location"]
+  A --> F["Low-prominence businesses<br/>that Autocomplete still returns"]
+```
+
+*Every one of these is a limit somebody eventually reports to you as a bug in your product. Three of them dissolve the moment the owner connects — the review history, the description, and the service-area business. The other two are properties of public place search itself, which is why a rank check has a depth floor no vendor can lower.*
+
 ### LSM-PLACES-07 · One Text Search request returns at most 20 places
 
 **Verdict:** WORKS

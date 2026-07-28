@@ -16,6 +16,19 @@ Where an entry cites a Google document, the quote is verbatim, the document's ow
 
 ## Business Profile performance
 
+The six entries below are one pipeline, and they compound. What a client reads as "profile views this month" has passed through every stage of it:
+
+```mermaid
+flowchart TD
+  A["You request a daily range"] --> B["Four impression enums,<br/>never a combined one —<br/>the sum is your construction"]
+  B --> C["Each deduped per user per day,<br/>within its own enum only"]
+  C --> D["The freshest days may be absent,<br/>and may still change later"]
+  D --> E["Whether quiet days come back at all<br/>is undocumented — count what arrived"]
+  E --> F["One number on a client's report"]
+```
+
+*No stage here is a defect, and none of it is hidden — it is all in the reference. What is missing is any signal in the response that a stage happened, which is why the arithmetic has to be documented by whoever prints the last box.*
+
 ### LSM-MEASURE-01 · There is no "profile views" metric — you sum four impression enums
 
 **Verdict:** WORKS

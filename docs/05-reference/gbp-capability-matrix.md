@@ -113,6 +113,18 @@ Google split the old My Business API into eight named services: Account Manageme
 
 That sentence is the whole architecture. The v1 APIs got the administrative surface. The revenue-relevant surface — reviews, photos, posts, menus — stayed in v4 and has no announced successor.
 
+```mermaid
+flowchart TD
+  A["The old My Business API"] --> B["Eight v1 services —<br/>the administrative surface"]
+  A --> C["Google My Business 4.9 —<br/>the legacy remnant"]
+  A --> D["Retired"]
+  B --> B1["Accounts · Business Information ·<br/>Performance · Verifications ·<br/>Notifications · Place Actions · Lodging"]
+  C --> C1["Reviews · Media · Local Posts · Food menus<br/>— no migration path published,<br/>and still receiving features"]
+  D --> D1["Q&A, switched off 2025-11-03 ·<br/>per-post insights · business calls"]
+```
+
+*The split is not a tidying exercise, it is where the value sits. Everything a client pays you to touch is in the middle branch — the one with no successor — and the branch that got the versioning discipline is the one that manages accounts.*
+
 **Note on the FAQ itself:** as read on 2026-07-27 it still lists "My Business Q&A API" among the eight current APIs, more than eight months after Google discontinued it ([LSM-GBP-12](#lsm-gbp-12--the-qa-api-is-gone-and-google-never-added-it-to-the-deprecation-table)).
 
 **What to do instead:** design any client with the v4 calls behind a seam. Not because v4 is going away on a known date — nothing says it is — but because the one API carrying your most valuable capabilities is the one with no migration path published.

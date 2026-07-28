@@ -10,6 +10,20 @@ Reads fail loudly. Writes fail quietly: the call returns 200, the field does not
 
 Every entry stands alone. `Last verified` is the day the probe last ran, never the day the prose was edited.
 
+Four states, and only one of them is what you meant to report:
+
+```mermaid
+flowchart TD
+  A["You send a write"] --> B{"2xx?"}
+  B -->|"No"| L["Loud failure — status code,<br/>usually a field-level message.<br/>The easy case"]
+  B -->|"Yes"| C{"Is the change<br/>live on Google?"}
+  C -->|"Not yet"| D["Accepted, not published.<br/>Review takes minutes,<br/>occasionally weeks"]
+  C -->|"Never"| E["Silent: rejected after creation,<br/>reverted, or a field the mask<br/>quietly unset"]
+  C -->|"Yes"| F["Published — read it back<br/>before you claim it"]
+```
+
+*Most of this chapter is the two middle branches. They share a symptom — a 200 and a happy log line — and they are the reason "verify by reading it back" appears in every write procedure in this manual.*
+
 ## Failure-mode index
 
 Search this table by the string you actually saw.
