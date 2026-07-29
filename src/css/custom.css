@@ -217,3 +217,20 @@
   white-space: normal;
   line-height: 1.35;
 }
+
+/* ---- Footer: links in the copyright line ----
+   The footer is always dark (`footer.style: 'dark'`), but the copyright is raw
+   HTML, so its inline links keep the PAGE's link color — #004ac6 on the footer's
+   #303846 is 1.57:1, effectively invisible. The column links above them already
+   use --ifm-footer-link-color; point the copyright's links at it too, and keep
+   the underline so they still read as links without relying on color. */
+.footer__copyright a {
+  color: var(--ifm-footer-link-color);
+  text-decoration: underline;
+}
+
+/* --ifm-footer-link-hover-color is the primary blue — the same unreadable color
+   the rule above exists to avoid. Go to white on hover instead. */
+.footer__copyright a:hover {
+  color: #fff;
+}
